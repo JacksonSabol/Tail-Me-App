@@ -30,13 +30,13 @@ require("./config/passport/passport.js")(passport, db.Auth);
 app.use(express.static("public"));
 
 // Import routes
-require("./routes/html-routes.js")(app);
-require("./routes/auth-routes.js")(app, passport);
-require("./routes/walker-api-routes.js")(app);
-require("./routes/owner-api-routes.js")(app);
-require("./routes/dog-api-routes.js")(app);
-require("./routes/walk-api-routes.js")(app);
-require("./routes/path-api-routes.js")(app);
+//require("./routes/html-routes.js")(app);
+//require("./routes/auth-routes.js")(app, passport);
+//require("./routes/walker-api-routes.js")(app);
+//require("./routes/owner-api-routes.js")(app);
+//require("./routes/dog-api-routes.js")(app);
+//require("./routes/walk-api-routes.js")(app);
+//require("./routes/path-api-routes.js")(app);
 
 
 // React stuff here to serve up static assets (usually on heroku)
