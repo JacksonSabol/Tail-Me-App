@@ -28,10 +28,12 @@
     "express-session": "^1.15.6",
     "if-env": "^1.0.4",
     "moment": "^2.24.0",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
     "node-sass": "^4.11.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
   }
 }
