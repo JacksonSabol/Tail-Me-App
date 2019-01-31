@@ -8,11 +8,10 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var env = require('dotenv').load();
 var PORT = process.env.PORT || 3001;
-
-
 // Requiring our models for syncing
 var db = require("./models");
 
+const routes = require("./routes");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -29,9 +28,10 @@ require("./config/passport/passport.js")(passport, db.Auth);
 // Import static directories
 app.use(express.static("public"));
 
+app.use(routes);
 // Import routes
 //require("./routes/html-routes.js")(app);
-//require("./routes/auth-routes.js")(app, passport);
+require("./routes/auth-routes.js")(app, passport);
 //require("./routes/walker-api-routes.js")(app);
 //require("./routes/owner-api-routes.js")(app);
 //require("./routes/dog-api-routes.js")(app);
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Syncing our sequelize models and then starting our Express app
-db.sequelize.sync({ force: true }).then(function () { // Set to false after Auth table is initially made post deployment
+db.sequelize.sync({ force: false}).then(function () { // Set to false after Auth table is initially made post deployment
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
