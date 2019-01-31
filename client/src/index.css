@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #969084; }
+
+html {
+  font-size: 62.5%; }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 52.5em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 37.5%; } }
+  @media only screen and (max-width: 33em) {
+    html {
+      font-size: 29%; } }
+  @media only screen and (max-width: 25.5em) {
+    html {
+      font-size: 20%; } }
+
+a {
+  text-decoration: none;
+  outline: none; }
+
+a:link {
+  /* Applies to all unvisited links */
+  text-decoration: none;
+  outline: none; }
+
+a:visited {
+  /* Applies to all visited links */
+  text-decoration: none;
+  outline: none; }
+
+a:hover {
+  /* Applies to links under the pointer */
+  text-decoration: none;
+  outline: none; }
+
+a:active {
+  /* Applies to activated links */
+  text-decoration: none;
+  outline: none; }

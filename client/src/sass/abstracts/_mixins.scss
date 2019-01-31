@@ -1,0 +1,37 @@
+@mixin responsive($breakpoint) {
+    @if $breakpoint == mini {
+      @media only screen and (max-width: 25.5em) { @content }; //
+    }
+
+    @if $breakpoint == mid-mini {
+      //em number calculated by dividing the amount of px by default font size (16px) 
+      @media only screen and (max-width: 33em) { @content }; // 
+    }
+
+    @if $breakpoint == phone {
+      //em number calculated by dividing the amount of px by default font size (16px) 
+      @media only screen and (max-width: 37.5em) { @content }; //600px 
+    }
+  
+    @if $breakpoint == t-port {
+      @media only screen and (max-width: 52.5em) { @content }; //900px
+    }
+  
+    @if $breakpoint == t-land {
+      @media only screen and (max-width: 75em) { @content }; //1200px
+    }
+
+    @if $breakpoint == t-view {
+      @media only screen and (max-width: 93em) { @content }; 
+    }
+  
+    @if $breakpoint == l-desk {
+      @media only screen and (min-width: 112.5em) { @content }; //1800px
+    }
+  }
+  @mixin center-element {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
