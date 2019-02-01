@@ -9,8 +9,10 @@ import Navbar from "./components/Navbar";
 
 import { Container } from "./components/Grid";
 import Footer from "./components/Footer";
-import TodayWalks from "./components/TodayWalks";
 
+import ownerProfile from "./pages/ownerProfile";
+import walkerDashboard from "./pages/walkerDashboard";
+import walkerProfile  from "./pages/walkerProfile";
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
         { /* <Route exact path="/user/login" component={Login} /> */} 
         { /*  <Route exact path="/walker/signup" component={Signup} />*/} 
         { /*  <Route exact path="/owner/signup" component={OwnerSignup} />*/} 
-          <Route exact path="/walker/todayWalks" component={TodayWalks} />
-          
+        
+          <Route exact path="/ownerProfile/" component={ownerProfile}/>
+          <Route exact path="/walkerDashboard/" component={walkerDashboard}/>
+          <Route exact path="/walkerProfile/" component={walkerProfile}/>
         </Container>
         <Footer />
       </div>
