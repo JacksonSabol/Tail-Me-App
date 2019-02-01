@@ -30,8 +30,6 @@ class TodayWalks extends Component {
     API.getTodayWalks()
       .then(res => {
 
-        console.log("resssss: ", res.data);
-        
          const dataFormat=res.data.map(data => { 
 
             const start_time = Moment(data.checkInTime);
