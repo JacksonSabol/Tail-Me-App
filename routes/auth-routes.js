@@ -3,19 +3,19 @@ module.exports = function (app, passport) {
     // POST route to sign in and authorize an existing user using our local strategy 'local-signin'
     app.post("/user/signin", passport.authenticate('local-signin'), function (req, res) {
         // Upon successful signin and authentication, redirect to the user's profile page
-        res.redirect('/'); // change to something like /user/<username>
+        res.status(200).send({ message: 'Logged In' });
     });
     
     // POST route to signup and authorize a new dog Walker using our local strategy 'local-signup'
     app.post('/walker/signup', passport.authenticate('local-signup'), function (req, res) {
-        // Upon successful signup and authentication, redirect to the create profile page
-        res.redirect('/walker/create');
+        // Upon successful signup and authentication, send true and redirect client side
+        res.status(200).send({ message: 'Walker created' });
     });
 
     // POST route to signup and authorize a new dog Owner using our local strategy 'local-signup'
     app.post('/owner/signup', passport.authenticate('local-signup'), function (req, res) {
-        // Upon successful signup and authentication, redirect to the create profile page
-        res.redirect('/owner/create');
+        // Upon successful signup and authentication, send true and redirect client side
+        res.json(true);
     });
 
     // GET route to Logout user
@@ -25,8 +25,8 @@ module.exports = function (app, passport) {
         req.session.destroy(function (err) {
             // Log errors
             if (err) console.log(err)
-            // Redirect to the home page after successfully logging out the user
-            res.redirect('/');
+            // Redirect to the home page client-side after successfully logging out the user
+            res.status(200).send({ message: 'User logged out' });
         });
     });
 }

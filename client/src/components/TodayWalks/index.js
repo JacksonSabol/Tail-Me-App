@@ -24,28 +24,28 @@ class TodayWalks extends Component {
       .catch(err => console.log(err));
   };
 
-  
+
   render() {
     return (
-      
+      <Container>
         <Row>
           <Col size="md-12 sm-12">
             {this.state.walks.length ? (
               <List>
                 {this.state.walks.map(walk => (
                   <ListItem key={walk.id}>
-                    
+
                     <p className="list-publish">Walk Date: {Moment(walk.walkDate, "YYYY-MM-DDTHh:mm:ss").format("MM/DD/YYYY")}</p>
-                   
+
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <p className="search__form--alert"> you don't have any walks!</p>
+                <p className="search__form--alert"> you don't have any walks!</p>
               )}
           </Col>
         </Row>
-     
+      </Container>
     );
   }
 }
