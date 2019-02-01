@@ -47,3 +47,7 @@ a:active {
   /* Applies to activated links */
   text-decoration: none;
   outline: none; }
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto; }
