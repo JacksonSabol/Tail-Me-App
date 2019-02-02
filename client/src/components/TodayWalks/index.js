@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../Grid";
-//import Jumbotron from "../components/Jumbotron";
 import { List, ListItem } from "../List";
-// import DeleteBtn from "../components/DeleteBtn";
 import API from "../../utils/API";
 import Moment from "moment";
 
@@ -97,8 +94,6 @@ class TodayWalks extends Component {
 
         </Col>
       </Row>
-
-
     );
   }
 }

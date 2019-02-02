@@ -24,14 +24,14 @@ app.use(passport.initialize());
 // Persistent login sessions
 app.use(passport.session());
 // Load passport strategies
-require("./config/passport/passport.js")(passport, db.Auth);
+require("./config/passport/passport.js")(passport, db.auth);
 // Import static directories
 app.use(express.static("public"));
 
-app.use(routes);
+require("./routes/auth-routes.js")(app, passport);
+// app.use(routes);
 // Import routes
 //require("./routes/html-routes.js")(app);
-require("./routes/auth-routes.js")(app, passport);
 //require("./routes/walker-api-routes.js")(app);
 //require("./routes/owner-api-routes.js")(app);
 //require("./routes/dog-api-routes.js")(app);
