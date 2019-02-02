@@ -7,7 +7,7 @@ import "./index.css";
 
 ReactDOM.render(
     <Router history={history}>
-        <App />
+      <App />
     </Router>,
     document.getElementById("root")
-);
+  );

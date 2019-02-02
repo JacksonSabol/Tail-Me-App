@@ -29,7 +29,7 @@ require("./config/passport/passport.js")(passport, db.auth);
 app.use(express.static("public"));
 
 require("./routes/auth-routes.js")(app, passport);
-// app.use(routes);
+app.use(routes);
 // Import routes
 //require("./routes/html-routes.js")(app);
 //require("./routes/walker-api-routes.js")(app);

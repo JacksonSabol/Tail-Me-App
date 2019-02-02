@@ -14,7 +14,7 @@ class TodayWalks extends Component {
     errorMessage: ""
   };
   // Life-cycle function that executes when the components mount (page loads)
-  
+
 
 
   componentDidMount() {
@@ -23,37 +23,37 @@ class TodayWalks extends Component {
   // Function to load all TodayWalks from the database
   loadWalks = () => {
 
-    
+
     API.getTodayWalks()
       .then(res => {
 
-         const dataFormat=res.data.map(data => { 
+        const dataFormat = res.data.map(data => {
 
-            const start_time = Moment(data.checkInTime);
-            const end_time = Moment(data.checkOutTime);
-            const difference = end_time.diff(start_time,'minutes',true)
-            
-            const dataFormatted = {
-              checkInTime: data.checkInTime,
-              checkOutTime: data.checkOutTime,
-              totalTime:this.convertMinsToHrsMins(difference),
-              id:data.id,
-              walkDate:data.walkDate
+          const start_time = Moment(data.checkInTime);
+          const end_time = Moment(data.checkOutTime);
+          const difference = end_time.diff(start_time, 'minutes', true)
 
-            }
-            
-         
+          const dataFormatted = {
+            checkInTime: data.checkInTime,
+            checkOutTime: data.checkOutTime,
+            totalTime: this.convertMinsToHrsMins(difference),
+            id: data.id,
+            walkDate: data.walkDate
+
+          }
+
+
           return (dataFormatted)
-         });
-         console.log("Data Format",dataFormat)
+        });
+        console.log("Data Format", dataFormat)
 
-         this.setState({ walks: dataFormat})
+        this.setState({ walks: dataFormat })
       })
 
       .catch(err => console.log(err));
   };
 
-  convertMinsToHrsMins = (mins) =>{
+  convertMinsToHrsMins = (mins) => {
     let h = Math.floor(mins / 60);
     let m = mins % 60;
     h = h < 10 ? '0' + h : h;
@@ -63,37 +63,37 @@ class TodayWalks extends Component {
 
   render() {
     return (
-
-      <Row>
-        <Col size="md-12 sm-12">
-          {this.state.walks.length ? (
-            <List>
-              TodayWalks:
+      <Container>
+        <Row>
+          <Col size="md-12 sm-12">
+            {this.state.walks.length ? (
+              <List>
+                TodayWalks:
                 {this.state.walks.map(walk => (
 
-                <ListItem key={walk.id}>
+                  <ListItem key={walk.id}>
 
-                  <p className="list-publish"> Walk Date: 
+                    <p className="list-publish"> Walk Date:
                     {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-                  </p> 
-                  <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
-                  
-                  <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
+                    </p>
+                    <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
-                  <p className="list-publish"> Total Time: {walk.totalTime} </p>
+                    <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
-                </ListItem>
-              ))}
+                    <p className="list-publish"> Total Time: {walk.totalTime} </p>
 
-            </List>
+                  </ListItem>
+                ))}
 
-          ) : (
-              <p className="search__form--alert"> you don't have any walks!</p>
-            )}
+              </List>
 
+            ) : (
+                <p className="search__form--alert"> you don't have any walks!</p>
+              )}
 
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
