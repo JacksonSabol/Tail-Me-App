@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
 import history from "../history/history";
 import TodayWalks from '../components/TodayWalks';
 import axios from "axios";
