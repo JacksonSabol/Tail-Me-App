@@ -1,18 +1,22 @@
 import React, { Component } from "react";
-import history from "../history/history";
+import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
 
+const title = 'Log In Screen';
+
 class Login extends Component {
-    // Setting the initial values of this.state.email and this.state.password
+    // Setting the initial state values
     state = {
-        email: "",
-        password: "",
-        errorMessage: ""
+        username: '',
+        password: '',
+        loggedIn: false,
+        showError: false,
+        showNullError: false
     };
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
-        let value = event.target.value; // Change to let to disallow users from inputing passwords longer than 15 characters
+        let value = event.target.value;
         const name = event.target.name;
         // Updating the input's state
         this.setState({
@@ -20,50 +24,88 @@ class Login extends Component {
         });
     };
 
-    handleFormSubmit = event => {
-        // Preventing the default behavior of the form submit (which is to refresh the page)
+    loginUser = event => {
         event.preventDefault();
-
-        if (!this.state.email || !this.state.password) {
-            this.setState({ errorMessage: "Fill out your email and password please!" });
-            return;
-        }
-        else {
-            // Make POST request to the Auth route with the user's email and password; redirect using history after success
-            axios.post('/user/signin', {
-                email: this.state.email,
-                password: this.state.password
-            })
-                .then(function (response) {
-                    history.push("/walker/create");
+        if (this.state.username === '' || this.state.password === '') {
+            this.setState({
+                showError: false,
+                showNullError: true,
+                loggedIn: false,
+            });
+        } else {
+            axios
+                .post('/user/signin', {
+                    username: this.state.username,
+                    password: this.state.password
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .then(response => {
+                    localStorage.setItem('JWT', response.data.token);
+                    this.setState({
+                        loggedIn: true,
+                        showError: false,
+                        showNullError: false,
+                    });
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                    if (
+                        error.response.data === 'bad username' ||
+                        error.response.data === 'passwords do not match'
+                    ) {
+                        this.setState({
+                            showError: true,
+                            showNullError: false,
+                        });
+                    }
                 });
         }
     };
     render() {
-        return (
-            <form>
-                <p>Login:</p>
-                <input
-                    value={this.state.email}
-                    name="email"
-                    onChange={this.handleInputChange}
-                    type="email"
-                    placeholder="john.doe@gmail.com"
-                />
-                <input
-                    value={this.state.password}
-                    name="password"
-                    onChange={this.handleInputChange}
-                    type="password"
-                    placeholder=""
-                />
-                <button onClick={this.handleFormSubmit}>Submit</button>
-                <p>{this.state.errorMessage}</p>
-            </form>
-        );
+        const {
+            username,
+            showError,
+            loggedIn,
+            showNullError,
+        } = this.state;
+
+        if (!loggedIn) {
+            return (
+                <div>
+                    <p>{title}</p>
+                    <form className="profile-form" onSubmit={this.loginUser}>
+                        <input
+                            value={this.state.username}
+                            name="username"
+                            onChange={this.handleInputChange}
+                            type="text"
+                            placeholder="UserName"
+                        />
+                        <input
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handleInputChange}
+                            type="password"
+                            placeholder=""
+                        />
+                        <button type="submit">Login</button>
+                    </form>
+                    {showNullError && (
+                        <div>
+                            <p>The username or password cannot be null.</p>
+                        </div>
+                    )}
+                    {showError && (
+                        <div>
+                            <p>That username or password isn't recognized. Please try again or register now.</p>
+                            <p><a href="/walker/signup">Sign up as a Walker</a></p>
+                        </div>
+                    )}
+                    <p><a href="/">Return to Home</a></p>
+                </div>
+            );
+        } else {
+            return <Redirect to={`/userProfile/${username}`} />;
+        }
     }
 }
 

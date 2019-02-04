@@ -18,14 +18,19 @@ export default {
 
     //User Profile
     getUserProfile: function (id) {
-       console.log(id)
+        console.log(id)
         return axios.get("/api/userProfile/" + id);
     },
 
     //DogProfile
     getDogProfile: function (id) {
         console.log(id)
-         return axios.get("/api/dogProfile/" + id);
-     },
+        return axios.get("/api/dogProfile/" + id);
+    },
+    //Walker invite signup to the owner
+    createInvitation: function (data) {
+        console.log("API.js -  createInvitation")
+        return axios.post("/api/walker/invitecustomer/" + data.ownerName + "/" + data.phoneNumber + "/" + data.specialCode + "/" + data.walkerId + "/" + data.walkerName);
+    },
 
 };

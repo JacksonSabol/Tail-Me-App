@@ -8,14 +8,10 @@ class walkerDashboard extends Component {
     handleLogOut = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
         event.preventDefault();
-        // Make a GET request to the /user/logout path to destroy the session and log user out
-        axios.get('/user/logout')
-            .then(function (response) {
-                history.push("/");
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        // Clear local storage to remove JWT
+        localStorage.clear();
+        // Redirect to the home page
+        history.push("/");
     }
 
     render() {
