@@ -62,7 +62,12 @@ export default {
     updateWalk:function(idWalk,data) {
         return axios.put(`/api/walker/schedule/${idWalk}`,data)
 
-    }
+    },
 
+    //Walker invite signup to the owner
+    createInvitation: function (data) {
+        console.log("API.js -  createInvitation")
+        return axios.post("/api/walker/invitecustomer/" + data.ownerName + "/" + data.phoneNumber + "/" + data.specialCode + "/" + data.walkerId + "/" + data.walkerName);
+    },
 
 };

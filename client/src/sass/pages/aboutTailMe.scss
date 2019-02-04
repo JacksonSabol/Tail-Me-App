@@ -1,0 +1,25 @@
+.aboutTailMe{
+    &__grid{
+        height:90%;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: auto 1fr;
+        grid-gap: 1em;
+        &--heading{
+            font-family: $font-cursive;
+            justify-self: center;
+            grid-column: 2 / 3;
+            font-size: 6em;
+            margin-top: 1em;
+            color: $color-accentOne;
+        }
+        &--text{
+            grid-area: 2 / 2 / 3 /3;
+            font-size: 2em;
+            padding: .5em;
+            line-height: 2;
+            margin-bottom: 2em;
+        }
+    }
+}
