@@ -1,17 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     var auth = sequelize.define('auth', {
-        email: DataTypes.STRING,
+        username: DataTypes.STRING,
         password: DataTypes.STRING,
+        email: DataTypes.STRING,
         last_login: DataTypes.DATE,
         status: {
             type: DataTypes.ENUM('active', 'inactive'),
             defaultValue: 'active'
         }
     }, {});
-    // auth.associate = function (models) {
-    //     // associations can be defined here
-    //     auth.hasOne(models.user)
-    // };
+    auth.associate = function (models) {
+        // association to user table
+        auth.hasOne(models.user, {
+            onDelete: "cascade"
+        });
+    };
     return auth;
 };
