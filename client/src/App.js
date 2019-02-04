@@ -11,11 +11,15 @@ import WalkerSignupTest from "./pages/WalkerSignupTest";
 import ownerProfile from "./pages/ownerProfile";
 import walkerProfile from "./pages/walkerProfile";
 import Footer from "./components/Footer";
+import WalkPhotoUpandPost from "./components/WalkPhotoUpandPost/index"
 
+import WalkImages from "./components/WalkPhotoUpandPost/pics"
 
+import Schedule from "./components/Schedule";
 
+import walkerWalksSchedule from "./components/WalkerScheduleWalks";
 
-
+import WalkerScheduleWalks from "./components/WalkerScheduleWalks"
 
 function App() {
   return (
@@ -30,6 +34,13 @@ function App() {
         <Route exact path="/ownerProfile/" component={ownerProfile} />
         <Route exact path="/walkerDashboard/" component={walkerDashboard} />
         <Route exact path="/walkerProfile/" component={walkerProfile} />
+        <Footer />
+        <Route exact path="/walker/uploadPhotos" component={WalkPhotoUpandPost} />
+        <Route exact path="/walker/walkImages" component={WalkImages} />
+        <Route exact path="/walker/schedule" component={Schedule} />
+        <Route exact path="/walkerWalks/schedule" component={walkerWalksSchedule} />
+        <Footer />
+        <Route exact path="/walker/addSchedule" component={WalkerScheduleWalks} />
         <Footer />
       </div>
     </Router>
