@@ -15,6 +15,7 @@ import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
 // import CheckInOut  from "./components/CheckInOut";
 import InviteOwners  from "./components/InviteOwners";
+import GetCoordinates  from "./components/GetCoordinates";
 // import Footer from "./components/Footer";
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/userProfile/:username" component={ProfileTest} />
         {/* <Route exact path="/walker/checkinout" component={CheckInOut} /> */}
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
+        <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
         {/* <Footer /> */}
       </div>
     </Router>
