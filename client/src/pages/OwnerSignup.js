@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
 
-const title = 'Sign Up as a Dog Walker';
+const title = 'Sign Up as a Dog Owner';
 
-class WalkerSignup extends Component {
+class OwnerSignup extends Component {
     // Setting the initial state values
     state = {
         username: '',
@@ -38,7 +38,7 @@ class WalkerSignup extends Component {
             });
         } else {
             axios
-                .post('/walker/signup', {
+                .post('/owner/signup', {
                     email: this.state.email,
                     username: this.state.username,
                     password: this.state.password
@@ -118,9 +118,9 @@ class WalkerSignup extends Component {
                 </div>
             );
         } else {
-            return <Redirect to={`/walker/create/${username}`} />;
+            return <Redirect to={`/owner/create/${username}`} />;
         }
     }
 }
 
-export default WalkerSignup;
+export default OwnerSignup;

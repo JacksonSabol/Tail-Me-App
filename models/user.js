@@ -5,8 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     userType: {
       type: DataTypes.ENUM('walker', 'owner')
-     
-  },
+    },
     aboutMe: DataTypes.STRING,
     profilePhoto: DataTypes.BLOB,
     address: DataTypes.STRING,
@@ -15,16 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     zipCode: DataTypes.INTEGER,
     country: DataTypes.STRING
   }, {});
-  user.associate = function(models) {
+  user.associate = function (models) {
     // associations can be defined here
 
     user.belongsTo(models.auth, {
       foreignKey: {
-       allowNull: false
-     }
-   });
-
-    
+        allowNull: false
+      }
+    });
 
     user.hasOne(models.walker, {
       onDelete: "cascade"
@@ -34,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade"
     });
 
-    
+
   };
   return user;
 };
