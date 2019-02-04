@@ -1,12 +1,152 @@
 .splash{
+    &__grid{
+    height: 90%;
     display:grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
-    justify-content: center;
-    align-content: center;
-    &__logo{
-        grid-column:2;
-
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ;
+    grid-template-areas:
+        ". . . . ."
+        ". . l . ."
+        ". a u w .";
         
+    grid-gap: 2em;
+    // justify-content: center;
+    // align-content: center;
     }
+    &__logo{
+      grid-area: l;
+      justify-self: center;   
+    }
+    &__about{
+        grid-area: a;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+        "t t t"
+        "b b b"
+        ". . .";
+        
+        &--text{
+            grid-area: t;
+            font-size: 2em;
+            margin: 1em;
+            text-align: center;
+        }
+        &--link{
+            grid-area: b;
+            font-size: 2em;
+            text-align: center;
+            color: $color-lightest;
+            background-color: $color-dark;
+            padding: 1em 1em;
+            border: solid 2px $color-lightest;
+            margin: 1em;
+        }
+        &--link:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+
+    }
+    &__user{
+        grid-area: u;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+        "t t t"
+        "c c c"
+        "b b b";
+        &--text{
+            grid-area: t;
+            font-size: 2em;
+            margin: 1em;
+            text-align: center;
+        }
+        &--authentification{
+            grid-area: c;
+            font-size: 2em;
+            text-align: center;
+            color: $color-lightest;
+            background-color: $color-dark;
+            padding: 1em 2em;
+            border: solid 2px $color-lightest;
+            margin: 1em;
+        }
+        &--authentification:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--registration{
+            grid-area: b;
+            font-size: 2em;
+            text-align: center;
+            color: $color-lightest;
+            background-color: $color-dark;
+            padding: 1em 2em;
+            border: solid 2px $color-lightest;
+            margin: 1em;
+        }
+        &--registration:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+    }
+    &__walker{
+        grid-area: w;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+        "t t t"
+        "c c c"
+        "b b b";
+        &--text{
+            grid-area: t;
+            font-size: 2em;
+            margin: 1em;
+            text-align: center;
+        }
+        &--authentification{
+            grid-area: c;
+            font-size: 2em;
+            text-align: center;
+            color: $color-lightest;
+            background-color: $color-dark;
+            padding: 1em 2em;
+            border: solid 2px $color-lightest;
+            margin: 1em;
+        }
+        &--authentification:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--registration{
+            grid-area: b;
+            font-size: 2em;
+            text-align: center;
+            color: $color-lightest;
+            background-color: $color-dark;
+            padding: 1em 2em;
+            border: solid 2px $color-lightest;
+            margin: 1em;
+        }
+        &--registration:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+    }
+    
 }
+

@@ -12,6 +12,8 @@ import ownerProfile from "./pages/ownerProfile";
 import walkerProfile from "./pages/walkerProfile";
 import splash from "./pages/splash";
 import Footer from "./components/Footer";
+import aboutTailMe from "./pages/aboutTailMe";
+import contactTailMe from "./pages/contactTailMe";
 
 
 
@@ -32,6 +34,8 @@ function App() {
         <Route exact path="/walkerDashboard/" component={walkerDashboard} />
         <Route exact path="/walkerProfile/" component={walkerProfile} />
         <Route exact path="/splash/" component={splash} />
+        <Route exact path="/aboutTailMe/" component={aboutTailMe} />
+        <Route exact path="/contactTailMe/" component={contactTailMe} />
         <Footer />
       </div>
     </Router>

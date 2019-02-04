@@ -1,0 +1,47 @@
+.Contact{
+    display:grid;
+    height: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-gap: 2em;
+   
+        &__logo{
+            grid-area: 1/2;
+            justify-self: right;   
+            font-size: 7em;
+            font-family: 'Over the Rainbow', cursive;;
+            &--image{
+                grid-area: 1/3;
+                justify-self: left;
+                margin-top: 3em;  
+            }
+        }
+        &__firstName{
+            font-size: 2em;
+            grid-area: 2/1;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                grid-area: d;
+            }
+        }
+        &__lastName{
+            font-size: 2em;
+            &--label{
+                grid-area: e;
+                justify-self: right;
+            }
+            &--input{
+                grid-area: f;
+            }
+        }
+
+
+}
+label.Contact__firstName--label{
+    grid-area: 2/1;
+}
+input.Contact__firstName--input{
+    grid-area: 2/2;
+}
