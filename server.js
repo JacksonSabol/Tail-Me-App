@@ -58,6 +58,93 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+
+//// CRON TAKSs
+
+
+var cron = require("node-cron");
+
+//// TEST sending console.log
+// cron.schedule("* * * * *", function () {
+//     console.log("running a task every minute");
+// });
+
+
+//// Sending SMS for reminders: every day start a task at 6pm that get all the walks for next day and send a reminder to the owners
+
+cron.schedule("* 18 * * *", function () {
+    console.log("Sending automatic reminders at: ", Date.now())
+    // var sequelize = require("sequelize")
+    const sequelize = require('sequelize');
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow_formatted = (tomorrow.toISOString().replace(/-/g, '').split('T')[0])
+
+    db.walks
+        .findAll({
+            include: [{ association: 'dogOwner' }
+            ],
+            where: sequelize.where(sequelize.fn('date', sequelize.col('walkDate')), '=',   tomorrow_formatted)  
+            })
+        .then(dbModel => { prepareSMS(dbModel) })
+        .catch(err => console.log(err))
+
+    function prepareSMS(data) {
+
+        for (let i = 0; i < data.length; i++) {
+
+            console.log("WALKTIME: ", i, data[i].id, data[i].walkDate);
+            let walk = {
+                dogName: data[i].dogOwner.dogName,
+                walkTime: data[i].walkDate,
+                phoneNumber: data[i].dogOwner.emergencyContact
+            }
+            sendReminders(walk)
+
+
+        }
+    }
+
+    function sendReminders(walk) {
+        console.log(walk)
+
+        // TWILIO API
+
+        require('dotenv').config();
+        var id = process.env.TWILIO_ACCOUNT_SID;
+        var secret = process.env.TWILIO_TOKEN;
+        var phonefrom = process.env.TWILIO_PHONE_FROM;
+
+        const client = require('twilio')(id, secret);
+
+        var phoneNumber = walk.phoneNumber;
+        var dogName = walk.dogName;
+        var walkTime = walk.walkTime;
+        var datenow = new Date();
+        datenow.setDate(datenow.getDate());
+
+        var reminder = "this is a reminder for " + dogName + " tomorrow at " + walkTime + " be ready for a fun walk. " + datenow;
+
+        console.log(reminder)
+
+        client.messages
+            .create({
+                body: reminder,
+                from: phonefrom,
+                to: phoneNumber
+            })
+            .then(message => {
+                console.log(message.sid);
+                //create a row in the  invitations pending table
+                //res.json(res)
+            })
+            .done(console.log("sended"));
+    }
+})
+
+//////// END CRON TASKs
+
+
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: false }).then(function () { // Set to false after Auth table is initially made post deployment
   app.listen(PORT, function () {
