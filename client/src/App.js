@@ -17,7 +17,7 @@ import contactTailMe from "./pages/contactTailMe";
 import createWalkerProfile from "./pages/createWalkerProfile";
 import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
-// import CheckInOut  from "./components/CheckInOut";
+import ShowMap  from "./components/ShowMap";
 import InviteOwners  from "./components/InviteOwners";
 import GetCoordinates  from "./components/GetCoordinates";
 // import Footer from "./components/Footer";
@@ -43,7 +43,7 @@ function App() {
         <Route exact path="/aboutTailMe/" component={aboutTailMe} />
         <Route exact path="/contactTailMe/" component={contactTailMe} />
         <Route exact path="/userProfile/:username" component={ProfileTest} />
-        {/* <Route exact path="/walker/checkinout" component={CheckInOut} /> */}
+        <Route exact path="/walker/showmap" component={ShowMap} />
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
         <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
         {/* <Footer /> */}
