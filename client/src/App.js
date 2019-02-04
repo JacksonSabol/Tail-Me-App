@@ -13,10 +13,9 @@ import walkerProfile from "./pages/walkerProfile";
 import createWalkerProfile from "./pages/createWalkerProfile";
 import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
+// import CheckInOut  from "./components/CheckInOut";
+import InviteOwners  from "./components/InviteOwners";
 // import Footer from "./components/Footer";
-
-
-
 
 
 
@@ -35,6 +34,8 @@ function App() {
         <Route exact path="/walkerDashboard/" component={walkerDashboard} />
         <Route exact path="/walkerProfile/" component={walkerProfile} />
         <Route exact path="/userProfile/:username" component={ProfileTest} />
+        {/* <Route exact path="/walker/checkinout" component={CheckInOut} /> */}
+        <Route exact path="/walker/inviteowner" component={InviteOwners} />
         {/* <Footer /> */}
       </div>
     </Router>
