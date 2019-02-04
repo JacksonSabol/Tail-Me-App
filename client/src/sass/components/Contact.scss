@@ -1,0 +1,63 @@
+.Contact{
+    display:grid;
+    height: 90%;
+    grid-template-columns: 1fr 2fr  2fr 1fr ;
+    grid-template-rows: 1fr auto auto 1fr 1fr ;
+    grid-gap: 2em;
+   
+        &__logo{
+            grid-area: 1/2;
+            justify-self: right;   
+            font-size: 7em;
+            font-family: 'Over the Rainbow', cursive;;
+            &--image{
+                grid-area: 1/3;
+                justify-self: left;
+                margin-top: 3em;  
+            }
+        }
+        &__firstName{
+            font-size: 2em;
+            grid-area: 2/2;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                font-size: 1em;
+           
+            }
+        }
+        &__lastName{
+            font-size: 2em;
+            grid-area: 2/3;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                font-size: 1em;
+                
+            }
+        }
+        &__userType{
+            font-size: 2em;
+            grid-area: 3/2/3/4;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                font-size: 1em;
+                
+            }
+        }
+        &__textArea{
+        font-size: 2em;
+            grid-area: 4/2/4/4;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                font-size: 1em;
+            }
+        }
+
+}

@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #969084; }
+  background-color: #969084;
+  color: #28251f;
+  font-family: "Proza Libre", sans-serif; }
 
 html {
   font-size: 62.5%; }
@@ -47,3 +49,244 @@ a:active {
   /* Applies to activated links */
   text-decoration: none;
   outline: none; }
+
+.footer {
+  text-align: center; }
+  .footer__text {
+    font-size: 2em; }
+  .footer__logo {
+    height: 1.5em; }
+
+.nav {
+  background-color: #cec8bb;
+  display: grid;
+  grid-template-columns: 6 1fr;
+  grid-template-areas: "l . . . s c"; }
+  .nav__logo {
+    justify-self: center;
+    grid-area: l;
+    background-color: #f2ecde;
+    border-radius: 5em;
+    padding: 1em 3em; }
+    .nav__logo--image {
+      margin: 1em; }
+  .nav__splash {
+    justify-self: right;
+    grid-area: s;
+    background-color: #f2ecde;
+    border: solid 2px #f2ecde;
+    border-radius: 5em 0em 0em 5em;
+    padding: 4em 5em; }
+    .nav__splash--link {
+      font-size: 2em;
+      color: #595348; }
+    .nav__splash--link:hover {
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+  .nav__splash:hover {
+    background-color: #28251f; }
+  .nav__contact {
+    justify-self: left;
+    grid-area: c;
+    background-color: #f2ecde;
+    border: solid 2px #f2ecde;
+    border-radius: 0em 5em 5em 0em;
+    padding: 4em 5em; }
+    .nav__contact--link {
+      font-size: 2em;
+      color: #595348; }
+    .nav__contact--link:hover {
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+  .nav__contact:hover {
+    background-color: #28251f; }
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto; }
+
+.Contact {
+  display: grid;
+  height: 90%;
+  grid-template-columns: 1fr 2fr  2fr 1fr;
+  grid-template-rows: 1fr auto auto 1fr 1fr;
+  grid-gap: 2em; }
+  .Contact__logo {
+    grid-area: 1/2;
+    justify-self: right;
+    font-size: 7em;
+    font-family: 'Over the Rainbow', cursive; }
+    .Contact__logo--image {
+      grid-area: 1/3;
+      justify-self: left;
+      margin-top: 3em; }
+  .Contact__firstName {
+    font-size: 2em;
+    grid-area: 2/2; }
+    .Contact__firstName--label {
+      justify-self: right; }
+    .Contact__firstName--input {
+      font-size: 1em; }
+  .Contact__lastName {
+    font-size: 2em;
+    grid-area: 2/3; }
+    .Contact__lastName--label {
+      justify-self: right; }
+    .Contact__lastName--input {
+      font-size: 1em; }
+  .Contact__userType {
+    font-size: 2em;
+    grid-area: 3/2/3/4; }
+    .Contact__userType--label {
+      justify-self: right; }
+    .Contact__userType--input {
+      font-size: 1em; }
+  .Contact__textArea {
+    font-size: 2em;
+    grid-area: 4/2/4/4; }
+    .Contact__textArea--label {
+      justify-self: right; }
+    .Contact__textArea--input {
+      font-size: 1em; }
+
+.aboutTailMe__grid {
+  height: 90%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 1em; }
+  .aboutTailMe__grid--heading {
+    font-family: "Over the Rainbow", cursive;
+    justify-self: center;
+    grid-column: 2 / 3;
+    font-size: 6em;
+    margin-top: 1em;
+    color: #1190cb; }
+  .aboutTailMe__grid--text {
+    grid-area: 2 / 2 / 3 /3;
+    font-size: 2em;
+    padding: .5em;
+    line-height: 2;
+    margin-bottom: 2em; }
+
+.splash__grid {
+  height: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: ". . . . ." ". . l . ." ". a u w .";
+  grid-gap: 2em; }
+
+.splash__logo {
+  grid-area: l;
+  justify-self: center; }
+
+.splash__about {
+  grid-area: a;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "t t t" "b b b" ". . ."; }
+  .splash__about--text {
+    grid-area: t;
+    font-size: 2em;
+    margin: 1em;
+    text-align: center; }
+  .splash__about--link {
+    grid-area: b;
+    font-size: 2em;
+    text-align: center;
+    color: #f2ecde;
+    background-color: #595348;
+    padding: 1em 1em;
+    border: solid 2px #f2ecde;
+    margin: 1em; }
+  .splash__about--link:hover {
+    background-color: #28251f;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+
+.splash__user {
+  grid-area: u;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "t t t" "c c c" "b b b"; }
+  .splash__user--text {
+    grid-area: t;
+    font-size: 2em;
+    margin: 1em;
+    text-align: center; }
+  .splash__user--authentification {
+    grid-area: c;
+    font-size: 2em;
+    text-align: center;
+    color: #f2ecde;
+    background-color: #595348;
+    padding: 1em 2em;
+    border: solid 2px #f2ecde;
+    margin: 1em; }
+  .splash__user--authentification:hover {
+    background-color: #28251f;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .splash__user--registration {
+    grid-area: b;
+    font-size: 2em;
+    text-align: center;
+    color: #f2ecde;
+    background-color: #595348;
+    padding: 1em 2em;
+    border: solid 2px #f2ecde;
+    margin: 1em; }
+  .splash__user--registration:hover {
+    background-color: #28251f;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+
+.splash__walker {
+  grid-area: w;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "t t t" "c c c" "b b b"; }
+  .splash__walker--text {
+    grid-area: t;
+    font-size: 2em;
+    margin: 1em;
+    text-align: center; }
+  .splash__walker--authentification {
+    grid-area: c;
+    font-size: 2em;
+    text-align: center;
+    color: #f2ecde;
+    background-color: #595348;
+    padding: 1em 2em;
+    border: solid 2px #f2ecde;
+    margin: 1em; }
+  .splash__walker--authentification:hover {
+    background-color: #28251f;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .splash__walker--registration {
+    grid-area: b;
+    font-size: 2em;
+    text-align: center;
+    color: #f2ecde;
+    background-color: #595348;
+    padding: 1em 2em;
+    border: solid 2px #f2ecde;
+    margin: 1em; }
+  .splash__walker--registration:hover {
+    background-color: #28251f;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+
