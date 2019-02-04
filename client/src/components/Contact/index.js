@@ -8,15 +8,20 @@ function Contact(props) {
         <div className="Contact">
             <div className="Contact__logo">Contact
         </div>
+        
         <img className="Contact__logo--image" src={logo} alt="tailME logo" ></img>
-                <form action="/action_page.php">
+                
                     <div className="Contact__firstName">
+                    
                         <label className="Contact__firstName--label">
                             First Name
         </label>
+        
+        
                         <input type="text" placeholder="Your first name here"
                             className="Contact__firstName--input">
                         </input>
+                        
                     </div>
                     <div className="Contact__lastName">
                         <label className="Contact__lastName--label">
@@ -50,7 +55,7 @@ function Contact(props) {
                     </Link>
 
 
-                </form>
+                
 
         </div>
     );

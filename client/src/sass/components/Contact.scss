@@ -1,8 +1,8 @@
 .Contact{
     display:grid;
     height: 90%;
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 2fr  2fr 1fr ;
+    grid-template-rows: 1fr auto auto 1fr 1fr ;
     grid-gap: 2em;
    
         &__logo{
@@ -18,30 +18,46 @@
         }
         &__firstName{
             font-size: 2em;
-            grid-area: 2/1;
+            grid-area: 2/2;
             &--label{
                 justify-self: right;
             }
             &--input{
-                grid-area: d;
+                font-size: 1em;
+           
             }
         }
         &__lastName{
             font-size: 2em;
+            grid-area: 2/3;
             &--label{
-                grid-area: e;
                 justify-self: right;
             }
             &--input{
-                grid-area: f;
+                font-size: 1em;
+                
+            }
+        }
+        &__userType{
+            font-size: 2em;
+            grid-area: 3/2/3/4;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                font-size: 1em;
+                
+            }
+        }
+        &__textArea{
+        font-size: 2em;
+            grid-area: 4/2/4/4;
+            &--label{
+                justify-self: right;
+            }
+            &--input{
+                font-size: 1em;
             }
         }
 
-
-}
-label.Contact__firstName--label{
-    grid-area: 2/1;
-}
-input.Contact__firstName--input{
-    grid-area: 2/2;
 }

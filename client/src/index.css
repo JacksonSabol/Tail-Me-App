@@ -110,8 +110,8 @@ a:active {
 .Contact {
   display: grid;
   height: 90%;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr  2fr 1fr;
+  grid-template-rows: 1fr auto auto 1fr 1fr;
   grid-gap: 2em; }
   .Contact__logo {
     grid-area: 1/2;
@@ -124,24 +124,32 @@ a:active {
       margin-top: 3em; }
   .Contact__firstName {
     font-size: 2em;
-    grid-area: 2/1; }
+    grid-area: 2/2; }
     .Contact__firstName--label {
       justify-self: right; }
     .Contact__firstName--input {
-      grid-area: d; }
+      font-size: 1em; }
   .Contact__lastName {
-    font-size: 2em; }
+    font-size: 2em;
+    grid-area: 2/3; }
     .Contact__lastName--label {
-      grid-area: e;
       justify-self: right; }
     .Contact__lastName--input {
-      grid-area: f; }
-
-label.Contact__firstName--label {
-  grid-area: 2/1; }
-
-input.Contact__firstName--input {
-  grid-area: 2/2; }
+      font-size: 1em; }
+  .Contact__userType {
+    font-size: 2em;
+    grid-area: 3/2/3/4; }
+    .Contact__userType--label {
+      justify-self: right; }
+    .Contact__userType--input {
+      font-size: 1em; }
+  .Contact__textArea {
+    font-size: 2em;
+    grid-area: 4/2/4/4; }
+    .Contact__textArea--label {
+      justify-self: right; }
+    .Contact__textArea--input {
+      font-size: 1em; }
 
 .aboutTailMe__grid {
   height: 90%;
@@ -169,7 +177,7 @@ input.Contact__firstName--input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: ". . . . ." ". . l . ." ". a u w .";
+  grid-template-areas: ". . . . ." ". . l . ." ". a u w .";
   grid-gap: 2em; }
 
 .splash__logo {
@@ -181,7 +189,7 @@ input.Contact__firstName--input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: "t t t" "b b b" ". . ."; }
+  grid-template-areas: "t t t" "b b b" ". . ."; }
   .splash__about--text {
     grid-area: t;
     font-size: 2em;
@@ -207,7 +215,7 @@ input.Contact__firstName--input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: "t t t" "c c c" "b b b"; }
+  grid-template-areas: "t t t" "c c c" "b b b"; }
   .splash__user--text {
     grid-area: t;
     font-size: 2em;
@@ -247,7 +255,7 @@ input.Contact__firstName--input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: "t t t" "c c c" "b b b"; }
+  grid-template-areas: "t t t" "c c c" "b b b"; }
   .splash__walker--text {
     grid-area: t;
     font-size: 2em;
