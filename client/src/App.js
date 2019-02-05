@@ -11,7 +11,6 @@ import WalkerSignupTest from "./pages/WalkerSignupTest";
 import ownerProfile from "./pages/ownerProfile";
 import walkerProfile from "./pages/walkerProfile";
 import splash from "./pages/splash";
-import Footer from "./components/Footer";
 import aboutTailMe from "./pages/aboutTailMe";
 import contactTailMe from "./pages/contactTailMe";
 import createWalkerProfile from "./pages/createWalkerProfile";
@@ -29,7 +28,7 @@ function App() {
     <Router history={history}>
       <div>
         {/* <Header /> */}
-        <Route exact path="/" component={HomeTest} />
+        <Route exact path="/" component={splash} />
         <Route exact path="/user/login" component={Login} />
         <Route exact path="/owner/signup" component={OwnerSignup} />
         <Route exact path="/walker/signup" component={WalkerSignupTest} />
@@ -38,7 +37,6 @@ function App() {
         <Route exact path="/ownerProfile/" component={ownerProfile} />
         <Route exact path="/walkerDashboard/" component={walkerDashboard} />
         <Route exact path="/walkerProfile/" component={walkerProfile} />
-        <Route exact path="/splash/" component={splash} />
         <Route exact path="/aboutTailMe/" component={aboutTailMe} />
         <Route exact path="/contactTailMe/" component={contactTailMe} />
         <Route exact path="/userProfile/:username" component={ProfileTest} />
