@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const walkerController = require("../../controllers/walkerController");
-<<<<<<< HEAD
+const globalController = require("../../controllers/globalController");
 var multer = require("multer")
 //var upload = multer({ dest: "uploads" })
 
@@ -58,9 +58,6 @@ const multerConfig = {
     }
   }
 };
-=======
-const globalController = require("../../controllers/globalController");
->>>>>>> b648cc16842146c0e69389f3ab0a321d3e851f0b
 
 // Matches with "/api/walker"
 //router.route("/")
@@ -105,5 +102,7 @@ router.route("/schedule/:idWalk")
 // Matches with "/api/walker/invitecustomer/..."
 router.route("/invitecustomer/:name/:phone/:specialcode/:walkerid/:walkername")
   .post(globalController.createInvitation);
-
+// Matches with "/api/walker/invitecustomer/..."
+router.route("/createOwner/:owneruserid/:specialcode/:walkerid")
+  .post(globalController.createInvitation);
 module.exports = router;

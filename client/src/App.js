@@ -20,6 +20,7 @@ import ProfileTest from "./pages/ProfileTest";
 import ShowMap from "./components/ShowMap";
 import InviteOwners from "./components/InviteOwners";
 import GetCoordinates from "./components/GetCoordinates";
+import ShowPicsMap from "./components/ShowPicsMap";
 // import Footer from "./components/Footer";
 
 import walkerWalksSchedule from "./components/WalkerScheduleWalks";
@@ -51,6 +52,7 @@ function App() {
         <Route exact path="/walker/showmap" component={ShowMap} />
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
         <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
+        <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
         {/* <Footer /> */}
       </div>
     </Router>
