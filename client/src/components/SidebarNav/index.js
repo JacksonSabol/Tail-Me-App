@@ -49,8 +49,8 @@ function SidebarNav(props) {
                 </div>
                 <div className="sidebar__nav--item">
                     <a
-                        href="#logout"
-                        onClick={() => props.handleLogOut}
+                        href="#"
+                        onClick={() => props.handleLogOut()}
                     >
                         Log Out
                     </a>
