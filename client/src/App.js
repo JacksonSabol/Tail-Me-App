@@ -21,11 +21,8 @@ import ShowMap from "./components/ShowMap";
 import InviteOwners from "./components/InviteOwners";
 import GetCoordinates from "./components/GetCoordinates";
 import ShowPicsMap from "./components/ShowPicsMap";
+import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 // import Footer from "./components/Footer";
-
-import walkerWalksSchedule from "./components/WalkerScheduleWalks";
-
-import WalkerScheduleWalks from "./components/WalkerScheduleWalks"
 
 function App() {
   return (
@@ -44,7 +41,6 @@ function App() {
         <Route exact path="/walker/uploadPhotos" component={WalkPhotoUpandPost} />
         <Route exact path="/walker/walkImages" component={WalkImages} />
         <Route exact path="/walker/schedule" component={Schedule} />
-        <Route exact path="/walkerWalks/schedule" component={walkerWalksSchedule} />
         <Route exact path="/walker/addSchedule" component={WalkerScheduleWalks} />
         <Route exact path="/aboutTailMe/" component={aboutTailMe} />
         <Route exact path="/contactTailMe/" component={contactTailMe} />

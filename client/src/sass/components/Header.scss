@@ -1,5 +1,6 @@
 .nav{
-    background-color: $color-light;
+    background-image: linear-gradient($color-light,$color-medium);
+    box-shadow: .5em .5em 1em 1em $color-darkest;
     display: grid;
     grid-template-columns:(6) 1fr;
     grid-template-areas:
@@ -7,9 +8,9 @@
     &__logo{
         justify-self: center; 
         grid-area: l; 
-        background-color: $color-lightest;
-        border-radius: 5em;
-        padding: 1em 3em;
+        background-color: $color-dark;
+        border-radius: .5em;
+        padding: .5em 3em;
         &--image{
             margin: 1em;
 
@@ -18,16 +19,16 @@
     &__splash{
         justify-self: right;
         grid-area: s; 
-        background-color: $color-lightest;
-        border: solid 2px $color-lightest;
-        border-radius: 5em 0em 0em 5em;   
+        background-color: $color-dark;
+        border: solid 2px $color-darkest;
+        border-radius: .5em 0em 0em .5em;   
         padding:  4em 5em;    
         &--link{
-            font-size: 2em;
-            color: $color-dark;
+            font-size: 2.5em;
+            color: $color-light;
         } 
         &--link:hover{
-            letter-spacing: 0.1em;
+            // letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
         }
@@ -39,16 +40,16 @@
     &__contact{
         justify-self: left; 
         grid-area: c;
-        background-color: $color-lightest; 
-        border: solid 2px $color-lightest;
-        border-radius: 0em 5em 5em 0em; 
+        background-color: $color-dark; 
+        border: solid 2px $color-darkest;
+        border-radius: 0em .5em .5em 0em; 
         padding:  4em 5em; 
         &--link{
-            font-size: 2em;
-            color: $color-dark;            
+            font-size: 2.5em;
+            color: $color-light;            
         }
         &--link:hover{
-            letter-spacing: 0.1em;
+            // letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
         }

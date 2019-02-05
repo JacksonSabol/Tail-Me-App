@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //import ReactDOM from 'react-dom';
 import "../index.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 
 
@@ -24,6 +25,7 @@ class aboutTailMe extends Component {
                           non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
                 </div>
+                    <Footer />
             </div>
         )
     }

@@ -10,7 +10,7 @@ function Header(props) {
         <img className="nav__logo--image" src={logo} alt="tailME logo" ></img>
       </div>
       <div className="nav__splash">
-        <Link className="nav__splash--link" to="/splash">
+        <Link className="nav__splash--link" to="/">
           Home
         </Link>
       </div>
