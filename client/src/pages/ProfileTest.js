@@ -147,8 +147,7 @@ class ProfileContainer extends Component {
             });
     };
 
-    handleLogOut = event => {
-        event.preventDefault();
+    handleLogOut = () => {
         localStorage.removeItem('JWT');
         this.setState({
             loggedIn: false

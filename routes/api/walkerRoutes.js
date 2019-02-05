@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const walkerController = require("../../controllers/walkerController");
-<<<<<<< HEAD
 var multer = require("multer")
 //var upload = multer({ dest: "uploads" })
 
@@ -58,9 +57,7 @@ const multerConfig = {
     }
   }
 };
-=======
 const globalController = require("../../controllers/globalController");
->>>>>>> b648cc16842146c0e69389f3ab0a321d3e851f0b
 
 // Matches with "/api/walker"
 //router.route("/")
