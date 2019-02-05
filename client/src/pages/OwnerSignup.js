@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
+import Footer from "../components/Footer";
+import logo from "../images/tailMeLogo.png";
 
 const title = 'Sign Up as a Dog Owner';
 
@@ -77,31 +79,35 @@ class OwnerSignup extends Component {
 
         if (unregistered) {
             return (
-                <div>
-                    <p>{title}</p>
-                    <form className="signup-form" onSubmit={this.handleRegisterUser}>
-                        <input
+                <div className="ownerSignup">
+                <img className="ownerSignup__logo" src={logo} alt="tailME logo" ></img>
+                    <p className="ownerSignup__title">{title}</p>
+                    <form className="ownerSignup__form" onSubmit={this.handleRegisterUser}>
+                        <label className="ownerSignup__form--emailLabel">Enter your Email</label>
+                        <input className="ownerSignup__form--emailInput"
                             type="email"
                             name="email"
                             value={this.state.email}
                             onChange={this.handleInputChange}
                             placeholder="john.doe@gmail.com"
                         />
-                        <input
+                        <label className="ownerSignup__form--usernameLabel">Choose your user name</label>
+                        <input className="ownerSignup__form--usernameInput"
                             type="text"
                             name="username"
                             value={this.state.username}
                             onChange={this.handleInputChange}
                             placeholder="UserName"
                         />
-                        <input
+                        <label className="ownerSignup__form--passwordLabel">Choose your password</label>
+                        <input className="ownerSignup__form--passwordInput"
                             type="password"
                             name="password"
                             value={this.state.password}
                             onChange={this.handleInputChange}
                             placeholder="Password"
                         />
-                        <button type="submit">Register</button>
+                        <button type="submit" className="ownerSignup__form--submitButton">Register</button>
                     </form>
                     {showError === true && registerError === true && (
                         <div>
@@ -115,6 +121,7 @@ class OwnerSignup extends Component {
                         </div>
                     )}
                     <p><a href="/">Return to Home</a></p>
+                    <Footer/>
                 </div>
             );
         } else {

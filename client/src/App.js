@@ -29,7 +29,7 @@ function App() {
     <Router history={history}>
       <div>
         {/* <Header /> */}
-        <Route exact path="/" component={HomeTest} />
+        <Route exact path="/" component={splash} />
         <Route exact path="/user/login" component={Login} />
         <Route exact path="/owner/signup" component={OwnerSignup} />
         <Route exact path="/walker/signup" component={WalkerSignupTest} />

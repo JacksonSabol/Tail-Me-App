@@ -1,13 +1,15 @@
 .splash{
+    background-image: radial-gradient($color-medium,$color-dark);
     &__grid{
     height: 90%;
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr ;
+    grid-template-columns: auto 1fr 1fr 1fr auto;
+    grid-template-rows: .5fr .5fr 1fr 1fr;
     grid-template-areas:
         ". . . . ."
         ". . l . ."
-        ". a u w .";
+        ". a u w ."
+        "f f f f f";
         
     grid-gap: 2em;
     // justify-content: center;
@@ -21,7 +23,7 @@
         grid-area: a;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr auto auto;
         grid-template-areas:
         "t t t"
         "b b b"
@@ -29,7 +31,8 @@
         
         &--text{
             grid-area: t;
-            font-size: 2em;
+            font-size: 2.5em;
+            color: $color-light;
             margin: 1em;
             text-align: center;
         }
@@ -40,7 +43,8 @@
             color: $color-lightest;
             background-color: $color-dark;
             padding: 1em 1em;
-            border: solid 2px $color-lightest;
+            border-radius: .5em;
+            border: solid 2px $color-darkest;
             margin: 1em;
         }
         &--link:hover{
@@ -55,14 +59,15 @@
         grid-area: u;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr auto auto;
         grid-template-areas:
         "t t t"
         "c c c"
         "b b b";
         &--text{
             grid-area: t;
-            font-size: 2em;
+            font-size: 2.5em;
+            color: $color-light;
             margin: 1em;
             text-align: center;
         }
@@ -73,7 +78,8 @@
             color: $color-lightest;
             background-color: $color-dark;
             padding: 1em 2em;
-            border: solid 2px $color-lightest;
+            border-radius: .5em;
+            border: solid 2px $color-darkest;
             margin: 1em;
         }
         &--authentification:hover{
@@ -89,7 +95,8 @@
             color: $color-lightest;
             background-color: $color-dark;
             padding: 1em 2em;
-            border: solid 2px $color-lightest;
+            border-radius: .5em;
+            border: solid 2px $color-darkest;
             margin: 1em;
         }
         &--registration:hover{
@@ -103,14 +110,15 @@
         grid-area: w;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr auto auto;
         grid-template-areas:
         "t t t"
         "c c c"
         "b b b";
         &--text{
             grid-area: t;
-            font-size: 2em;
+            font-size: 2.5em;
+            color: $color-light;
             margin: 1em;
             text-align: center;
         }
@@ -121,7 +129,8 @@
             color: $color-lightest;
             background-color: $color-dark;
             padding: 1em 2em;
-            border: solid 2px $color-lightest;
+            border-radius: .5em;
+            border: solid 2px $color-darkest;
             margin: 1em;
         }
         &--authentification:hover{
@@ -136,8 +145,9 @@
             text-align: center;
             color: $color-lightest;
             background-color: $color-dark;
+            border-radius: .5em;
             padding: 1em 2em;
-            border: solid 2px $color-lightest;
+            border: solid 2px $color-darkest;
             margin: 1em;
         }
         &--registration:hover{
@@ -148,5 +158,8 @@
         }
     }
     
+}
+.footer{
+    grid-area: f;
 }
 
