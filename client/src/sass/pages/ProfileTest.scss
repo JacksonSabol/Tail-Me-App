@@ -1,0 +1,25 @@
+.ownerDash{
+    height: 100%; 
+    &__grid{
+    display: grid;
+    grid-template-columns: (15) 1fr;
+    grid-template-rows: 1fr   ;
+        
+        &--sidebarNav{
+            grid-area: 1/1/2/2
+        }
+        &--main-content{
+            // width: 80%;
+            border: solid .25em $color-accentOne;
+            border-radius: 1em;
+            margin:2em;
+            grid-area: 1/2/2/16
+        }
+    }
+
+    
+    &__header{
+       
+    }
+
+}
