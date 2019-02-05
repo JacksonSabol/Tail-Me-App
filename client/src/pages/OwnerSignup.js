@@ -120,7 +120,7 @@ class OwnerSignup extends Component {
                             <p><a href="/user/login">Login</a></p>
                         </div>
                     )}
-                    <p><a href="/">Return to Home</a></p>
+                    <a className="ownerSignup__form--homeButton" href="/">Return to Home</a>
                     <Footer/>
                 </div>
             );

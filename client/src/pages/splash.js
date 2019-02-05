@@ -24,10 +24,10 @@ class splash extends Component {
                             Click here to sign up or log in if you are already a tailME member
                     </div>
                         <Link className="splash__user--authentification" to="/owner/signup">
-                            user sign up
+                            owner sign up
                     </Link>
                         <Link className="splash__user--registration" to="/user/Login">
-                            user log in
+                            owner log in
                     </Link>
                     </div>
                     <div className="splash__walker">

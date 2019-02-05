@@ -28,6 +28,7 @@ html {
 
 a {
   text-decoration: none;
+  color: #e6e6e6;
   outline: none; }
 
 a:link {
@@ -51,7 +52,12 @@ a:active {
   outline: none; }
 
 .footer {
-  text-align: center; }
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 2em; }
   .footer__text {
     font-size: 2em; }
   .footer__logo {
@@ -107,6 +113,7 @@ a:active {
   grid-template-columns: auto auto auto auto auto; }
 
 .Contact {
+  background-image: radial-gradient(#4d4d4d, #333333);
   display: grid;
   height: 90%;
   grid-template-columns: 1fr 2fr  2fr 1fr;
@@ -116,39 +123,97 @@ a:active {
     grid-area: 1/2;
     justify-self: right;
     font-size: 7em;
-    font-family: 'Over the Rainbow', cursive; }
+    font-family: 'Over the Rainbow', cursive;
+    color: #1190cb; }
     .Contact__logo--image {
       grid-area: 1/3;
       justify-self: left;
       margin-top: 3em; }
   .Contact__firstName {
-    font-size: 2em;
-    grid-area: 2/2; }
-    .Contact__firstName--label {
-      justify-self: right; }
+    font-size: 2.5em;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto .Contact__firstName --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
     .Contact__firstName--input {
-      font-size: 1em; }
+      grid-area: 1/2/1/3;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      background-color: #333333;
+      color: #e6e6e6; }
   .Contact__lastName {
-    font-size: 2em;
-    grid-area: 2/3; }
-    .Contact__lastName--label {
-      justify-self: right; }
+    font-size: 2.5em;
+    grid-area: 2/3;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto .Contact__lastName --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
     .Contact__lastName--input {
-      font-size: 1em; }
+      grid-area: 1/2/1/3;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      background-color: #333333;
+      color: #e6e6e6; }
   .Contact__userType {
-    font-size: 2em;
-    grid-area: 3/2/3/4; }
-    .Contact__userType--label {
-      justify-self: right; }
+    font-size: 2.5em;
+    grid-area: 3/2/3/4;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto .Contact__userType --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
     .Contact__userType--input {
-      font-size: 1em; }
+      grid-area: 1/2/2/11;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      background-color: #333333;
+      color: #e6e6e6;
+      text-decoration: none;
+      outline: none; }
   .Contact__textArea {
-    font-size: 2em;
-    grid-area: 4/2/4/4; }
-    .Contact__textArea--label {
-      justify-self: right; }
+    font-size: 2.5em;
+    grid-area: 4/2/4/4;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto .Contact__textArea --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-justify-self: center; }
     .Contact__textArea--input {
-      font-size: 1em; }
+      grid-area: 1/2/2/11;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      background-color: #333333;
+      color: #e6e6e6; }
+  .Contact__link--button {
+    grid-area: 5/3;
+    justify-self: right;
+    font-size: 3em;
+    text-align: center;
+    color: #1190cb;
+    background-color: #333333;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #1190cb;
+    margin: 1em 1em; }
+  .Contact__link--button:hover {
+    background-color: #1a1a1a;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 8px #1190cb; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
@@ -302,9 +367,6 @@ a:active {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
 
-.footer {
-  grid-area: f; }
-
 .ownerSignup {
   background-image: radial-gradient(#4d4d4d, #333333);
   height: 100%;
@@ -333,6 +395,7 @@ a:active {
       font-size: 3em; }
     .ownerSignup__form--emailInput {
       grid-area: 2/1;
+      font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
       border: solid 2px #1a1a1a;
@@ -347,6 +410,7 @@ a:active {
       font-size: 3em; }
     .ownerSignup__form--usernameInput {
       grid-area: 4/1;
+      font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
       border: solid 2px #1a1a1a;
@@ -361,6 +425,7 @@ a:active {
       font-size: 3em; }
     .ownerSignup__form--passwordInput {
       grid-area: 6/1;
+      font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
       border: solid 2px #1a1a1a;
@@ -371,6 +436,7 @@ a:active {
     .ownerSignup__form--submitButton {
       grid-area: 7/1;
       justify-self: left;
+      font-family: "Thasadith", sans-serif;
       font-size: 3em;
       text-align: center;
       color: #1190cb;
@@ -384,7 +450,202 @@ a:active {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+    .ownerSignup__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 1em; }
+    .ownerSignup__form--homeButton:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px #1190cb; }
 
-.footer {
-  grid-area: 3/2;
-  margin: 3em; }
+.walkerSignup {
+  background-image: radial-gradient(#dddddd, #e6e6e6);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto; }
+  .walkerSignup__logo {
+    grid-area: 1/2/1/4;
+    margin: 2em; }
+  .walkerSignup__title {
+    grid-area: 2/1;
+    font-family: "Over the Rainbow", cursive;
+    padding: 1em;
+    color: #1190cb;
+    font-size: 5em; }
+  .walkerSignup__form {
+    color: #4d4d4d;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7 1fr; }
+    .walkerSignup__form--emailLabel {
+      grid-area: 1/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerSignup__form--emailInput {
+      grid-area: 2/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e3edf2;
+      color: #bfbfbf; }
+    .walkerSignup__form--usernameLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerSignup__form--usernameInput {
+      grid-area: 4/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e3edf2;
+      color: #bfbfbf; }
+    .walkerSignup__form--passwordLabel {
+      grid-area: 5/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerSignup__form--passwordInput {
+      grid-area: 6/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e3edf2;
+      color: #bfbfbf; }
+    .walkerSignup__form--submitButton {
+      grid-area: 7/1;
+      justify-self: left;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #e3edf2;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 0em; }
+    .walkerSignup__form--submitButton:hover {
+      background-color: #e6e6e6;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+    .walkerSignup__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #e3edf2;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 1em; }
+    .walkerSignup__form--homeButton:hover {
+      background-color: #e6e6e6;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px #1190cb; }
+
+.login {
+  background-image: radial-gradient(#4d4d4d, #333333);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr  auto; }
+  .login__logo {
+    grid-area: 1/2/1/4;
+    margin: 6em 2em; }
+  .login__title {
+    grid-area: 1/1;
+    justify-self: right;
+    font-family: "Over the Rainbow", cursive;
+    padding: 0em;
+    color: #1190cb;
+    font-size: 5em; }
+  .login__form {
+    color: #bfbfbf;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7 1fr; }
+    .login__form--usernameLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .login__form--usernameInput {
+      grid-area: 4/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #bfbfbf; }
+    .login__form--passwordLabel {
+      grid-area: 5/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .login__form--passwordInput {
+      grid-area: 6/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #bfbfbf; }
+    .login__form--submitButton {
+      grid-area: 7/1;
+      justify-self: left;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 0em; }
+    .login__form--submitButton:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+    .login__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 1em; }
+    .login__form--homeButton:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px #1190cb; }
