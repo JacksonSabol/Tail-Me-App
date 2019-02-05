@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-import API from "../../utils/API";
 import CurrentLocation from './Map';
 
 
@@ -14,6 +13,7 @@ export class MapContainer extends Component {
   };
 
   handleCheckin = () => {
+
     this.setState({
       checkin: true
     });
@@ -43,7 +43,7 @@ export class MapContainer extends Component {
 
         {this.state.checkin ? (
           <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-            <Marker onClick={this.onMarkerClick} name={'current location'} icon={{ url: "paw2020.svg" }} />
+            <Marker onClick={this.onMarkerClick} name={'current location'} icon={{ url: "../paw2020.svg" }} />
             <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
@@ -63,8 +63,8 @@ export class MapContainer extends Component {
   }
 }
 
-// export default GoogleApiWrapper({
-//   apiKey: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
-// })(MapContainer);
+export default GoogleApiWrapper({
+  apiKey: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
+})(MapContainer);
 
-export default MapContainer
+// export default MapContainer

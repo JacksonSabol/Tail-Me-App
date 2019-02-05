@@ -21,7 +21,7 @@ export class CurrentLocation extends React.Component {
     };
   }
   componentDidMount() {
-
+  
     if (this.props.centerAroundCurrentLocation) {
       if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {

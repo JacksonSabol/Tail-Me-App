@@ -8,6 +8,8 @@ var passport = require('passport');
 // var bodyParser = require('body-parser');
 var env = require('dotenv').load();
 require('dotenv').config();
+
+
 var PORT = process.env.PORT || 3001;
 
 // Requiring our models for syncing
@@ -39,8 +41,8 @@ app.use(passport.initialize());
 // Load passport strategies
 require("./config/passport/passport.js")(passport, db.auth);
 // Import static directories
-app.use(express.static("public"));
-
+// app.use(express.static("public"));
+app.use(express.static("client/build"));
 // Import routes
 require("./routes/auth-routes.js")(app, passport);
 app.use(routes);
@@ -68,7 +70,6 @@ var cron = require("node-cron");
 // cron.schedule("* * * * *", function () {
 //     console.log("running a task every minute");
 // });
-
 
 //// Sending SMS for reminders: every day start a task at 6pm that get all the walks for next day and send a reminder to the owners
 
@@ -99,7 +100,7 @@ cron.schedule("* 18 * * *", function () {
                 walkTime: data[i].walkDate,
                 phoneNumber: data[i].dogOwner.emergencyContact
             }
-            sendReminders(walk)
+            // sendReminders(walk)
 
 
         }
@@ -111,6 +112,7 @@ cron.schedule("* 18 * * *", function () {
         // TWILIO API
 
         require('dotenv').config();
+       
         var id = process.env.TWILIO_ACCOUNT_SID;
         var secret = process.env.TWILIO_TOKEN;
         var phonefrom = process.env.TWILIO_PHONE_FROM;
