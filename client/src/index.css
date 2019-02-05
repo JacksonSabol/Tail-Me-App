@@ -467,7 +467,7 @@ a:active {
       text-shadow: 2px 2px 8px #1190cb; }
 
 .walkerSignup {
-  background-image: radial-gradient(#dddddd, #e6e6e6);
+  background-image: radial-gradient(#e6e6e6, #bfbfbf);
   height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
