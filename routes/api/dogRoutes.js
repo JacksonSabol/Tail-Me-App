@@ -8,8 +8,8 @@ router.route("/:id")
 
 
 
-// Matches with "/api/"
-router.route("/")
+// Matches with "/api/dogProfile/create"
+router.route("/create")
   .post(dogController.create);
 
   // Matches with "/api/"
