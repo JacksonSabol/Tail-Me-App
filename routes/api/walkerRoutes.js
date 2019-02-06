@@ -62,11 +62,9 @@ const multerConfig = {
 // Matches with "/api/walker"
 //router.route("/")
 
-//.post(walkerController.create);
-
-// Matches with "/api/walker/:id"
-//router.route("/:id")
-//.delete(walkerController.remove);
+// /api/walker/create to populate the walker.js model/table
+router.route("/create")
+  .post(walkerController.addWalker);
 
 // Matches with "/api/walker/walks/"
 router.route("/walks")

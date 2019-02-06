@@ -83,6 +83,7 @@ module.exports = function (app, passport) {
                 if (user != null) {
                     console.log('user found in db from /findUser');
                     res.status(200).send({
+                        UserID: user.id,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         userType: user.userType,

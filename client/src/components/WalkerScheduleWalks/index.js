@@ -48,7 +48,7 @@ class WalkerScheduleWalks extends Component {
 
   handleSchedule = () => {
    
-    const idWalker = 1;
+    const idWalker = 1; // ** Change this to who's logged in
     console.log(this.state.selectedOptions)
 
     const selectedOwners = this.state.selectedOptions.map(data => {

@@ -6,6 +6,7 @@ import Profile from './Profile'
 import TodayWalks from '../components/TodayWalks';
 import InviteOwners from "../components/InviteOwners";
 import ShowMap from "../components/ShowMap";
+import WalkerCertification from './WalkerCertification';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "../index.css";
@@ -21,6 +22,7 @@ const title = 'DASHBOARD';
 class ProfileContainer extends Component {
     state = {
         currentPage: "Home",
+        userId: 0,
         username: '',
         firstName: '',
         lastName: '',
@@ -55,6 +57,7 @@ class ProfileContainer extends Component {
                 })
                 .then(response => {
                     this.setState({
+                        userId: response.data.UserID,
                         username: this.props.match.params.username,
                         firstName: response.data.firstName,
                         lastName: response.data.lastName,
@@ -100,7 +103,13 @@ class ProfileContainer extends Component {
                 country={this.state.country}
             />;
             case "Walks": return <TodayWalks />;
-            case "Invite": return <InviteOwners />;
+            case "Certs": return <WalkerCertification
+                username={this.state.username}
+            />;
+            case "Invite": return <InviteOwners
+                walkerId={this.state.userId}
+                walkerName={this.state.username}
+            />;
             case "Map": return <ShowMap />;
             default: return <Profile
                 username={this.state.username}
