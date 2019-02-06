@@ -3,6 +3,7 @@ import DateTimePicker from 'react-datetime-picker';
 import API from "../../utils/API";
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 import Moment from "moment";
+import "../../index.css" 
 
 class WalkerScheduleWalks extends Component {
   state = {
@@ -66,15 +67,15 @@ class WalkerScheduleWalks extends Component {
         {/* <br></br><br></br><br></br><br></br><br></br><br></br>
         <br></br><br></br><br></br><br></br><br></br><br></br>
         <br></br><br></br><br></br><br></br><br></br><br></br> */}
-        <div className="RDTPicker__picker">
+        
         <DateTimePicker 
           onChange={this.onChange}
           value={this.state.date}
-          className='class1'
+          className="rdtPicker__picker"
           disableClock={true}
           calendarClassName='class1'
         />
-        </div>
+       
         {/* <br></br> */}
         <div className="rdtPicker__select">
         <ReactMultiSelectCheckboxes 

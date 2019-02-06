@@ -65,7 +65,7 @@ a:active {
 
 .nav {
   background-image: linear-gradient(#a6a6a6, #4d4d4d);
-  box-shadow: 0em 0em 5em #1a1a1a;
+  box-shadow: 0em 0em 0.5em 0.5em #1a1a1a;
   display: grid;
   grid-template-columns: 6 1fr;
   grid-template-areas: "l . . . s c"; }
@@ -74,22 +74,25 @@ a:active {
     grid-area: l;
     background-color: #333333;
     border-radius: .5em;
-    padding: .5em 3em; }
+    padding: 0em 3em; }
     .nav__logo--image {
-      margin: 1em; }
+      margin: 0em; }
   .nav__splash {
     justify-self: right;
     grid-area: s;
     background-color: #333333;
     border: solid 2px #1a1a1a;
     border-radius: .5em 0em 0em .5em;
-    padding: 4em 5em; }
+    padding: 0em 5em; }
     .nav__splash--link {
       font-size: 2.5em;
       color: #a6a6a6; }
     .nav__splash--link:hover {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+    .nav__splash--homeIcon {
+      height: 2em;
+      margin-top: .5em; }
   .nav__splash:hover {
     background-color: #1a1a1a; }
   .nav__contact {
@@ -98,13 +101,16 @@ a:active {
     background-color: #333333;
     border: solid 2px #1a1a1a;
     border-radius: 0em .5em .5em 0em;
-    padding: 4em 5em; }
+    padding: 0em 5em; }
     .nav__contact--link {
       font-size: 2.5em;
       color: #a6a6a6; }
     .nav__contact--link:hover {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+    .nav__contact--mailIcon {
+      margin-top: .5em;
+      height: 2em; }
   .nav__contact:hover {
     background-color: #1a1a1a; }
 
@@ -112,10 +118,27 @@ a:active {
   display: grid;
   grid-template-columns: auto auto auto auto auto; }
 
-.fullSchedule {
+.fullCalender {
   font-family: "Thasadith", sans-serif;
   font-size: 2em;
   margin: 1em; }
+
+.calenderContainer {
+  font-family: "Thasadith", sans-serif;
+  width: 800px;
+  padding-left: 6em; }
+
+th.fc-day-header {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
+
+h2 {
+  font-family: "Over the Rainbow", cursive;
+  color: #1190cb; }
+
+a {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
 
 .Contact {
   background-image: radial-gradient(#4d4d4d, #333333);
@@ -226,57 +249,59 @@ a:active {
   border-radius: 1em;
   display: grid;
   grid-template-columns: .25fr auto .25fr;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: auto auto auto;
   justify-content: center;
   margin: 2em;
-  box-shadow: 0em 0em 5em #1a1a1a; }
+  box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
   .sidebar__title {
     grid-area: 1/2;
     font-family: "Over the Rainbow", cursive;
-    font-size: 4em;
-    color: #1190cb; }
+    font-size: 3em;
+    color: #1190cb;
+    margin: .5em; }
   .sidebar__brand {
-    grid-area: 2/2; }
+    grid-area: 2/2;
+    margin: 0em 0em 0em 2em; }
     .sidebar__brand--logo {
-      height: 5em;
+      height: 4em;
       font-size: 1em;
       border: solid 0.25em #1190cb;
       border-radius: 1em;
-      padding: 1em; }
+      padding: .5em; }
   .sidebar__nav {
     grid-area: 3/2;
-    font-size: 3em;
+    font-size: 2.5em;
     display: grid;
     grid-template-columns: .25fr auto .25fr;
     grid-template-rows: 10 1fr;
     justify-content: center; }
     .sidebar__nav--itemDashboard {
       grid-area: 1/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemWalks {
       grid-area: 2/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemSchedWalks {
       grid-area: 3/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemFullSchedule {
       grid-area: 4/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemInvite {
       grid-area: 5/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemCerts {
       grid-area: 6/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemMap {
       grid-area: 7/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemNotifications {
       grid-area: 8/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemLogout {
       grid-area: 9/2;
-      padding: 0.5em 1em; }
+      padding: 0.25em 1em; }
 
 .search__form--alert {
   text-align: center;
@@ -285,28 +310,31 @@ a:active {
   color: #1190cb; }
 
 .rdtPicker {
-  margin: 3em;
+  margin: 2em;
   display: grid;
-  grid-template-columns: .25fr auto auto .25fr;
-  grid-template-rows: 1fr auto auto; }
+  grid-template-columns: .1fr auto .25fr;
+  grid-template-rows: auto auto auto; }
   .rdtPicker__title {
-    grid-area: 1/2/2/4;
+    grid-area: 1/1/4/2;
     text-align: center;
     font-family: "Over the Rainbow", cursive;
     color: #1190cb;
-    font-size: 5em; }
+    font-size: 4em;
+    margin: .5em; }
   .rdtPicker__picker {
-    grid-area: 2/2;
-    display: grid;
+    margin-top: 2em;
+    grid-area: 1/2;
     justify-content: center;
     font-size: 3em; }
   .rdtPicker__select {
-    grid-area: 2/3;
+    display: flex;
+    grid-area: 2/2;
     font-size: 3em;
-    margin: 4em; }
+    margin: 4em;
+    font-size: 3em; }
   .rdtPicker__button {
-    grid-area: 3/3;
-    justify-self: center;
+    grid-area: 3/2;
+    justify-self: right;
     font-family: "Thasadith", sans-serif;
     font-size: 3em;
     text-align: center;
@@ -316,12 +344,41 @@ a:active {
     border-radius: .5em;
     border: solid 2px #1190cb;
     margin: 1em 0em;
-    cursor: pointer; }
+    cursor: pointer;
+    box-shadow: 0em 0em 0.25em 0.25em #333333; }
   .rdtPicker__button:hover {
     background-color: #1a1a1a;
     letter-spacing: 0.1em;
     color: #1190cb;
     text-shadow: 2px 2px 8px #1190cb; }
+
+.react-datetime-picker__wrapper {
+  height: 4em;
+  padding: 1em;
+  background-color: #a6a6a6;
+  border-radius: .5em;
+  box-shadow: 0em 0em 0.25em 0.25em #333333; }
+
+.react-datetime-picker__inputGroup__divider {
+  color: #1190cb;
+  font-weight: bold; }
+
+button.css-1r4vtzz {
+  background-color: #a6a6a6;
+  font-family: "Thasadith", sans-serif;
+  color: #1a1a1a;
+  font-size: 1.25em;
+  padding: .5em 1.5em;
+  border-radius: .25em;
+  box-shadow: 0em 0em 0.25em 0.25em #333333; }
+
+button.css-48ayfv {
+  background-color: #a6a6a6;
+  font-family: "Thasadith", sans-serif;
+  color: #1a1a1a;
+  font-size: 1.25em;
+  padding: .5em 1.5em;
+  border-radius: .25em; }
 
 .walkerInvite {
   display: grid;
@@ -1242,7 +1299,7 @@ a:active {
   .main-content__body {
     display: grid;
     font-size: 2.5em;
-    grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr;
+    grid-template-columns: .5fr .5fr 1fr 1fr  .5fr .5fr;
     grid-template-rows: 1fr auto auto auto auto auto 1fr;
     grid-gap: .5em;
     color: #a6a6a6; }

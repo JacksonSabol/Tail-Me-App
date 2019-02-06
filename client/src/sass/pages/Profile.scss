@@ -10,8 +10,8 @@
     &__body{
         display:grid;
         font-size: 2.5em;
-        grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr ;
-        grid-template-rows: 1fr auto auto auto auto auto 1fr ;
+        grid-template-columns: .5fr .5fr 1fr 1fr  .5fr .5fr ;
+        grid-template-rows: 1fr auto auto auto auto auto 1fr;
         grid-gap:.5em;
         color: $color-light;
 

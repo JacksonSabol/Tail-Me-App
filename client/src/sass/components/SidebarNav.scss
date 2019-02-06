@@ -4,32 +4,34 @@
     border-radius: 1em;
     display: grid;
     grid-template-columns: .25fr auto .25fr;
-    grid-template-rows: 1fr auto auto ;
+    grid-template-rows: auto auto auto ;
     justify-content: center;
-    margin: 2em;
-    box-shadow: 0em 0em 5em $color-darkest;
+    margin: 2em ;
+    box-shadow: 0em 0em .5em .5em $color-darkest;
 
 
     &__title{
         grid-area: 1/2;
         font-family: $font-cursive;
-        font-size: 4em;
+        font-size: 3em;
         color: $color-accentOne;
+        margin: .5em;
     }
     &__brand{
         grid-area: 2/2;
+        margin: 0em 0em 0em 2em;
         &--logo{
-            height: 5em;
+            height: 4em;
             font-size: 1em;
             border: solid .25em $color-accentOne;
             border-radius: 1em;
-            padding: 1em;
+            padding: .5em;
 
         }
     }
     &__nav{
         grid-area: 3/2;
-        font-size: 3em;
+        font-size: 2.5em;
         display: grid;
         grid-template-columns: .25fr auto .25fr;
         grid-template-rows: (10) 1fr;
@@ -37,39 +39,39 @@
 
         &--itemDashboard{
             grid-area: 1/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemWalks{
             grid-area: 2/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemSchedWalks{
             grid-area: 3/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemFullSchedule{
             grid-area: 4/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemInvite{
             grid-area: 5/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemCerts{
             grid-area: 6/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemMap{
             grid-area: 7/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemNotifications{
             grid-area: 8/2;
-            padding: 0.5em 1em;
+            padding: 0.25em 1em;
         }
         &--itemLogout{
             grid-area: 9/2;
-            padding: 0.5em 1em;;
+            padding: 0.25em 1em;;
         }
     }
 

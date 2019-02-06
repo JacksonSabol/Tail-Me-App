@@ -1,5 +1,24 @@
-.fullSchedule{
+.fullCalender{
     font-family: $font-sans;
     font-size:2em;
     margin: 1em;
+   
+}
+.calenderContainer{
+    font-family: $font-sans;
+    width: 800px;
+    padding-left: 6em;
+    
+}
+th.fc-day-header{
+    font-family: $font-sans;
+    color: $color-accentOne;
+}
+h2{
+    font-family: $font-cursive;
+    color: $color-accentOne;
+}
+a{
+    font-family: $font-sans;
+    color: $color-accentOne;
 }

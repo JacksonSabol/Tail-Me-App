@@ -23,6 +23,7 @@ import GetCoordinates from "./components/GetCoordinates";
 import ShowPicsMap from "./components/ShowPicsMap";
 import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 import Referral from "./pages/Referral";
+import "./index.css" 
 // import Footer from "./components/Footer";
 
 function App() {
