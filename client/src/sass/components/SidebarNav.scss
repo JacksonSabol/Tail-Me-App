@@ -31,7 +31,7 @@
         font-size: 3em;
         display: grid;
         grid-template-columns: .25fr auto .25fr;
-        grid-template-rows: (6) 1fr;
+        grid-template-rows: (10) 1fr;
         justify-content: center;
 
         &--itemDashboard{
@@ -42,20 +42,32 @@
             grid-area: 2/2;
             padding: 1em;
         }
-        &--itemInvite{
+        &--itemSchedWalks{
             grid-area: 3/2;
             padding: 1em;
         }
-        &--itemMap{
+        &--itemFullSchedule{
             grid-area: 4/2;
             padding: 1em;
         }
-        &--itemNotifications{
+        &--itemInvite{
             grid-area: 5/2;
             padding: 1em;
         }
-        &--itemLogout{
+        &--itemCerts{
             grid-area: 6/2;
+            padding: 1em;
+        }
+        &--itemMap{
+            grid-area: 7/2;
+            padding: 1em;
+        }
+        &--itemNotifications{
+            grid-area: 8/2;
+            padding: 1em;
+        }
+        &--itemLogout{
+            grid-area: 9/2;
             padding: 1em;
         }
     }

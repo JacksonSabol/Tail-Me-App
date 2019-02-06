@@ -26,20 +26,36 @@ function SidebarNav(props) {
                         Upcoming Walks
                     </a>
                 </div>
-                <div className="sidebar__nav--itemInvite">
+                <div className="sidebar__nav--itemSchedWalks">
                     <a
-                        href="#certs"
-                        onClick={() => props.handlePageChange("Certs")}
+                        href="#schedwalks"
+                        onClick={() => props.handlePageChange("SchedWalks")}
                     >
-                        Update Certifications/Availability
+                        Schedule a Walk
                     </a>
                 </div>
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemFullSchedule">
+                    <a
+                        href="#fullschedule"
+                        onClick={() => props.handlePageChange("FullSchedule")}
+                    >
+                        Full Schedule
+                    </a>
+                </div>
+                <div className="sidebar__nav--itemInvite">
                     <a
                         href="#invite"
                         onClick={() => props.handlePageChange("Invite")}
                     >
                         Invite Clients
+                    </a>
+                </div>
+                <div className="sidebar__nav--itemCerts">
+                    <a
+                        href="#certs"
+                        onClick={() => props.handlePageChange("Certs")}
+                    >
+                        Update Qualifications
                     </a>
                 </div>
                 <div className="sidebar__nav--itemMap">

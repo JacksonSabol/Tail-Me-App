@@ -242,7 +242,7 @@ a:active {
     font-size: 3em;
     display: grid;
     grid-template-columns: .25fr auto .25fr;
-    grid-template-rows: 6 1fr;
+    grid-template-rows: 10 1fr;
     justify-content: center; }
     .sidebar__nav--itemDashboard {
       grid-area: 1/2;
@@ -250,17 +250,26 @@ a:active {
     .sidebar__nav--itemWalks {
       grid-area: 2/2;
       padding: 1em; }
-    .sidebar__nav--itemInvite {
+    .sidebar__nav--itemSchedWalks {
       grid-area: 3/2;
       padding: 1em; }
-    .sidebar__nav--itemMap {
+    .sidebar__nav--itemFullSchedule {
       grid-area: 4/2;
       padding: 1em; }
-    .sidebar__nav--itemNotifications {
+    .sidebar__nav--itemInvite {
       grid-area: 5/2;
       padding: 1em; }
-    .sidebar__nav--itemLogout {
+    .sidebar__nav--itemCerts {
       grid-area: 6/2;
+      padding: 1em; }
+    .sidebar__nav--itemMap {
+      grid-area: 7/2;
+      padding: 1em; }
+    .sidebar__nav--itemNotifications {
+      grid-area: 8/2;
+      padding: 1em; }
+    .sidebar__nav--itemLogout {
+      grid-area: 9/2;
       padding: 1em; }
 
 .aboutTailMe {
