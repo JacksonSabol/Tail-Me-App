@@ -1,0 +1,217 @@
+.ownerProfile{
+    background-image: radial-gradient(#4d4d4d, #333333);
+    // background-color: aqua;
+    height: 100%;
+    display: grid;
+    grid-template-columns:1fr auto 1fr;
+    grid-template-rows: auto 1fr  auto;
+    &__logo{
+        grid-area: 1/2/1/4;
+        margin: 2em;
+    }
+    &__title{
+        grid-area: 2/1;
+        font-family: $font-cursive;
+        padding: 1em;
+        color: $color-accentOne;
+        font-size: 5em;
+    }
+    &__form{
+        color: $color-light;
+        grid-area: 2/2;
+        display:grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows:  (19) 1fr;
+        &--firstNameLabel{
+            grid-area: 1/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em; 
+        }
+        &--firstNameInput{
+            grid-area: 2/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;        
+        }
+        &--lastNameLabel{
+            grid-area: 3/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--lastNameInput{
+            grid-area: 4/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--userTypeLabel{
+            grid-area: 5/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--userTypeSelect{
+            grid-area: 6/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--textAreaLabel{
+            grid-area: 7/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--textArea{
+            grid-area: 8/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--addressLabel{
+            grid-area: 9/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--addressInput{
+            grid-area: 10/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--cityLabel{
+            grid-area: 11/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--cityInput{
+            grid-area: 12/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--stateLabel{
+            grid-area: 13/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--stateInput{
+            grid-area: 14/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--zipcodeLabel{
+            grid-area: 15/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--zipcodeInput{
+            grid-area: 16/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--countryLabel{
+            grid-area: 17/1;
+            justify-self: left;
+            align-self: flex-end;
+            font-size: 3em;
+        }
+        &--countryInput{
+            grid-area: 18/1;
+            font-family: $font-sans;
+            font-size: 3em;
+            padding: .5em;
+            border: solid 2px $color-darkest;
+            border-radius: .5em;
+            align-self: flex-start;
+            background-color: $color-dark;
+            color: $color-light;
+        }
+        &--submitButton{
+            grid-area: 19/1;
+            justify-self: left;
+            font-family: $font-sans;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentOne;
+            background-color: $color-dark;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: 1em 0em;
+
+        }
+        &--submitButton:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--homeButton{
+            grid-area: 3/3;
+            justify-self: right;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentOne;
+            background-color: $color-dark;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: 1em 1em;
+        }
+        &--homeButton:hover{
+            background-color: $color-darkest;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+    }
+
+}

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
+import Footer from "../components/Footer";
+import logo from "../images/tailMeLogo.png";
 
 const loading = {
     margin: '1em',
@@ -150,27 +152,32 @@ class createWalkerProfile extends Component {
             );
         } else if (!profileCreated) {
             return (
-                <div>
-                    <p>{title}</p>
-                    <form className="profile-form" onSubmit={this.handleCreateUser}>
-                        <input
+                <div className="walkerProfile">
+                    <img className="walkerProfile__logo" src={logo} alt="tailME logo" ></img>
+                    <p className="walkerProfile__title">{title}</p>
+                    <form className="walkerProfile__form" onSubmit={this.handleCreateUser}>
+                        <label className="walkerProfile__form--firstNameLabel">Enter your first name</label>
+                        <input className="walkerProfile__form--firstNameInput"
                             type="text"
                             name="firstName"
                             value={this.state.firstName}
                             onChange={this.handleInputChange}
                             placeholder="John"
                         />
-                        <input
+                        <label className="walkerProfile__form--lastNameLabel">Enter your last name</label>
+                        <input className="walkerProfile__form--lastNameInput"
                             type="text"
                             name="lastName"
                             value={this.state.lastName}
                             onChange={this.handleInputChange}
                             placeholder="Doe"
                         />
-                        <select name="userType" onChange={this.handleInputChange}>
+                        <label className="walkerProfile__form--userTypeLabel">you are a dog walker</label>
+                        <select className="walkerProfile__form--userTypeSelect" name="userType" onChange={this.handleInputChange}>
                             <option value="walker">Dog Walker</option>
                         </select>
-                        <textarea
+                        <label className="walkerProfile__form--textAreaLabel">Tell us about yourself</label>
+                        <textarea className="walkerProfile__form--textArea"
                             name="aboutMe"
                             value={this.state.aboutMe}
                             onChange={this.handleInputChange}
@@ -178,49 +185,55 @@ class createWalkerProfile extends Component {
                             cols="30"
                         />
                         {/* profilePhoto upload */}
-                        <input
+                        <label className="walkerProfile__form--addressLabel">Enter your address</label>
+                        <input className="walkerProfile__form--addressInput"
                             type="text"
                             name="address"
                             value={this.state.address}
                             onChange={this.handleInputChange}
                             placeholder="123 45th Street"
                         />
-                        <input
+                        <label className="walkerProfile__form--cityLabel">Enter your city</label>
+                        <input className="walkerProfile__form--cityInput"
                             type="text"
                             name="City"
                             value={this.state.City}
                             onChange={this.handleInputChange}
                             placeholder="San Francisco"
                         />
-                        <input
+                        <label className="walkerProfile__form--stateLabel">Enter your state</label>
+                        <input className="walkerProfile__form--stateInput"
                             type="text"
                             name="State"
                             value={this.state.State}
                             onChange={this.handleInputChange}
                             placeholder="CA"
                         />
-                        <input
+                        <label className="walkerProfile__form--zipcodeLabel">Enter your zip code</label>
+                        <input className="walkerProfile__form--zipcodeInput"
                             type="number"
                             name="zipCode"
                             value={this.state.zipCode}
                             onChange={this.handleInputChange}
                             placeholder="12345"
                         />
-                        <input
+                        <label className="walkerProfile__form--countryLabel">Enter your country</label>
+                        <input className="walkerProfile__form--countryInput"
                             type="text"
                             name="country"
                             value={this.state.country}
                             onChange={this.handleInputChange}
                             placeholder="USA"
                         />
-                        <button type="submit">Register</button>
+                        <button type="submit" className="walkerProfile__form--submitButton">Register</button>
                     </form>
                     {dbError === true && (
                         <div>
                             <p>An error occured while adding entries to the database.</p>
                         </div>
                     )}
-                    <p><a href="/">Return to Home</a></p>
+                     <a className="ownerProfile__form--homeButton" href="/">Return to Home</a>
+                    <Footer />
                 </div>
             );
         } else {

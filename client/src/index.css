@@ -64,7 +64,7 @@ a:active {
     height: 1.5em; }
 
 .nav {
-  background-image: linear-gradient(#bfbfbf, #4d4d4d);
+  background-image: linear-gradient(#a6a6a6, #4d4d4d);
   box-shadow: 0.5em 0.5em 1em 1em #1a1a1a;
   display: grid;
   grid-template-columns: 6 1fr;
@@ -86,7 +86,7 @@ a:active {
     padding: 4em 5em; }
     .nav__splash--link {
       font-size: 2.5em;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .nav__splash--link:hover {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
@@ -101,7 +101,7 @@ a:active {
     padding: 4em 5em; }
     .nav__contact--link {
       font-size: 2.5em;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .nav__contact--link:hover {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
@@ -215,6 +215,54 @@ a:active {
     letter-spacing: 0.1em;
     text-shadow: 2px 2px 8px #1190cb; }
 
+.sidebar {
+  background-image: radial-gradient(#4d4d4d, #333333);
+  border: solid 0.25em #1190cb;
+  border-radius: 1em;
+  display: grid;
+  grid-template-columns: .25fr auto .25fr;
+  grid-template-rows: 1fr auto auto;
+  justify-content: center;
+  margin: 2em; }
+  .sidebar__title {
+    grid-area: 1/2;
+    font-family: "Over the Rainbow", cursive;
+    font-size: 4em;
+    color: #1190cb; }
+  .sidebar__brand {
+    grid-area: 2/2; }
+    .sidebar__brand--logo {
+      height: 5em;
+      font-size: 1em;
+      border: solid 0.25em #1190cb;
+      border-radius: 1em;
+      padding: 1em; }
+  .sidebar__nav {
+    grid-area: 3/2;
+    font-size: 3em;
+    display: grid;
+    grid-template-columns: .25fr auto .25fr;
+    grid-template-rows: 6 1fr;
+    justify-content: center; }
+    .sidebar__nav--itemDashboard {
+      grid-area: 1/2;
+      padding: 1em; }
+    .sidebar__nav--itemWalks {
+      grid-area: 2/2;
+      padding: 1em; }
+    .sidebar__nav--itemInvite {
+      grid-area: 3/2;
+      padding: 1em; }
+    .sidebar__nav--itemMap {
+      grid-area: 4/2;
+      padding: 1em; }
+    .sidebar__nav--itemNotifications {
+      grid-area: 5/2;
+      padding: 1em; }
+    .sidebar__nav--itemLogout {
+      grid-area: 6/2;
+      padding: 1em; }
+
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
   .aboutTailMe__grid {
@@ -234,7 +282,7 @@ a:active {
     .aboutTailMe__grid--text {
       grid-area: 2 / 2 / 3 /3;
       font-size: 2.5em;
-      color: #bfbfbf;
+      color: #a6a6a6;
       padding: .5em;
       line-height: 2;
       margin-bottom: 2em; }
@@ -264,7 +312,7 @@ a:active {
     .splash__about--text {
       grid-area: t;
       font-size: 2.5em;
-      color: #bfbfbf;
+      color: #a6a6a6;
       margin: 1em;
       text-align: center; }
     .splash__about--link {
@@ -291,7 +339,7 @@ a:active {
     .splash__user--text {
       grid-area: t;
       font-size: 2.5em;
-      color: #bfbfbf;
+      color: #a6a6a6;
       margin: 1em;
       text-align: center; }
     .splash__user--authentification {
@@ -333,7 +381,7 @@ a:active {
     .splash__walker--text {
       grid-area: t;
       font-size: 2.5em;
-      color: #bfbfbf;
+      color: #a6a6a6;
       margin: 1em;
       text-align: center; }
     .splash__walker--authentification {
@@ -383,7 +431,7 @@ a:active {
     color: #1190cb;
     font-size: 5em; }
   .ownerSignup__form {
-    color: #bfbfbf;
+    color: #a6a6a6;
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr;
@@ -402,7 +450,7 @@ a:active {
       border-radius: .5em;
       align-self: flex-start;
       background-color: #333333;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .ownerSignup__form--usernameLabel {
       grid-area: 3/1;
       justify-self: left;
@@ -417,7 +465,7 @@ a:active {
       border-radius: .5em;
       align-self: flex-start;
       background-color: #333333;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .ownerSignup__form--passwordLabel {
       grid-area: 5/1;
       justify-self: left;
@@ -432,7 +480,7 @@ a:active {
       border-radius: .5em;
       align-self: flex-start;
       background-color: #333333;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .ownerSignup__form--submitButton {
       grid-area: 7/1;
       justify-self: left;
@@ -500,8 +548,8 @@ a:active {
       border: solid 2px #1a1a1a;
       border-radius: .5em;
       align-self: flex-start;
-      background-color: #e3edf2;
-      color: #bfbfbf; }
+      background-color: #e7f6fd;
+      color: #a6a6a6; }
     .walkerSignup__form--usernameLabel {
       grid-area: 3/1;
       justify-self: left;
@@ -515,8 +563,8 @@ a:active {
       border: solid 2px #1a1a1a;
       border-radius: .5em;
       align-self: flex-start;
-      background-color: #e3edf2;
-      color: #bfbfbf; }
+      background-color: #e7f6fd;
+      color: #a6a6a6; }
     .walkerSignup__form--passwordLabel {
       grid-area: 5/1;
       justify-self: left;
@@ -530,8 +578,8 @@ a:active {
       border: solid 2px #1a1a1a;
       border-radius: .5em;
       align-self: flex-start;
-      background-color: #e3edf2;
-      color: #bfbfbf; }
+      background-color: #e7f6fd;
+      color: #a6a6a6; }
     .walkerSignup__form--submitButton {
       grid-area: 7/1;
       justify-self: left;
@@ -539,7 +587,7 @@ a:active {
       font-size: 3em;
       text-align: center;
       color: #1190cb;
-      background-color: #e3edf2;
+      background-color: #e7f6fd;
       padding: .5em 1em;
       border-radius: .5em;
       border: solid 2px #1190cb;
@@ -555,7 +603,7 @@ a:active {
       font-size: 3em;
       text-align: center;
       color: #1190cb;
-      background-color: #e3edf2;
+      background-color: #e7f6fd;
       padding: .5em 1em;
       border-radius: .5em;
       border: solid 2px #1190cb;
@@ -582,7 +630,7 @@ a:active {
     color: #1190cb;
     font-size: 5em; }
   .login__form {
-    color: #bfbfbf;
+    color: #a6a6a6;
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr;
@@ -601,7 +649,7 @@ a:active {
       border-radius: .5em;
       align-self: flex-start;
       background-color: #333333;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .login__form--passwordLabel {
       grid-area: 5/1;
       justify-self: left;
@@ -616,7 +664,7 @@ a:active {
       border-radius: .5em;
       align-self: flex-start;
       background-color: #333333;
-      color: #bfbfbf; }
+      color: #a6a6a6; }
     .login__form--submitButton {
       grid-area: 7/1;
       justify-self: left;
@@ -649,3 +697,409 @@ a:active {
       background-color: #1a1a1a;
       letter-spacing: 0.1em;
       text-shadow: 2px 2px 8px #1190cb; }
+
+.ownerProfile {
+  background-image: radial-gradient(#4d4d4d, #333333);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr  auto; }
+  .ownerProfile__logo {
+    grid-area: 1/2/1/4;
+    margin: 2em; }
+  .ownerProfile__title {
+    grid-area: 2/1;
+    font-family: "Over the Rainbow", cursive;
+    padding: 1em;
+    color: #1190cb;
+    font-size: 5em; }
+  .ownerProfile__form {
+    color: #a6a6a6;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 19 1fr; }
+    .ownerProfile__form--firstNameLabel {
+      grid-area: 1/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--firstNameInput {
+      grid-area: 2/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--lastNameLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--lastNameInput {
+      grid-area: 4/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--userTypeLabel {
+      grid-area: 5/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--userTypeSelect {
+      grid-area: 6/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--textAreaLabel {
+      grid-area: 7/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--textArea {
+      grid-area: 8/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--addressLabel {
+      grid-area: 9/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--addressInput {
+      grid-area: 10/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--cityLabel {
+      grid-area: 11/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--cityInput {
+      grid-area: 12/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--stateLabel {
+      grid-area: 13/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--stateInput {
+      grid-area: 14/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--zipcodeLabel {
+      grid-area: 15/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--zipcodeInput {
+      grid-area: 16/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--countryLabel {
+      grid-area: 17/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .ownerProfile__form--countryInput {
+      grid-area: 18/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .ownerProfile__form--submitButton {
+      grid-area: 19/1;
+      justify-self: left;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 0em; }
+    .ownerProfile__form--submitButton:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+    .ownerProfile__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 1em; }
+    .ownerProfile__form--homeButton:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px #1190cb; }
+
+.walkerProfile {
+  background-image: radial-gradient(#e7f6fd, #a6a6a6);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr  auto; }
+  .walkerProfile__logo {
+    grid-area: 1/2/1/4;
+    margin: 2em; }
+  .walkerProfile__title {
+    grid-area: 2/1;
+    font-family: "Over the Rainbow", cursive;
+    padding: 1em;
+    color: #1190cb;
+    font-size: 5em; }
+  .walkerProfile__form {
+    color: #333333;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 19 1fr; }
+    .walkerProfile__form--firstNameLabel {
+      grid-area: 1/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--firstNameInput {
+      grid-area: 2/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--lastNameLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--lastNameInput {
+      grid-area: 4/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--userTypeLabel {
+      grid-area: 5/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--userTypeSelect {
+      grid-area: 6/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--textAreaLabel {
+      grid-area: 7/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--textArea {
+      grid-area: 8/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--addressLabel {
+      grid-area: 9/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--addressInput {
+      grid-area: 10/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--cityLabel {
+      grid-area: 11/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--cityInput {
+      grid-area: 12/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--stateLabel {
+      grid-area: 13/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--stateInput {
+      grid-area: 14/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--zipcodeLabel {
+      grid-area: 15/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--zipcodeInput {
+      grid-area: 16/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--countryLabel {
+      grid-area: 17/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerProfile__form--countryInput {
+      grid-area: 18/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #a1dcf7; }
+    .walkerProfile__form--submitButton {
+      grid-area: 19/1;
+      justify-self: left;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0 0 12px #a6a6a6; }
+    .walkerProfile__form--submitButton:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      box-shadow: 0 0 12px #a1dcf7; }
+    .walkerProfile__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 1em;
+      box-shadow: 0 0 12px #a6a6a6; }
+    .walkerProfile__form--homeButton:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      box-shadow: 0 0 12px #a1dcf7; }
+
+.ownerDash {
+  height: 100%; }
+  .ownerDash__grid {
+    display: grid;
+    grid-template-columns: 15 1fr;
+    grid-template-rows: 1fr; }
+    .ownerDash__grid--sidebarNav {
+      grid-area: 1/1/2/2; }
+    .ownerDash__grid--main-content {
+      border: solid 0.25em #1190cb;
+      border-radius: 1em;
+      margin: 2em;
+      grid-area: 1/2/2/16; }

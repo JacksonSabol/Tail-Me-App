@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
+import Footer from "../components/Footer";
+import logo from "../images/tailMeLogo.png";
 
 const loading = {
     margin: '1em',
@@ -150,27 +152,32 @@ class createOwnerProfile extends Component {
             );
         } else if (!profileCreated) {
             return (
-                <div>
-                    <p>{title}</p>
-                    <form className="profile-form" onSubmit={this.handleCreateUser}>
-                        <input
+                <div className="ownerProfile">
+                    <img className="ownerProfile__logo" src={logo} alt="tailME logo" ></img>
+                    <p className="ownerProfile__title">{title}</p>
+                    <form className="ownerProfile__form" onSubmit={this.handleCreateUser}>
+                        <label className="ownerProfile__form--firstNameLabel">Enter your first name</label>
+                        <input className="ownerProfile__form--firstNameInput"
                             type="text"
                             name="firstName"
                             value={this.state.firstName}
                             onChange={this.handleInputChange}
                             placeholder="John"
                         />
-                        <input
+                        <label className="ownerProfile__form--lastNameLabel">Enter your last name</label>
+                        <input className="ownerProfile__form--lastNameInput"
                             type="text"
                             name="lastName"
                             value={this.state.lastName}
                             onChange={this.handleInputChange}
                             placeholder="Doe"
                         />
-                        <select name="userType" onChange={this.handleInputChange}>
+                        <label className="ownerProfile__form--userTypeLabel">you are a dog owner</label>
+                        <select className="ownerProfile__form--userTypeSelect" name="userType" onChange={this.handleInputChange}>
                             <option value="owner">Dog Owner</option>
                         </select>
-                        <textarea
+                        <label className="ownerProfile__form--textAreaLabel">Tell us about yourself</label>
+                        <textarea className="ownerProfile__form--textArea"
                             name="aboutMe"
                             value={this.state.aboutMe}
                             onChange={this.handleInputChange}
@@ -178,49 +185,55 @@ class createOwnerProfile extends Component {
                             cols="30"
                         />
                         {/* profilePhoto upload */}
-                        <input
+                        <label className="ownerProfile__form--addressLabel">Enter your address</label>
+                        <input className="ownerProfile__form--addressInput"
                             type="text"
                             name="address"
                             value={this.state.address}
                             onChange={this.handleInputChange}
                             placeholder="123 45th Street"
                         />
-                        <input
+                        <label className="ownerProfile__form--cityLabel">Enter your city</label>
+                        <input className="ownerProfile__form--cityInput"
                             type="text"
                             name="City"
                             value={this.state.City}
                             onChange={this.handleInputChange}
                             placeholder="San Francisco"
                         />
-                        <input
+                        <label className="ownerProfile__form--stateLabel">Enter your state</label>
+                        <input className="ownerProfile__form--stateInput"
                             type="text"
                             name="State"
                             value={this.state.State}
                             onChange={this.handleInputChange}
                             placeholder="CA"
                         />
-                        <input
+                        <label className="ownerProfile__form--zipcodeLabel">Enter your zip code</label>
+                        <input className="ownerProfile__form--zipcodeInput"
                             type="number"
                             name="zipCode"
                             value={this.state.zipCode}
                             onChange={this.handleInputChange}
                             placeholder="12345"
                         />
-                        <input
+                        <label className="ownerProfile__form--countryLabel">Enter your country</label>
+                        <input className="ownerProfile__form--countryInput"
                             type="text"
                             name="country"
                             value={this.state.country}
                             onChange={this.handleInputChange}
                             placeholder="USA"
                         />
-                        <button type="submit">Register</button>
+                        <button type="submit" className="ownerProfile__form--submitButton">Register</button>
                     </form>
                     {dbError === true && (
                         <div>
                             <p>An error occured while adding entries to the database.</p>
                         </div>
                     )}
-                    <p><a href="/">Return to Home</a></p>
+                    <a className="ownerProfile__form--homeButton" href="/">Return to Home</a>
+                    <Footer />
                 </div>
             );
         } else {

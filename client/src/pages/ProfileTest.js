@@ -6,6 +6,8 @@ import Profile from './Profile'
 import TodayWalks from '../components/TodayWalks';
 import InviteOwners from "../components/InviteOwners";
 import ShowMap from "../components/ShowMap";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import "../index.css";
 
 
@@ -186,16 +188,20 @@ class ProfileContainer extends Component {
             return <Redirect to="/user/login" />;
         } else {
             return (
-                <div>
-                    <SidebarNav
+                <div className="ownerDash">
+                <Header />
+                <div className="ownerDash__grid">
+                    <SidebarNav className="ownerDash__grid--sidebarNav"
                         username={username}
                         currentPage={this.state.currentPage}
                         handlePageChange={this.handlePageChange}
                         handleLogOut={this.handleLogOut}
                     />
-                    <div className="main-content">
+                    <div className="ownerDash__grid--main-content">
                         {this.renderPage()}
                     </div>
+                    </div>
+                    <Footer className="ownerDash__footer"/>
                 </div>
             );
         }
