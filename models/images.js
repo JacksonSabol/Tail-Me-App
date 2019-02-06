@@ -2,7 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const images = sequelize.define('images', {
     image: DataTypes.BLOB,
-    sendCustomer: DataTypes.BOOLEAN
+    sendCustomer: DataTypes.BOOLEAN,
+    url: DataTypes.STRING,
   }, {});
   images.associate = function(models) {
     // associations can be defined here
@@ -12,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
     
+    images.belongsTo(models.dogOwner, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
   };
   return images;
 };

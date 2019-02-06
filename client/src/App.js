@@ -23,6 +23,8 @@ import GetCoordinates from "./components/GetCoordinates";
 import ShowPicsMap from "./components/ShowPicsMap";
 import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 import Referral from "./pages/Referral";
+import WalkPhotoUpload from  "./components/WalkPhotoUpandPost"
+import dogOwnerGallery from "./components/DogGallery"
 // import Footer from "./components/Footer";
 
 function App() {
@@ -49,6 +51,8 @@ function App() {
         <Route exact path="/walker/showmap" component={ShowMap} />
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
         <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
+        <Route exact path="/walker/walks/uploadImages" component={WalkPhotoUpload} />
+        <Route exact path="/dogOwner/gallery" component={dogOwnerGallery} />
         <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
         <Route exact path="/owner/signup/:id/:code" component={Referral} />
         {/* <Footer /> */}

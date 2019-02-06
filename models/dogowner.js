@@ -18,11 +18,16 @@ module.exports = (sequelize, DataTypes) => {
     dogOwner.hasMany(models.walks, {
       onDelete: "cascade"
     });
+    
 
     dogOwner.belongsTo(models.walker, {
       foreignKey: {
         allowNull: false
       }
+    });
+
+    dogOwner.hasMany(models.dogOwner, {
+      onDelete: "cascade"
     });
   };
   return dogOwner;
