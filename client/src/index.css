@@ -65,7 +65,7 @@ a:active {
 
 .nav {
   background-image: linear-gradient(#a6a6a6, #4d4d4d);
-  box-shadow: 0.5em 0.5em 1em 1em #1a1a1a;
+  box-shadow: 0em 0em 0.5em 0.5em #1a1a1a;
   display: grid;
   grid-template-columns: 6 1fr;
   grid-template-areas: "l . . . s c"; }
@@ -74,22 +74,25 @@ a:active {
     grid-area: l;
     background-color: #333333;
     border-radius: .5em;
-    padding: .5em 3em; }
+    padding: 0em 3em; }
     .nav__logo--image {
-      margin: 1em; }
+      margin: 0em; }
   .nav__splash {
     justify-self: right;
     grid-area: s;
     background-color: #333333;
     border: solid 2px #1a1a1a;
     border-radius: .5em 0em 0em .5em;
-    padding: 4em 5em; }
+    padding: 0em 5em; }
     .nav__splash--link {
       font-size: 2.5em;
       color: #a6a6a6; }
     .nav__splash--link:hover {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+    .nav__splash--homeIcon {
+      height: 2em;
+      margin-top: .5em; }
   .nav__splash:hover {
     background-color: #1a1a1a; }
   .nav__contact {
@@ -98,19 +101,44 @@ a:active {
     background-color: #333333;
     border: solid 2px #1a1a1a;
     border-radius: 0em .5em .5em 0em;
-    padding: 4em 5em; }
+    padding: 0em 5em; }
     .nav__contact--link {
       font-size: 2.5em;
       color: #a6a6a6; }
     .nav__contact--link:hover {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+    .nav__contact--mailIcon {
+      margin-top: .5em;
+      height: 2em; }
   .nav__contact:hover {
     background-color: #1a1a1a; }
 
 .gridContainer {
   display: grid;
   grid-template-columns: auto auto auto auto auto; }
+
+.fullCalender {
+  font-family: "Thasadith", sans-serif;
+  font-size: 2em;
+  margin: 1em; }
+
+.calenderContainer {
+  font-family: "Thasadith", sans-serif;
+  width: 800px;
+  padding-left: 6em; }
+
+th.fc-day-header {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
+
+h2 {
+  font-family: "Over the Rainbow", cursive;
+  color: #1190cb; }
+
+a {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
 
 .Contact {
   background-image: radial-gradient(#4d4d4d, #333333);
@@ -221,56 +249,201 @@ a:active {
   border-radius: 1em;
   display: grid;
   grid-template-columns: .25fr auto .25fr;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: auto auto auto;
   justify-content: center;
-  margin: 2em; }
+  margin: 2em;
+  box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
   .sidebar__title {
     grid-area: 1/2;
     font-family: "Over the Rainbow", cursive;
-    font-size: 4em;
-    color: #1190cb; }
+    font-size: 3em;
+    color: #1190cb;
+    margin: .5em; }
   .sidebar__brand {
-    grid-area: 2/2; }
+    grid-area: 2/2;
+    margin: 0em 0em 0em 2em; }
     .sidebar__brand--logo {
-      height: 5em;
+      height: 4em;
       font-size: 1em;
       border: solid 0.25em #1190cb;
       border-radius: 1em;
-      padding: 1em; }
+      padding: .5em; }
   .sidebar__nav {
     grid-area: 3/2;
-    font-size: 3em;
+    font-size: 2.5em;
     display: grid;
     grid-template-columns: .25fr auto .25fr;
     grid-template-rows: 10 1fr;
     justify-content: center; }
     .sidebar__nav--itemDashboard {
       grid-area: 1/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemWalks {
       grid-area: 2/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemSchedWalks {
       grid-area: 3/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemFullSchedule {
       grid-area: 4/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemInvite {
       grid-area: 5/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemCerts {
       grid-area: 6/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemMap {
       grid-area: 7/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemNotifications {
       grid-area: 8/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
     .sidebar__nav--itemLogout {
       grid-area: 9/2;
-      padding: 1em; }
+      padding: 0.25em 1em; }
+
+.search__form--alert {
+  text-align: center;
+  font-family: "Over the Rainbow", cursive;
+  font-size: 6em;
+  color: #1190cb; }
+
+.rdtPicker {
+  margin: 2em;
+  display: grid;
+  grid-template-columns: .1fr auto .25fr;
+  grid-template-rows: auto auto auto; }
+  .rdtPicker__title {
+    grid-area: 1/1/4/2;
+    text-align: center;
+    font-family: "Over the Rainbow", cursive;
+    color: #1190cb;
+    font-size: 4em;
+    margin: .5em; }
+  .rdtPicker__picker {
+    margin-top: 2em;
+    grid-area: 1/2;
+    justify-content: center;
+    font-size: 3em; }
+  .rdtPicker__select {
+    display: flex;
+    grid-area: 2/2;
+    font-size: 3em;
+    margin: 4em;
+    font-size: 3em; }
+  .rdtPicker__button {
+    grid-area: 3/2;
+    justify-self: right;
+    font-family: "Thasadith", sans-serif;
+    font-size: 3em;
+    text-align: center;
+    color: #1190cb;
+    background-color: #333333;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #1190cb;
+    margin: 1em 0em;
+    cursor: pointer;
+    box-shadow: 0em 0em 0.25em 0.25em #333333; }
+  .rdtPicker__button:hover {
+    background-color: #1a1a1a;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+
+.react-datetime-picker__wrapper {
+  height: 4em;
+  padding: 1em;
+  background-color: #a6a6a6;
+  border-radius: .5em;
+  box-shadow: 0em 0em 0.25em 0.25em #333333; }
+
+.react-datetime-picker__inputGroup__divider {
+  color: #1190cb;
+  font-weight: bold; }
+
+button.css-1r4vtzz {
+  background-color: #a6a6a6;
+  font-family: "Thasadith", sans-serif;
+  color: #1a1a1a;
+  font-size: 1.25em;
+  padding: .5em 1.5em;
+  border-radius: .25em;
+  box-shadow: 0em 0em 0.25em 0.25em #333333; }
+
+button.css-48ayfv {
+  background-color: #a6a6a6;
+  font-family: "Thasadith", sans-serif;
+  color: #1a1a1a;
+  font-size: 1.25em;
+  padding: .5em 1.5em;
+  border-radius: .25em; }
+
+.walkerInvite {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr auto auto;
+  justify-content: center;
+  margin: 2em; }
+  .walkerInvite__title {
+    grid-area: 1/1/2/4;
+    font-family: "Over the Rainbow", cursive;
+    font-size: 4em;
+    color: #1190cb;
+    text-align: center; }
+  .walkerInvite__form {
+    grid-area: 2/2;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    color: #a6a6a6; }
+    .walkerInvite__form--nameLabel {
+      grid-area: 1/1;
+      justify-self: right;
+      font-size: 3em; }
+    .walkerInvite__form--nameInput {
+      grid-area: 1/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .walkerInvite__form--phoneLabel {
+      grid-area: 2/1;
+      justify-self: right;
+      font-size: 3em; }
+    .walkerInvite__form--phoneInput {
+      grid-area: 2/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .walkerInvite__form--button {
+      grid-area: 3/2;
+      justify-self: center;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 0em; }
+    .walkerInvite__form--button:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
@@ -1108,7 +1281,164 @@ a:active {
     .ownerDash__grid--sidebarNav {
       grid-area: 1/1/2/2; }
     .ownerDash__grid--main-content {
+      background-image: radial-gradient(#4d4d4d, #333333);
       border: solid 0.25em #1190cb;
       border-radius: 1em;
-      margin: 2em;
-      grid-area: 1/2/2/16; }
+      margin: 2em 2em 2em 0em;
+      grid-area: 1/2/2/16;
+      box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+
+.main-content {
+  background-color: transparent;
+  margin: 3em; }
+  .main-content__title {
+    font-family: "Over the Rainbow", cursive;
+    color: #1190cb;
+    font-size: 4em;
+    text-align: center; }
+  .main-content__body {
+    display: grid;
+    font-size: 2.5em;
+    grid-template-columns: .5fr .5fr 1fr 1fr  .5fr .5fr;
+    grid-template-rows: 1fr auto auto auto auto auto 1fr;
+    grid-gap: .5em;
+    color: #a6a6a6; }
+    .main-content__body--firstNameLabel {
+      grid-area: 1/2;
+      justify-self: right; }
+    .main-content__body--firstNameInput {
+      grid-area: 1/3;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--lastNameLabel {
+      grid-area: 1/4;
+      justify-self: right; }
+    .main-content__body--lastNameInput {
+      grid-area: 1/5;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--userTypeLabel {
+      grid-area: 2/3;
+      justify-self: right; }
+    .main-content__body--userTypeInput {
+      grid-area: 2/4;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--aboutMeLabel {
+      grid-area: 3/2;
+      justify-self: right; }
+    .main-content__body--aboutMeInput {
+      grid-area: 3/3/4/6;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--addressLabel {
+      grid-area: 4/2;
+      justify-self: right; }
+    .main-content__body--addressInput {
+      grid-area: 4/3/5/6;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--cityLabel {
+      grid-area: 5/2;
+      justify-self: right; }
+    .main-content__body--cityInput {
+      grid-area: 5/3;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--stateLabel {
+      grid-area: 5/4;
+      justify-self: right; }
+    .main-content__body--stateInput {
+      grid-area: 5/5;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--countryLabel {
+      grid-area: 7/4;
+      justify-self: right; }
+    .main-content__body--countryInput {
+      grid-area: 7/5;
+      justify-self: left;
+      color: #e6e6e6; }
+    .main-content__body--zipcodeLabel {
+      grid-area: 6/4;
+      justify-self: right; }
+    .main-content__body--zipcodeInput {
+      grid-area: 6/5;
+      justify-self: left;
+      color: #e6e6e6; }
+
+.main-content-certify {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr  auto; }
+  .main-content-certify__title {
+    grid-area: 1/2;
+    font-family: "Over the Rainbow", cursive;
+    padding: 1em;
+    color: #1190cb;
+    font-size: 5em; }
+  .main-content-certify__form {
+    color: #a6a6a6;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr auto; }
+    .main-content-certify__form--certificationsLabel {
+      grid-area: 1/1;
+      justify-self: right;
+      font-size: 3em; }
+    .main-content-certify__form--certificationsInput {
+      grid-area: 1/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .main-content-certify__form--servicesLabel {
+      grid-area: 2/1;
+      justify-self: right;
+      font-size: 3em; }
+    .main-content-certify__form--servicesInput {
+      grid-area: 2/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .main-content-certify__form--availibilityLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      font-size: 3em; }
+    .main-content-certify__form--availibilityStatus {
+      grid-area: 3/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #1a1a1a;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #333333;
+      color: #a6a6a6; }
+    .main-content-certify__form--button {
+      grid-area: 4/2;
+      justify-self: center;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #333333;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 0em; }
+    .main-content-certify__form--button:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px #1190cb; }

@@ -25,8 +25,11 @@ import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 import ReferralSignup from "./pages/ReferralSignup";
 import createReferralProfile from "./pages/createReferralProfile";
 import createReferralDog from "./pages/createReferralDog";
+import Referral from "./pages/Referral";
+import "./index.css" 
 import WalkPhotoUpload from  "./components/WalkPhotoUpandPost"
 import dogOwnerGallery from "./components/DogGallery"
+
 // import Footer from "./components/Footer";
 
 function App() {
