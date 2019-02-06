@@ -1,6 +1,6 @@
 .nav{
     background-image: linear-gradient($color-light,$color-medium);
-    box-shadow: .5em .5em 1em 1em $color-darkest;
+    box-shadow: 0em 0em .5em .5em $color-darkest;
     display: grid;
     grid-template-columns:(6) 1fr;
     grid-template-areas:
@@ -10,9 +10,9 @@
         grid-area: l; 
         background-color: $color-dark;
         border-radius: .5em;
-        padding: .5em 3em;
+        padding: 0em 3em;
         &--image{
-            margin: 1em;
+            margin: 0em;
 
         } 
     }
@@ -22,7 +22,7 @@
         background-color: $color-dark;
         border: solid 2px $color-darkest;
         border-radius: .5em 0em 0em .5em;   
-        padding:  4em 5em;    
+        padding:  0em 5em;    
         &--link{
             font-size: 2.5em;
             color: $color-light;
@@ -31,6 +31,10 @@
             // letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--homeIcon{
+            height: 2em;
+            margin-top:.5em;
         }
     }
     &__splash:hover{
@@ -43,7 +47,7 @@
         background-color: $color-dark; 
         border: solid 2px $color-darkest;
         border-radius: 0em .5em .5em 0em; 
-        padding:  4em 5em; 
+        padding:  0em 5em; 
         &--link{
             font-size: 2.5em;
             color: $color-light;            
@@ -52,6 +56,10 @@
             // letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--mailIcon{
+            margin-top:.5em;
+            height: 2em
         }
     }
     &__contact:hover{

@@ -28,6 +28,9 @@
 @import "components/WalkPhotoUpandPost";
 @import "components/Contact";
 @import "components/SidebarNav.scss";
+@import "components/TodayWalks";
+@import "components/WalkerScheduleWalks";
+@import "components/InviteOwners";
 
 @import "pages/aboutTailMe";
 @import "pages/billing";
@@ -47,3 +50,5 @@
 @import "pages/createOwnerProfile";
 @import "pages/createWalkerProfile";
 @import "pages/ProfileTest";
+@import "pages/Profile";
+@import "pages/WalkerCertification";

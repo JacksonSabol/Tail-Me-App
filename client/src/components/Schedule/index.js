@@ -49,7 +49,8 @@ class Schedule extends Component {
 
     render() {
         return (
-            <div id="example-component">
+            <div className="calenderContainer">
+            <div className="fullCalender" id="example-component">
                 <FullCalendar
                     id="your-custom-ID"
                     header={{
@@ -68,6 +69,7 @@ class Schedule extends Component {
                     selectable={true}
                     selectHelper={true}
                 />
+            </div>
             </div>
         );
     }
