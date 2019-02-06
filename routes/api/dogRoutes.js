@@ -12,4 +12,9 @@ router.route("/:id")
 router.route("/")
   .post(dogController.create);
 
+  // Matches with "/api/"
+router.route("/:idOwner/gallery")
+.get(dogController.getImagesOwner);
+
+
 module.exports = router;

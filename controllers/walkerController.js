@@ -1,4 +1,5 @@
 const db = require("../models");
+const axios = require("axios");
 
 
 // Defining methods for the walkerController
@@ -40,29 +41,34 @@ module.exports = {
       .then(dbModel => { res.json(dbModel) })
       .catch(err => res.status(422).json(err))
   },
+  
   uploadPic: function (req, res) {
-    console.log("Upload...: ", req.body)
-    console.log("upload..:", req.params)
-    console.log("image:", req.file)
+    console.log("BODY-updateImage")
+    console.log(req.body)
+
     db.images
       .create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log("Error", err)
+        res.status(422).json(err)
+      });
   },
   getImages: function (req, res) {
-
+    
     console.log("Get Images..:", req.params.id)
     db.images
       .findAll({
-        where: {
-          walkId: req.params.id
+          where: {
+          walkId:req.params.id,
+          sendCustomer:null
         }
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   getWalksSchedule: function (req, res) {
-
     console.log("Get Schedule..:", req.params.id)
     db.walks
       .findAll({
@@ -94,6 +100,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   getDogOwners: function (req, res) {
     console.log("GetDogOwners");
     console.log(req.body);
@@ -121,6 +128,38 @@ module.exports = {
 
           where: {
             id: req.params.idWalk
+          }
+        })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  addPicturesToCloudary: function (req, res) {
+    require('dotenv').config();
+    const walkId = req.params.id;
+    console.log("WalkIdddd:", walkId);
+    console.log("FormData", req.file);
+    const url = `https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload`;
+    axios.get(url, req.body, {
+      headers: { "X-Requested-With": "XMLHttpRequest" },
+      image_metadata: true
+    })
+      .then(function (response) {
+        res.json(response.data)
+      })
+  },
+
+  updateImageOwner: function (req, res) {
+    console.log("Update Image Owner");
+    console.log(req.body);
+    db.images
+      .update(
+        req.body,
+        {
+
+          where: {
+            walkId: req.params.idWalk,
+            id:req.params.idImage
           }
         })
       .then(dbModel => res.json(dbModel))

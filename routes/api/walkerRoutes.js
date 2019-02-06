@@ -75,12 +75,9 @@ router.route("/walks")
 
 router.route("/walks/:id/uploadPic")
   /* replace foo-bar with your form field-name */
-  .post(multer(multerConfig).single('imageUp'), function (req, res) {
-    console.log(req.file)
-    //console.log(res);
-  })
+  .post(walkerController.uploadPic);
 
-router.route("walks/:id/getImages")
+router.route("/walks/:id/getImages")
   .get(walkerController.getImages);
 
 router.route("/:id/walkSchedule")
@@ -100,7 +97,16 @@ router.route("/schedule/:idWalk")
 // Matches with "/api/walker/invitecustomer/..."
 router.route("/invitecustomer/:name/:phone/:specialcode/:walkerid/:walkername")
   .post(globalController.createInvitation);
-// Matches with "/api/walker/invitecustomer/..."
+
+  router.route
+  ("/:id/uploadImages")
+  .post(walkerController.addPicturesToCloudary)
+
+  router.route("/walk/:idWalk/:idImage/updateImageOwner")
+  .put(walkerController.updateImageOwner);
+
+// Matches with "/api/walker/createOwner/..."
 router.route("/createOwner/:owneruserid/:specialcode/:walkerid")
   .post(globalController.createInvitation);
+
 module.exports = router;

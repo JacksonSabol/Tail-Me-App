@@ -29,10 +29,10 @@ export default {
     },
 
     //upload photo walks
-    uploadPhotoServer: function (image, id) {
+    uploadPhotoWalks: function (data, id) {
         console.log("Before server")
 
-        return axios.post(`/api/walker/walks/${id}/uploadPic`, image,{ headers: {'Content-Type': 'multipart/form-data' }})
+        return axios.post(`/api/walker/walks/${id}/uploadPic`, data)
     },
 
     //upload photo walks
@@ -75,4 +75,23 @@ export default {
         return axios.post("/api/walker/createOwner/" + data.owneruserid + "/" +  data.specialCode + "/" + data.walkerId);
     },
 
+    addPicturesToCloudinary: function(formData) {
+        
+        return axios.post(
+             "https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload",
+               formData, {
+                   headers: { "X-Requested-With": "XMLHttpRequest" },
+                   image_metadata:true
+    })
+},
+
+updateImageOwner:function(dataImageOwner,idWalk,idImage) {
+    return axios.put(`/api/walker/walk/${idWalk}/${idImage}/updateImageOwner`,dataImageOwner)
+
+},
+getImagesOwner:function(idOwner) {
+    return axios.get(`/api/dogProfile/${idOwner}/gallery`)
+
+}
+    
 };
