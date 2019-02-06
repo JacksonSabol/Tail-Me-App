@@ -70,7 +70,7 @@ class WalkerScheduleWalks extends Component {
       .then(res => {
 
       })
-  }
+    }
 
   render() {
 

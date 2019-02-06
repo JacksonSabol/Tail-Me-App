@@ -1,113 +1,210 @@
 import React, { Component } from "react";
+import classNames from 'classnames'
 import Dropzone from 'react-dropzone'
-import axios from 'axios'
-import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
-const dropzoneStyle = {
-    width: "100%",
-    height: "20%",
-    border: "1px solid black"
+import API from "../../utils/API";
+import Gallery from 'react-grid-gallery';
+import ReactSelect from 'react-select';
+
+const baseStyle = {
+    width: '100%',
+    height: 100,
+    borderWidth: 2,
+    borderColor: '#666',
+    borderStyle: 'dashed',
+    borderRadius: 5
 };
+const activeStyle = {
+    borderStyle: 'solid',
+    borderColor: '#6c6',
+    backgroundColor: '#eee'
+};
+
+
 class WalkPhotoUpandPost extends Component {
     state = {
         selectedFile: null,
         loaded: 0,
-        gallery: []
+        gallery: [],
+        onwnerList: [],
+        selectedOptions: []
     }
+
+
     componentDidMount() {
-        // Request for images tagged xmas       
-        axios.get('https://res.cloudinary.com/christekh/image/list/xmas.json')
-            .then(res => {
-                console.log(res.data.resources);
-                this.setState({gallery: res.data.resources});
-            });
+        // Load images from the gallery      
+        this.loadImages()
+        this.loadOwners()
     }
+
+    loadImages = () => {
+        const idWalk = 1
+        API.getImages(idWalk)
+            .then(res => {
+                const dataGallery = res.data.map(data => {
+                    const imageData = {
+                        id: data.id,
+                        src: data.url,
+                        thumbnail: data.url,
+                        thumbnailWidth: 320,
+                        thumbnailHeight: 212
+                        //caption:data.dogOwner.dogName
+                    }
+                    return (imageData)
+                })
+
+                this.setState({ gallery: dataGallery })
+            })
+
+    }
+
+    loadOwners = () => {
+
+        const idWalker = 1
+
+        API.getDogOwners(idWalker)
+            .then(res => {
+                const dataDogOwners = res.data.map(data => {
+                    const dataOwners = {
+                        label: `${data.user.firstName} ${data.user.lastName} - ${data.dogName}`,
+                        value: data.id
+                    }
+                    return (dataOwners)
+                })
+                this.setState({ onwnerList: dataDogOwners })
+            })
+            .catch(err => console.log(err));
+    }
+    //Owner List event
+    handleChangeList = (options) => {
+        this.setState({ selectedOptions: options });
+
+    }
+
 
     handleDrop = files => {
         // Push all the axios request promise into a single array
+        const idWalk = 1
         const uploaders = files.map(file => {
             // Initial FormData
             const formData = new FormData();
             formData.append("file", file);
-            formData.append("tags", `codeinfuse, medium, gist`);
-            formData.append("upload_preset", ""); // Replace the preset name with your own
-            formData.append("api_key", ""); // Replace API key with your own Cloudinary key
+            formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_API_KEY}`);
+            formData.append("api_key", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`); // Replace API key with your own Cloudinary key
             formData.append("timestamp", (Date.now() / 1000) | 0);
-            formData.append("folder",'tailMeApp');
-            formData.append("tags",1)
+            formData.append("folder", 'tailMeApp');
 
-            // Make an AJAX upload request using Axios (replace Cloudinary URL below with your own)
-            return axios.post("", formData, {
-                headers: { "X-Requested-With": "XMLHttpRequest" },
-            }).then(response => {
-                const data = response.data;
-                const fileURL = data.secure_url // You should store this URL for future references in your app
-                console.log(data);
-                this.setState({ gallery: response.data.resources })
-            })
+            API.addPicturesToCloudinary(formData, idWalk)
+                .then(response => {
+                    const data = response.data;
+                    const fileURL = data.secure_url; // You should store this URL for future references in your app
+                    const imageData = {
+                        walkId: 1,
+                        url: fileURL
+                    }
+
+                    API.uploadPhotoWalks(imageData, idWalk)
+                        .then(res => {
+                            this.loadImages()
+                        })
+                }).catch(err => console.log("ERROR", err));
+        })
+    }
+
+    onSelectImage(index, image) {
+        const images = this.state.images.slice();
+        console.log("images", images)
+        const img = images[index];
+        console.log("img", img)
+        if (img.hasOwnProperty("isSelected"))
+            img.isSelected = !img.isSelected;
+        else
+            img.isSelected = true;
+
+
+        this.setState({
+            gallery: images
         });
 
-        // Once all the files are uploaded 
-        axios.all(uploaders).then(() => {
-            // ... perform after upload is successful operation
-        });
+    }
+    //Send Image to Owner
+    handleTransferImages = () => {
+        const idWalk = 1
+        const selectedImages = this.state.gallery.filter(image => image.isSelected === true)
+        console.log("Selected", selectedImages)
+
+        selectedImages.map(data => {
+            const dataImageOwner = {
+                dogOwnerId: this.state.onwnerList[0].value,
+                sendCustomer:true
+            }
+            const imageId=data.id
+            console.log("dataImageOwner", dataImageOwner)
+
+            API.updateImageOwner(dataImageOwner, idWalk,imageId)
+                .then(res => {
+                  this.loadImages()
+                })
+                
+                return(selectedImages)
+        })
+        
     }
 
     render() {
+
         return (
+
             <div>
                 <form>
-        <div className="FileUpload">
-            <Dropzone
-                onDrop={this.handleDrop}
-                accept="image/*"
-                multiple={true}>
-                {({ getRootProps, getInputProps }) => {
-                    return (
-                        <div
-                            {...getRootProps()}
-                        >
-                            <input {...getInputProps()} />
-                            {
-                                <p>Try dropping some files here, or click to select files to upload.</p>
-                            }
-                        </div>
-                    )
-                }}
-            </Dropzone>
+                    <div className="FileUpload" style={{
+                        'textAlign': 'center'
+                    }}>
+                        <Dropzone
+                            onDrop={this.handleDrop}
+                            accept="image/*"
+                            activeClassName='active-dropzone'
 
-            </div>
-      </form>
+                            multiple={true}>
+                            {({ getRootProps, getInputProps, isDragActive }) => {
+                                let styles = { ...baseStyle }
+                                styles = isDragActive ? { ...styles, ...activeStyle } : styles
 
-            <div className="main">
-                <h1>Gallery</h1>
-                <div className="gallery">
-                    <CloudinaryContext cloudName="CLOUDNAME">
-                        {
-                            this.state.gallery.map(data => {
                                 return (
-                                    <div className="responsive" key={data.public_id}>
-                                        <div className="img">
-                                            <a target="_blank" href={`https://res.cloudinary.com/christekh/image/upload/${data.public_id}.jpg`}>
-                                                <Image publicId={data.public_id}>
-                                                    <Transformation
-                                                        crop="scale"
-                                                        width="300"
-                                                        height="200"
-                                                        dpr="auto"
-                                                        responsive_placeholder="blank"
-                                                    />
-                                                </Image>
-                                            </a>
-                                            <div className="desc">Created at {data.created_at}</div>
-                                        </div>
+                                    <div
+                                        {...getRootProps()}
+                                        style={styles}
+                                        className={classNames('dropzone', { 'dropzone--isActive': isDragActive })}
+                                    >
+                                        <input {...getInputProps()} />
+                                        {
+                                            isDragActive ?
+                                                <h1>Drop files here...</h1> :
+                                                <h1>Try dropping some files here, or click to select files to upload.</h1>
+                                        }
+
                                     </div>
                                 )
-                            })
-                        }
-                    </CloudinaryContext>
-                    <div className="clearfix"></div>
-                </div>
-            </div>
+                            }}
+                        </Dropzone>
+
+
+                    </div>
+                </form>
+                <ReactSelect
+                    options={this.state.onwnerList}
+                    onChange={this.handleChangeList} />
+                <br></br>
+                <button onClick={this.handleTransferImages}>Send images to Owner</button>
+                <Gallery
+                    enableImageSelection={true}
+                    backdropClosesModal={true}
+                    onSelectImage={this.onSelectImage}
+                    enableLightbox={true}
+                    images={this.state.gallery}
+                    showLightboxThumbnails={true} />
+
+
+
             </div>
         )
     }

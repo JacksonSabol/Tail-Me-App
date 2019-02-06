@@ -100,7 +100,7 @@ cron.schedule("* 18 * * *", function () {
                 walkTime: data[i].walkDate,
                 phoneNumber: data[i].dogOwner.emergencyContact
             }
-            sendReminders(walk)
+           // sendReminders(walk)
 
 
         }

@@ -30,6 +30,9 @@ import GetCoordinates from "./components/GetCoordinates";
 import walkerWalksSchedule from "./components/WalkerScheduleWalks";
 
 import WalkerScheduleWalks from "./components/WalkerScheduleWalks"
+import WalkPhotoUpload from  "./components/WalkPhotoUpandPost"
+
+import dogOwnerGallery from "./components/DogGallery"
 
 function App() {
   return (
@@ -57,6 +60,9 @@ function App() {
         <Route exact path="/walker/showmap" component={ShowMap} />
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
         <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
+        <Route exact path="/walker/walks/uploadImages" component={WalkPhotoUpload} />
+
+        <Route exact path="/dogOwner/gallery" component={dogOwnerGallery} />
         {/* <Footer /> */}
       </div>
     </Router>
