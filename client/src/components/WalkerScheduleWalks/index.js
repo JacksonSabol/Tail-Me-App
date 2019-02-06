@@ -61,23 +61,28 @@ class WalkerScheduleWalks extends Component {
 
   render() {
     return (
-      <div>
+      <div className="rdtPicker">
+      <p className="rdtPicker__title">Schedule a Walk</p>
+        {/* <br></br><br></br><br></br><br></br><br></br><br></br>
         <br></br><br></br><br></br><br></br><br></br><br></br>
-        <br></br><br></br><br></br><br></br><br></br><br></br>
-        <br></br><br></br><br></br><br></br><br></br><br></br>
-        <DateTimePicker
+        <br></br><br></br><br></br><br></br><br></br><br></br> */}
+        <div className="RDTPicker__picker">
+        <DateTimePicker 
           onChange={this.onChange}
           value={this.state.date}
           className='class1'
           disableClock={true}
           calendarClassName='class1'
         />
-        <br></br>
-        <ReactMultiSelectCheckboxes
+        </div>
+        {/* <br></br> */}
+        <div className="rdtPicker__select">
+        <ReactMultiSelectCheckboxes 
           options={this.state.onwnerList}
           onChange={this.handleChangeList} />
-        <br></br>
-        <button onClick={this.handleSchedule}>schedule</button>
+          </div>
+        {/* <br></br> */}
+        <button className="rdtPicker__button" onClick={this.handleSchedule}>schedule</button>
       </div>
     );
   }

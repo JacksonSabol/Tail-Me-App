@@ -7,6 +7,7 @@
     grid-template-rows: 1fr auto auto ;
     justify-content: center;
     margin: 2em;
+    box-shadow: 0em 0em 5em $color-darkest;
 
 
     &__title{
@@ -36,39 +37,39 @@
 
         &--itemDashboard{
             grid-area: 1/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemWalks{
             grid-area: 2/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemSchedWalks{
             grid-area: 3/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemFullSchedule{
             grid-area: 4/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemInvite{
             grid-area: 5/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemCerts{
             grid-area: 6/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemMap{
             grid-area: 7/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemNotifications{
             grid-area: 8/2;
-            padding: 1em;
+            padding: 0.5em 1em;
         }
         &--itemLogout{
             grid-area: 9/2;
-            padding: 1em;
+            padding: 0.5em 1em;;
         }
     }
 

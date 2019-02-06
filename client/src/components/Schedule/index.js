@@ -49,7 +49,7 @@ class Schedule extends Component {
 
     render() {
         return (
-            <div id="example-component">
+            <div className="fullCalender" id="example-component">
                 <FullCalendar
                     id="your-custom-ID"
                     header={{

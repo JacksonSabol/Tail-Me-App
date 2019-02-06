@@ -1,0 +1,46 @@
+.rdtPicker{
+    margin: 3em;
+    display: grid;
+    grid-template-columns: .25fr auto auto .25fr;
+    grid-template-rows: 1fr auto auto ;
+
+    &__title{
+        grid-area: 1/2/2/4;
+        text-align: center;
+        font-family: $font-cursive;
+        color: $color-accentOne;
+        font-size: 5em;
+    }
+    &__picker{
+        grid-area: 2/2;
+        display:grid;
+        justify-content: center;
+        font-size:3em;
+    }
+    &__select{
+        grid-area: 2/3;
+        font-size: 3em;
+        margin: 4em;
+    }
+    &__button{
+        grid-area: 3/3;
+        justify-self: center;
+        font-family: $font-sans;
+        font-size: 3em;
+        text-align: center;
+        color: $color-accentOne;
+        background-color: $color-dark;
+        padding: .5em 1em;
+        border-radius: .5em;
+        border: solid 2px $color-accentOne;
+        margin: 1em 0em;
+        cursor: pointer;
+    }
+    &__button:hover{
+        background-color: $color-darkest;
+        letter-spacing: 0.1em;
+        color: $color-accentOne;
+        text-shadow: 2px 2px 8px $color-accentOne;
+        
+    }
+}

@@ -69,27 +69,32 @@ class WalkerCertification extends Component {
             return <Redirect to={`/userProfile/${username}`} />;
         } else {
             return (
-                <div className="main-content__certify">
-                    <form className="certify-form" onSubmit={this.handleWalkerCert}>
-                        <input
+                <div className="main-content-certify">
+                <div className="main-content-certify__title">Walker Profile Update</div>
+                    <form className="main-content-certify__form" onSubmit={this.handleWalkerCert}>
+                    <label className="main-content-certify__form--certificationsLabel">Are you certified?:</label>
+                    <input className="main-content-certify__form--certificationsInput"
                             type="text"
                             name="certifications"
                             value={this.state.certifications}
                             onChange={this.handleInputChange}
-                            placeholder="Certifications?"
+                            placeholder="Certifications"
                         />
-                        <input
+                        <label className="main-content-certify__form--servicesLabel">What services do you offer?:</label>
+                        <input className="main-content-certify__form--servicesInput"
                             type="text"
                             name="services"
                             value={this.state.services}
                             onChange={this.handleInputChange}
-                            placeholder="Special services?"
+                            placeholder="Special services"
                         />
-                        <select name="status" onChange={this.handleInputChange} value={this.state.status}>
+                        <label className="main-content-certify__form--availibilityLabel">Are you accepting new clients?</label>
+                        <select className="main-content-certify__form--availibilityStatus"
+                         name="status" onChange={this.handleInputChange} value={this.state.status}>
                             <option value="available">Available for Hire</option>
                             <option value="unavailable">Not Available for Hire</option>
                         </select>
-                        <button type="submit">Update</button>
+                        <button className="main-content-certify__form--button" type="submit">Update</button>
                     </form>
                 </div>
             );
