@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import SidebarNav from '../components/SidebarNav';
+import Profile from './Profile'
+import TodayWalks from '../components/TodayWalks';
+import InviteOwners from "../components/InviteOwners";
+import ShowMap from "../components/ShowMap";
+import ScheduleWalks from "../components/WalkerScheduleWalks";
+import Schedule from '../components/Schedule';
+import WalkerCertification from './WalkerCertification';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import "../index.css";
 
 
 const loading = {
@@ -8,10 +19,13 @@ const loading = {
     fontSize: '24px',
 };
 
-const title = 'User Profile Screen';
+const title = 'DASHBOARD';
 
-class Profile extends Component {
+class ProfileContainer extends Component {
     state = {
+        currentPage: "Home",
+        userId: 0,
+        username: '',
         firstName: '',
         lastName: '',
         userType: '',
@@ -45,6 +59,8 @@ class Profile extends Component {
                 })
                 .then(response => {
                     this.setState({
+                        userId: response.data.UserID,
+                        username: this.props.match.params.username,
                         firstName: response.data.firstName,
                         lastName: response.data.lastName,
                         userType: response.data.userType,
@@ -60,13 +76,63 @@ class Profile extends Component {
                     });
                 })
                 .catch(error => {
-                    console.log(error.response.data);
+                    console.log(error);
                     this.setState({
                         error: true,
                     });
                 });
         }
     }
+
+    // Function to handle Sidebar Navigation
+    handlePageChange = page => {
+        this.setState({ currentPage: page });
+    };
+
+    // Function to handle rendering the correct page from Sidebar Nav
+    renderPage = () => {
+        switch (this.state.currentPage) {
+            case "Home": return <Profile
+                username={this.state.username}
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                userType={this.state.userType}
+                aboutMe={this.state.aboutMe}
+                address={this.state.address}
+                City={this.state.City}
+                State={this.state.State}
+                zipCode={this.state.zipCode}
+                country={this.state.country}
+            />;
+            case "Walks": return <TodayWalks />;
+            case "SchedWalks": return <ScheduleWalks
+                walkerID={this.state.userId}
+            />;
+            case "FullSchedule": return <Schedule
+                walkerID={this.state.userId}
+            />
+            case "Certs": return <WalkerCertification
+                username={this.state.username}
+            />;
+            case "Invite": return <InviteOwners
+                walkerId={this.state.userId}
+                walkerName={this.state.username}
+            />;
+            case "Map": return <ShowMap />;
+            default: return <Profile
+                username={this.state.username}
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                userType={this.state.userType}
+                aboutMe={this.state.aboutMe}
+                address={this.state.address}
+                City={this.state.City}
+                State={this.state.State}
+                zipCode={this.state.zipCode}
+                country={this.state.country}
+            />;
+        }
+    };
 
     deleteUser = e => {
         let accessString = localStorage.getItem('JWT');
@@ -100,8 +166,7 @@ class Profile extends Component {
             });
     };
 
-    handleLogOut = event => {
-        event.preventDefault();
+    handleLogOut = () => {
         localStorage.removeItem('JWT');
         this.setState({
             loggedIn: false
@@ -110,15 +175,7 @@ class Profile extends Component {
 
     render() {
         const {
-            firstName,
-            lastName,
-            userType,
-            aboutMe,
-            address,
-            City,
-            State,
-            zipCode,
-            country,
+            username,
             loggedIn,
             error,
             isLoading,
@@ -148,56 +205,24 @@ class Profile extends Component {
             return <Redirect to="/user/login" />;
         } else {
             return (
-                <div>
-                    <p>{title}</p>
-                    <table>
-                        <tbody>
-                            <tr>
-                                {/* <td><img src={`data:image/jpeg;Base64,${this.state.profilePhoto}`} /></td> */}
-                                <td>First Name</td>
-                                <td>{firstName}</td>
-                            </tr>
-                            <tr>
-                                <td>Last Name</td>
-                                <td>{lastName}</td>
-                            </tr>
-                            <tr>
-                                <td>User Type</td>
-                                <td>{userType}</td>
-                            </tr>
-                            <tr>
-                                <td>About Me</td>
-                                <td>{aboutMe}</td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td>{address}</td>
-                            </tr>
-                            <tr>
-                                <td>City</td>
-                                <td>{City}</td>
-                            </tr>
-                            <tr>
-                                <td>State</td>
-                                <td>{State}</td>
-                            </tr>
-                            <tr>
-                                <td>Zipcode</td>
-                                <td>{zipCode}</td>
-                            </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td>{country}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    {/* <button onClick={this.deleteUser}>Delete Account</button> */}
-                    <button onClick={this.handleLogOut}>Log Out</button>
+                <div className="ownerDash">
+                    <Header />
+                    <div className="ownerDash__grid">
+                        <SidebarNav className="ownerDash__grid--sidebarNav"
+                            username={username}
+                            currentPage={this.state.currentPage}
+                            handlePageChange={this.handlePageChange}
+                            handleLogOut={this.handleLogOut}
+                        />
+                        <div className="ownerDash__grid--main-content">
+                            {this.renderPage()}
+                        </div>
+                    </div>
+                    <Footer className="ownerDash__footer" />
                 </div>
             );
         }
     }
 }
 
-export default Profile;
+export default ProfileContainer;

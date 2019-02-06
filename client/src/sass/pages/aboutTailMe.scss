@@ -1,10 +1,11 @@
 .aboutTailMe{
+    background-image: radial-gradient($color-medium,$color-dark);
     &__grid{
-        height:90%;
+        height:100%;
         display: grid;
         justify-content: center;
         grid-template-columns: 1fr 3fr 1fr;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: auto 1fr auto;
         grid-gap: 1em;
         &--heading{
             font-family: $font-cursive;
@@ -16,10 +17,15 @@
         }
         &--text{
             grid-area: 2 / 2 / 3 /3;
-            font-size: 2em;
+            font-size: 2.5em;
+            color: $color-light;
             padding: .5em;
             line-height: 2;
             margin-bottom: 2em;
         }
     }
+}
+.footer{
+    grid-area: 2 / 2 / 3 /3;
+    align-self: center;
 }

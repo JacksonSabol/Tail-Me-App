@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0; 
-    background-color: $color-medium;
-    color: $color-darkest;
+    background-color: $color-dark;
+    color: $color-lightest;
     font-family: $font-sans;
   }
 
@@ -33,6 +33,7 @@ html {
 a {
   
   text-decoration: none;
+  color: $color-lightest;
   outline: none; }
 
 a:link {

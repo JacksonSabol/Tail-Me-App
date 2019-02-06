@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const walkerController = require("../../controllers/walkerController");
-
+const globalController = require("../../controllers/globalController");
 var multer = require("multer")
 //var upload = multer({ dest: "uploads" })
 
@@ -59,17 +59,12 @@ const multerConfig = {
   }
 };
 
-const globalController = require("../../controllers/globalController");
-
-
 // Matches with "/api/walker"
 //router.route("/")
 
-//.post(walkerController.create);
-
-// Matches with "/api/walker/:id"
-//router.route("/:id")
-//.delete(walkerController.remove);
+// /api/walker/create to populate the walker.js model/table
+router.route("/create")
+  .post(walkerController.addWalker);
 
 // Matches with "/api/walker/walks/"
 router.route("/walks")
@@ -109,5 +104,9 @@ router.route("/invitecustomer/:name/:phone/:specialcode/:walkerid/:walkername")
 
   router.route("/walk/:idWalk/:idImage/updateImageOwner")
   .put(walkerController.updateImageOwner);
+
+// Matches with "/api/walker/createOwner/..."
+router.route("/createOwner/:owneruserid/:specialcode/:walkerid")
+  .post(globalController.createInvitation);
 
 module.exports = router;

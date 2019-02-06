@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "../index.css";
 import logo from "../images/tailMeLogo.png";
+import Footer from "../components/Footer";
 
 
 class splash extends Component {
@@ -22,24 +23,25 @@ class splash extends Component {
                         <div className="splash__user--text">
                             Click here to sign up or log in if you are already a tailME member
                     </div>
-                        <Link className="splash__user--authentification" to="/userAuthentification">
-                            user sign up
+                        <Link className="splash__user--authentification" to="/owner/signup">
+                            owner sign up
                     </Link>
-                        <Link className="splash__user--registration" to="/userRegistration">
-                            user log in
+                        <Link className="splash__user--registration" to="/user/Login">
+                            owner log in
                     </Link>
                     </div>
                     <div className="splash__walker">
                         <div className="splash__walker--text">
                             Click here to sign up or log in if you are already a tailME affiliated walker
                     </div>
-                        <Link className="splash__walker--authentification" to="/walkerAuthentification">
+                        <Link className="splash__walker--authentification" to="/walker/signup">
                             walker sign up
                     </Link>
-                        <Link className="splash__walker--registration" to="/walkerRegistration">
+                        <Link className="splash__walker--registration" to="/user/Login">
                             walker log in
                     </Link>
                     </div>
+                    <Footer/>
                 </div>
             </div>
 

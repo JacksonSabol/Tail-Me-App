@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
+import logo from "../images/tailMeLogo.png";
+import Footer from "../components/Footer";
 
-const title = 'Log In Screen';
+const title = 'Log Into';
 
 class Login extends Component {
     // Setting the initial state values
@@ -70,24 +72,27 @@ class Login extends Component {
 
         if (!loggedIn) {
             return (
-                <div>
-                    <p>{title}</p>
-                    <form className="profile-form" onSubmit={this.loginUser}>
-                        <input
+                <div className="login">
+                    <p className="login__title">{title}</p>
+                    <img className="login__logo" src={logo} alt="tailME logo" ></img>
+                    <form className="login__form" onSubmit={this.loginUser}>
+                    <label className="login__form--usernameLabel">Enter your user name</label>
+                        <input className="login__form--usernameInput"
                             value={this.state.username}
                             name="username"
                             onChange={this.handleInputChange}
                             type="text"
                             placeholder="UserName"
                         />
-                        <input
+                         <label className="login__form--passwordLabel">Enter your password</label>
+                        <input className="login__form--passwordInput"
                             value={this.state.password}
                             name="password"
                             onChange={this.handleInputChange}
                             type="password"
                             placeholder=""
                         />
-                        <button type="submit">Login</button>
+                        <button type="submit" className="login__form--submitButton">Log in</button>
                     </form>
                     {showNullError && (
                         <div>
@@ -100,7 +105,8 @@ class Login extends Component {
                             <p><a href="/walker/signup">Sign up as a Walker</a></p>
                         </div>
                     )}
-                    <p><a href="/">Return to Home</a></p>
+                    <a className="login__form--homeButton" href="/">Return to Home</a>
+                    <Footer/>
                 </div>
             );
         } else {

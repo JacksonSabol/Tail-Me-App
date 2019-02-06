@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../index.css";
-import logo from "../images/tailMeLogo.png";
+// import logo from "../images/tailMeLogo.png";
 import Header from "../components/Header";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 
 class contactTailMe extends Component {
@@ -17,6 +18,7 @@ class contactTailMe extends Component {
                     <div>
             </div>
                 </div>
+                <Footer/>
             </div>
 
         )

@@ -69,6 +69,11 @@ export default {
         console.log("API.js -  createInvitation")
         return axios.post("/api/walker/invitecustomer/" + data.ownerName + "/" + data.phoneNumber + "/" + data.specialCode + "/" + data.walkerId + "/" + data.walkerName);
     },
+      //Walker invite signup to the owner ("/createOwner/:owneruserid/:specialcode/:walkerid")
+      createOwner: function (data) {
+        console.log("API.js -  createInvitation")
+        return axios.post("/api/walker/createOwner/" + data.owneruserid + "/" +  data.specialCode + "/" + data.walkerId);
+    },
 
     addPicturesToCloudinary: function(formData) {
         

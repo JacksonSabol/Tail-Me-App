@@ -6,7 +6,7 @@ var passport = require('passport');
 // var session = require('express-session');
 
 // var bodyParser = require('body-parser');
-var env = require('dotenv').load();
+// var env = require('dotenv').load();
 require('dotenv').config();
 
 
@@ -101,8 +101,6 @@ cron.schedule("* 18 * * *", function () {
                 phoneNumber: data[i].dogOwner.emergencyContact
             }
            // sendReminders(walk)
-
-
         }
     }
 

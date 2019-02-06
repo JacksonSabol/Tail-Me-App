@@ -5,6 +5,18 @@ const axios = require("axios");
 // Defining methods for the walkerController
 module.exports = {
 
+  addWalker: function (req, res) {
+    console.log(req.body);
+    db.walker
+      .create({
+        certification: req.body.certifications,
+        services: req.body.services,
+        status: "available",
+        userId: req.body.userId
+      })
+      .then(dbmodel => res.status(200).send(dbmodel))
+      .catch(err => res.status(422).json(err));
+  },
 
   getWalks: function (req, res) {
     console.log("test2")
@@ -29,6 +41,7 @@ module.exports = {
       .then(dbModel => { res.json(dbModel) })
       .catch(err => res.status(422).json(err))
   },
+  
   uploadPic: function (req, res) {
     console.log("BODY-updateImage")
     console.log(req.body)
@@ -54,8 +67,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   getWalksSchedule: function (req, res) {
-
     console.log("Get Schedule..:", req.params.id)
     db.walks
       .findAll({
@@ -87,6 +100,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   getDogOwners: function (req, res) {
     console.log("GetDogOwners");
     console.log(req.body);
@@ -150,6 +164,5 @@ module.exports = {
         })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
-
+  }
 };

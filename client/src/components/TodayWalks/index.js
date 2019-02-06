@@ -88,7 +88,7 @@ class TodayWalks extends Component {
               </List>
 
             ) : (
-                <p className="search__form--alert"> you don't have any walks!</p>
+                <p className="search__form--alert"> You don't have any upcoming walks!</p>
               )}
 
           </Col>
