@@ -7,10 +7,10 @@ import "../../index.css";
 function SidebarNav(props) {
     return (
         <div className="sidebar">
-            <p>Welcome, {props.username}!</p>
+            <p className="sidebar__title">Welcome, {props.username}!</p>
             <a href="/" className="sidebar__brand"><img src={logo} className="sidebar__brand--logo" alt="^_^" /> tailMe©</a>
             <div className="sidebar__nav">
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemDashboard">
                     <a
                         href="#home"
                         onClick={() => props.handlePageChange("Home")}
@@ -18,7 +18,7 @@ function SidebarNav(props) {
                         Dashboard
                     </a>
                 </div>
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemWalks">
                     <a
                         href="#walks"
                         onClick={() => props.handlePageChange("Walks")}
@@ -26,7 +26,7 @@ function SidebarNav(props) {
                         Upcoming Walks
                     </a>
                 </div>
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemInvite">
                     <a
                         href="#certs"
                         onClick={() => props.handlePageChange("Certs")}
@@ -42,7 +42,7 @@ function SidebarNav(props) {
                         Invite Clients
                     </a>
                 </div>
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemMap">
                     <a
                         href="#map"
                         onClick={() => props.handlePageChange("Map")}
@@ -50,12 +50,12 @@ function SidebarNav(props) {
                         Map
                     </a>
                 </div>
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemNotifications">
                     <a href="#">
                         Notifications
                     </a>
                 </div>
-                <div className="sidebar__nav--item">
+                <div className="sidebar__nav--itemLogout">
                     <a
                         href="#"
                         onClick={() => props.handleLogOut()}

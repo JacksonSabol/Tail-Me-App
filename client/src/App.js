@@ -25,9 +25,6 @@ import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 import Referral from "./pages/Referral";
 // import Footer from "./components/Footer";
 
-// Temp: delete before push - JS
-import HomeTest from "./pages/HomeTest";
-
 function App() {
   return (
     <Router history={history}>
@@ -55,10 +52,6 @@ function App() {
         <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
         <Route exact path="/owner/signup/:id/:code" component={Referral} />
         {/* <Footer /> */}
-
-        {/* Temp: delete before push - JS */}
-        <Route exact path="/home/test" component={HomeTest} />
-        
       </div>
     </Router>
   );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import history from "../history/history";
 import TodayWalks from '../components/TodayWalks';
-import axios from "axios";
+// import axios from "axios";
 import "../index.css";
 
 class walkerDashboard extends Component {
