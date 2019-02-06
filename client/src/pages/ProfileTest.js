@@ -6,6 +6,8 @@ import Profile from './Profile'
 import TodayWalks from '../components/TodayWalks';
 import InviteOwners from "../components/InviteOwners";
 import ShowMap from "../components/ShowMap";
+import ScheduleWalks from "../components/WalkerScheduleWalks";
+import Schedule from '../components/Schedule';
 import WalkerCertification from './WalkerCertification';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -103,6 +105,12 @@ class ProfileContainer extends Component {
                 country={this.state.country}
             />;
             case "Walks": return <TodayWalks />;
+            case "SchedWalks": return <ScheduleWalks
+                walkerID={this.state.userId}
+            />;
+            case "FullSchedule": return <Schedule
+                walkerID={this.state.userId}
+            />
             case "Certs": return <WalkerCertification
                 username={this.state.username}
             />;
@@ -198,19 +206,19 @@ class ProfileContainer extends Component {
         } else {
             return (
                 <div className="ownerDash">
-                <Header />
-                <div className="ownerDash__grid">
-                    <SidebarNav className="ownerDash__grid--sidebarNav"
-                        username={username}
-                        currentPage={this.state.currentPage}
-                        handlePageChange={this.handlePageChange}
-                        handleLogOut={this.handleLogOut}
-                    />
-                    <div className="ownerDash__grid--main-content">
-                        {this.renderPage()}
+                    <Header />
+                    <div className="ownerDash__grid">
+                        <SidebarNav className="ownerDash__grid--sidebarNav"
+                            username={username}
+                            currentPage={this.state.currentPage}
+                            handlePageChange={this.handlePageChange}
+                            handleLogOut={this.handleLogOut}
+                        />
+                        <div className="ownerDash__grid--main-content">
+                            {this.renderPage()}
+                        </div>
                     </div>
-                    </div>
-                    <Footer className="ownerDash__footer"/>
+                    <Footer className="ownerDash__footer" />
                 </div>
             );
         }
