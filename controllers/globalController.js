@@ -6,7 +6,7 @@ module.exports = {
 
     createInvitation: function (req, res) {
 
-        console.log("params...: ", req.params)
+        console.log("params from global controller: ", req.params)
         walkerName = req.params.walkername;
 
         db.invitationPending
@@ -16,12 +16,12 @@ module.exports = {
                 specialCode: req.params.specialcode,
                 walkerId: req.params.walkerid       /// this code need to come with the state
             })
-            // .then(dbModel => console.log(dbModel))
+            // .then(dbModel => console.log("From invitationPending in globalcontroller: ", dbModel))
             .then(dbModel => sendSMSowner(dbModel, walkerName))
             .catch(err => res.status(422).json(err));
 
 
-        function sendSMSowner(dbModel, walkerName) {
+        function sendSMSowner (dbModel, walkerName) {
        
             require('dotenv').config();
             var id = process.env.TWILIO_ACCOUNT_SID;
@@ -34,7 +34,7 @@ module.exports = {
        
             var ownerName = dbModel.name;
             var phoneNumber = dbModel.phoneNumber;
-            var urlCode1 = dbModel.walkeId;
+            var urlCode1 = dbModel.walkerId;
             var urlCode2 = dbModel.specialCode;
             // var walkerName = req.cookie.name;
             var walkerName = walkerName;

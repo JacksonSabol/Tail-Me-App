@@ -21,11 +21,12 @@ import ShowMap from "./components/ShowMap";
 import InviteOwners from "./components/InviteOwners";
 import GetCoordinates from "./components/GetCoordinates";
 import ShowPicsMap from "./components/ShowPicsMap";
+import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
+import Referral from "./pages/Referral";
 // import Footer from "./components/Footer";
 
-import walkerWalksSchedule from "./components/WalkerScheduleWalks";
-
-import WalkerScheduleWalks from "./components/WalkerScheduleWalks"
+// Temp: delete before push - JS
+import HomeTest from "./pages/HomeTest";
 
 function App() {
   return (
@@ -44,7 +45,6 @@ function App() {
         <Route exact path="/walker/uploadPhotos" component={WalkPhotoUpandPost} />
         <Route exact path="/walker/walkImages" component={WalkImages} />
         <Route exact path="/walker/schedule" component={Schedule} />
-        <Route exact path="/walkerWalks/schedule" component={walkerWalksSchedule} />
         <Route exact path="/walker/addSchedule" component={WalkerScheduleWalks} />
         <Route exact path="/aboutTailMe/" component={aboutTailMe} />
         <Route exact path="/contactTailMe/" component={contactTailMe} />
@@ -53,7 +53,12 @@ function App() {
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
         <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
         <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
+        <Route exact path="/owner/signup/:id/:code" component={Referral} />
         {/* <Footer /> */}
+
+        {/* Temp: delete before push - JS */}
+        <Route exact path="/home/test" component={HomeTest} />
+        
       </div>
     </Router>
   );

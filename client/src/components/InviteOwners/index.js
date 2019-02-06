@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 
-
-
 class InviteOwners extends Component {
-
     state = {
         name: "",
         phone: ""
     };
-
 
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
@@ -22,18 +18,15 @@ class InviteOwners extends Component {
     };
 
     handleInviteSubmit = event => {
-
         event.preventDefault();
         console.log(this.state.phone.slice(1, this.state.phone.length));
 
         const data = {
             ownerName: this.state.name,
             phoneNumber: this.state.phone,
-            specialCode:  this.state.phone.slice(1, this.state.phone.length),
-            walkerId :  1,
-            walkerName: "Jon Snow"
-            // walkerId :  this.state.walkerid 
-            // walkerName :  this.state.walkerName
+            specialCode: this.state.phone.slice(1, this.state.phone.length),
+            walkerId: this.props.walkerId,
+            walkerName: this.props.walkerName
         }
 
         API.createInvitation(data)
@@ -48,7 +41,6 @@ class InviteOwners extends Component {
             });
         // }
     };
-
 
     render() {
         return (

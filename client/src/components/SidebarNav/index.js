@@ -28,6 +28,14 @@ function SidebarNav(props) {
                 </div>
                 <div className="sidebar__nav--item">
                     <a
+                        href="#certs"
+                        onClick={() => props.handlePageChange("Certs")}
+                    >
+                        Update Certifications/Availability
+                    </a>
+                </div>
+                <div className="sidebar__nav--item">
+                    <a
                         href="#invite"
                         onClick={() => props.handlePageChange("Invite")}
                     >
