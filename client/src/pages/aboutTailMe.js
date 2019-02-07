@@ -17,12 +17,13 @@ class aboutTailMe extends Component {
                         Welcome to tailME!
         </div>
                     <div className="aboutTailMe__grid--text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            TailME is a service for professional dog walkers, dedicated to providing a premium experience to their clients,
+                         better and easier management of their business and keeping puppies happy and well exercised. Here at TailME we 
+                         know the challenges of running a small business, that you love, and we strive to facilitate that keep those schedules filled and 
+                         your clientele satisfied. To that end we've developed a tool that allows you to intake chosen users, interact with them  more meaningfully, 
+                         manage accounts with greater effeciency and, if you choose, grow your business.  Join us and help keep more healthy tails wagging!
+
+
         </div>
                 </div>
                     <Footer />

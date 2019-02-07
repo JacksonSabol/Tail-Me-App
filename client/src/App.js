@@ -17,6 +17,7 @@ import Schedule from "./components/Schedule";
 import aboutTailMe from "./pages/aboutTailMe";
 import aboutTailMeWalker from "./pages/aboutTailMeWalker";
 import contactTailMe from "./pages/contactTailMe";
+import contactTailMeWalker from "./pages/contactTailMeWalker";
 import createWalkerProfile from "./pages/createWalkerProfile";
 import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
@@ -58,6 +59,7 @@ function App() {
         <Route exact path="/aboutTailMe/" component={aboutTailMe} />
         <Route exact path="/aboutTailMeWalker/" component={aboutTailMeWalker} />
         <Route exact path="/contactTailMe/" component={contactTailMe} />
+        <Route exact path="/contactTailMeWalker/" component={contactTailMeWalker} />
         <Route exact path="/userProfile/:username" component={ProfileTest} />
         <Route exact path="/walker/showmap" component={ShowMap} />
         <Route exact path="/walker/inviteowner" component={InviteOwners} />

@@ -483,7 +483,7 @@ button.css-48ayfv {
     text-shadow: 2px 2px 8px #1190cb; }
 
 .walkernav {
-  background-image: linear-gradient(#e6e6e6, #a1dcf7);
+  background-image: linear-gradient(#e6e6e6, #7ECEFF);
   box-shadow: 0em 0em 0.5em 0.5em #1190cb;
   display: grid;
   grid-template-columns: 6 1fr;
@@ -534,6 +534,128 @@ button.css-48ayfv {
   .walkernav__contact:hover {
     background-color: transparent;
     border-color: #e7f6fd; }
+
+.walkerContact {
+  background-image: radial-gradient(#e6e6e6, #808080);
+  height: 100%;
+  display: grid;
+  height: 90%;
+  grid-template-columns: 1fr 2fr  2fr 1fr;
+  grid-template-rows: 1fr auto auto 1fr 1fr;
+  grid-gap: 2em; }
+  .walkerContact__logo {
+    grid-area: 1/2;
+    justify-self: right;
+    font-size: 7em;
+    margin-top: .3em;
+    font-family: "Mouse Memoirs", sans-serif;
+    color: #1190cb; }
+    .walkerContact__logo--image {
+      grid-area: 1/3;
+      justify-self: left;
+      margin-top: 3em; }
+  .walkerContact__firstName {
+    font-size: 2.5em;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto .walkerContact__firstName --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
+    .walkerContact__firstName--input {
+      grid-area: 1/2/1/3;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__lastName {
+    font-size: 2.5em;
+    grid-area: 2/3;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto .walkerContact__lastName --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
+    .walkerContact__lastName--input {
+      grid-area: 1/2/1/3;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__userType {
+    font-size: 2.5em;
+    grid-area: 3/2/3/4;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto .walkerContact__userType --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
+    .walkerContact__userType--input {
+      grid-area: 1/2/2/11;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__textArea {
+    font-size: 2.5em;
+    grid-area: 4/2/4/4;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto .walkerContact__textArea --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-justify-self: center; }
+    .walkerContact__textArea--input {
+      grid-area: 1/2/2/11;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__link--button {
+    grid-area: 5/3;
+    justify-self: right;
+    font-size: 3em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    margin: 1em 0em;
+    box-shadow: 0 0 12px #a6a6a6;
+    outline: none;
+    text-decoration: none; }
+  .walkerContact__link--button:hover {
+    background-color: transparent;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb;
+    box-shadow: 0 0 12px #7ECEFF;
+    outline: none;
+    text-decoration: none; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
@@ -826,7 +948,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none; }
     .walkerSignup__form--usernameLabel {
       grid-area: 3/1;
@@ -843,7 +965,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none; }
     .walkerSignup__form--passwordLabel {
       grid-area: 5/1;
@@ -860,7 +982,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none; }
     .walkerSignup__form--submitButton {
       grid-area: 7/1;
@@ -1249,7 +1371,7 @@ button.css-48ayfv {
       border-radius: .5em;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--lastNameLabel {
@@ -1267,7 +1389,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--userTypeLabel {
@@ -1285,7 +1407,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--textAreaLabel {
@@ -1303,7 +1425,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--addressLabel {
@@ -1321,7 +1443,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--cityLabel {
@@ -1339,7 +1461,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--stateLabel {
@@ -1357,7 +1479,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--zipcodeLabel {
@@ -1375,7 +1497,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--countryLabel {
@@ -1393,7 +1515,7 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--submitButton {
@@ -1416,7 +1538,7 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb;
-      box-shadow: 0 0 12px #a1dcf7;
+      box-shadow: 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--homeButton {
@@ -1438,7 +1560,7 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb;
-      box-shadow: 0 0 12px #a1dcf7;
+      box-shadow: 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerProfile__form--footer {
@@ -1661,7 +1783,7 @@ button.css-48ayfv {
       border-radius: .5em;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerlogin__form--passwordLabel {
@@ -1679,7 +1801,7 @@ button.css-48ayfv {
       border-radius: .5em;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7;
+      box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerlogin__form--submitButton {
@@ -1702,7 +1824,7 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb;
-      box-shadow: 0 0 12px #a1dcf7;
+      box-shadow: 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
     .walkerlogin__form--footer {
@@ -1729,7 +1851,7 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb;
-      box-shadow: 0 0 12px #a1dcf7;
+      box-shadow: 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
 
@@ -1741,7 +1863,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: auto 1fr  1fr auto;
     grid-template-rows: .5fr .5fr 1fr 1fr;
-    grid-template-areas: ". . . . " ". l  l ." ". a  w ." "f f f f ";
+    grid-template-areas: ". . . . " ". l  l ." ". a  w ." "f f f f ";
     grid-gap: 4em; }
   .walkersplash__logo {
     grid-area: l;
@@ -1751,7 +1873,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    grid-template-areas: "t t t" "b b b" ". . ."; }
+    grid-template-areas: "t t t" "b b b" ". . ."; }
     .walkersplash__about--text {
       grid-area: t;
       font-size: 2.5em;
@@ -1784,7 +1906,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    grid-template-areas: "t t t" "c c c" "b b b"; }
+    grid-template-areas: "t t t" "c c c" "b b b"; }
     .walkersplash__user--text {
       grid-area: t;
       font-size: 2.5em;
@@ -1826,7 +1948,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    grid-template-areas: "t t t" "c c c" "b b b"; }
+    grid-template-areas: "t t t" "c c c" "b b b"; }
     .walkersplash__walker--text {
       grid-area: t;
       font-size: 2.5em;
