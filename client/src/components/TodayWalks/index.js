@@ -40,7 +40,8 @@ class TodayWalks extends Component {
     onClickButton: false,
     walkId: "",
     images: [],
-    pastWalks: []
+    pastWalks: [],
+    locationckeck: false
 
   }
   // Life-cycle function that executes when the components mount (page loads)
@@ -63,7 +64,7 @@ class TodayWalks extends Component {
           const end_time = Moment(data.checkOutTime);
           const difference = end_time.diff(start_time, 'minutes', true);
 
-          const finishedWalk = data.checkInTime === null ? false : true
+          const finishedWalk = data.checkOutTime === null ? false : true
 
           const dataFormatted = {
             checkInTime: data.checkInTime,
@@ -128,6 +129,68 @@ class TodayWalks extends Component {
 
   }
 
+
+  handleCheckIn = (walkId) => {
+
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const coords = pos.coords;
+
+        console.log("walkId IN: ", walkId);
+        console.log("coords IN: ", coords);
+
+        // update walks start time and coordinates and end time and coords
+        //
+
+        API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude)
+          .then(res => {
+            console.log("back from update checkIn")
+            console.log("updateCheck: ", res.data)
+            // this.setState({
+            //   walks: res.data
+            // });
+
+            //console.log("data[0]: ", res.data[0].GPSLatitude)
+            // this.setState({
+            //   locationckeck: true
+            // })
+          }).catch(err => {
+            console.log(err)
+          });
+      });
+    }
+  }
+
+  handleCheckOut = (walkId) => {
+
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const coords = pos.coords;
+        console.log("walkId OUT: ", walkId);
+        console.log("coords OUT: ", coords);
+
+        // update walks start time and coordinates and end time and coords
+        //
+
+        API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude)
+          .then(res => {
+            console.log("back from update checkIn")
+            console.log("updateCheck: ", res.data)
+            // this.setState({
+            //   walks: res.data
+            // });
+
+            //console.log("data[0]: ", res.data[0].GPSLatitude)
+            // this.setState({
+            //   locationckeck: true
+            // })
+          }).catch(err => {
+            console.log(err)
+          });
+      });
+    }
+  }
+ 
   convertMinsToHrsMins = (mins) => {
     let h = Math.floor(mins / 60);
     let m = mins % 60;
@@ -152,9 +215,9 @@ class TodayWalks extends Component {
 
                     <p className="list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-                                         
-                      <button onClick={() => this.handleCheckin()}>Check-in </button>
-                      <button onClick={() => this.handleCheckout()}>Check-out</button>
+
+                      <button onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>
+                      <button onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>
                     </p>
                   </ListItem>
 
@@ -218,7 +281,7 @@ class TodayWalks extends Component {
 
                 {this.state.images.map(image => (<AnyReactComponent ///all of the props ie walk.img/walk.lat))}
                   id={image.id}
-                  icon="../paw-green-2020.svg"
+                  icon="../paw-tailme-2020.svg"
                   lat={image.GPSLatitude}
                   lng={image.GPSLongitude}
                   imageClick={this.handleImgClick}

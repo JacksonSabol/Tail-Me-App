@@ -79,7 +79,7 @@ router.route("/walks/:id/uploadPic")
 
 router.route("/walks/:idWalk/getImages")
   .get(walkerController.getImages);
-  
+
 
 router.route("/:id/walkSchedule")
   .get(walkerController.getWalksSchedule);
@@ -95,15 +95,19 @@ router.route("/:idWalker/getDogOwners")
 
 router.route("/schedule/:idWalk")
   .put(walkerController.updateWalk)
+
+router.route("/check/:type/:idWalk/:lat/:lng")
+  .put(walkerController.updateCheckInOut)
+
 // Matches with "/api/walker/invitecustomer/..."
 router.route("/invitecustomer/:name/:phone/:specialcode/:walkerid/:walkername")
   .post(globalController.createInvitation);
 
-  router.route
+router.route
   ("/:id/uploadImages")
   .post(walkerController.addPicturesToCloudary)
 
-  router.route("/walk/:idWalk/:idImage/updateImageOwner")
+router.route("/walk/:idWalk/:idImage/updateImageOwner")
   .put(walkerController.updateImageOwner);
 
 // Matches with "/api/walker/createOwner/..."

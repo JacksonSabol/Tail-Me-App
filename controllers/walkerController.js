@@ -30,8 +30,8 @@ module.exports = {
           'walkDate'
         ],
         where: {
-          walkerId:req.params.id
-          
+          walkerId: req.params.id
+
         }
         //pending how to compare two dates
         //           , where: 
@@ -45,17 +45,17 @@ module.exports = {
       .then(dbModel => { res.json(dbModel) })
       .catch(err => res.status(422).json(err))
   },
-  
+
   uploadPic: function (req, res) {
     console.log("BODY-updateImage")
     console.log(req.body.url)
-/* */
+    /* */
 
- var urlLink=req.body.url
-  
+    var urlLink = req.body.url
+
     var tempFile = urlLink.split("/")
     var fileName = tempFile[tempFile.length - 1]
-    console.log("FILENAME" ,fileName)
+    console.log("FILENAME", fileName)
 
     const exif = require('exif-parser')
     const fs = require('fs')
@@ -74,52 +74,52 @@ module.exports = {
     download(urlLink, filepath, function () {
       console.log(filepath)
       console.log('done');
-    
+
       let buffer = fs.readFileSync(filepath)
       let parser = exif.create(buffer)
       let result = parser.parse()
 
-     
+
       console.log("image in download")
       console.log(result.tags.GPSLatitude)
       console.log(result.tags.GPSLongitude)
       fs.unlinkSync(filepath);
-     
-    let imageData = {
-        walkId: req.body.walkId,
-        url:req.body.url,
-        GPSLatitude:result.tags.GPSLatitude  ,
-        GPSLongitude:result.tags.GPSLongitude ,
-        GPSLatitudeRef: result.tags.GPSLatitudeRef,
-        GPSLongitudeRef:result.tags.GPSLongitudeRef ,
-        DateTimeOriginal: result.tags.DateTimeOriginal
-    }
-  
 
-    db.images
-      .create(imageData)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => {
-        console.log("Error", err)
-        res.status(422).json(err)
-      });
+      let imageData = {
+        walkId: req.body.walkId,
+        url: req.body.url,
+        GPSLatitude: result.tags.GPSLatitude,
+        GPSLongitude: result.tags.GPSLongitude,
+        GPSLatitudeRef: result.tags.GPSLatitudeRef,
+        GPSLongitudeRef: result.tags.GPSLongitudeRef,
+        DateTimeOriginal: result.tags.DateTimeOriginal
+      }
+
+
+      db.images
+        .create(imageData)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => {
+          console.log("Error", err)
+          res.status(422).json(err)
+        });
     });
   },
 
   getImages: function (req, res) {
-    
+
     console.log("Get Images Walking..:", req.params.idWalk)
     db.images
       .findAll({
-          where: {
-          walkId:req.params.idWalk,
-          
+        where: {
+          walkId: req.params.idWalk,
+
         }
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  
+
   getWalksSchedule: function (req, res) {
     console.log("Get Schedule..:", req.params.id)
     db.walks
@@ -152,7 +152,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  
+
   getDogOwners: function (req, res) {
     console.log("GetDogOwners");
     console.log(req.body);
@@ -170,6 +170,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   updateWalk: function (req, res) {
     console.log("Update");
     console.log(req.body);
@@ -184,6 +185,55 @@ module.exports = {
         })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  updateCheckInOut: function (req, res) {
+    console.log("updateCheckInOut");
+    console.log(req.params.type);
+    console.log(req.params.idWalk);
+    console.log(req.params.lat);
+    console.log(req.params.lng);
+
+    // console.log("checkinGPSLatitude: ", req.body.latitude)
+    // console.log("checkinGPSLongitude: ", req.body.longitude)
+
+    if (req.params.type === "in") {
+      var data = {
+        checkinTime: Date.now(),
+        checkinGPSLatitude: req.params.lat,
+        checkinGPSLongitude: req.params.lat
+      }
+      db.walks
+        .update(
+          data,
+          {
+            where: {
+              id: req.params.idWalk
+            }
+          })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+        }
+     else if (req.params.type === "out") {
+   
+      var data = {
+        checkoutTime: Date.now(),
+        checkoutGPSLatitude: req.params.lat,
+        checkoutGPSLongitude: req.params.lat
+      }
+      db.walks
+        .update(
+          data,
+          {
+            where: {
+              id: req.params.idWalk
+            }
+          })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+
+    } 
+   else { (res.json("type error, need to be 'in' or 'out' for the check")) }
   },
 
   addPicturesToCloudary: function (req, res) {
@@ -211,7 +261,7 @@ module.exports = {
 
           where: {
             walkId: req.params.idWalk,
-            id:req.params.idImage
+            id: req.params.idImage
           }
         })
       .then(dbModel => res.json(dbModel))

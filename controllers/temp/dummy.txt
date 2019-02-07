@@ -1,0 +1,1 @@
+the temp folder is used in the procces of get the metadata from the images
