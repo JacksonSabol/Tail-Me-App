@@ -37,10 +37,12 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.handleCheckin()}>Check-in </button>
-        <button onClick={() => this.handleCheckout()}>Check-out</button>
-
+      <div className="showMap">
+        <div className="showMap__title">Check into your walk</div>
+        <div className="showMap__button">
+        <button className="showMap__button--checkIn" onClick={() => this.handleCheckin()}>Check-in </button>
+        <button className="showMap__button--checkOut"onClick={() => this.handleCheckout()}>Check-out</button>
+        </div>
         {this.state.checkin ? (
           <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
             <Marker onClick={this.onMarkerClick} name={'current location'} icon={{ url: "../paw2020.svg" }} />

@@ -140,6 +140,9 @@ a {
   font-family: "Thasadith", sans-serif;
   color: #1190cb; }
 
+.css-10nd86i {
+  color: #1a1a1a; }
+
 .Contact {
   background-image: radial-gradient(#4d4d4d, #333333);
   display: grid;
@@ -444,6 +447,43 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+
+.showMap {
+  margin: 3em; }
+  .showMap__title {
+    font-family: "Over the Rainbow", cursive;
+    font-size: 3em;
+    margin: .5em;
+    color: #1190cb;
+    text-align: center; }
+  .showMap__button--checkIn {
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #1190cb;
+    background-color: #333333;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #1190cb;
+    margin: 1em 1em; }
+  .showMap__button--checkIn:hover {
+    background-color: #1a1a1a;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .showMap__button--checkOut {
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #1190cb;
+    background-color: #333333;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #1190cb;
+    margin: 1em 1em; }
+  .showMap__button--checkOut:hover {
+    background-color: #1a1a1a;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 8px #1190cb; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }

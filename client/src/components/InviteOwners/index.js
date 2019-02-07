@@ -47,7 +47,7 @@ class InviteOwners extends Component {
             <div className="walkerInvite">
                 <p className="walkerInvite__title">
                     Hello {this.state.firstName} {this.state.lastName}, use this form to invite new clients to 
-                    schedul a walk with you!
+                    schedule a walk with you!
                 </p>
                 <form className="walkerInvite__form">
                     <label className="walkerInvite__form--nameLabel">Client Name:</label>
@@ -63,8 +63,8 @@ class InviteOwners extends Component {
                         value={this.state.phone}
                         name="phone"
                         onChange={this.handleInputChange}
-                        type="(___)xxx-xxxx"
-                        placeholder="Phone number"
+                        type="number"
+                        placeholder="10 digit number"
                     />
                     <button className="walkerInvite__form--button" onClick={this.handleInviteSubmit}>Send Invitation</button>
                 </form>
