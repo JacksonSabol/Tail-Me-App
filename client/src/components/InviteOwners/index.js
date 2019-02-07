@@ -4,7 +4,8 @@ import API from "../../utils/API";
 class InviteOwners extends Component {
     state = {
         name: "",
-        phone: ""
+        phone: "",
+        error: false
     };
 
     handleInputChange = event => {
@@ -37,37 +38,44 @@ class InviteOwners extends Component {
                     phone: ""
                 });
             }).catch(err => {
-                console.log(err)
+                console.log(err);
+                this.setState({ error: true });
             });
         // }
     };
 
     render() {
         return (
-            <div className="walkerInvite">
-                <p className="walkerInvite__title">
-                    Hello {this.state.firstName} {this.state.lastName}, use this form to invite new clients to 
-                    schedule a walk with you!
-                </p>
-                <form className="walkerInvite__form">
-                    <label className="walkerInvite__form--nameLabel">Client Name:</label>
-                    <input className="walkerInvite__form--nameInput"
-                        value={this.state.name}
-                        name="name"
-                        onChange={this.handleInputChange}
-                        type="Dog Owner"
-                        placeholder="Name"
-                    />
-                     <label className="walkerInvite__form--phoneLabel">Client Phone Number:</label>
-                    <input className="walkerInvite__form--phoneInput"
-                        value={this.state.phone}
-                        name="phone"
-                        onChange={this.handleInputChange}
-                        type="number"
-                        placeholder="10 digit number"
-                    />
-                    <button className="walkerInvite__form--button" onClick={this.handleInviteSubmit}>Send Invitation</button>
-                </form>
+            <div>
+                {this.state.error ? (
+                    <div className="walkerInvite">
+                        <p className="search__form--alert"> Please update your qualifications before inviting clients. </p>
+                    </div>
+                ) : (
+                        <div className="walkerInvite">
+                            <p className="walkerInvite__title">
+                                Hello {this.state.firstName} {this.state.lastName}, use this form to invite new clients to schedule a walk with you!</p>
+                            <form className="walkerInvite__form">
+                                <label className="walkerInvite__form--nameLabel">Client Name:</label>
+                                <input className="walkerInvite__form--nameInput"
+                                    value={this.state.name}
+                                    name="name"
+                                    onChange={this.handleInputChange}
+                                    type="Dog Owner"
+                                    placeholder="Name"
+                                />
+                                <label className="walkerInvite__form--phoneLabel">Client Phone Number:</label>
+                                <input className="walkerInvite__form--phoneInput"
+                                    value={this.state.phone}
+                                    name="phone"
+                                    onChange={this.handleInputChange}
+                                    type="number"
+                                    placeholder="10 digit number"
+                                />
+                                <button className="walkerInvite__form--button" onClick={this.handleInviteSubmit}>Send Invitation</button>
+                            </form>
+                        </div>
+                    )}
             </div>
         );
     }

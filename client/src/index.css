@@ -833,7 +833,7 @@ button.css-48ayfv {
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 7 1fr; }
+    grid-template-rows: 8 1fr; }
     .ownerSignup__form--emailLabel {
       grid-area: 1/1;
       justify-self: left;
@@ -911,6 +911,8 @@ button.css-48ayfv {
       background-color: #1a1a1a;
       letter-spacing: 0.1em;
       text-shadow: 2px 2px 8px #1190cb; }
+    .ownerSignup__form--footer {
+      grid-area: 3/2; }
 
 .walkerSignup {
   background-image: radial-gradient(#e6e6e6, #808080);

@@ -21,7 +21,7 @@
         grid-area: 2/2;
         display:grid;
         grid-template-columns: 1fr ;
-        grid-template-rows:  (7) 1fr;
+        grid-template-rows:  (8) 1fr;
         &--emailLabel{
             grid-area: 1/1;
             justify-self: left;
@@ -109,6 +109,9 @@
             background-color: $color-darkest;
             letter-spacing: 0.1em;
             text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--footer{
+            grid-area: 3/2;
         }
     }
 

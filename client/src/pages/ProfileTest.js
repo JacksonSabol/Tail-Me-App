@@ -14,6 +14,7 @@ import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
 import DogOwnerGallery from "../components/DogGallery";
 import CreateDog from './createDog';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../index.css";
 
 const loading = {
@@ -270,7 +271,9 @@ class ProfileContainer extends Component {
                             {this.renderWalkerPage()}
                         </div>
                     </div>
-                    {/* <Footer className="ownerDash__footer" /> */}
+                    <div className="ownerDash__grid--footer" >
+                        <Footer />
+                    </div>
                 </div>
             );
         } else if (userType === "owner") {
@@ -288,12 +291,9 @@ class ProfileContainer extends Component {
                             {this.renderOwnerPage()}
                         </div>
                     </div>
-
                     <div className="ownerDash__grid--footer" >
-                    <Footer />
+                        <Footer />
                     </div>
-                  
-
                 </div>
             );
         }
