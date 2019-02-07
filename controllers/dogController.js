@@ -60,7 +60,7 @@ module.exports = {
           'walkDate'
         ],
         where: {
-          dogOwnerId:req.params.id
+          dogOwnerId:req.params.id // This is the id of the dog, despite the table name being dogOwner
           
         }
         //pending how to compare two dates

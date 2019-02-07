@@ -67,8 +67,11 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemNotifications">
-                    <a href="#">
-                        Notifications
+                    <a
+                        href="#upload"
+                        onClick={() => props.handlePageChange("Upload")}
+                    >
+                        Upload Images
                     </a>
                 </div>
                 <div className="sidebar__nav--itemLogout">

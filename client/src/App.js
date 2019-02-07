@@ -1,7 +1,6 @@
 import React from "react";
 import { Router, Route } from "react-router-dom";
 import history from "./history/history";
-// import Header from "./components/Header";
 import Login from "./pages/Login";
 import OwnerSignup from "./pages/OwnerSignup";
 import walkerDashboard from "./pages/walkerDashboard";
@@ -25,19 +24,15 @@ import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 import ReferralSignup from "./pages/ReferralSignup";
 import createReferralProfile from "./pages/createReferralProfile";
 import createReferralDog from "./pages/createReferralDog";
-// import Referral from "./pages/Referral";
-import "./index.css" 
-import WalkPhotoUpload from  "./components/WalkPhotoUpandPost"
-import dogOwnerGallery from "./components/DogGallery"
-
-// import Footer from "./components/Footer";
-import ownerWalks from "./components/ownerWalks"
+import WalkPhotoUpload from  "./components/WalkPhotoUpandPost";
+import dogOwnerGallery from "./components/DogGallery";
+import ownerWalks from "./components/ownerWalks";
+import "./index.css";
 
 function App() {
   return (
     <Router history={history}>
       <div>
-        {/* <Header /> */}
         <Route exact path="/" component={splash} />
         <Route exact path="/user/login" component={Login} />
         <Route exact path="/owner/signup" component={OwnerSignup} />
@@ -61,11 +56,9 @@ function App() {
         <Route exact path="/dogOwner/gallery" component={dogOwnerGallery} />
         <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
         <Route exact path="/owner/walks" component={ownerWalks} />
-       {/*  <Route exact path="/owner/signup/:id/:code" component={Referral} /> */}
         <Route exact path="/owner/signup/:id/:code" component={ReferralSignup} />
         <Route exact path="/owner/create/:referralID/:username" component={createReferralProfile} />
         <Route exact path="/dog/create/:referredWalkerID/:username" component={createReferralDog} />
-        {/* <Footer /> */}
       </div>
     </Router>
   );

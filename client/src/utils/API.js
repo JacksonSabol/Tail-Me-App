@@ -82,25 +82,25 @@ export default {
     addPicturesToCloudinary: function (formData) {
 
         return axios.post(
-             "https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload",
-               formData, {
-                   headers: { "X-Requested-With": "XMLHttpRequest" },
-                   image_metadata:true
-    })
-},
+            "https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload",
+            formData, {
+                headers: { "X-Requested-With": "XMLHttpRequest" },
+                image_metadata: true
+            })
+    },
 
-updateImageOwner:function(dataImageOwner,idWalk,idImage) {
-    return axios.put(`/api/walker/walk/${idWalk}/${idImage}/updateImageOwner`,dataImageOwner)
+    updateImageOwner: function (dataImageOwner, idWalk, idImage) {
+        return axios.put(`/api/walker/walk/${idWalk}/${idImage}/updateImageOwner`, dataImageOwner)
 
-},
-getImagesOwner:function(idOwner) {
-    return axios.get(`/api/dogProfile/${idOwner}/gallery`)
+    },
+    getImagesOwner: function (idOwner) {
+        return axios.get(`/api/dogProfile/${idOwner}/gallery`)
 
-},
-getImagesWalk:function(idWalk) {
-    console.log("IWALDK:" , idWalk)
-    return axios.get(`/api/walker/walks/${idWalk}/getImages`)
+    },
+    getImagesWalk: function (idWalk) {
+        console.log("IWALDK:", idWalk)
+        return axios.get(`/api/walker/walks/${idWalk}/getImages`)
 
-}
-    
+    }
+
 };
