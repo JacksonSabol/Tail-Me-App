@@ -13,10 +13,15 @@ export class MapContainer extends Component {
   };
 
   handleCheckin = () => {
-
-    this.setState({
-      checkin: true
-    });
+    
+    API.updateWalk(event.id, data)
+            .then(res => {
+              this.setState({
+                checkin: true
+              });
+            })
+            .catch(err => console.log(err));
+   
   }
 
   onMarkerClick = (props, marker, e) =>

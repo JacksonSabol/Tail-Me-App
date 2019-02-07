@@ -3,6 +3,7 @@ import "../../index.css";
 import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar/dist/fullcalendar.css';
 import API from "../../utils/API";
+import WalkerScheduleWalks from "../../components/WalkerScheduleWalks";
 
 class Schedule extends Component {
     state = {
@@ -15,6 +16,7 @@ class Schedule extends Component {
     };
 
     loadMyWalks = () => {
+        console.log("username",this.props.username)
         const idWalker = this.props.walkerID
         API.getMyWalks(idWalker)
             .then(res => {
@@ -49,7 +51,17 @@ class Schedule extends Component {
 
     render() {
         return (
+
+
             <div id="example-component">
+
+                <div>
+                    <br></br>
+                    <WalkerScheduleWalks
+                        walkerID={this.props.walkerID}
+                        username={this.props.username}
+                    />
+                </div>
                 <FullCalendar
                     id="your-custom-ID"
                     header={{

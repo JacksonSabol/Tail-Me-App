@@ -44,24 +44,72 @@ module.exports = {
   
   uploadPic: function (req, res) {
     console.log("BODY-updateImage")
-    console.log(req.body)
+    console.log(req.body.url)
+/* */
+
+ var urlLink=req.body.url
+  
+    var tempFile = urlLink.split("/")
+    var fileName = tempFile[tempFile.length - 1]
+    console.log("FILENAME" ,fileName)
+
+    const exif = require('exif-parser')
+    const fs = require('fs')
+    const request = require('request');
+
+    var download = function (uri, filename, callback) {
+      request.head(uri, function (err, res, body) {
+        console.log('content-type:', res.headers['content-type']);
+        console.log('content-length:', res.headers['content-length']);
+
+        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+
+    var filepath = `./controllers/temp/${fileName}`
+    download(urlLink, filepath, function () {
+      console.log(filepath)
+      console.log('done');
+    
+      let buffer = fs.readFileSync(filepath)
+      let parser = exif.create(buffer)
+      let result = parser.parse()
+
+     
+      console.log("image in download")
+      console.log(result.tags.GPSLatitude)
+      console.log(result.tags.GPSLongitude)
+      fs.unlinkSync(filepath);
+     
+    let imageData = {
+        walkId: req.body.walkId,
+        url:req.body.url,
+        GPSLatitude:result.tags.GPSLatitude  ,
+        GPSLongitude:result.tags.GPSLongitude ,
+        GPSLatitudeRef: result.tags.GPSLatitudeRef,
+        GPSLongitudeRef:result.tags.GPSLongitudeRef ,
+        DateTimeOriginal: result.tags.DateTimeOriginal
+    }
+  
 
     db.images
-      .create(req.body)
+      .create(imageData)
       .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.log("Error", err)
         res.status(422).json(err)
       });
+    });
   },
+  
   getImages: function (req, res) {
     
-    console.log("Get Images..:", req.params.id)
+    console.log("Get Images Walking..:", req.params.idWalk)
     db.images
       .findAll({
           where: {
-          walkId:req.params.id,
-          sendCustomer:null
+          walkId:req.params.idWalk,
+          
         }
       })
       .then(dbModel => res.json(dbModel))

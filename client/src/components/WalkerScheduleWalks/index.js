@@ -55,16 +55,15 @@ class WalkerScheduleWalks extends Component {
 
     API.addSchedule(selectedOwners, idWalker)
       .then(res => {
-
+        //this.props.history.push("/userProfile/this.props.username#fullschedule")
+        console.log("username",this.props.username)
       })
     }
 
   render() {
     return (
       <div>
-        <br></br><br></br><br></br><br></br><br></br><br></br>
-        <br></br><br></br><br></br><br></br><br></br><br></br>
-        <br></br><br></br><br></br><br></br><br></br><br></br>
+        
         <DateTimePicker
           onChange={this.onChange}
           value={this.state.date}
@@ -72,11 +71,11 @@ class WalkerScheduleWalks extends Component {
           disableClock={true}
           calendarClassName='class1'
         />
-        <br></br>
+      
         <ReactMultiSelectCheckboxes
           options={this.state.onwnerList}
           onChange={this.handleChangeList} />
-        <br></br>
+     
         <button onClick={this.handleSchedule}>schedule</button>
       </div>
     );

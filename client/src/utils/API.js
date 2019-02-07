@@ -92,6 +92,11 @@ updateImageOwner:function(dataImageOwner,idWalk,idImage) {
 getImagesOwner:function(idOwner) {
     return axios.get(`/api/dogProfile/${idOwner}/gallery`)
 
+},
+getImagesWalk:function(idWalk) {
+    console.log("IWALDK:" , idWalk)
+    return axios.get(`/api/walker/walks/${idWalk}/getImages`)
+
 }
     
 };

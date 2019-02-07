@@ -88,8 +88,8 @@ class WalkPhotoUpandPost extends Component {
             // Initial FormData
             const formData = new FormData();
             formData.append("file", file);
-            formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_API_KEY}`);
-            formData.append("api_key", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`); // Replace API key with your own Cloudinary key
+            formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
+            formData.append("api_key", `${process.env.REACT_APP_CLOUDINARY_API_KEY}`); // Replace API key with your own Cloudinary key
             formData.append("timestamp", (Date.now() / 1000) | 0);
             formData.append("folder", 'tailMeApp');
 
@@ -190,11 +190,11 @@ class WalkPhotoUpandPost extends Component {
 
                     </div>
                 </form>
-                <ReactSelect
+                {/* <ReactSelect
                     options={this.state.onwnerList}
                     onChange={this.handleChangeList} />
                 <br></br>
-                <button onClick={this.handleTransferImages}>Send images to Owner</button>
+                <button onClick={this.handleTransferImages}>Send images to Owner</button> */}
                 <Gallery
                     enableImageSelection={true}
                     backdropClosesModal={true}

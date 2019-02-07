@@ -8,7 +8,7 @@ import Moment from "moment";
 
 
 
-class TodayWalks extends Component {
+class walkerWalks extends Component {
   state = {
     walks: [],
     errorMessage: ""
@@ -32,8 +32,6 @@ class TodayWalks extends Component {
           const start_time = Moment(data.checkInTime);
           const end_time = Moment(data.checkOutTime);
           const difference = end_time.diff(start_time, 'minutes', true)
-
-          console.log("data.checkInTime",data.checkInTime)
 
           const dataFormatted = {
             checkInTime: data.checkInTime,
@@ -78,10 +76,9 @@ class TodayWalks extends Component {
                     <p className="list-publish"> Walk Date:
                     {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
                     </p>
-                    <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")}</p>
-                    
+                    <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
-                    <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </p>
+                    <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
                     <p className="list-publish"> Total Time: {walk.totalTime} </p>
 
@@ -101,4 +98,4 @@ class TodayWalks extends Component {
   }
 }
 
-export default TodayWalks;
+export default walkerWalks;

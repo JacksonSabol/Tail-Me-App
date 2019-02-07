@@ -77,8 +77,9 @@ router.route("/walks/:id/uploadPic")
   /* replace foo-bar with your form field-name */
   .post(walkerController.uploadPic);
 
-router.route("/walks/:id/getImages")
+router.route("/walks/:idWalk/getImages")
   .get(walkerController.getImages);
+  
 
 router.route("/:id/walkSchedule")
   .get(walkerController.getWalksSchedule);

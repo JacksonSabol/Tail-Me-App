@@ -4,7 +4,13 @@
     "password": "password",
     "database": "tailMeDb",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "dialectOptions": {
+      "useUTC": true,
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "-08:00"
   },
   "test": {
     "username": "root",
