@@ -232,7 +232,7 @@ class TodayWalks extends Component {
             ))}
           </List>
         ) : (
-            <p className="search__form--alert"> You don't have previous walks!</p>
+            <p className="search__form--alert"> You don't have any previous walks!</p>
           )}
         {this.state.walkId ? (
           <div style={{ display: "flex" }}>
