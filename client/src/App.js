@@ -37,7 +37,7 @@ function App() {
   return (
     <Router history={history}>
       <div>
-        <Route exact path="/" component={splash} />
+        <Route exact path="/" component={splashWalker} />
         <Route exact path="/splash/Walker" component={splashWalker}/>
         <Route exact path="/user/login" component={Login} />
         <Route exact path="/user/loginWalker" component={LoginWalker} />
