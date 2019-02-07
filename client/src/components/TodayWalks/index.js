@@ -45,7 +45,7 @@ class TodayWalks extends Component{
     pastWalks: [],
     zoom: 14,
     center:[37.7924791,-122.1818368],
-    showMap:false
+    showMap:false,
    locationckeck: false
   }
   // Life-cycle function that executes when the components mount (page loads)
@@ -251,10 +251,7 @@ class TodayWalks extends Component{
                 <p className="search__form--alert"> You don't have any upcomming walks!</p>
               )}
 
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12 sm-12">
+        
 
             {this.state.walks.length ? (
               <List> <br></br>
