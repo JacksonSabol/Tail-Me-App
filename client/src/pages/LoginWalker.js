@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 const title = 'Log Into';
 
-class Login extends Component {
+class LoginWalker extends Component {
     // Setting the initial state values
     state = {
         username: '',
@@ -72,27 +72,27 @@ class Login extends Component {
 
         if (!loggedIn) {
             return (
-                <div className="login">
-                    <p className="login__title">{title}</p>
-                    <img className="login__logo" src={logo} alt="tailME logo" ></img>
-                    <form className="login__form" onSubmit={this.loginUser}>
-                    <label className="login__form--usernameLabel">Enter your user name</label>
-                        <input className="login__form--usernameInput"
+                <div className="walkerlogin">
+                    <p className="walkerlogin__title">{title}</p>
+                    <img className="walkerlogin__logo" src={logo} alt="tailME logo" ></img>
+                    <form className="walkerlogin__form" onSubmit={this.loginUser}>
+                    <label className="walkerlogin__form--usernameLabel">Enter your user name</label>
+                        <input className="walkerlogin__form--usernameInput"
                             value={this.state.username}
                             name="username"
                             onChange={this.handleInputChange}
                             type="text"
                             placeholder="UserName"
                         />
-                         <label className="login__form--passwordLabel">Enter your password</label>
-                        <input className="login__form--passwordInput"
+                         <label className="walkerlogin__form--passwordLabel">Enter your password</label>
+                        <input className="walkerlogin__form--passwordInput"
                             value={this.state.password}
                             name="password"
                             onChange={this.handleInputChange}
                             type="password"
                             placeholder=""
                         />
-                        <button type="submit" className="login__form--submitButton">Log in</button>
+                        <button type="submit" className="walkerlogin__form--submitButton">Log in</button>
                     </form>
                     {showNullError && (
                         <div>
@@ -105,8 +105,8 @@ class Login extends Component {
                             <p><a href="/walker/signup">Sign up as a Walker</a></p>
                         </div>
                     )}
-                    <a className="login__form--homeButton" href="/">Return to Home</a>
-                    <div className="login__form--footer">
+                    <a className="walkerlogin__form--homeButton" href="/">Return to Home</a>
+                    <div className="walkerlogin__form--footer">
                     <Footer/>
                     </div>
                 </div>
@@ -117,4 +117,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default LoginWalker;

@@ -1,0 +1,48 @@
+.showMap{
+    margin: 3em;
+    &__title{
+        font-family: $font-cursive;
+        font-size: 3em;
+        margin: .5em;
+        color: $color-accentOne;
+        text-align: center;
+    }
+    &__button{
+        &--checkIn{
+            font-family: $font-sans;
+            font-size: 2em;
+            text-align: center;
+            color: $color-accentOne;
+            background-color: $color-dark;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: 1em 1em;
+
+        }
+        &--checkIn:hover{
+            background-color: $color-darkest;
+                letter-spacing: 0.1em;
+                text-shadow: 2px 2px 8px $color-accentOne
+
+        }
+        &--checkOut{
+            font-family: $font-sans;
+            font-size: 2em;
+            text-align: center;
+            color: $color-accentOne;
+            background-color: $color-dark;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: 1em 1em;
+
+        }
+        &--checkOut:hover{
+            background-color: $color-darkest;
+                letter-spacing: 0.1em;
+                text-shadow: 2px 2px 8px $color-accentOne
+
+        }
+    }
+}

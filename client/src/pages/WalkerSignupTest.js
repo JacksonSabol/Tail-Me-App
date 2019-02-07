@@ -4,6 +4,7 @@ import axios from "axios";
 import "../index.css";
 import Footer from "../components/Footer";
 import logo from "../images/tailMeLogo.png";
+import homeIcon from "../images/homeIcon.png";
 
 const title = 'Sign Up as a Dog Walker';
 
@@ -111,16 +112,20 @@ class WalkerSignup extends Component {
                     </form>
                     {showError === true && registerError === true && (
                         <div>
-                            <p>Username, password, and email are required fields.</p>
+                            <p className="walkerSignup__form--alertOne">
+                            Username, password, and email are required fields.</p>
                         </div>
                     )}
                     {showError === true && loginError === true && (
                         <div>
-                            <p>That username is already taken. Please choose another, or login.</p>
-                            <p><a href="/user/login">Login</a></p>
+                            <p className="walkerSignup__form--alertTwo">
+                            That username is already taken. Please choose another, or login.</p>
+                            <p><a className="walkerSignup__form--alertButton" href="/user/login">Login</a></p>
                         </div>
                     )}
-                    <a className="walkerSignup__form--homeButton" href="/">Return to Home</a>
+                    <a className="walkerSignup__form--homeButton" href="/">
+                    <img className="walkerSignup__form--homeIcon" src={homeIcon} alt="home icon" >
+                    </img> Home</a>
                     <div className="walkerSignup__form--footer">
                     <Footer/>
                     </div>
