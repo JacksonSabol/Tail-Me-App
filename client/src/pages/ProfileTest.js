@@ -10,11 +10,11 @@ import ShowMap from "../components/ShowMap";
 import ScheduleWalks from "../components/WalkerScheduleWalks";
 import Schedule from '../components/Schedule';
 import WalkerCertification from './WalkerCertification';
+import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
+import DogOwnerGallery from "../components/DogGallery";
 import CreateDog from './createDog';
-// import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "../index.css";
-
 
 const loading = {
     margin: '1em',
@@ -124,6 +124,9 @@ class ProfileContainer extends Component {
                 walkerName={this.state.username}
             />;
             case "Map": return <ShowMap />;
+            case "Upload": return <WalkPhotoUpload
+                WalkerID={this.state.userId}
+            />;
             default: return <Profile
                 username={this.state.username}
                 firstName={this.state.firstName}
@@ -158,6 +161,11 @@ class ProfileContainer extends Component {
                 dogOwnerId={this.state.userId}
             />;
             case "Dogs": return <CreateDog
+                UserID={this.state.userId}
+                username={this.state.username}
+                handlePageChange={this.handlePageChange}
+            />;
+            case "Gallery": return <DogOwnerGallery
                 UserID={this.state.userId}
                 username={this.state.username}
                 handlePageChange={this.handlePageChange}
