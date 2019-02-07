@@ -215,12 +215,13 @@ module.exports = {
         .catch(err => res.status(422).json(err));
         }
      else if (req.params.type === "out") {
-   
+      
       var data = {
-        checkoutTime: Date.now(),
+        finishTime: Date.now(),
         checkoutGPSLatitude: req.params.lat,
         checkoutGPSLongitude: req.params.lat
       }
+      console.log(data)
       db.walks
         .update(
           data,

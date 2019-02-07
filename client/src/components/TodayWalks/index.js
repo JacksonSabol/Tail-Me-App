@@ -59,6 +59,7 @@ class TodayWalks extends Component {
       .then(res => {
 
         const dataFormat = res.data.map(data => {
+          console.log("data:", data)
 
           const start_time = Moment(data.checkInTime);
           const end_time = Moment(data.checkOutTime);
@@ -76,9 +77,9 @@ class TodayWalks extends Component {
 
           }
 
-
           return (dataFormatted)
         });
+
         console.log("Data Format", dataFormat)
 
         const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
@@ -215,9 +216,10 @@ class TodayWalks extends Component {
 
                     <p className="list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-
-                      <button onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>
-                      <button onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>
+                                         
+                  {walk.checkInTime  === null ? (
+                      <button onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
+                      (<button onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>)}
                     </p>
                   </ListItem>
 
@@ -247,7 +249,7 @@ class TodayWalks extends Component {
                     </p>
                     <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
-                    <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
+                    <p className="list-publish"> Check Out Time: {Moment(walk.finishTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
                     <p className="list-publish"> Total Time: {walk.totalTime} </p>
                     <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
