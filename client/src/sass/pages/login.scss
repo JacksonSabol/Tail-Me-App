@@ -22,7 +22,7 @@
         grid-area: 2/2;
         display:grid;
         grid-template-columns: 1fr ;
-        grid-template-rows:  (7) 1fr;
+        grid-template-rows:  (8) 1fr;
        
         &--usernameLabel{
             grid-area: 3/1;
@@ -77,6 +77,11 @@
             letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--footer{
+            grid-area: 8/1;
+            display:flex;
+            justify-content: center;
         }
         &--homeButton{
             grid-area: 3/3;

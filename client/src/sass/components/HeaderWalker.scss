@@ -1,0 +1,70 @@
+.walkernav{
+    background-image: linear-gradient($color-lightest,$color-accentLight);
+    box-shadow: 0em 0em .5em .5em $color-accentOne;
+    display: grid;
+    grid-template-columns:(6) 1fr;
+    grid-template-areas:
+        "l . . . s c";
+    &__logo{
+        justify-self: center; 
+        grid-area: l; 
+        background-color: $color-lightest;
+        border-radius: .5em;
+        padding: 0em 3em;
+        &--image{
+            margin: 0em;
+
+        } 
+    }
+    &__splash{
+        justify-self: right;
+        grid-area: s; 
+        background-color: $color-lightest;
+        border: solid 2px $color-lighter;
+        border-radius: .5em 0em 0em .5em;   
+        padding:  0em 5em;    
+        &--link{
+            font-size: 2.5em;
+            color: $color-light;
+        } 
+        &--link:hover{
+            // letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--homeIcon{
+            height: 2em;
+            margin-top:.5em;
+        }
+    }
+    &__splash:hover{
+        background-color: transparent;
+        border-color: $color-accentWhite;
+        }
+   
+    &__contact{
+        justify-self: left; 
+        grid-area: c;
+        background-color: $color-lightest; 
+        border: solid 2px $color-lighter;
+        border-radius: 0em .5em .5em 0em; 
+        padding:  0em 5em; 
+        &--link{
+            font-size: 2.5em;
+            color: $color-light;            
+        }
+        &--link:hover{
+            // letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--mailIcon{
+            margin-top:.5em;
+            height: 2em
+        }
+    }
+    &__contact:hover{
+        background-color: transparent;
+        border-color: $color-accentWhite;
+        }
+}

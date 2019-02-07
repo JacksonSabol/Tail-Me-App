@@ -1,5 +1,5 @@
 .walkerProfile{
-    background-image: radial-gradient( $color-accentWhite, $color-light);
+    background-image: radial-gradient( $color-lightest, $color-mid);
     // background-color: aqua;
     height: 100%;
     display: grid;
@@ -11,7 +11,7 @@
     }
     &__title{
         grid-area: 2/1;
-        font-family: $font-cursive;
+        font-family: $font-headingD;
         padding: 1em;
         color: $color-accentOne;
         font-size: 5em;
@@ -21,7 +21,7 @@
         grid-area: 2/2;
         display:grid;
         grid-template-columns: 1fr ;
-        grid-template-rows:  (19) 1fr;
+        grid-template-rows:  (20) 1fr;
         &--firstNameLabel{
             grid-area: 1/1;
             justify-self: left;
@@ -30,15 +30,17 @@
         }
         &--firstNameInput{
             grid-area: 2/1;
+            align-self: flex-start;
             font-family: $font-sans;
             font-size: 3em;
             padding: .5em;
             border: solid 2px $color-light;
             border-radius: .5em;
-            align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight;
+            outline: none;
+            text-decoration: none;   
                 
         }
         &--lastNameLabel{
@@ -57,7 +59,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight;
+            outline: none;
+            text-decoration: none;   
                 
         }
         &--userTypeLabel{
@@ -76,7 +80,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight;
+            outline: none;
+            text-decoration: none;   
                 
         }
         &--textAreaLabel{
@@ -95,7 +101,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight; 
+            outline: none;
+            text-decoration: none;  
                 
         }
         &--addressLabel{
@@ -114,7 +122,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight; 
+            outline: none;
+            text-decoration: none;  
                 
         }
         &--cityLabel{
@@ -133,7 +143,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight; 
+            outline: none;
+            text-decoration: none;  
                 
         }
         &--stateLabel{
@@ -152,7 +164,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight; 
+            outline: none;
+            text-decoration: none;  
                 
         }
         &--zipcodeLabel{
@@ -171,7 +185,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight; 
+            outline: none;
+            text-decoration: none;  
                 
         }
         &--countryLabel{
@@ -190,7 +206,9 @@
             align-self: flex-start;
             background-color: $color-accentWhite;
             color: $color-dark; 
-            box-shadow:   inset 0 0 12px $color-accentLight;  
+            box-shadow:   inset 0 0 12px $color-accentLight; 
+            outline: none;
+            text-decoration: none;  
                 
         }
         &--submitButton{
@@ -206,6 +224,8 @@
             border: solid 2px $color-accentWhite;
             margin: 1em 0em;
             box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none; 
 
         }
         &--submitButton:hover{
@@ -214,19 +234,23 @@
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
             box-shadow:    0 0 12px $color-accentLight;
+            outline: none;
+            text-decoration: none; 
         }
         &--homeButton{
             grid-area: 3/3;
             justify-self: right;
             font-size: 3em;
             text-align: center;
-            color: $color-accentOne;
+            color: $color-accentWhite;
             background-color: $color-accentOne;
             padding: .5em 1em;
             border-radius: .5em;
             border: solid 2px $color-accentWhite;
             margin: 1em 1em;
             box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none; 
 
         }
         &--homeButton:hover{
@@ -235,6 +259,15 @@
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
             box-shadow:    0 0 12px $color-accentLight;
+            outline: none;
+            text-decoration: none; 
+        }
+        &--footer{
+            grid-area: 20/1;
+            display:flex;
+            justify-content: center;
+            
+
         }
     }
 

@@ -2,7 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const walks = sequelize.define('walks', {
     checkinTime: DataTypes.DATE,
+    checkinGPSLatitude: DataTypes.DECIMAL(11, 8),
+    checkinGPSLongitude: DataTypes.DECIMAL(11, 8),
     finishTime: DataTypes.DATE,
+    checkoutGPSLatitude: DataTypes.DECIMAL(11, 8),
+    checkoutGPSLongitude: DataTypes.DECIMAL(11, 8),
     walkDate: DataTypes.DATE,
     issues: DataTypes.STRING,
     stars: DataTypes.INTEGER,
