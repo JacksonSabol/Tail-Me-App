@@ -7,7 +7,7 @@ import GoogleMapReact from "google-map-react"
 
 //import "../index.css";
 
-const AnyReactComponent = ({ id, icon, imageClick,lat,lng }) => (
+const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
     <div style={{
         color: 'white',
         // background: 'blue',
@@ -39,8 +39,8 @@ class ownerWalks extends Component {
         errorMessage: "",
         onClickButton: false,
         walkId: "",
-        images:[],
-        pastWalks:[]
+        images: [],
+        pastWalks: []
 
     }
     // Life-cycle function that executes when the components mount (page loads)
@@ -53,7 +53,7 @@ class ownerWalks extends Component {
     // Function to load all TodayWalks from the database
     loadWalks = () => {
 
-        const id=1
+        const id = 1
         API.getOwnerWalks(id)
             .then(res => {
 
@@ -62,16 +62,16 @@ class ownerWalks extends Component {
                     const start_time = Moment(data.checkInTime);
                     const end_time = Moment(data.checkOutTime);
                     const difference = end_time.diff(start_time, 'minutes', true);
-                    
-                    const finishedWalk = data.checkInTime === null ? false : true 
-                   
+
+                    const finishedWalk = data.checkInTime === null ? false : true
+
                     const dataFormatted = {
                         checkInTime: data.checkInTime,
                         checkOutTime: data.checkOutTime,
                         totalTime: this.convertMinsToHrsMins(difference),
                         id: data.id,
                         walkDate: data.walkDate,
-                        finishedWalk : finishedWalk
+                        finishedWalk: finishedWalk
 
                     }
 
@@ -82,17 +82,19 @@ class ownerWalks extends Component {
 
                 const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
                 const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
-                console.log("UpcommingWalks",UpcommingWalks)
-                this.setState({ walks: UpcommingWalks ,
-                                pastWalks:finishedWalks    })
+                console.log("UpcommingWalks", UpcommingWalks)
+                this.setState({
+                    walks: UpcommingWalks,
+                    pastWalks: finishedWalks
+                })
 
             })
 
             .catch(err => console.log(err));
     };
 
-    handleOnClick=(walkId)=> {
-        console.log("walkId",walkId)
+    handleOnClick = (walkId) => {
+        console.log("walkId", walkId)
         API.getImagesWalk(walkId)
             .then(res => {
                 console.log("back from getpics")
@@ -100,12 +102,16 @@ class ownerWalks extends Component {
                 // this.setState({
                 //   walks: res.data
                 // });
-
+                let picsWithGpsInfo = res.data.filter(image =>
+                    image.GPSLatitude != null)
+                  console.log("PICS GPS: ", picsWithGpsInfo)
+                  console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLatitude)
+                  console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLongitude)
                 //console.log("data[0]: ", res.data[0].GPSLatitude)
                 this.setState({
                     onClickButton: true,
                     walkId: walkId,
-                    images: res.data
+                    images: picsWithGpsInfo
                     /* currentLocation: {
                          lat:res.data[0].GPSLatitude,
                          lng:res.data[0].GPSLongitude
@@ -114,7 +120,7 @@ class ownerWalks extends Component {
             }).catch(err => {
                 console.log(err)
             });
-       
+
     }
 
     handleImgClick = (id) => {
@@ -142,12 +148,12 @@ class ownerWalks extends Component {
 
                         {this.state.walks.length ? (
                             <List>
-                               <b>Upcomming Walks:</b> 
-                                 {this.state.walks.map(walk => (
-                                
-                                
+                                <b>Upcomming Walks:</b>
+                                {this.state.walks.map(walk => (
+
+
                                     <ListItem key={walk.id}>
-                                    
+
                                         <p className="list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
                                         </p>
@@ -168,26 +174,26 @@ class ownerWalks extends Component {
 
                         {this.state.walks.length ? (
                             <List> <br></br>
-                               <b>  History Walks:</b>
-                                 {this.state.pastWalks.map(walk => (
-                                
-                                
+                                <b>  History Walks:</b>
+                                {this.state.pastWalks.map(walk => (
+
+
                                     <ListItem key={walk.id}>
-                                    
+
                                         <p className="list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
                                         </p>
 
-                                    
-                                      
+
+
                                         <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
                                         <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
                                         <p className="list-publish"> Total Time: {walk.totalTime} </p>
-                                        <button onClick={this.handleOnClick.bind(this,walk.id)}>Walk Map</button>
-                                       
-                                  
+                                        <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
+
+
                                     </ListItem>
 
                                 ))}
@@ -200,38 +206,42 @@ class ownerWalks extends Component {
 
                     </Col>
                 </Row>
-               
-                    {this.state.onClickButton ? (
-                       
-                            <div style={{
-                                display: "flex",
 
-                            }}>
-                                <div style={{ height: '50vh', width: '50%' }}>
-                                    <GoogleMapReact
-                                        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-                                        defaultCenter={this.state.currentLocation}
-                                        defaultZoom={this.state.zoom}
-                                    >
+                {this.state.onClickButton ? (
 
-                                        {this.state.images.map(image => (<AnyReactComponent ///all of the props ie walk.img/walk.lat))}
+                    <div style={{
+                        display: "flex",
+
+                    }}>
+                        <div style={{ height: '50vh', width: '50%' }}>
+                            <GoogleMapReact
+                                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+                                defaultCenter={this.state.currentLocation}
+                                defaultZoom={this.state.zoom}
+                            >
+
+                                {this.state.images.map(image => (
+                                    <ListItem key={image.id}>
+                                        <AnyReactComponent ///all of the props ie walk.img/walk.lat))}
                                             id={image.id}
                                             icon="../paw-green-2020.svg"
                                             lat={image.GPSLatitude}
                                             lng={image.GPSLongitude}
                                             imageClick={this.handleImgClick}
-                                        />))}
-                                    </GoogleMapReact>
-                                </div>
+                                        />
+                                    </ListItem>
+                                ))}
+                            </GoogleMapReact>
+                        </div>
 
-                                <div style={{ postition: "relative" }}>
-                                    {this.state.activeImage ?
-                                        <img width={'300px'} src={this.state.activeImage}></img> : null}
-                                </div>
-                            </div>
-                       
-                    ) : null }
-         
+                        <div style={{ postition: "relative" }}>
+                            {this.state.activeImage ?
+                                <img width={'300px'} src={this.state.activeImage}></img> : null}
+                        </div>
+                    </div>
+
+                ) : null}
+
 
             </Container>
         );
