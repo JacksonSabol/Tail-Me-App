@@ -66,9 +66,9 @@ const multerConfig = {
 router.route("/create")
   .post(walkerController.addWalker);
 
-// Matches with "/api/walker/walks/"
-router.route("/walks")
-  .get(walkerController.getWalks);
+// Matches with "/api/walker/:id/walks/"
+router.route("/:id/walks")
+  .get(walkerController.getWalkerWalks);
 
 //router.route("/walks/:id/uploadPic")
 //.post(walkerController.uploadPic);
@@ -77,8 +77,9 @@ router.route("/walks/:id/uploadPic")
   /* replace foo-bar with your form field-name */
   .post(walkerController.uploadPic);
 
-router.route("/walks/:id/getImages")
+router.route("/walks/:idWalk/getImages")
   .get(walkerController.getImages);
+  
 
 router.route("/:id/walkSchedule")
   .get(walkerController.getWalksSchedule);

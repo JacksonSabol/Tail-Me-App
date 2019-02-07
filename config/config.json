@@ -6,11 +6,11 @@
     "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {
-      "useUTC": false,
+      "useUTC": true,
       "dateStrings": true,
       "typeCast": true
     },
-    "timezone": "+08:00"
+    "timezone": "-08:00"
   },
   "test": {
     "username": "root",

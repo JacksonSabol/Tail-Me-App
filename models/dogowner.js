@@ -19,9 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     });
-    dogOwner.hasMany(models.walks, {
-      onDelete: "cascade"
-    });
   };
   return dogOwner;
 };

@@ -29,6 +29,7 @@
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "exif-js": "^2.3.0",
+    "exif-parser": "^0.1.12",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "fs": "^0.0.1-security",
@@ -54,6 +55,7 @@
     "react-grid-gallery": "^0.5.3",
     "react-image-file": "^0.3.0",
     "react-multiselect-checkboxes": "^0.1.1",
+    "request": "^2.88.0",
     "sequelize": "^4.42.0",
     "sequelize-cli": "^5.4.0",
     "twilio": "^3.27.1"

@@ -31,6 +31,7 @@ import WalkPhotoUpload from  "./components/WalkPhotoUpandPost"
 import dogOwnerGallery from "./components/DogGallery"
 
 // import Footer from "./components/Footer";
+import ownerWalks from "./components/ownerWalks"
 
 function App() {
   return (
@@ -59,6 +60,8 @@ function App() {
         <Route exact path="/walker/walks/uploadImages" component={WalkPhotoUpload} />
         <Route exact path="/dogOwner/gallery" component={dogOwnerGallery} />
         <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
+        <Route exact path="/owner/walks" component={ownerWalks} />
+       {/*  <Route exact path="/owner/signup/:id/:code" component={Referral} /> */}
         <Route exact path="/owner/signup/:id/:code" component={ReferralSignup} />
         <Route exact path="/owner/create/:referralID/:username" component={createReferralProfile} />
         <Route exact path="/dog/create/:referredWalkerID/:username" component={createReferralDog} />

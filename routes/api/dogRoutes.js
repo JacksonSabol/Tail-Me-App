@@ -18,5 +18,9 @@ router.route("/create")
 router.route("/:idOwner/gallery")
   .get(dogController.getImagesOwner);
 
+  // Matches with "/api/dogProfile/:id/walks/"
+router.route("/:id/walks")
+.get(dogController.getOwnerWalks);
+
 
 module.exports = router;
