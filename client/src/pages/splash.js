@@ -37,11 +37,13 @@ class splash extends Component {
                         <Link className="splash__walker--authentification" to="/walker/signup">
                             walker sign up
                     </Link>
-                        <Link className="splash__walker--registration" to="/user/Login">
+                        <Link className="splash__walker--registration" to="/user/LoginWalker">
                             walker log in
                     </Link>
                     </div>
+                    <div className="splash__footer">
                     <Footer/>
+                    </div>
                 </div>
             </div>
 

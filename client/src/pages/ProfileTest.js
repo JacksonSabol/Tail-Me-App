@@ -280,7 +280,12 @@ class ProfileContainer extends Component {
                             {this.renderOwnerPage()}
                         </div>
                     </div>
-                    {/* <Footer className="ownerDash__footer" /> */}
+
+                    <div className="ownerDash__grid--footer" >
+                    <Footer />
+                    </div>
+                  
+
                 </div>
             );
         }

@@ -1,0 +1,33 @@
+.walkeraboutTailMe{
+    background-image: radial-gradient( $color-lightest, $color-mid);
+    &__grid{
+        height:100%;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-gap: 1em;
+        &--heading{
+            font-family: $font-headingD;
+            justify-self: center;
+            grid-column: 2 / 3;
+            font-size: 6em;
+            margin-top: 1em;
+            color: $color-accentOne;
+        }
+        &--text{
+            grid-area: 2 / 2 / 3 /3;
+            font-size: 2.5em;
+            color: black;
+            padding: .5em;
+            line-height: 2;
+            margin-bottom: 2em;
+        }
+        &--footer{
+            grid-area: 2 / 2 / 3 /3;
+            align-self: center;
+        }
+    }
+}
+
+

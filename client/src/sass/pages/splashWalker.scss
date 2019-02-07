@@ -1,17 +1,18 @@
-.splash{
-    background-image: radial-gradient($color-medium,$color-dark);
+.walkersplash{
+    background-image: radial-gradient( $color-lightest, $color-mid);
     &__grid{
     height: 90%;
+    color: $color-darkest;
     display:grid;
-    grid-template-columns: auto 1fr 1fr 1fr auto;
+    grid-template-columns: auto 1fr  1fr auto;
     grid-template-rows: .5fr .5fr 1fr 1fr;
     grid-template-areas:
-        ". . . . ."
-        ". . l . ."
-        ". a u w ."
-        "f f f f f";
+        ". . . . "
+        ". l  l ."
+        ". a  w ."
+        "f f f f ";
         
-    grid-gap: 2em;
+    grid-gap: 4em;
     // justify-content: center;
     // align-content: center;
     }
@@ -32,26 +33,32 @@
         &--text{
             grid-area: t;
             font-size: 2.5em;
-            color: $color-light;
+            color: $color-darkest;
             margin: 1em;
             text-align: center;
         }
         &--link{
             grid-area: b;
-            font-size: 2em;
+            font-family: $font-sans;
+            font-size: 3em;
             text-align: center;
-            color: $color-lightest;
-            background-color: $color-dark;
-            padding: 1em 1em;
+            color: $color-accentWhite;
+            background-color: $color-accentOne;
+            padding: .5em 1em;
             border-radius: .5em;
-            border: solid 2px $color-darkest;
-            margin: 1em;
+            border: solid 2px $color-accentWhite;
+            margin: 1em 0em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;
+            text-decoration: none;  
         }
         &--link:hover{
-            background-color: $color-darkest;
+            background-color: transparent;
             letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
+            outline: none; 
+            text-decoration: none; 
         }
 
     }
@@ -118,43 +125,55 @@
         &--text{
             grid-area: t;
             font-size: 2.5em;
-            color: $color-light;
+            color: $color-darkest;
             margin: 1em;
             text-align: center;
         }
         &--authentification{
             grid-area: c;
-            font-size: 2em;
+            font-family: $font-sans;
+            font-size: 3em;
             text-align: center;
-            color: $color-lightest;
-            background-color: $color-dark;
-            padding: 1em 2em;
+            color: $color-accentWhite;
+            background-color: $color-accentOne;
+            padding: .5em 1em;
             border-radius: .5em;
-            border: solid 2px $color-darkest;
-            margin: 1em;
+            border: solid 2px $color-accentWhite;
+            margin: 1em 0em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;
+            text-decoration: none;  
         }
         &--authentification:hover{
-            background-color: $color-darkest;
+            background-color: transparent;
             letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
+            outline: none; 
+            text-decoration: none; 
         }
         &--registration{
             grid-area: b;
-            font-size: 2em;
+            font-family: $font-sans;
+            font-size: 3em;
             text-align: center;
-            color: $color-lightest;
-            background-color: $color-dark;
+            color: $color-accentWhite;
+            background-color: $color-accentOne;
+            padding: .5em 1em;
             border-radius: .5em;
-            padding: 1em 2em;
-            border: solid 2px $color-darkest;
-            margin: 1em;
+            border: solid 2px $color-accentWhite;
+            margin: 1em 0em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;
+            text-decoration: none;  
         }
         &--registration:hover{
-            background-color: $color-darkest;
+            background-color: transparent;
             letter-spacing: 0.1em;
             color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
+            outline: none; 
+            text-decoration: none; 
         }
     }
     &__footer{
@@ -164,5 +183,3 @@
     }
     
 }
-
-

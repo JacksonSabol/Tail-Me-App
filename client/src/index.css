@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #333333;
+  background-color: #4d4d4d;
   color: #e6e6e6;
   font-family: "Thasadith", sans-serif; }
 
@@ -53,9 +53,6 @@ a:active {
 
 .footer {
   text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   padding: 2em; }
   .footer__text {
@@ -139,6 +136,9 @@ h2 {
 a {
   font-family: "Thasadith", sans-serif;
   color: #1190cb; }
+
+.css-10nd86i {
+  color: #1a1a1a; }
 
 .Contact {
   background-image: radial-gradient(#4d4d4d, #333333);
@@ -445,6 +445,218 @@ button.css-48ayfv {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
 
+.showMap {
+  margin: 3em; }
+  .showMap__title {
+    font-family: "Over the Rainbow", cursive;
+    font-size: 3em;
+    margin: .5em;
+    color: #1190cb;
+    text-align: center; }
+  .showMap__button--checkIn {
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #1190cb;
+    background-color: #333333;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #1190cb;
+    margin: 1em 1em; }
+  .showMap__button--checkIn:hover {
+    background-color: #1a1a1a;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .showMap__button--checkOut {
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #1190cb;
+    background-color: #333333;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #1190cb;
+    margin: 1em 1em; }
+  .showMap__button--checkOut:hover {
+    background-color: #1a1a1a;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 8px #1190cb; }
+
+.walkernav {
+  background-image: linear-gradient(#e6e6e6, #7ECEFF);
+  box-shadow: 0em 0em 0.5em 0.5em #1190cb;
+  display: grid;
+  grid-template-columns: 6 1fr;
+  grid-template-areas: "l . . . s c"; }
+  .walkernav__logo {
+    justify-self: center;
+    grid-area: l;
+    background-color: #e6e6e6;
+    border-radius: .5em;
+    padding: 0em 3em; }
+    .walkernav__logo--image {
+      margin: 0em; }
+  .walkernav__splash {
+    justify-self: right;
+    grid-area: s;
+    background-color: #e6e6e6;
+    border: solid 2px #bfbfbf;
+    border-radius: .5em 0em 0em .5em;
+    padding: 0em 5em; }
+    .walkernav__splash--link {
+      font-size: 2.5em;
+      color: #a6a6a6; }
+    .walkernav__splash--link:hover {
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+    .walkernav__splash--homeIcon {
+      height: 2em;
+      margin-top: .5em; }
+  .walkernav__splash:hover {
+    background-color: transparent;
+    border-color: #e7f6fd; }
+  .walkernav__contact {
+    justify-self: left;
+    grid-area: c;
+    background-color: #e6e6e6;
+    border: solid 2px #bfbfbf;
+    border-radius: 0em .5em .5em 0em;
+    padding: 0em 5em; }
+    .walkernav__contact--link {
+      font-size: 2.5em;
+      color: #a6a6a6; }
+    .walkernav__contact--link:hover {
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+    .walkernav__contact--mailIcon {
+      margin-top: .5em;
+      height: 2em; }
+  .walkernav__contact:hover {
+    background-color: transparent;
+    border-color: #e7f6fd; }
+
+.walkerContact {
+  background-image: radial-gradient(#e6e6e6, #808080);
+  height: 100%;
+  display: grid;
+  height: 90%;
+  grid-template-columns: 1fr 2fr  2fr 1fr;
+  grid-template-rows: 1fr auto auto 1fr 1fr;
+  grid-gap: 2em; }
+  .walkerContact__logo {
+    grid-area: 1/2;
+    justify-self: right;
+    font-size: 7em;
+    margin-top: .3em;
+    font-family: "Mouse Memoirs", sans-serif;
+    color: #1190cb; }
+    .walkerContact__logo--image {
+      grid-area: 1/3;
+      justify-self: left;
+      margin-top: 3em; }
+  .walkerContact__firstName {
+    font-size: 2.5em;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto .walkerContact__firstName --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
+    .walkerContact__firstName--input {
+      grid-area: 1/2/1/3;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__lastName {
+    font-size: 2.5em;
+    grid-area: 2/3;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto .walkerContact__lastName --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
+    .walkerContact__lastName--input {
+      grid-area: 1/2/1/3;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__userType {
+    font-size: 2.5em;
+    grid-area: 3/2/3/4;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto .walkerContact__userType --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-margin-right: 1em; }
+    .walkerContact__userType--input {
+      grid-area: 1/2/2/11;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__textArea {
+    font-size: 2.5em;
+    grid-area: 4/2/4/4;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto .walkerContact__textArea --label;
+      grid-template-rows-grid-area: 1/1;
+      grid-template-rows-justify-self: center; }
+    .walkerContact__textArea--input {
+      grid-area: 1/2/2/11;
+      font-family: "Thasadith", sans-serif;
+      font-size: 1em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+  .walkerContact__link--button {
+    grid-area: 5/3;
+    justify-self: right;
+    font-size: 3em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    padding: .5em 1em;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    margin: 1em 0em;
+    box-shadow: 0 0 12px #a6a6a6;
+    outline: none;
+    text-decoration: none; }
+  .walkerContact__link--button:hover {
+    background-color: transparent;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb;
+    box-shadow: 0 0 12px #7ECEFF;
+    outline: none;
+    text-decoration: none; }
+
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
   .aboutTailMe__grid {
@@ -596,6 +808,10 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+  .splash__footer {
+    grid-area: f;
+    display: flex;
+    justify-content: center; }
 
 .ownerSignup {
   background-image: radial-gradient(#4d4d4d, #333333);
@@ -697,7 +913,7 @@ button.css-48ayfv {
       text-shadow: 2px 2px 8px #1190cb; }
 
 .walkerSignup {
-  background-image: radial-gradient(#e6e6e6, #bfbfbf);
+  background-image: radial-gradient(#e6e6e6, #808080);
   height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -707,16 +923,16 @@ button.css-48ayfv {
     margin: 2em; }
   .walkerSignup__title {
     grid-area: 2/1;
-    font-family: "Over the Rainbow", cursive;
+    font-family: "Mouse Memoirs", sans-serif;
     padding: 1em;
     color: #1190cb;
-    font-size: 5em; }
+    font-size: 5.5em; }
   .walkerSignup__form {
-    color: #4d4d4d;
+    color: #333333;
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 7 1fr; }
+    grid-template-rows: 8 1fr; }
     .walkerSignup__form--emailLabel {
       grid-area: 1/1;
       justify-self: left;
@@ -727,11 +943,13 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
       align-self: flex-start;
       background-color: #e7f6fd;
-      color: #a6a6a6; }
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
     .walkerSignup__form--usernameLabel {
       grid-area: 3/1;
       justify-self: left;
@@ -742,11 +960,13 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
       align-self: flex-start;
       background-color: #e7f6fd;
-      color: #a6a6a6; }
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
     .walkerSignup__form--passwordLabel {
       grid-area: 5/1;
       justify-self: left;
@@ -757,43 +977,85 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
       align-self: flex-start;
       background-color: #e7f6fd;
-      color: #a6a6a6; }
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
     .walkerSignup__form--submitButton {
       grid-area: 7/1;
       justify-self: left;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       text-align: center;
-      color: #1190cb;
-      background-color: #e7f6fd;
+      color: #e7f6fd;
+      background-color: #1190cb;
       padding: .5em 1em;
       border-radius: .5em;
-      border: solid 2px #1190cb;
-      margin: 1em 0em; }
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
     .walkerSignup__form--submitButton:hover {
-      background-color: #e6e6e6;
+      background-color: transparent;
       letter-spacing: 0.1em;
       color: #1190cb;
-      text-shadow: 2px 2px 8px #1190cb; }
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+    .walkerSignup__form--footer {
+      grid-area: 8/1;
+      display: flex;
+      justify-content: center; }
     .walkerSignup__form--homeButton {
       grid-area: 3/3;
       justify-self: right;
       font-size: 3em;
       text-align: center;
       color: #1190cb;
-      background-color: #e7f6fd;
+      background-color: #e6e6e6;
       padding: .5em 1em;
       border-radius: .5em;
       border: solid 2px #1190cb;
-      margin: 1em 1em; }
+      margin: 1em 1em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
     .walkerSignup__form--homeButton:hover {
-      background-color: #e6e6e6;
+      background-color: transparent;
       letter-spacing: 0.1em;
-      text-shadow: 2px 2px 8px #1190cb; }
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+    .walkerSignup__form--homeIcon {
+      height: 2em; }
+    .walkerSignup__form--alertOne {
+      grid-area: 1/3;
+      font-family: "Mouse Memoirs", sans-serif;
+      font-size: 4em;
+      color: #1190cb;
+      margin: 4em; }
+    .walkerSignup__form--alertTwo {
+      grid-area: 1/3;
+      font-family: "Mouse Memoirs", sans-serif;
+      font-size: 4em;
+      color: #1190cb;
+      margin: 4em; }
+    .walkerSignup__form--alertButton {
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #e6e6e6;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 1em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
 
 .login {
   background-image: radial-gradient(#4d4d4d, #333333);
@@ -816,7 +1078,7 @@ button.css-48ayfv {
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 7 1fr; }
+    grid-template-rows: 8 1fr; }
     .login__form--usernameLabel {
       grid-area: 3/1;
       justify-self: left;
@@ -864,6 +1126,10 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+    .login__form--footer {
+      grid-area: 8/1;
+      display: flex;
+      justify-content: center; }
     .login__form--homeButton {
       grid-area: 3/3;
       justify-self: right;
@@ -1070,7 +1336,7 @@ button.css-48ayfv {
       text-shadow: 2px 2px 8px #1190cb; }
 
 .walkerProfile {
-  background-image: radial-gradient(#e7f6fd, #a6a6a6);
+  background-image: radial-gradient(#e6e6e6, #808080);
   height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -1080,7 +1346,7 @@ button.css-48ayfv {
     margin: 2em; }
   .walkerProfile__title {
     grid-area: 2/1;
-    font-family: "Over the Rainbow", cursive;
+    font-family: "Mouse Memoirs", sans-serif;
     padding: 1em;
     color: #1190cb;
     font-size: 5em; }
@@ -1089,7 +1355,7 @@ button.css-48ayfv {
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 19 1fr; }
+    grid-template-rows: 20 1fr; }
     .walkerProfile__form--firstNameLabel {
       grid-area: 1/1;
       justify-self: left;
@@ -1097,15 +1363,17 @@ button.css-48ayfv {
       font-size: 3em; }
     .walkerProfile__form--firstNameInput {
       grid-area: 2/1;
+      align-self: flex-start;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
       border: solid 2px #a6a6a6;
       border-radius: .5em;
-      align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--lastNameLabel {
       grid-area: 3/1;
       justify-self: left;
@@ -1121,7 +1389,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--userTypeLabel {
       grid-area: 5/1;
       justify-self: left;
@@ -1137,7 +1407,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--textAreaLabel {
       grid-area: 7/1;
       justify-self: left;
@@ -1153,7 +1425,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--addressLabel {
       grid-area: 9/1;
       justify-self: left;
@@ -1169,7 +1443,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--cityLabel {
       grid-area: 11/1;
       justify-self: left;
@@ -1185,7 +1461,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--stateLabel {
       grid-area: 13/1;
       justify-self: left;
@@ -1201,7 +1479,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--zipcodeLabel {
       grid-area: 15/1;
       justify-self: left;
@@ -1217,7 +1497,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--countryLabel {
       grid-area: 17/1;
       justify-self: left;
@@ -1233,7 +1515,9 @@ button.css-48ayfv {
       align-self: flex-start;
       background-color: #e7f6fd;
       color: #333333;
-      box-shadow: inset 0 0 12px #a1dcf7; }
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--submitButton {
       grid-area: 19/1;
       justify-self: left;
@@ -1246,38 +1530,50 @@ button.css-48ayfv {
       border-radius: .5em;
       border: solid 2px #e7f6fd;
       margin: 1em 0em;
-      box-shadow: 0 0 12px #a6a6a6; }
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--submitButton:hover {
       background-color: transparent;
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb;
-      box-shadow: 0 0 12px #a1dcf7; }
+      box-shadow: 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--homeButton {
       grid-area: 3/3;
       justify-self: right;
       font-size: 3em;
       text-align: center;
-      color: #1190cb;
+      color: #e7f6fd;
       background-color: #1190cb;
       padding: .5em 1em;
       border-radius: .5em;
       border: solid 2px #e7f6fd;
       margin: 1em 1em;
-      box-shadow: 0 0 12px #a6a6a6; }
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
     .walkerProfile__form--homeButton:hover {
       background-color: transparent;
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb;
-      box-shadow: 0 0 12px #a1dcf7; }
+      box-shadow: 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .walkerProfile__form--footer {
+      grid-area: 20/1;
+      display: flex;
+      justify-content: center; }
 
 .ownerDash {
   height: 100%; }
   .ownerDash__grid {
     display: grid;
     grid-template-columns: 15 1fr;
-    grid-template-rows: 1fr; }
+    grid-template-rows: 1fr auto; }
     .ownerDash__grid--sidebarNav {
       grid-area: 1/1/2/2; }
     .ownerDash__grid--main-content {
@@ -1286,6 +1582,13 @@ button.css-48ayfv {
       border-radius: 1em;
       margin: 2em 2em 2em 0em;
       grid-area: 1/2/2/16;
+      box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .ownerDash__grid--footer {
+      background-image: radial-gradient(#4d4d4d, #333333);
+      border: solid 0.25em #1190cb;
+      border-radius: 1em;
+      margin: 0em 2em 2em 2em;
+      grid-area: 2/1/3/16;
       box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
 
 .main-content {
@@ -1442,3 +1745,286 @@ button.css-48ayfv {
       background-color: #1a1a1a;
       letter-spacing: 0.1em;
       text-shadow: 2px 2px 8px #1190cb; }
+
+.walkerlogin {
+  background-image: radial-gradient(#e6e6e6, #808080);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr  auto; }
+  .walkerlogin__logo {
+    grid-area: 1/2/1/4;
+    margin: 6em 2em; }
+  .walkerlogin__title {
+    grid-area: 1/1;
+    justify-self: right;
+    font-family: "Mouse Memoirs", sans-serif;
+    padding: 0em;
+    color: #1190cb;
+    font-size: 5em; }
+  .walkerlogin__form {
+    color: #1a1a1a;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 8 1fr; }
+    .walkerlogin__form--usernameLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerlogin__form--usernameInput {
+      grid-area: 4/1;
+      align-self: flex-start;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .walkerlogin__form--passwordLabel {
+      grid-area: 5/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerlogin__form--passwordInput {
+      grid-area: 6/1;
+      align-self: flex-start;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .walkerlogin__form--submitButton {
+      grid-area: 7/1;
+      justify-self: left;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .walkerlogin__form--submitButton:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      box-shadow: 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .walkerlogin__form--footer {
+      grid-area: 8/1;
+      display: flex;
+      justify-content: center; }
+    .walkerlogin__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .walkerlogin__form--homeButton:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      box-shadow: 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+
+.walkersplash {
+  background-image: radial-gradient(#e6e6e6, #808080); }
+  .walkersplash__grid {
+    height: 90%;
+    color: #1a1a1a;
+    display: grid;
+    grid-template-columns: auto 1fr  1fr auto;
+    grid-template-rows: .5fr .5fr 1fr 1fr;
+    grid-template-areas: ". . . . " ". l  l ." ". a  w ." "f f f f ";
+    grid-gap: 4em; }
+  .walkersplash__logo {
+    grid-area: l;
+    justify-self: center; }
+  .walkersplash__about {
+    grid-area: a;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: "t t t" "b b b" ". . ."; }
+    .walkersplash__about--text {
+      grid-area: t;
+      font-size: 2.5em;
+      color: #1a1a1a;
+      margin: 1em;
+      text-align: center; }
+    .walkersplash__about--link {
+      grid-area: b;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
+    .walkersplash__about--link:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+  .walkersplash__user {
+    grid-area: u;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: "t t t" "c c c" "b b b"; }
+    .walkersplash__user--text {
+      grid-area: t;
+      font-size: 2.5em;
+      color: #a6a6a6;
+      margin: 1em;
+      text-align: center; }
+    .walkersplash__user--authentification {
+      grid-area: c;
+      font-size: 2em;
+      text-align: center;
+      color: #e6e6e6;
+      background-color: #333333;
+      padding: 1em 2em;
+      border-radius: .5em;
+      border: solid 2px #1a1a1a;
+      margin: 1em; }
+    .walkersplash__user--authentification:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+    .walkersplash__user--registration {
+      grid-area: b;
+      font-size: 2em;
+      text-align: center;
+      color: #e6e6e6;
+      background-color: #333333;
+      padding: 1em 2em;
+      border-radius: .5em;
+      border: solid 2px #1a1a1a;
+      margin: 1em; }
+    .walkersplash__user--registration:hover {
+      background-color: #1a1a1a;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }
+  .walkersplash__walker {
+    grid-area: w;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: "t t t" "c c c" "b b b"; }
+    .walkersplash__walker--text {
+      grid-area: t;
+      font-size: 2.5em;
+      color: #1a1a1a;
+      margin: 1em;
+      text-align: center; }
+    .walkersplash__walker--authentification {
+      grid-area: c;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
+    .walkersplash__walker--authentification:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+    .walkersplash__walker--registration {
+      grid-area: b;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
+    .walkersplash__walker--registration:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+  .walkersplash__footer {
+    grid-area: f;
+    display: flex;
+    justify-content: center; }
+
+.walkeraboutTailMe {
+  background-image: radial-gradient(#e6e6e6, #808080); }
+  .walkeraboutTailMe__grid {
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 1em; }
+    .walkeraboutTailMe__grid--heading {
+      font-family: "Mouse Memoirs", sans-serif;
+      justify-self: center;
+      grid-column: 2 / 3;
+      font-size: 6em;
+      margin-top: 1em;
+      color: #1190cb; }
+    .walkeraboutTailMe__grid--text {
+      grid-area: 2 / 2 / 3 /3;
+      font-size: 2.5em;
+      color: black;
+      padding: .5em;
+      line-height: 2;
+      margin-bottom: 2em; }
+    .walkeraboutTailMe__grid--footer {
+      grid-area: 2 / 2 / 3 /3;
+      align-self: center; }

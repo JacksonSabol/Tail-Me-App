@@ -139,8 +139,8 @@ class TodayWalks extends Component {
   render() {
     return (
       <Container>
-        <Row>
-          <Col size="md-12 sm-12">
+
+
 
             {this.state.walks.length ? (
               <List>
@@ -200,8 +200,8 @@ class TodayWalks extends Component {
                 <p className="search__form--alert"> You don't have any walks!</p>
               )}
 
-          </Col>
-        </Row>
+
+   
 
         {this.state.onClickButton ? (
 

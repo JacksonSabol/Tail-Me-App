@@ -232,8 +232,10 @@ class createWalkerProfile extends Component {
                             <p>An error occured while adding entries to the database.</p>
                         </div>
                     )}
-                     <a className="ownerProfile__form--homeButton" href="/">Return to Home</a>
+                     <a className="walkerProfile__form--homeButton" href="/">Return to Home</a>
+                     <div className="walkerProfile__form--footer">
                     <Footer />
+                    </div>
                 </div>
             );
         } else {

@@ -31,6 +31,9 @@
 @import "components/TodayWalks";
 @import "components/WalkerScheduleWalks";
 @import "components/InviteOwners";
+@import "components/ShowMap";
+@import "components/HeaderWalker";
+@import "components/ContactWalker";
 
 @import "pages/aboutTailMe";
 @import "pages/billing";
@@ -44,6 +47,7 @@
 @import "pages/walkerProfile";
 @import "pages/walkerRegistration";
 @import "pages/contactTailMe";
+@import "pages/contactTailMeWalker";
 @import "pages/OwnerSignup";
 @import "pages/walkerSignupTest";
 @import "pages/login";
@@ -52,3 +56,6 @@
 @import "pages/ProfileTest";
 @import "pages/Profile";
 @import "pages/WalkerCertification";
+@import "pages/LoginWalker";
+@import "pages/splashWalker";
+@import "pages/aboutTailMeWalker";
