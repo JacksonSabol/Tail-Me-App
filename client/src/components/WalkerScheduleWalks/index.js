@@ -56,7 +56,7 @@ class WalkerScheduleWalks extends Component {
 
     API.addSchedule(selectedOwners, idWalker)
       .then(res => {
-
+        this.props.handlePageChange("FullSchedule")
       })
     }
 

@@ -3,54 +3,71 @@ import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import API from "../../utils/API";
 import Moment from "moment";
-
-//import "../index.css";
-
-
+import "../../index.css";
 
 class TodayWalks extends Component {
   state = {
     walks: [],
     errorMessage: ""
   };
+
   // Life-cycle function that executes when the components mount (page loads)
-
-
-
   componentDidMount() {
     this.loadWalks();
   }
+
   // Function to load all TodayWalks from the database
   loadWalks = () => {
-
-
-    API.getTodayWalks()
-      .then(res => {
-
-        const dataFormat = res.data.map(data => {
-
-          const start_time = Moment(data.checkInTime);
-          const end_time = Moment(data.checkOutTime);
-          const difference = end_time.diff(start_time, 'minutes', true)
-
-          const dataFormatted = {
-            checkInTime: data.checkInTime,
-            checkOutTime: data.checkOutTime,
-            totalTime: this.convertMinsToHrsMins(difference),
-            id: data.id,
-            walkDate: data.walkDate
-
-          }
-
-
-          return (dataFormatted)
-        });
-        console.log("Data Format", dataFormat)
-
-        this.setState({ walks: dataFormat })
-      })
-
-      .catch(err => console.log(err));
+    if (this.props.walkerId) {
+      // const userId = this.props.walkerId;
+      // API.getTodayWalks(userId)
+      API.getTodayWalks()
+        .then(res => {
+          const dataFormat = res.data.map(data => {
+            const start_time = Moment(data.checkInTime);
+            const end_time = Moment(data.checkOutTime);
+            const difference = end_time.diff(start_time, 'minutes', true)
+            const dataFormatted = {
+              checkInTime: data.checkInTime,
+              checkOutTime: data.checkOutTime,
+              totalTime: this.convertMinsToHrsMins(difference),
+              id: data.id,
+              walkDate: data.walkDate
+            }
+            return (dataFormatted)
+          });
+          console.log("Data Format", dataFormat)
+          this.setState({
+            walks: dataFormat
+          })
+        })
+        .catch(err => console.log(err));
+    }
+    else if (this.props.dogOwnerId) {
+      // const userId = this.props.dogOwnerId;
+      // API.getTodayWalks(userId)
+      API.getTodayWalks()
+        .then(res => {
+          const dataFormat = res.data.map(data => {
+            const start_time = Moment(data.checkInTime);
+            const end_time = Moment(data.checkOutTime);
+            const difference = end_time.diff(start_time, 'minutes', true)
+            const dataFormatted = {
+              checkInTime: data.checkInTime,
+              checkOutTime: data.checkOutTime,
+              totalTime: this.convertMinsToHrsMins(difference),
+              id: data.id,
+              walkDate: data.walkDate
+            }
+            return (dataFormatted)
+          });
+          console.log("Data Format", dataFormat)
+          this.setState({
+            walks: dataFormat
+          })
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   convertMinsToHrsMins = (mins) => {
@@ -68,7 +85,7 @@ class TodayWalks extends Component {
           <Col size="md-12 sm-12">
             {this.state.walks.length ? (
               <List>
-                TodayWalks:
+                Upcoming Walks:
                 {this.state.walks.map(walk => (
 
                   <ListItem key={walk.id}>

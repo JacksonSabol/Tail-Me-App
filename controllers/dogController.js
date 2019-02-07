@@ -5,10 +5,22 @@ const db = require("../models");
 module.exports = {
   findOne: function (req, res) {
     db.dogOwner
-      .findOne({id: req.params.id })
+      .findOne({ id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  findWalker: function (req, res) {
+    console.log(req.params.UserID);
+    db.dogOwner.findOne({
+      where: {
+        userId: req.params.UserID
+      }
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
   create: function (req, res) {
     db.dogOwner
       .create(req.body)
@@ -17,7 +29,7 @@ module.exports = {
   },
 
   getImagesOwner: function (req, res) {
-    
+
     console.log("Get Images Owner..:", req.params.idOwner)
     db.images
       .findAll({
@@ -25,11 +37,11 @@ module.exports = {
           model: db.dogOwner,
           required: true
         }
-     
-      ],
+
+        ],
         where: {
-          dogOwnerId:req.params.idOwner,
-          
+          dogOwnerId: req.params.idOwner,
+
         }
       })
       .then(dbModel => res.json(dbModel))
