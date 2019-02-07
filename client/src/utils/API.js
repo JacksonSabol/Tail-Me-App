@@ -41,26 +41,26 @@ export default {
         return axios.get(`/api/walker/walks/${id}/getImages`)
     },
 
-     //upload photo walks
-     getMyWalks: function (id) {
-        console.log("Before server 3" , id)
+    //upload photo walks
+    getMyWalks: function (id) {
+        console.log("Before server 3", id)
         return axios.get(`/api/walker/${id}/walkSchedule/`)
     },
 
     //add schedule
-    addSchedule: function(data,idWalker) {
+    addSchedule: function (data, idWalker) {
         console.log("Before server 4")
-        return axios.post(`/api/walker/schedule/${idWalker}/`,data )
+        return axios.post(`/api/walker/schedule/${idWalker}/`, data)
     },
 
     //get dogOwners related to Walker
-    getDogOwners: function(idWalker) {
+    getDogOwners: function (idWalker) {
         console.log("Before server 5")
         return axios.get(`/api/walker/${idWalker}/getDogOwners`)
     },
 
-    updateWalk:function(idWalk,data) {
-        return axios.put(`/api/walker/schedule/${idWalk}`,data)
+    updateWalk: function (idWalk, data) {
+        return axios.put(`/api/walker/schedule/${idWalk}`, data)
 
     },
 
@@ -69,14 +69,14 @@ export default {
         console.log("API.js -  createInvitation")
         return axios.post("/api/walker/invitecustomer/" + data.ownerName + "/" + data.phoneNumber + "/" + data.specialCode + "/" + data.walkerId + "/" + data.walkerName);
     },
-      //Walker invite signup to the owner ("/createOwner/:owneruserid/:specialcode/:walkerid")
-      createOwner: function (data) {
+    //Walker invite signup to the owner ("/createOwner/:owneruserid/:specialcode/:walkerid")
+    createOwner: function (data) {
         console.log("API.js -  createInvitation")
-        return axios.post("/api/walker/createOwner/" + data.owneruserid + "/" +  data.specialCode + "/" + data.walkerId);
+        return axios.post("/api/walker/createOwner/" + data.owneruserid + "/" + data.specialCode + "/" + data.walkerId);
     },
 
-    addPicturesToCloudinary: function(formData) {
-        
+    addPicturesToCloudinary: function (formData) {
+
         return axios.post(
              "https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload",
                formData, {

@@ -3,6 +3,7 @@ import DateTimePicker from 'react-datetime-picker';
 import API from "../../utils/API";
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 import Moment from "moment";
+import "../../index.css" 
 
 class WalkerScheduleWalks extends Component {
   state = {
@@ -57,26 +58,34 @@ class WalkerScheduleWalks extends Component {
       .then(res => {
         //this.props.history.push("/userProfile/this.props.username#fullschedule")
         console.log("username",this.props.username)
+        this.props.handlePageChange("FullSchedule")
       })
     }
 
   render() {
     return (
-      <div>
+      <div className="rdtPicker">
+      <p className="rdtPicker__title">Schedule a Walk</p>
+        {/* <br></br><br></br><br></br><br></br><br></br><br></br>
+        <br></br><br></br><br></br><br></br><br></br><br></br>
+        <br></br><br></br><br></br><br></br><br></br><br></br> */}
         
-        <DateTimePicker
+        <DateTimePicker 
           onChange={this.onChange}
           value={this.state.date}
-          className='class1'
+          className="rdtPicker__picker"
           disableClock={true}
           calendarClassName='class1'
         />
-      
-        <ReactMultiSelectCheckboxes
+       
+        {/* <br></br> */}
+        <div className="rdtPicker__select">
+        <ReactMultiSelectCheckboxes 
           options={this.state.onwnerList}
           onChange={this.handleChangeList} />
-     
-        <button onClick={this.handleSchedule}>schedule</button>
+          </div>
+        {/* <br></br> */}
+        <button className="rdtPicker__button" onClick={this.handleSchedule}>schedule</button>
       </div>
     );
   }

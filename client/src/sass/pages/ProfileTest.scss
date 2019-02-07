@@ -9,17 +9,13 @@
             grid-area: 1/1/2/2
         }
         &--main-content{
-            // width: 80%;
+            background-image: radial-gradient(#4d4d4d, #333333);
             border: solid .25em $color-accentOne;
             border-radius: 1em;
-            margin:2em;
-            grid-area: 1/2/2/16
+            margin:2em 2em 2em 0em;
+            grid-area: 1/2/2/16;
+            box-shadow: 0em 0em .5em .5em $color-darkest;
         }
-    }
-
-    
-    &__header{
-       
     }
 
 }

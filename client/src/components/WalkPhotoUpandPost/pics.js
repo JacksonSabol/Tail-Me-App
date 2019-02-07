@@ -66,7 +66,7 @@ class getImagesWalk extends Component {
                             ))}
                         </List>
                     ) : (
-                            <p className="search__form--alert">Oh No! It looks like you don't have any saved books!</p>
+                            <p className="search__form--alert">Oh No! It looks like you don't have any saved images!</p>
                         )}
                 </Col>
             </Row>

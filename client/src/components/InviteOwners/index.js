@@ -44,26 +44,29 @@ class InviteOwners extends Component {
 
     render() {
         return (
-            <div>
-                <p>
-                    Hello {this.state.firstName} {this.state.lastName}
+            <div className="walkerInvite">
+                <p className="walkerInvite__title">
+                    Hello {this.state.firstName} {this.state.lastName}, use this form to invite new clients to 
+                    schedul a walk with you!
                 </p>
-                <form className="form">
-                    <input
+                <form className="walkerInvite__form">
+                    <label className="walkerInvite__form--nameLabel">Client Name:</label>
+                    <input className="walkerInvite__form--nameInput"
                         value={this.state.name}
                         name="name"
                         onChange={this.handleInputChange}
-                        type="text"
+                        type="Dog Owner"
                         placeholder="Name"
                     />
-                    <input
+                     <label className="walkerInvite__form--phoneLabel">Client Phone Number:</label>
+                    <input className="walkerInvite__form--phoneInput"
                         value={this.state.phone}
                         name="phone"
                         onChange={this.handleInputChange}
-                        type="text"
+                        type="(___)xxx-xxxx"
                         placeholder="Phone number"
                     />
-                    <button onClick={this.handleInviteSubmit}>Send Invitation</button>
+                    <button className="walkerInvite__form--button" onClick={this.handleInviteSubmit}>Send Invitation</button>
                 </form>
             </div>
         );

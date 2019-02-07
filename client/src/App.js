@@ -22,9 +22,14 @@ import InviteOwners from "./components/InviteOwners";
 import GetCoordinates from "./components/GetCoordinates";
 import ShowPicsMap from "./components/ShowPicsMap";
 import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
-/* import Referral from "./pages/Referral"; */
+import ReferralSignup from "./pages/ReferralSignup";
+import createReferralProfile from "./pages/createReferralProfile";
+import createReferralDog from "./pages/createReferralDog";
+// import Referral from "./pages/Referral";
+import "./index.css" 
 import WalkPhotoUpload from  "./components/WalkPhotoUpandPost"
 import dogOwnerGallery from "./components/DogGallery"
+
 // import Footer from "./components/Footer";
 import ownerWalks from "./components/ownerWalks"
 
@@ -57,6 +62,9 @@ function App() {
         <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
         <Route exact path="/owner/walks" component={ownerWalks} />
        {/*  <Route exact path="/owner/signup/:id/:code" component={Referral} /> */}
+        <Route exact path="/owner/signup/:id/:code" component={ReferralSignup} />
+        <Route exact path="/owner/create/:referralID/:username" component={createReferralProfile} />
+        <Route exact path="/dog/create/:referredWalkerID/:username" component={createReferralDog} />
         {/* <Footer /> */}
       </div>
     </Router>

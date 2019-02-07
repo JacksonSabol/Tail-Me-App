@@ -16,7 +16,7 @@ class Schedule extends Component {
     };
 
     loadMyWalks = () => {
-        console.log("username",this.props.username)
+        console.log("username", this.props.username)
         const idWalker = this.props.walkerID
         API.getMyWalks(idWalker)
             .then(res => {
@@ -52,7 +52,6 @@ class Schedule extends Component {
     render() {
         return (
 
-
             <div id="example-component">
 
                 <div>
@@ -62,24 +61,29 @@ class Schedule extends Component {
                         username={this.props.username}
                     />
                 </div>
-                <FullCalendar
-                    id="your-custom-ID"
-                    header={{
-                        left: 'prev,next today myCustomButton',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    }}
-                    defaultDate={this.state.date}
-                    navLinks={true} // can click day/week names to navigate views
-                    editable={true}
-                    eventLimit={true} // allow "more" link when too many events
-                    events={this.state.events}
-                    // select={this.handleSelection.bind(this)}
-                    eventDrop={this.handleDropEvent.bind(this)}
-                    // eventClick={this.handleEventClick.bind(this)}
-                    selectable={true}
-                    selectHelper={true}
-                />
+
+                <div className="calenderContainer">
+                    <div className="fullCalender" id="example-component">
+                        <FullCalendar
+                            id="your-custom-ID"
+                            header={{
+                                left: 'prev,next today myCustomButton',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay'
+                            }}
+                            defaultDate={this.state.date}
+                            navLinks={true} // can click day/week names to navigate views
+                            editable={true}
+                            eventLimit={true} // allow "more" link when too many events
+                            events={this.state.events}
+                            // select={this.handleSelection.bind(this)}
+                            eventDrop={this.handleDropEvent.bind(this)}
+                            // eventClick={this.handleEventClick.bind(this)}
+                            selectable={true}
+                            selectHelper={true}
+                        />
+                    </div>
+                </div>
             </div>
         );
     }
