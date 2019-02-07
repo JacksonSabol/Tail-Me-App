@@ -190,11 +190,11 @@ class WalkPhotoUpandPost extends Component {
 
                     </div>
                 </form>
-                {/* <ReactSelect
+                <ReactSelect
                     options={this.state.onwnerList}
                     onChange={this.handleChangeList} />
                 <br></br>
-                <button onClick={this.handleTransferImages}>Send images to Owner</button> */}
+                <button onClick={this.handleTransferImages}>Send images to Owner</button>
                 <Gallery
                     enableImageSelection={true}
                     backdropClosesModal={true}

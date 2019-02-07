@@ -58,7 +58,8 @@ class WalkerScheduleWalks extends Component {
       .then(res => {
         //this.props.history.push("/userProfile/this.props.username#fullschedule")
         console.log("username",this.props.username)
-        this.props.handlePageChange("FullSchedule")
+        // I PLACE THIS COMPONENT INSIDE THE FULL SCHEDULE,WE NEED TO FIGURE OUT O WAY TO RE_RENDER SCHEDULE AFTER UPDATE
+       // this.props.handlePageChange("FullSchedule")
       })
     }
 

@@ -91,7 +91,7 @@ class TodayWalks extends Component {
                   <ListItem key={walk.id}>
 
                     <p className="list-publish"> Walk Date:
-                    {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
+                    {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                     </p>
                     <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")}</p>
                     
