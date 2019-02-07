@@ -3,9 +3,13 @@ import axios from "axios";
 export default {
 
     // Gets the Walks
-    getTodayWalks: function () {
+    getOwnerWalks: function (id) {
         console.log("test")
-        return axios.get("/api/walker/walks");
+        return axios.get(`/api/dogProfile/${id}/walks`);
+    },
+    getWalkerWalks: function (id) {
+        console.log("test")
+        return axios.get(`/api/walker/${id}/walks`);
     },
     // Gets all walkers
     getWalker: function () {
@@ -13,19 +17,19 @@ export default {
     },
     // Deletes the book with the given id
     deleteWalker: function (id) {
-        return axios.remove("/api/walker/" + id);
+        return axios.remove(`/api/walker/${id}`);
     },
 
     //User Profile
     getUserProfile: function (id) {
         console.log(id)
-        return axios.get("/api/userProfile/" + id);
+        return axios.get(`/api/userProfile/${id}`);
     },
 
     //DogProfile
     getDogProfile: function (id) {
         console.log(id)
-        return axios.get("/api/dogProfile/" + id);
+        return axios.get(`/api/dogProfile/${id}`);
     },
 
     //upload photo walks
@@ -78,20 +82,25 @@ export default {
     addPicturesToCloudinary: function (formData) {
 
         return axios.post(
-            "https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload",
-            formData, {
-                headers: { "X-Requested-With": "XMLHttpRequest" },
-                image_metadata: true
-            })
-    },
+             "https://api.cloudinary.com/v1_1/viaro-networks-inc/image/upload",
+               formData, {
+                   headers: { "X-Requested-With": "XMLHttpRequest" },
+                   image_metadata:true
+    })
+},
 
-    updateImageOwner: function (dataImageOwner, idWalk, idImage) {
-        return axios.put(`/api/walker/walk/${idWalk}/${idImage}/updateImageOwner`, dataImageOwner)
+updateImageOwner:function(dataImageOwner,idWalk,idImage) {
+    return axios.put(`/api/walker/walk/${idWalk}/${idImage}/updateImageOwner`,dataImageOwner)
 
-    },
-    getImagesOwner: function (idOwner) {
-        return axios.get(`/api/dogProfile/${idOwner}/gallery`)
+},
+getImagesOwner:function(idOwner) {
+    return axios.get(`/api/dogProfile/${idOwner}/gallery`)
 
-    }
+},
+getImagesWalk:function(idWalk) {
+    console.log("IWALDK:" , idWalk)
+    return axios.get(`/api/walker/walks/${idWalk}/getImages`)
 
+}
+    
 };

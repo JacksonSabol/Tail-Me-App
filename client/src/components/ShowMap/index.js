@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Map';
 
-
+import API from "../../utils/API";
 
 export class MapContainer extends Component {
   state = {
@@ -13,10 +13,15 @@ export class MapContainer extends Component {
   };
 
   handleCheckin = () => {
-
-    this.setState({
-      checkin: true
-    });
+    
+   /*  API.updateWalk(event.id, data)
+            .then(res => {
+              this.setState({
+                checkin: true
+              });
+            })
+            .catch(err => console.log(err));
+    */
   }
 
   onMarkerClick = (props, marker, e) =>
