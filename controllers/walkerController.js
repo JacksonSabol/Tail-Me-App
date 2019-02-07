@@ -18,7 +18,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  getWalks: function (req, res) {
+  getWalkerWalks: function (req, res) {
     console.log("test2")
     db.walks
       .findAll({
@@ -28,7 +28,11 @@ module.exports = {
 
           [db.sequelize.fn('date_format', db.sequelize.col('finishTime'), '%Y-%m-%d %H:%i:%s'), 'checkOutTime'],
           'walkDate'
-        ]
+        ],
+        where: {
+          walkerId:req.params.id
+          
+        }
         //pending how to compare two dates
         //           , where: 
         //db.sequelize.where(db.sequelize.fn('char_length', db.sequelize.col('issues')), 6)
@@ -101,7 +105,7 @@ module.exports = {
       });
     });
   },
-  
+
   getImages: function (req, res) {
     
     console.log("Get Images Walking..:", req.params.idWalk)

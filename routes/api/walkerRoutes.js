@@ -66,9 +66,9 @@ const multerConfig = {
 router.route("/create")
   .post(walkerController.addWalker);
 
-// Matches with "/api/walker/walks/"
-router.route("/walks")
-  .get(walkerController.getWalks);
+// Matches with "/api/walker/:id/walks/"
+router.route("/:id/walks")
+  .get(walkerController.getWalkerWalks);
 
 //router.route("/walks/:id/uploadPic")
 //.post(walkerController.uploadPic);

@@ -39,7 +39,8 @@ class ownerWalks extends Component {
         errorMessage: "",
         onClickButton: false,
         walkId: "",
-        images:[]
+        images:[],
+        pastWalks:[]
 
     }
     // Life-cycle function that executes when the components mount (page loads)
@@ -52,22 +53,25 @@ class ownerWalks extends Component {
     // Function to load all TodayWalks from the database
     loadWalks = () => {
 
-
-        API.getTodayWalks()
+        const id=1
+        API.getOwnerWalks(id)
             .then(res => {
 
                 const dataFormat = res.data.map(data => {
 
                     const start_time = Moment(data.checkInTime);
                     const end_time = Moment(data.checkOutTime);
-                    const difference = end_time.diff(start_time, 'minutes', true)
-
+                    const difference = end_time.diff(start_time, 'minutes', true);
+                    
+                    const finishedWalk = data.checkInTime === null ? false : true 
+                   
                     const dataFormatted = {
                         checkInTime: data.checkInTime,
                         checkOutTime: data.checkOutTime,
                         totalTime: this.convertMinsToHrsMins(difference),
                         id: data.id,
-                        walkDate: data.walkDate
+                        walkDate: data.walkDate,
+                        finishedWalk : finishedWalk
 
                     }
 
@@ -76,7 +80,12 @@ class ownerWalks extends Component {
                 });
                 console.log("Data Format", dataFormat)
 
-                this.setState({ walks: dataFormat })
+                const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
+                const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
+                console.log("UpcommingWalks",UpcommingWalks)
+                this.setState({ walks: UpcommingWalks ,
+                                pastWalks:finishedWalks    })
+
             })
 
             .catch(err => console.log(err));
@@ -133,21 +142,52 @@ class ownerWalks extends Component {
 
                         {this.state.walks.length ? (
                             <List>
-                                TodayWalks:
+                               <b>Upcomming Walks:</b> 
                                  {this.state.walks.map(walk => (
-
+                                
+                                
                                     <ListItem key={walk.id}>
-
+                                    
                                         <p className="list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
                                         </p>
+                                    </ListItem>
+
+                                ))}
+
+                            </List>
+
+                        ) : (
+                                <p className="search__form--alert"> You don't have any upcomming walks!</p>
+                            )}
+
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="md-12 sm-12">
+
+                        {this.state.walks.length ? (
+                            <List> <br></br>
+                               <b>  History Walks:</b>
+                                 {this.state.pastWalks.map(walk => (
+                                
+                                
+                                    <ListItem key={walk.id}>
+                                    
+                                        <p className="list-publish"> Walk Date:
+                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
+                                        </p>
+
+                                    
+                                      
                                         <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
                                         <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
                                         <p className="list-publish"> Total Time: {walk.totalTime} </p>
                                         <button onClick={this.handleOnClick.bind(this,walk.id)}>Walk Map</button>
-
+                                       
+                                  
                                     </ListItem>
 
                                 ))}
