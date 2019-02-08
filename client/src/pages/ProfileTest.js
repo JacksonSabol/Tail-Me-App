@@ -12,6 +12,7 @@ import Schedule from '../components/Schedule';
 import WalkerCertification from './WalkerCertification';
 import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
 import DogOwnerGallery from "../components/DogGallery";
+import OwnerWalks from "../components/ownerWalks";
 import CreateDog from './createDog';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -116,6 +117,7 @@ class ProfileContainer extends Component {
             />;
             case "FullSchedule": return <Schedule
                 walkerID={this.state.userId}
+                username={this.state.username}
             />
             case "Certs": return <WalkerCertification
                 username={this.state.username}
@@ -158,7 +160,7 @@ class ProfileContainer extends Component {
                 zipCode={this.state.zipCode}
                 country={this.state.country}
             />;
-            case "Walks": return <TodayWalks
+            case "Walks": return <OwnerWalks
                 dogOwnerId={this.state.userId}
             />;
             case "Dogs": return <CreateDog
