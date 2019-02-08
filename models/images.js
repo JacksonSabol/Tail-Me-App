@@ -23,6 +23,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
       }
     });
+
+    images.belongsTo(models.walker, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
   };
   return images;
 };

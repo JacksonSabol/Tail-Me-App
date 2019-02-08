@@ -51,7 +51,7 @@ class TodayWalks extends Component {
   }
   // Function to load all TodayWalks from the database
   loadWalks = () => {
-    const id = 1
+    const id = this.props.walkerId;
     API.getWalkerWalks(id)
       .then(res => {
         const dataFormat = res.data.map(data => {
@@ -144,7 +144,7 @@ class TodayWalks extends Component {
             // this.setState({
             //   walks: res.data
             // });
-
+            this.loadWalks();
             //console.log("data[0]: ", res.data[0].GPSLatitude)
             // this.setState({
             //   locationckeck: true
@@ -171,7 +171,7 @@ class TodayWalks extends Component {
             // this.setState({
             //   walks: res.data
             // });
-
+            this.loadWalks();
             //console.log("data[0]: ", res.data[0].GPSLatitude)
             // this.setState({
             //   locationckeck: true
@@ -223,7 +223,7 @@ class TodayWalks extends Component {
 
                 <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
-                <p className="list-publish"> Check Out Time: {Moment(walk.finishTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
+                <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
                 <p className="list-publish"> Total Time: {walk.totalTime} </p>
                 <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>

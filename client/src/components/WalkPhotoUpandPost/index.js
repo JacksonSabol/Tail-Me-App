@@ -81,6 +81,7 @@ class WalkPhotoUpandPost extends Component {
     handleDrop = files => {
         // Push all the axios request promise into a single array
         const idWalk = 1; // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
+        const walkerId = this.props.WalkerID;
         const uploaders = files.map(file => {
             // Initial FormData
             console.log("FIIIIIILLLLLLEEEE",file)
@@ -100,7 +101,7 @@ class WalkPhotoUpandPost extends Component {
                         url: fileURL
                     }
 
-                    API.uploadPhotoWalks(imageData, idWalk)
+                    API.uploadPhotoWalks(imageData, walkerId)
                         .then(res => {
                             this.loadImages()
                         })
