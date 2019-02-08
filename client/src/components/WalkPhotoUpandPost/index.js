@@ -37,7 +37,7 @@ class WalkPhotoUpandPost extends Component {
     }
 
     loadImages = () => {
-        const idWalk = 1
+        const idWalk = this.props.WalkerID;
         API.getImages(idWalk)
             .then(res => {
                 const dataGallery = res.data.map(data => {
@@ -47,7 +47,6 @@ class WalkPhotoUpandPost extends Component {
                         thumbnail: data.url,
                         thumbnailWidth: 320,
                         thumbnailHeight: 212
-                        //caption:data.dogOwner.dogName
                     }
                     return (imageData)
                 })
@@ -58,9 +57,7 @@ class WalkPhotoUpandPost extends Component {
     }
 
     loadOwners = () => {
-
-        const idWalker = 1
-
+        const idWalker = this.props.WalkerID;
         API.getDogOwners(idWalker)
             .then(res => {
                 const dataDogOwners = res.data.map(data => {
@@ -83,9 +80,10 @@ class WalkPhotoUpandPost extends Component {
 
     handleDrop = files => {
         // Push all the axios request promise into a single array
-        const idWalk = 1
+        const idWalk = 1; // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
         const uploaders = files.map(file => {
             // Initial FormData
+            console.log("FIIIIIILLLLLLEEEE",file)
             const formData = new FormData();
             formData.append("file", file);
             formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
@@ -98,7 +96,7 @@ class WalkPhotoUpandPost extends Component {
                     const data = response.data;
                     const fileURL = data.secure_url; // You should store this URL for future references in your app
                     const imageData = {
-                        walkId: 1,
+                        walkId: 1, // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
                         url: fileURL
                     }
 
@@ -128,7 +126,7 @@ class WalkPhotoUpandPost extends Component {
     }
     //Send Image to Owner
     handleTransferImages = () => {
-        const idWalk = 1
+        const idWalk = 1; // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
         const selectedImages = this.state.gallery.filter(image => image.isSelected === true)
         console.log("Selected", selectedImages)
 

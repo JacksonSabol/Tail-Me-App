@@ -10,11 +10,13 @@ import ShowMap from "../components/ShowMap";
 import ScheduleWalks from "../components/WalkerScheduleWalks";
 import Schedule from '../components/Schedule';
 import WalkerCertification from './WalkerCertification';
+import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
+import DogOwnerGallery from "../components/DogGallery";
+import OwnerWalks from "../components/ownerWalks";
 import CreateDog from './createDog';
-import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../index.css";
-
 
 const loading = {
     margin: '1em',
@@ -115,6 +117,7 @@ class ProfileContainer extends Component {
             />;
             case "FullSchedule": return <Schedule
                 walkerID={this.state.userId}
+                username={this.state.username}
             />
             case "Certs": return <WalkerCertification
                 username={this.state.username}
@@ -124,6 +127,9 @@ class ProfileContainer extends Component {
                 walkerName={this.state.username}
             />;
             case "Map": return <ShowMap />;
+            case "Upload": return <WalkPhotoUpload
+                WalkerID={this.state.userId}
+            />;
             default: return <Profile
                 username={this.state.username}
                 firstName={this.state.firstName}
@@ -154,10 +160,15 @@ class ProfileContainer extends Component {
                 zipCode={this.state.zipCode}
                 country={this.state.country}
             />;
-            case "Walks": return <TodayWalks
+            case "Walks": return <OwnerWalks
                 dogOwnerId={this.state.userId}
             />;
             case "Dogs": return <CreateDog
+                UserID={this.state.userId}
+                username={this.state.username}
+                handlePageChange={this.handlePageChange}
+            />;
+            case "Gallery": return <DogOwnerGallery
                 UserID={this.state.userId}
                 username={this.state.username}
                 handlePageChange={this.handlePageChange}
@@ -282,12 +293,9 @@ class ProfileContainer extends Component {
                             {this.renderOwnerPage()}
                         </div>
                     </div>
-
                     <div className="ownerDash__grid--footer" >
-                    <Footer />
+                        <Footer />
                     </div>
-                  
-
                 </div>
             );
         }

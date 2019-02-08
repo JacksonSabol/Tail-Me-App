@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import API from "../../utils/API";
 import Moment from "moment";
@@ -17,7 +16,7 @@ const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: '100%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, -50%)'
   }}
     onClick={() => imageClick(id)}
   >
@@ -38,33 +37,29 @@ class TodayWalks extends Component {
     walks: [],
     errorMessage: "",
     onClickButton: false,
-    walkId: "",
+    walkId: 0,
     images: [],
-    pastWalks: []
-
+    pastWalks: [],
+    zoom: 14,
+    center: [37.7924791, -122.1818368],
+    showMap: false,
+    locationckeck: false
   }
   // Life-cycle function that executes when the components mount (page loads)
-
-
-
   componentDidMount() {
     this.loadWalks();
   }
   // Function to load all TodayWalks from the database
   loadWalks = () => {
-
     const id = 1
     API.getWalkerWalks(id)
       .then(res => {
-
         const dataFormat = res.data.map(data => {
-
+          console.log("data:", data)
           const start_time = Moment(data.checkInTime);
           const end_time = Moment(data.checkOutTime);
           const difference = end_time.diff(start_time, 'minutes', true);
-
-          const finishedWalk = data.checkInTime === null ? false : true
-
+          const finishedWalk = data.checkOutTime === null ? false : true
           const dataFormatted = {
             checkInTime: data.checkInTime,
             checkOutTime: data.checkOutTime,
@@ -72,14 +67,10 @@ class TodayWalks extends Component {
             id: data.id,
             walkDate: data.walkDate,
             finishedWalk: finishedWalk
-
           }
-
-
           return (dataFormatted)
         });
         console.log("Data Format", dataFormat)
-
         const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
         const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
         console.log("UpcommingWalks", UpcommingWalks)
@@ -87,9 +78,7 @@ class TodayWalks extends Component {
           walks: UpcommingWalks,
           pastWalks: finishedWalks
         })
-
       })
-
       .catch(err => console.log(err));
   };
 
@@ -102,31 +91,97 @@ class TodayWalks extends Component {
         // this.setState({
         //   walks: res.data
         // });
-
+        let picsWithGpsInfo = res.data.filter(image =>
+          image.GPSLatitude != null)
+        console.log("PICS GPS: ", picsWithGpsInfo)
+        console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLatitude)
+        console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLongitude)
         //console.log("data[0]: ", res.data[0].GPSLatitude)
         this.setState({
-          onClickButton: true,
+          /*  onClickButton: true, */
           walkId: walkId,
-          images: res.data
+          images: picsWithGpsInfo,
           /* currentLocation: {
-               lat:res.data[0].GPSLatitude,
-               lng:res.data[0].GPSLongitude
-           } */
+              lat:picsWithGpsInfo[0].GPSLatitude,
+              lng:picsWithGpsInfo[0].GPSLongitude
+          } , */
+          center: [picsWithGpsInfo[0].GPSLatitude, picsWithGpsInfo[0].GPSLongitude]
         })
       }).catch(err => {
         console.log(err)
       });
+  };
 
-  }
+  _onChange = ({ center, zoom }) => {
+    console.log("Center", this.state.center)
+    console.log("zoom", this.state.zoom)
+    this.setState({
+      center: center,
+      zoom: zoom
+    });
+  };
 
   handleImgClick = (id) => {
-
     console.log("id: ", id)
     let clickWalk = this.state.images.filter(image => image.id === id)
     console.log(clickWalk)
     this.setState({ activeImage: clickWalk[0].url })
+  };
 
-  }
+
+  handleCheckIn = (walkId) => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const coords = pos.coords;
+        console.log("walkId IN: ", walkId);
+        console.log("coords IN: ", coords);
+        // update walks start time and coordinates and end time and coords
+        //
+        API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude)
+          .then(res => {
+            console.log("back from update checkIn")
+            console.log("updateCheck: ", res.data)
+            // this.setState({
+            //   walks: res.data
+            // });
+
+            //console.log("data[0]: ", res.data[0].GPSLatitude)
+            // this.setState({
+            //   locationckeck: true
+            // })
+          }).catch(err => {
+            console.log(err)
+          });
+      });
+    }
+  };
+
+  handleCheckOut = (walkId) => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const coords = pos.coords;
+        console.log("walkId OUT: ", walkId);
+        console.log("coords OUT: ", coords);
+        // update walks start time and coordinates and end time and coords
+        //
+        API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude)
+          .then(res => {
+            console.log("back from update checkIn")
+            console.log("updateCheck: ", res.data)
+            // this.setState({
+            //   walks: res.data
+            // });
+
+            //console.log("data[0]: ", res.data[0].GPSLatitude)
+            // this.setState({
+            //   locationckeck: true
+            // })
+          }).catch(err => {
+            console.log(err)
+          });
+      });
+    }
+  };
 
   convertMinsToHrsMins = (mins) => {
     let h = Math.floor(mins / 60);
@@ -134,95 +189,76 @@ class TodayWalks extends Component {
     h = h < 10 ? '0' + h : h;
     m = m < 10 ? '0' + m : m;
     return `${h}h:${m}m`;
-  }
+  };
+
 
   render() {
     return (
-      <Container>
+      <div>
+        {this.state.walks.length ? (
+          <List>
+            <b>Upcoming Walks: </b>
+            {this.state.walks.map(walk => (
+              <ListItem key={walk.id}>
+                <p className="list-publish"> Walk Date:
+                {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
+                  {walk.checkInTime === null ? (
+                    <button onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
+                    (<button onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>)}
+                </p>
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+            <p className="search__form--alert"> You don't have any upcoming walks!</p>
+          )}
 
+        {this.state.pastWalks.length ? (
+          <List> <br></br>
+            <b>Walks History: </b>
+            {this.state.pastWalks.map(walk => (
+              <ListItem key={walk.id}>
 
+                <p className="list-publish"> Walk Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}</p>
 
-            {this.state.walks.length ? (
-              <List>
-                <b>Upcomming Walks:</b>
-                {this.state.walks.map(walk => (
+                <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
 
+                <p className="list-publish"> Check Out Time: {Moment(walk.finishTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
 
-                  <ListItem key={walk.id}>
+                <p className="list-publish"> Total Time: {walk.totalTime} </p>
+                <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
 
-                    <p className="list-publish"> Walk Date:
-                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-                                         
-                      <button onClick={() => this.handleCheckin()}>Check-in </button>
-                      <button onClick={() => this.handleCheckout()}>Check-out</button>
-                    </p>
-                  </ListItem>
-
-                ))}
-
-              </List>
-
-            ) : (
-                <p className="search__form--alert"> You don't have any upcomming walks!</p>
-              )}
-
-    
-
-            {this.state.walks.length ? (
-              <List> <br></br>
-                <b>  History Walks:</b>
-                {this.state.pastWalks.map(walk => (
-
-
-                  <ListItem key={walk.id}>
-
-                    <p className="list-publish"> Walk Date:
-                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-                    </p>
-                    <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
-
-                    <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
-
-                    <p className="list-publish"> Total Time: {walk.totalTime} </p>
-                    <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
-
-
-                  </ListItem>
-
-                ))}
-
-              </List>
-
-            ) : (
-                <p className="search__form--alert"> You don't have any walks!</p>
-              )}
-
-
-   
-
-        {this.state.onClickButton ? (
-
-          <div style={{
-            display: "flex",
-
-          }}>
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+            <p className="search__form--alert"> You don't have any previous walks!</p>
+          )}
+        {this.state.walkId ? (
+          <div style={{ display: "flex" }}>
             <div style={{ height: '50vh', width: '50%' }}>
               <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                 defaultCenter={this.state.currentLocation}
                 defaultZoom={this.state.zoom}
+                /* zoom = {this.state.zoom}
+                center={this.state.center} */
+                onClick={this._onChange}
               >
+                {this.state.images.map(image => (
+                  <ListItem key={image.id}>
+                    <AnyReactComponent ///all of the props ie walk.img/walk.lat))}
+                      id={image.id}
+                      icon="../paw-green-2020.svg"
+                      lat={image.GPSLatitude}
+                      lng={image.GPSLongitude}
+                      imageClick={this.handleImgClick}
+                    />
+                  </ListItem>
+                ))}
 
-                {this.state.images.map(image => (<AnyReactComponent ///all of the props ie walk.img/walk.lat))}
-                  id={image.id}
-                  icon="../paw-green-2020.svg"
-                  lat={image.GPSLatitude}
-                  lng={image.GPSLongitude}
-                  imageClick={this.handleImgClick}
-                />))}
               </GoogleMapReact>
             </div>
-
             <div style={{ postition: "relative" }}>
               {this.state.activeImage ?
                 <img width={'300px'} src={this.state.activeImage}></img> : null}
@@ -230,9 +266,7 @@ class TodayWalks extends Component {
           </div>
 
         ) : null}
-
-
-      </Container>
+      </div>
     );
   }
 }

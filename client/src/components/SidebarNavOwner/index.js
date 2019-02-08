@@ -37,6 +37,15 @@ function SidebarNavOwner(props) {
                 {/* Fix later in Sass; this just forces the logout button to fill the consecutive grid space */}
                 <div className="ownersidebar__nav--itemFullSchedule">
                     <a
+                        href="#gallery"
+                        onClick={() => props.handlePageChange("Gallery")}
+                    >
+                        Image Gallery
+                    </a>
+                </div>
+                {/* Fix later in Sass; this just forces the logout button to fill the consecutive grid space */}
+                <div className="sidebar__nav--itemInvite">
+                    <a
                         href="#"
                         onClick={() => props.handleLogOut()}
                     >
