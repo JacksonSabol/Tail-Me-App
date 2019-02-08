@@ -11,7 +11,7 @@ function SidebarNav(props) {
             <a href="/" className="sidebar__brand"><img src={logo} className="sidebar__brand--logo" alt="^_^" /> tailMe©</a>
             <div className="sidebar__nav">
                 <div className="sidebar__nav--itemDashboard">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#home"
                         onClick={() => props.handlePageChange("Home")}
                     >
@@ -19,7 +19,7 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemWalks">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#walks"
                         onClick={() => props.handlePageChange("Walks")}
                     >
@@ -27,7 +27,7 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemSchedWalks">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#schedwalks"
                         onClick={() => props.handlePageChange("SchedWalks")}
                     >
@@ -35,7 +35,7 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemFullSchedule">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#fullschedule"
                         onClick={() => props.handlePageChange("FullSchedule")}
                     >
@@ -43,7 +43,7 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemInvite">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#invite"
                         onClick={() => props.handlePageChange("Invite")}
                     >
@@ -51,7 +51,7 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemCerts">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#certs"
                         onClick={() => props.handlePageChange("Certs")}
                     >
@@ -59,7 +59,7 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemMap">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#map"
                         onClick={() => props.handlePageChange("Map")}
                     >
@@ -67,12 +67,13 @@ function SidebarNav(props) {
                     </a>
                 </div>
                 <div className="sidebar__nav--itemNotifications">
-                    <a href="#">
+                    <a className="sidebar__nav--itemLink"
+                    href="#">
                         Notifications
                     </a>
                 </div>
                 <div className="sidebar__nav--itemLogout">
-                    <a
+                    <a className="sidebar__nav--itemLink"
                         href="#"
                         onClick={() => props.handleLogOut()}
                     >

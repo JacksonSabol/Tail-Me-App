@@ -6,11 +6,11 @@ import "../../index.css";
 // Maybe pass id of which link is clicked and reference this.props.style somehow...
 function SidebarNavOwner(props) {
     return (
-        <div className="sidebar">
-            <p className="sidebar__title">Welcome, {props.username}!</p>
-            <a href="/" className="sidebar__brand"><img src={logo} className="sidebar__brand--logo" alt="^_^" /> tailMe©</a>
-            <div className="sidebar__nav">
-                <div className="sidebar__nav--itemDashboard">
+        <div className="ownersidebar">
+            <p className="ownersidebar__title">Welcome, {props.username}!</p>
+            <a href="/" className="ownersidebar__brand"><img src={logo} className="ownersidebar__brand--logo" alt="^_^" /> tailMe©</a>
+            <div className="ownersidebar__nav">
+                <div className="ownersidebar__nav--itemDashboard">
                     <a
                         href="#home"
                         onClick={() => props.handlePageChange("Home")}
@@ -18,7 +18,7 @@ function SidebarNavOwner(props) {
                         Dashboard
                     </a>
                 </div>
-                <div className="sidebar__nav--itemWalks">
+                <div className="ownersidebar__nav--itemWalks">
                     <a
                         href="#walks"
                         onClick={() => props.handlePageChange("Walks")}
@@ -26,7 +26,7 @@ function SidebarNavOwner(props) {
                         Upcoming Walks
                     </a>
                 </div>
-                <div className="sidebar__nav--itemSchedWalks">
+                <div className="ownersidebar__nav--itemSchedWalks">
                     <a
                         href="#dogs"
                         onClick={() => props.handlePageChange("Dogs")}
@@ -35,7 +35,7 @@ function SidebarNavOwner(props) {
                     </a>
                 </div>
                 {/* Fix later in Sass; this just forces the logout button to fill the consecutive grid space */}
-                <div className="sidebar__nav--itemFullSchedule">
+                <div className="ownersidebar__nav--itemFullSchedule">
                     <a
                         href="#"
                         onClick={() => props.handleLogOut()}

@@ -112,7 +112,7 @@ class LoginWalker extends Component {
                 </div>
             );
         } else {
-            return <Redirect to={`/userProfile/${username}`} />;
+            return <Redirect to={`/userProfileWalker/${username}`} />;
         }
     }
 }

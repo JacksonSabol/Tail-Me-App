@@ -1,0 +1,51 @@
+.walkerfullCalender{
+    font-family: $font-sans;
+    font-size:2em;
+    margin: 1em;
+   
+}
+.walkercalenderContainer{
+    grid-area: 1/2;
+    border: solid .25em $color-accentOne;
+    border-radius: 1em;
+    box-shadow: 0em 0em .5em .5em $color-medium;
+    margin:1em;
+    font-family: $font-sans;
+    width: 800px;
+    padding-left: 6em;
+    
+}
+th.fc-day-header{
+    font-family: $font-sans;
+    color: $color-accentOne;
+}
+h2{
+    font-family: $font-sans;
+    color: $color-accentOne;
+}
+a{
+    font-family: $font-sans;
+    color: $color-accentOne;
+}
+.css-10nd86i{
+    color: $color-darkest;
+}
+.walkerScheduleWalksContainer{
+    grid-area: 1/1;
+    border: solid .25em $color-accentOne;
+    border-radius: 1em;
+    box-shadow: 0em 0em .5em .5em $color-medium;
+    margin:1em;
+
+}
+.walkerFullscheduleWrap{
+    display:grid;
+    // grid-template-columns: auto auto ;
+    // grid-template-rows: auto  ;
+    // border: solid .25em $color-accentOne;
+    // border-radius: 1em;
+    // box-shadow: 0em 0em .5em .5em $color-medium;
+    // margin:1em;
+
+
+}

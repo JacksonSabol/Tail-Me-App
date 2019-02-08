@@ -1,0 +1,14 @@
+.walkerfooter{
+    color: $color-darkest;
+    text-align: center;
+    width: 100%;
+    padding: 2em;
+    
+    &__text{
+        font-size:  2em;
+    }
+    &__logo{
+        height: 1.5em;
+
+    }
+}

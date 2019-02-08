@@ -166,10 +166,7 @@ class TodayWalks extends Component {
                 <p className="search__form--alert"> You don't have any upcomming walks!</p>
               )}
 
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12 sm-12">
+    
 
             {this.state.walks.length ? (
               <List> <br></br>
