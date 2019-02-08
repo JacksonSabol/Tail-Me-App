@@ -8,7 +8,8 @@ module.exports = {
   addWalker: function (req, res) {
     console.log(req.body);
     db.walker
-      .create({
+      .upsert({
+        id: req.body.userId,
         certification: req.body.certifications,
         services: req.body.services,
         status: "available",
@@ -92,7 +93,8 @@ module.exports = {
         GPSLongitude: result.tags.GPSLongitude,
         GPSLatitudeRef: result.tags.GPSLatitudeRef,
         GPSLongitudeRef: result.tags.GPSLongitudeRef,
-        DateTimeOriginal: result.tags.DateTimeOriginal
+        DateTimeOriginal: result.tags.DateTimeOriginal,
+        walkerId: req.params.id
       }
 
 
@@ -112,7 +114,7 @@ module.exports = {
     db.images
       .findAll({
         where: {
-          walkId: req.params.idWalk,
+          walkerId: req.params.idWalk,
 
         }
       })
@@ -213,9 +215,9 @@ module.exports = {
           })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
-        }
-     else if (req.params.type === "out") {
-      
+    }
+    else if (req.params.type === "out") {
+
       var data = {
         finishTime: Date.now(),
         checkoutGPSLatitude: req.params.lat,
@@ -233,8 +235,8 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
 
-    } 
-   else { (res.json("type error, need to be 'in' or 'out' for the check")) }
+    }
+    else { (res.json("type error, need to be 'in' or 'out' for the check")) }
   },
 
   addPicturesToCloudary: function (req, res) {
