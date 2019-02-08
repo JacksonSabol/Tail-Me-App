@@ -2,22 +2,17 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import SidebarNav from '../components/SidebarNav';
-import SidebarNavOwner from '../components/SidebarNavOwner';
 import Profile from './Profile';
 import ProfileWalker from "./ProfileWalker";
 import TodayWalks from '../components/TodayWalks';
 import InviteOwners from "../components/InviteOwners";
 import ShowMap from "../components/ShowMap";
-import ScheduleWalks from "../components/WalkerScheduleWalks";
-import ScheduleWalksWalker from "../components/WalkerScheduleWalksWalker";
-import Schedule from '../components/Schedule';
+import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
 import ScheduleWalker from '../components/ScheduleWalker';
 import WalkerCertification from './WalkerCertification';
 import CreateDog from './createDog';
-import Footer from "../components/Footer";
 import FooterWalker from "../components/FooterWalker";
 import HeaderWalker from "../components/HeaderWalker";
-import Header from "../components/Header";
 import "../index.css";
 
 
@@ -114,12 +109,13 @@ class ProfileContainerWalker extends Component {
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}
             />;
-            case "SchedWalks": return <ScheduleWalksWalker
-                walkerID={this.state.userId}
-                handlePageChange={this.handlePageChange}
-            />;
+            // case "SchedWalks": return <ScheduleWalksWalker
+            //     walkerID={this.state.userId}
+            //     handlePageChange={this.handlePageChange}
+            // />;
             case "FullSchedule": return <ScheduleWalker
                 walkerID={this.state.userId}
+                username={this.state.username}
             />
             case "Certs": return <WalkerCertification
                 username={this.state.username}
@@ -129,6 +125,9 @@ class ProfileContainerWalker extends Component {
                 walkerName={this.state.username}
             />;
             case "Map": return <ShowMap />;
+            case "Upload": return <WalkPhotoUpload
+                WalkerID={this.state.userId}
+            />;
             default: return <ProfileWalker
                 username={this.state.username}
                 firstName={this.state.firstName}
@@ -224,7 +223,6 @@ class ProfileContainerWalker extends Component {
     render() {
         const {
             username,
-            userType,
             loggedIn,
             error,
             isLoading,
@@ -252,7 +250,7 @@ class ProfileContainerWalker extends Component {
             return <Redirect to="/" />;
         } else if (!loggedIn) {
             return <Redirect to="/user/loginWalker" />;
-        } else if (userType === "walker") {
+        } else {
             return (
                 <div className="walkerDash">
                     <HeaderWalker />
@@ -270,29 +268,6 @@ class ProfileContainerWalker extends Component {
                     <div className="walkerDash__grid--footer" >
                     <FooterWalker />
                     </div>
-                </div>
-            );
-        } else if (userType === "owner") {
-            return (
-                <div className="ownerDash">
-                    <Header />
-                    <div className="ownerDash__grid">
-                        <SidebarNavOwner className="ownerDash__grid--sidebarNav"
-                            username={username}
-                            currentPage={this.state.currentPage}
-                            handlePageChange={this.handlePageChange}
-                            handleLogOut={this.handleLogOut}
-                        />
-                        <div className="ownerDash__grid--main-content">
-                            {this.renderOwnerPage()}
-                        </div>
-                    </div>
-
-                    <div className="ownerDash__grid--footer" >
-                    <Footer />
-                    </div>
-                  
-
                 </div>
             );
         }

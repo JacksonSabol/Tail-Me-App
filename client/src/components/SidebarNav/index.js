@@ -26,15 +26,15 @@ function SidebarNav(props) {
                         Upcoming Walks
                     </a>
                 </div>
-                <div className="sidebar__nav--itemSchedWalks">
+                {/* <div className="sidebar__nav--itemSchedWalks">
                     <a className="sidebar__nav--itemLink"
                         href="#schedwalks"
                         onClick={() => props.handlePageChange("SchedWalks")}
                     >
                         Schedule a Walk
                     </a>
-                </div>
-                <div className="sidebar__nav--itemFullSchedule">
+                </div> */}
+                <div className="sidebar__nav--itemSchedWalks">
                     <a className="sidebar__nav--itemLink"
                         href="#fullschedule"
                         onClick={() => props.handlePageChange("FullSchedule")}
@@ -42,7 +42,7 @@ function SidebarNav(props) {
                         Full Schedule
                     </a>
                 </div>
-                <div className="sidebar__nav--itemInvite">
+                <div className="sidebar__nav--itemFullSchedule">
                     <a className="sidebar__nav--itemLink"
                         href="#invite"
                         onClick={() => props.handlePageChange("Invite")}
@@ -50,7 +50,7 @@ function SidebarNav(props) {
                         Invite Clients
                     </a>
                 </div>
-                <div className="sidebar__nav--itemCerts">
+                <div className="sidebar__nav--itemInvite">
                     <a className="sidebar__nav--itemLink"
                         href="#certs"
                         onClick={() => props.handlePageChange("Certs")}
@@ -58,7 +58,7 @@ function SidebarNav(props) {
                         Update Qualifications
                     </a>
                 </div>
-                <div className="sidebar__nav--itemMap">
+                <div className="sidebar__nav--itemCerts">
                     <a className="sidebar__nav--itemLink"
                         href="#map"
                         onClick={() => props.handlePageChange("Map")}
@@ -66,15 +66,15 @@ function SidebarNav(props) {
                         Map
                     </a>
                 </div>
-                <div className="sidebar__nav--itemNotifications">
-                    <a
+                <div className="sidebar__nav--itemMap">
+                    <a className="sidebar__nav--itemLink"
                         href="#upload"
                         onClick={() => props.handlePageChange("Upload")}
                     >
                         Upload Images
                     </a>
                 </div>
-                <div className="sidebar__nav--itemLogout">
+                <div className="sidebar__nav--itemNotifications">
                     <a className="sidebar__nav--itemLink"
                         href="#"
                         onClick={() => props.handleLogOut()}

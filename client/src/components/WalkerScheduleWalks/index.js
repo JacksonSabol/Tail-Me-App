@@ -56,8 +56,6 @@ class WalkerScheduleWalks extends Component {
 
     API.addSchedule(selectedOwners, idWalker)
       .then(res => {
-        // history.push(`/userProfile/${this.props.username}`)
-        // console.log("username in walkerschedulewalks ", this.props.username);
         this.props.loadMyWalks();
       })
     }

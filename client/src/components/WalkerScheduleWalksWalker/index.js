@@ -3,7 +3,7 @@ import DateTimePicker from 'react-datetime-picker';
 import API from "../../utils/API";
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 import Moment from "moment";
-import "../../index.css" 
+import "../../index.css"
 
 class WalkerScheduleWalksWalker extends Component {
   state = {
@@ -56,35 +56,32 @@ class WalkerScheduleWalksWalker extends Component {
 
     API.addSchedule(selectedOwners, idWalker)
       .then(res => {
-        //this.props.history.push("/userProfile/this.props.username#fullschedule")
-        console.log("username",this.props.username)
-        // I PLACE THIS COMPONENT INSIDE THE FULL SCHEDULE,WE NEED TO FIGURE OUT O WAY TO RE_RENDER SCHEDULE AFTER UPDATE
-       // this.props.handlePageChange("FullSchedule")
+        this.props.loadMyWalks();
       })
-    }
+  }
 
   render() {
     return (
       <div className="walkerrdtPicker">
-      <p className="walkerrdtPicker__title">Schedule a Walk</p>
+        <p className="walkerrdtPicker__title">Schedule a Walk</p>
         {/* <br></br><br></br><br></br><br></br><br></br><br></br>
         <br></br><br></br><br></br><br></br><br></br><br></br>
         <br></br><br></br><br></br><br></br><br></br><br></br> */}
-        
-        <DateTimePicker 
+
+        <DateTimePicker
           onChange={this.onChange}
           value={this.state.date}
           className="walkerrdtPicker__picker"
           disableClock={true}
           calendarClassName='class1'
         />
-       
+
         {/* <br></br> */}
         <div className="walkerrdtPicker__select">
-        <ReactMultiSelectCheckboxes 
-          options={this.state.onwnerList}
-          onChange={this.handleChangeList} />
-          </div>
+          <ReactMultiSelectCheckboxes
+            options={this.state.onwnerList}
+            onChange={this.handleChangeList} />
+        </div>
         {/* <br></br> */}
         <button className="walkerrdtPicker__button" onClick={this.handleSchedule}>schedule</button>
       </div>

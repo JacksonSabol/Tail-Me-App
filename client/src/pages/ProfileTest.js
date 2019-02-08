@@ -258,27 +258,7 @@ class ProfileContainer extends Component {
             return <Redirect to="/" />;
         } else if (!loggedIn) {
             return <Redirect to="/user/login" />;
-        } else if (userType === "walker") {
-            return (
-                <div className="ownerDash">
-                    <Header />
-                    <div className="ownerDash__grid">
-                        <SidebarNav className="ownerDash__grid--sidebarNav"
-                            username={username}
-                            currentPage={this.state.currentPage}
-                            handlePageChange={this.handlePageChange}
-                            handleLogOut={this.handleLogOut}
-                        />
-                        <div className="ownerDash__grid--main-content">
-                            {this.renderWalkerPage()}
-                        </div>
-                    </div>
-                    <div className="ownerDash__grid--footer" >
-                    <Footer />
-                    </div>
-                </div>
-            );
-        } else if (userType === "owner") {
+        } else {
             return (
                 <div className="ownerDash">
                     <Header />
