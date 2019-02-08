@@ -213,7 +213,7 @@ class TodayWalks extends Component {
             <p className="search__form--alert"> You don't have any upcoming walks!</p>
           )}
 
-        {this.state.walks.length ? (
+        {this.state.pastWalks.length ? (
           <List> <br></br>
             <b>Walks History: </b>
             {this.state.pastWalks.map(walk => (
