@@ -66,7 +66,7 @@ class WalkerCertification extends Component {
     render() {
         const { username, certAdded } = this.state;
         if (certAdded) {
-            return <Redirect to={`/userProfile/${username}`} />;
+            return <Redirect to={`/userProfileWalker/${username}`} />;
         } else {
             return (
                 <div className="main-content-certify">

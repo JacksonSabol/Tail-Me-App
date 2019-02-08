@@ -180,6 +180,50 @@ a {
 .walkerFullscheduleWrap {
   display: grid; }
 
+.FileUpload {
+  padding: 2em;
+  display: flex;
+  justify-content: center; }
+
+.dropzone {
+  margin: 2em;
+  padding: 4em;
+  background-image: radial-gradient(#4d4d4d, #333333); }
+
+.dropzoneText {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb;
+  font-size: 3em; }
+
+.css-vj8t7z {
+  margin: 1em 2em;
+  font-size: 2em;
+  border: solid 2px #a6a6a6;
+  border-radius: .5em;
+  background-color: #e7f6fd;
+  color: #333333;
+  box-shadow: inset 0 0 12px #7ECEFF;
+  outline: none;
+  text-decoration: none; }
+
+.dropzoneButton {
+  margin-left: 2.5em;
+  font-family: "Thasadith", sans-serif;
+  padding: .8em .5em;
+  font-size: 2em;
+  text-align: center;
+  color: #e7f6fd;
+  background-color: #1190cb;
+  border-radius: .5em;
+  border: solid 2px #e7f6fd;
+  cursor: pointer; }
+
+.dropzoneButton:hover {
+  background-color: transparent;
+  letter-spacing: 0.1em;
+  color: #1190cb;
+  text-shadow: 2px 2px 8px #1190cb; }
+
 .Contact {
   background-image: radial-gradient(#4d4d4d, #333333);
   display: grid;
@@ -289,7 +333,7 @@ a {
   border-radius: 1em;
   display: grid;
   grid-template-columns: .25fr auto .25fr;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto 1fr;
   justify-content: center;
   margin: 2em;
   box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
@@ -313,7 +357,7 @@ a {
     font-size: 2.5em;
     display: grid;
     grid-template-columns: .25fr auto .25fr;
-    grid-template-rows: 10 1fr;
+    grid-template-rows: 10 auto;
     justify-content: center; }
     .sidebar__nav--itemLink {
       font-style: bold;
@@ -354,7 +398,7 @@ a {
   border-radius: 1em;
   display: grid;
   grid-template-columns: .25fr auto .25fr;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto 1fr;
   justify-content: center;
   margin: 2em;
   box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
@@ -408,11 +452,129 @@ a {
       grid-area: 9/2;
       padding: 0.25em 1em; }
 
-.search__form--alert {
-  text-align: center;
-  font-family: "Over the Rainbow", cursive;
-  font-size: 6em;
-  color: #1190cb; }
+.TodayWalks {
+  font-size: 2em;
+  background-image: radial-gradient(#e6e6e6, #808080);
+  display: grid;
+  grid-template-columns: 15 1fr;
+  grid-template-rows: auto; }
+  .TodayWalks__upcoming {
+    grid-area: 1/1/2/6;
+    border: solid 0.25em #1190cb;
+    border-radius: 1em;
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto auto auto auto;
+    box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .TodayWalks__upcoming--title {
+      color: #1190cb;
+      font-size: 3em;
+      font-family: "Mouse Memoirs", sans-serif; }
+    .TodayWalks__upcoming--list-publish {
+      list-style: none;
+      color: black;
+      font-size: 1em;
+      margin: .25em; }
+    .TodayWalks__upcoming--list-publish-button {
+      color: #e6e6e6;
+      font-family: "Thasadith", sans-serif;
+      background-color: #1190cb;
+      border: solid 2px #e7f6fd;
+      border-radius: .5em;
+      font-size: 1em; }
+  .TodayWalks__alert {
+    text-align: center;
+    font-family: "Over the Rainbow", cursive;
+    font-size: 6em;
+    color: #1190cb; }
+  .TodayWalks__past {
+    grid-area: 1/6/2/16;
+    border: solid 0.25em #1190cb;
+    border-radius: 1em;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .TodayWalks__past--title {
+      color: #1190cb;
+      font-size: 3em;
+      font-family: "Mouse Memoirs", sans-serif; }
+    .TodayWalks__past--list-publish {
+      list-style: none;
+      color: black;
+      font-size: 1em;
+      margin: .25em; }
+    .TodayWalks__past--list-publish-button {
+      color: #e6e6e6;
+      font-family: "Thasadith", sans-serif;
+      background-color: #1190cb;
+      border: solid 2px #e7f6fd;
+      border-radius: .5em;
+      font-size: 1em; }
+
+.ownerWalks {
+  font-size: 2em;
+  background-image: radial-gradient(#4d4d4d, #333333);
+  display: grid;
+  grid-template-columns: 15 1fr;
+  grid-template-rows: auto; }
+  .ownerWalks__upcoming {
+    background-image: radial-gradient(#4d4d4d, #333333);
+    grid-area: 1/1/2/6;
+    border: solid 0.25em #1190cb;
+    border-radius: 1em;
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto auto auto auto;
+    box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .ownerWalks__upcoming--title {
+      color: #1190cb;
+      font-size: 2em;
+      font-family: "Over the Rainbow", cursive; }
+    .ownerWalks__upcoming--list-publish {
+      list-style: none;
+      color: #e7f6fd;
+      font-size: 1em;
+      margin: .25em; }
+    .ownerWalks__upcoming--list-publish-button {
+      color: #e6e6e6;
+      font-family: "Thasadith", sans-serif;
+      background-color: #1190cb;
+      border: solid 2px #e7f6fd;
+      border-radius: .5em;
+      font-size: 1em; }
+  .ownerWalks__alert {
+    text-align: center;
+    font-family: "Over the Rainbow", cursive;
+    font-size: 6em;
+    color: #1190cb; }
+  .ownerWalks__past {
+    background-image: radial-gradient(#4d4d4d, #333333);
+    grid-area: 1/6/2/16;
+    border: solid 0.25em #1190cb;
+    border-radius: 1em;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .ownerWalks__past--title {
+      color: #1190cb;
+      font-size: 2em;
+      font-family: "Over the Rainbow", cursive; }
+    .ownerWalks__past--list-publish {
+      list-style: none;
+      color: #e7f6fd;
+      font-size: 1em;
+      margin: .25em; }
+    .ownerWalks__past--list-publish-button {
+      color: #e6e6e6;
+      font-family: "Thasadith", sans-serif;
+      background-color: #1190cb;
+      border: solid 2px #e7f6fd;
+      border-radius: .5em;
+      font-size: 1em; }
 
 .rdtPicker {
   margin: 2em;
@@ -621,7 +783,7 @@ button.css-48ayfv {
 .showMap {
   margin: 3em; }
   .showMap__title {
-    font-family: "Over the Rainbow", cursive;
+    font-family: "Mouse Memoirs", sans-serif;
     font-size: 3em;
     margin: .5em;
     color: #1190cb;
@@ -630,28 +792,28 @@ button.css-48ayfv {
     font-family: "Thasadith", sans-serif;
     font-size: 2em;
     text-align: center;
-    color: #1190cb;
-    background-color: #333333;
+    color: #e7f6fd;
+    background-color: #1190cb;
     padding: .5em 1em;
     border-radius: .5em;
-    border: solid 2px #1190cb;
+    border: solid 2px #e7f6fd;
     margin: 1em 1em; }
   .showMap__button--checkIn:hover {
-    background-color: #1a1a1a;
+    background-color: transparent;
     letter-spacing: 0.1em;
     text-shadow: 2px 2px 8px #1190cb; }
   .showMap__button--checkOut {
     font-family: "Thasadith", sans-serif;
     font-size: 2em;
     text-align: center;
-    color: #1190cb;
-    background-color: #333333;
+    color: #e7f6fd;
+    background-color: #1190cb;
     padding: .5em 1em;
     border-radius: .5em;
-    border: solid 2px #1190cb;
+    border: solid 2px #e7f6fd;
     margin: 1em 1em; }
   .showMap__button--checkOut:hover {
-    background-color: #1a1a1a;
+    background-color: transparent;
     letter-spacing: 0.1em;
     text-shadow: 2px 2px 8px #1190cb; }
 
@@ -1192,7 +1354,7 @@ button.css-48ayfv {
       outline: none;
       text-decoration: none; }
     .walkerSignup__form--footer {
-      grid-area: 8/1;
+      grid-area: 4/2;
       display: flex;
       justify-content: center; }
     .walkerSignup__form--homeButton {
@@ -1312,7 +1474,7 @@ button.css-48ayfv {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
     .login__form--footer {
-      grid-area: 8/1;
+      grid-area: 4/2;
       display: flex;
       justify-content: center; }
     .login__form--homeButton {
@@ -1961,7 +2123,8 @@ button.css-48ayfv {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: auto 1fr  auto; }
+  grid-template-rows: auto 1fr  auto;
+  margin: 2em; }
   .main-content-certify__title {
     grid-area: 1/2;
     font-family: "Mouse Memoirs", sans-serif;
@@ -2025,7 +2188,7 @@ button.css-48ayfv {
       text-decoration: none; }
     .main-content-certify__form--button {
       grid-area: 4/2;
-      justify-self: center;
+      justify-self: right;
       font-family: "Thasadith", sans-serif;
       padding: .8em .5em;
       font-size: 2em;
@@ -2158,7 +2321,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: auto 1fr  1fr auto;
     grid-template-rows: .5fr .5fr 1fr 1fr;
-    grid-template-areas: ". . . . " ". l  l ." ". a  w ." "f f f f ";
+    grid-template-areas: ". . . . " ". l  l ." ". a  w ." "f f f f ";
     grid-gap: 4em; }
   .walkersplash__logo {
     grid-area: l;
@@ -2168,7 +2331,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    grid-template-areas: "t t t" "b b b" ". . ."; }
+    grid-template-areas: "t t t" "e e e" "g g g"; }
     .walkersplash__about--text {
       grid-area: t;
       font-size: 2.5em;
@@ -2176,7 +2339,7 @@ button.css-48ayfv {
       margin: 1em;
       text-align: center; }
     .walkersplash__about--link {
-      grid-area: b;
+      grid-area: e;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       text-align: center;
@@ -2196,33 +2359,39 @@ button.css-48ayfv {
       text-shadow: 2px 2px 8px #1190cb;
       outline: none;
       text-decoration: none; }
+    .walkersplash__about--userregistration {
+      grid-area: g;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
+    .walkersplash__about--userregistration:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
   .walkersplash__user {
     grid-area: u;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    grid-template-areas: "t t t" "c c c" "b b b"; }
+    grid-template-areas: "t t t" "c c c" "b b b"; }
     .walkersplash__user--text {
       grid-area: t;
       font-size: 2.5em;
       color: #a6a6a6;
       margin: 1em;
       text-align: center; }
-    .walkersplash__user--authentification {
-      grid-area: c;
-      font-size: 2em;
-      text-align: center;
-      color: #e6e6e6;
-      background-color: #333333;
-      padding: 1em 2em;
-      border-radius: .5em;
-      border: solid 2px #1a1a1a;
-      margin: 1em; }
-    .walkersplash__user--authentification:hover {
-      background-color: #1a1a1a;
-      letter-spacing: 0.1em;
-      color: #1190cb;
-      text-shadow: 2px 2px 8px #1190cb; }
     .walkersplash__user--registration {
       grid-area: b;
       font-size: 2em;
@@ -2243,7 +2412,7 @@ button.css-48ayfv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    grid-template-areas: "t t t" "c c c" "b b b"; }
+    grid-template-areas: "t t t" "c c c" "b b b"; }
     .walkersplash__walker--text {
       grid-area: t;
       font-size: 2.5em;
@@ -2323,3 +2492,70 @@ button.css-48ayfv {
     .walkeraboutTailMe__grid--footer {
       grid-area: 2 / 2 / 3 /3;
       align-self: center; }
+
+.createDog {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr  auto;
+  margin: 2em; }
+  .createDog__title {
+    grid-area: 1/2;
+    font-family: "Over the Rainbow", cursive;
+    color: #1190cb;
+    font-size: 4em; }
+  .createDog__form {
+    color: #e6e6e6;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: 1em; }
+    .createDog__form--nameLabel {
+      grid-area: 1/1;
+      justify-self: right;
+      font-size: 3em; }
+    .createDog__form--nameInput {
+      grid-area: 1/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .createDog__form--phoneLabel {
+      grid-area: 2/1;
+      justify-self: right;
+      font-size: 3em; }
+    .createDog__form--phoneInput {
+      grid-area: 2/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .createDog__form--button {
+      grid-area: 3/2;
+      justify-self: right;
+      margin-bottom: 2em;
+      font-family: "Thasadith", sans-serif;
+      padding: .8em .5em;
+      font-size: 2em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      cursor: pointer; }
+    .createDog__form--button:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb; }

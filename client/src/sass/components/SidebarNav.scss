@@ -5,7 +5,7 @@
     border-radius: 1em;
     display: grid;
     grid-template-columns: .25fr auto .25fr;
-    grid-template-rows: auto auto auto ;
+    grid-template-rows: auto auto 1fr ;
     justify-content: center;
     margin: 2em ;
     box-shadow: 0em 0em .5em .5em $color-darkest;
@@ -35,7 +35,7 @@
         font-size: 2.5em;
         display: grid;
         grid-template-columns: .25fr auto .25fr;
-        grid-template-rows: (10) 1fr;
+        grid-template-rows: (10) auto;
         justify-content: center;
 
         &--itemLink{

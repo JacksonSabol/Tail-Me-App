@@ -4,8 +4,9 @@ import { List, ListItem } from "../List";
 import API from "../../utils/API";
 import Moment from "moment";
 import GoogleMapReact from "google-map-react"
+import "../../index.css";
 
-//import "../index.css";
+
 
 const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
     <div style={{
@@ -143,55 +144,54 @@ class ownerWalks extends Component {
     render() {
         return (
             <Container>
-                <Row>
-                    <Col size="md-12 sm-12">
+                 <div className="ownerWalks">
+                
 
                         {this.state.walks.length ? (
+                            <div className="ownerWalks__upcoming">
                             <List>
-                                <b>Upcomming Walks:</b>
+                            <div className="ownerWalks__upcoming--title">Upcoming Walks: </div>
                                 {this.state.walks.map(walk => (
 
 
                                     <ListItem key={walk.id}>
 
-                                        <p className="list-publish"> Walk Date:
+                                        <div className="ownerWalks__upcoming--list-publish"> Walk Date: 
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-                                        </p>
+                                        </div>
                                     </ListItem>
 
                                 ))}
 
                             </List>
-
+                            </div>
                         ) : (
-                                <p className="search__form--alert"> You don't have any upcomming walks!</p>
+                                <p className="ownerWalks__alert"> You don't have any upcomming walks!</p>
                             )}
 
-                    </Col>
-                </Row>
-                <Row>
-                    <Col size="md-12 sm-12">
+                
 
                         {this.state.walks.length ? (
-                            <List> <br></br>
-                                <b>  History Walks:</b>
+                            <div className="ownerWalks__past">
+                            <List> 
+                            <div className="ownerWalks__past--title">Walks History: </div>
                                 {this.state.pastWalks.map(walk => (
 
 
                                     <ListItem key={walk.id}>
 
-                                        <p className="list-publish"> Walk Date:
+                                        <div className="ownerWalks__past--list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
-                                        </p>
+                                        </div>
 
 
 
-                                        <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
+                                        <div className="ownerWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</div>
 
-                                        <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
+                                        <div className="ownerWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </div>
 
-                                        <p className="list-publish"> Total Time: {walk.totalTime} </p>
-                                        <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
+                                        <div className="ownerWalks__past--list-publish"> Total Time: {walk.totalTime} </div>
+                                        <button className="ownerWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
 
 
                                     </ListItem>
@@ -199,13 +199,12 @@ class ownerWalks extends Component {
                                 ))}
 
                             </List>
-
+                            </div>
                         ) : (
-                                <p className="search__form--alert"> You don't have any walks!</p>
+                                <p className="ownerWalks__alert"> You don't have any walks!</p>
                             )}
 
-                    </Col>
-                </Row>
+              
 
                 {this.state.onClickButton ? (
 
@@ -242,7 +241,7 @@ class ownerWalks extends Component {
 
                 ) : null}
 
-
+            </div>
             </Container>
         );
     }
