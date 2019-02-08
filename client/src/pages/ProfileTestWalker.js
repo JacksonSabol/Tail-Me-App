@@ -3,20 +3,23 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import SidebarNav from '../components/SidebarNav';
 import SidebarNavOwner from '../components/SidebarNavOwner';
-import Profile from './Profile'
+import Profile from './Profile';
+import ProfileWalker from "./ProfileWalker";
 import TodayWalks from '../components/TodayWalks';
 import InviteOwners from "../components/InviteOwners";
 import ShowMap from "../components/ShowMap";
 import ScheduleWalks from "../components/WalkerScheduleWalks";
+import ScheduleWalksWalker from "../components/WalkerScheduleWalksWalker";
 import Schedule from '../components/Schedule';
+import ScheduleWalker from '../components/ScheduleWalker';
 import WalkerCertification from './WalkerCertification';
-import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
-import DogOwnerGallery from "../components/DogGallery";
-import OwnerWalks from "../components/ownerWalks";
 import CreateDog from './createDog';
-import Header from "../components/Header";
 import Footer from "../components/Footer";
+import FooterWalker from "../components/FooterWalker";
+import HeaderWalker from "../components/HeaderWalker";
+import Header from "../components/Header";
 import "../index.css";
+
 
 const loading = {
     margin: '1em',
@@ -25,7 +28,7 @@ const loading = {
 
 const title = 'DASHBOARD';
 
-class ProfileContainer extends Component {
+class ProfileContainerWalker extends Component {
     state = {
         currentPage: "Home",
         userId: 0,
@@ -96,7 +99,7 @@ class ProfileContainer extends Component {
     // Function to handle rendering the correct walker page from Sidebar Nav
     renderWalkerPage = () => {
         switch (this.state.currentPage) {
-            case "Home": return <Profile
+            case "Home": return <ProfileWalker
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
@@ -111,13 +114,12 @@ class ProfileContainer extends Component {
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}
             />;
-            case "SchedWalks": return <ScheduleWalks
+            case "SchedWalks": return <ScheduleWalksWalker
                 walkerID={this.state.userId}
                 handlePageChange={this.handlePageChange}
             />;
-            case "FullSchedule": return <Schedule
+            case "FullSchedule": return <ScheduleWalker
                 walkerID={this.state.userId}
-                username={this.state.username}
             />
             case "Certs": return <WalkerCertification
                 username={this.state.username}
@@ -127,10 +129,7 @@ class ProfileContainer extends Component {
                 walkerName={this.state.username}
             />;
             case "Map": return <ShowMap />;
-            case "Upload": return <WalkPhotoUpload
-                WalkerID={this.state.userId}
-            />;
-            default: return <Profile
+            default: return <ProfileWalker
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
@@ -160,15 +159,10 @@ class ProfileContainer extends Component {
                 zipCode={this.state.zipCode}
                 country={this.state.country}
             />;
-            case "Walks": return <OwnerWalks
+            case "Walks": return <TodayWalks
                 dogOwnerId={this.state.userId}
             />;
             case "Dogs": return <CreateDog
-                UserID={this.state.userId}
-                username={this.state.username}
-                handlePageChange={this.handlePageChange}
-            />;
-            case "Gallery": return <DogOwnerGallery
                 UserID={this.state.userId}
                 username={this.state.username}
                 handlePageChange={this.handlePageChange}
@@ -257,24 +251,24 @@ class ProfileContainer extends Component {
         } else if (deleted) {
             return <Redirect to="/" />;
         } else if (!loggedIn) {
-            return <Redirect to="/user/login" />;
+            return <Redirect to="/user/loginWalker" />;
         } else if (userType === "walker") {
             return (
-                <div className="ownerDash">
-                    <Header />
-                    <div className="ownerDash__grid">
-                        <SidebarNav className="ownerDash__grid--sidebarNav"
+                <div className="walkerDash">
+                    <HeaderWalker />
+                    <div className="walkerDash__grid">
+                        <SidebarNav className="walkerDash__grid--sidebarNav"
                             username={username}
                             currentPage={this.state.currentPage}
                             handlePageChange={this.handlePageChange}
                             handleLogOut={this.handleLogOut}
                         />
-                        <div className="ownerDash__grid--main-content">
+                        <div className="walkerDash__grid--main-content">
                             {this.renderWalkerPage()}
                         </div>
                     </div>
-                    <div className="ownerDash__grid--footer" >
-                    <Footer />
+                    <div className="walkerDash__grid--footer" >
+                    <FooterWalker />
                     </div>
                 </div>
             );
@@ -293,13 +287,16 @@ class ProfileContainer extends Component {
                             {this.renderOwnerPage()}
                         </div>
                     </div>
+
                     <div className="ownerDash__grid--footer" >
-                        <Footer />
+                    <Footer />
                     </div>
+                  
+
                 </div>
             );
         }
     }
 }
 
-export default ProfileContainer;
+export default ProfileContainerWalker;

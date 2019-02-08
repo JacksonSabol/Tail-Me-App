@@ -1,6 +1,5 @@
-.sidebar{
-    background-image: radial-gradient( $color-lightest, $color-mid);
-    // background-color: blue;
+.ownersidebar{
+    background-image: radial-gradient(#4d4d4d, #333333);
     border:solid .25em $color-accentOne;
     border-radius: 1em;
     display: grid;
@@ -13,7 +12,7 @@
 
     &__title{
         grid-area: 1/2;
-        font-family: $font-headingD;
+        font-family: $font-cursive;
         font-size: 3em;
         color: $color-accentOne;
         margin: .5em;
@@ -38,13 +37,6 @@
         grid-template-rows: (10) 1fr;
         justify-content: center;
 
-        &--itemLink{
-            font-style: bold;
-            color: black;
-        }
-        &--itemLink:hover{
-            color: $color-accentOne;
-        }
         &--itemDashboard{
             grid-area: 1/2;
             padding: 0.25em 1em;

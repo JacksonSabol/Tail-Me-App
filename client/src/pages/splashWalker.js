@@ -15,7 +15,7 @@ class splashWalker extends Component {
                         <div className="walkersplash__about--text">
                             Click here to find out more about tailME
                     </div>
-                        <Link className="walkersplash__about--link" to="/aboutTailMe">
+                        <Link className="walkersplash__about--link" to="/aboutTailMeWalker">
                             about tailME
                     </Link>
                     </div>

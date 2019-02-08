@@ -20,6 +20,7 @@ import contactTailMeWalker from "./pages/contactTailMeWalker";
 import createWalkerProfile from "./pages/createWalkerProfile";
 import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
+import ProfileTestWalker from "./pages/ProfileTestWalker";
 import ShowMap from "./components/ShowMap";
 import InviteOwners from "./components/InviteOwners";
 import GetCoordinates from "./components/GetCoordinates";
@@ -37,6 +38,7 @@ function App() {
   return (
     <Router history={history}>
       <div>
+
         <Route exact path="/" component={splashWalker} />
         <Route exact path="/splash/Walker" component={splashWalker}/>
         <Route exact path="/user/login" component={Login} />
@@ -57,6 +59,7 @@ function App() {
         <Route exact path="/contactTailMe/" component={contactTailMe} />
         <Route exact path="/contactTailMeWalker/" component={contactTailMeWalker} />
         <Route exact path="/userProfile/:username" component={ProfileTest} />
+        <Route exact path="/userProfileWalker/:username" component={ProfileTestWalker} />
         <Route exact path="/walker/showmap" component={ShowMap} />
         <Route exact path="/walker/inviteowner" component={InviteOwners} />
         <Route exact path="/walker/getcoordinates" component={GetCoordinates} />

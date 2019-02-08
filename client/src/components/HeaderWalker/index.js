@@ -17,7 +17,7 @@ function HeaderWalker(props) {
         </Link>
       </div>
       <div className="walkernav__contact">
-        <Link className="walkernav__contact--link" to="/contactTailMe">
+        <Link className="walkernav__contact--link" to="/contactTailMeWalker">
         <img className="walkernav__contact--mailIcon" src={mailIcon} alt="mail icon" ></img> 
         </Link>
       </div>

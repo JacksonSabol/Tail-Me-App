@@ -20,6 +20,7 @@
 @import "components/OwnerScheduleWalks";
 @import "components/RegistrationForm";
 @import "components/Schedule";
+@import "components/ScheduleWalker";
 @import "components/SendAlertInterface";
 @import "components/UserProfileInput";
 @import "components/WalkerLogoUpandShow";
@@ -28,12 +29,15 @@
 @import "components/WalkPhotoUpandPost";
 @import "components/Contact";
 @import "components/SidebarNav.scss";
+@import "components/SidebarNavOwner.scss";
 @import "components/TodayWalks";
 @import "components/WalkerScheduleWalks";
+@import "components/WalkerScheduleWalksWalker";
 @import "components/InviteOwners";
 @import "components/ShowMap";
 @import "components/HeaderWalker";
 @import "components/ContactWalker";
+@import "components/FooterWalker";
 
 @import "pages/aboutTailMe";
 @import "pages/billing";
@@ -54,7 +58,9 @@
 @import "pages/createOwnerProfile";
 @import "pages/createWalkerProfile";
 @import "pages/ProfileTest";
+@import "pages/ProfileTestWalker";
 @import "pages/Profile";
+@import "pages/ProfileWalker";
 @import "pages/WalkerCertification";
 @import "pages/LoginWalker";
 @import "pages/splashWalker";

@@ -130,7 +130,7 @@ th.fc-day-header {
   color: #1190cb; }
 
 h2 {
-  font-family: "Over the Rainbow", cursive;
+  font-family: "Thasadith", sans-serif;
   color: #1190cb; }
 
 a {
@@ -139,6 +139,46 @@ a {
 
 .css-10nd86i {
   color: #1a1a1a; }
+
+.walkerfullCalender {
+  font-family: "Thasadith", sans-serif;
+  font-size: 2em;
+  margin: 1em; }
+
+.walkercalenderContainer {
+  grid-area: 1/2;
+  border: solid 0.25em #1190cb;
+  border-radius: 1em;
+  box-shadow: 0em 0em 0.5em 0.5em #4d4d4d;
+  margin: 1em;
+  font-family: "Thasadith", sans-serif;
+  width: 800px;
+  padding-left: 6em; }
+
+th.fc-day-header {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
+
+h2 {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
+
+a {
+  font-family: "Thasadith", sans-serif;
+  color: #1190cb; }
+
+.css-10nd86i {
+  color: #1a1a1a; }
+
+.walkerScheduleWalksContainer {
+  grid-area: 1/1;
+  border: solid 0.25em #1190cb;
+  border-radius: 1em;
+  box-shadow: 0em 0em 0.5em 0.5em #4d4d4d;
+  margin: 1em; }
+
+.walkerFullscheduleWrap {
+  display: grid; }
 
 .Contact {
   background-image: radial-gradient(#4d4d4d, #333333);
@@ -244,7 +284,7 @@ a {
     text-shadow: 2px 2px 8px #1190cb; }
 
 .sidebar {
-  background-image: radial-gradient(#4d4d4d, #333333);
+  background-image: radial-gradient(#e6e6e6, #808080);
   border: solid 0.25em #1190cb;
   border-radius: 1em;
   display: grid;
@@ -255,7 +295,7 @@ a {
   box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
   .sidebar__title {
     grid-area: 1/2;
-    font-family: "Over the Rainbow", cursive;
+    font-family: "Mouse Memoirs", sans-serif;
     font-size: 3em;
     color: #1190cb;
     margin: .5em; }
@@ -275,6 +315,11 @@ a {
     grid-template-columns: .25fr auto .25fr;
     grid-template-rows: 10 1fr;
     justify-content: center; }
+    .sidebar__nav--itemLink {
+      font-style: bold;
+      color: black; }
+    .sidebar__nav--itemLink:hover {
+      color: #1190cb; }
     .sidebar__nav--itemDashboard {
       grid-area: 1/2;
       padding: 0.25em 1em; }
@@ -300,6 +345,66 @@ a {
       grid-area: 8/2;
       padding: 0.25em 1em; }
     .sidebar__nav--itemLogout {
+      grid-area: 9/2;
+      padding: 0.25em 1em; }
+
+.ownersidebar {
+  background-image: radial-gradient(#4d4d4d, #333333);
+  border: solid 0.25em #1190cb;
+  border-radius: 1em;
+  display: grid;
+  grid-template-columns: .25fr auto .25fr;
+  grid-template-rows: auto auto auto;
+  justify-content: center;
+  margin: 2em;
+  box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+  .ownersidebar__title {
+    grid-area: 1/2;
+    font-family: "Over the Rainbow", cursive;
+    font-size: 3em;
+    color: #1190cb;
+    margin: .5em; }
+  .ownersidebar__brand {
+    grid-area: 2/2;
+    margin: 0em 0em 0em 2em; }
+    .ownersidebar__brand--logo {
+      height: 4em;
+      font-size: 1em;
+      border: solid 0.25em #1190cb;
+      border-radius: 1em;
+      padding: .5em; }
+  .ownersidebar__nav {
+    grid-area: 3/2;
+    font-size: 2.5em;
+    display: grid;
+    grid-template-columns: .25fr auto .25fr;
+    grid-template-rows: 10 1fr;
+    justify-content: center; }
+    .ownersidebar__nav--itemDashboard {
+      grid-area: 1/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemWalks {
+      grid-area: 2/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemSchedWalks {
+      grid-area: 3/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemFullSchedule {
+      grid-area: 4/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemInvite {
+      grid-area: 5/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemCerts {
+      grid-area: 6/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemMap {
+      grid-area: 7/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemNotifications {
+      grid-area: 8/2;
+      padding: 0.25em 1em; }
+    .ownersidebar__nav--itemLogout {
       grid-area: 9/2;
       padding: 0.25em 1em; }
 
@@ -344,20 +449,17 @@ a {
     border-radius: .5em;
     border: solid 2px #1190cb;
     margin: 1em 0em;
-    cursor: pointer;
-    box-shadow: 0em 0em 0.25em 0.25em #333333; }
+    cursor: pointer; }
   .rdtPicker__button:hover {
     background-color: #1a1a1a;
     letter-spacing: 0.1em;
-    color: #1190cb;
-    text-shadow: 2px 2px 8px #1190cb; }
+    color: #1190cb; }
 
 .react-datetime-picker__wrapper {
   height: 4em;
   padding: 1em;
   background-color: #a6a6a6;
-  border-radius: .5em;
-  box-shadow: 0em 0em 0.25em 0.25em #333333; }
+  border-radius: .5em; }
 
 .react-datetime-picker__inputGroup__divider {
   color: #1190cb;
@@ -369,8 +471,75 @@ button.css-1r4vtzz {
   color: #1a1a1a;
   font-size: 1.25em;
   padding: .5em 1.5em;
-  border-radius: .25em;
-  box-shadow: 0em 0em 0.25em 0.25em #333333; }
+  border: solid 1px #4d4d4d;
+  border-radius: .25em; }
+
+button.css-48ayfv {
+  background-color: #a6a6a6;
+  font-family: "Thasadith", sans-serif;
+  color: #1a1a1a;
+  font-size: 1.25em;
+  padding: .5em 1.5em;
+  border-radius: .25em; }
+
+.walkerrdtPicker {
+  margin: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4 1fr;
+  grid-gap: 1em; }
+  .walkerrdtPicker__title {
+    grid-area: 1/1;
+    text-align: center;
+    font-family: "Mouse Memoirs", sans-serif;
+    color: #1190cb;
+    font-size: 4em;
+    margin: .5em; }
+  .walkerrdtPicker__picker {
+    align-self: center;
+    margin-top: 1em;
+    grid-area: 2/1;
+    font-size: 2em; }
+  .walkerrdtPicker__select {
+    grid-area: 3/1;
+    margin: 1em;
+    font-size: 2em; }
+  .walkerrdtPicker__button {
+    grid-area: 4/1;
+    align-self: center;
+    font-family: "Thasadith", sans-serif;
+    padding: .8em .5em;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    cursor: pointer; }
+  .walkerrdtPicker__button:hover {
+    background-color: transparent;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+
+.react-datetime-picker__wrapper {
+  height: 4em;
+  padding: 1em;
+  background-color: #a6a6a6;
+  border-radius: .5em; }
+
+.react-datetime-picker__inputGroup__divider {
+  color: #1190cb;
+  font-weight: bold; }
+
+button.css-1r4vtzz {
+  background-color: #a6a6a6;
+  font-family: "Thasadith", sans-serif;
+  color: #1a1a1a;
+  font-size: 1.25em;
+  padding: .5em 1.5em;
+  border: solid 1px #4d4d4d;
+  border-radius: .25em; }
 
 button.css-48ayfv {
   background-color: #a6a6a6;
@@ -388,7 +557,7 @@ button.css-48ayfv {
   margin: 2em; }
   .walkerInvite__title {
     grid-area: 1/1/2/4;
-    font-family: "Over the Rainbow", cursive;
+    font-family: "Mouse Memoirs", sans-serif;
     font-size: 4em;
     color: #1190cb;
     text-align: center; }
@@ -398,7 +567,7 @@ button.css-48ayfv {
     grid-gap: 1em;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr auto auto;
-    color: #a6a6a6; }
+    color: #1a1a1a; }
     .walkerInvite__form--nameLabel {
       grid-area: 1/1;
       justify-self: right;
@@ -408,11 +577,13 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
-      align-self: flex-start;
-      background-color: #333333;
-      color: #a6a6a6; }
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerInvite__form--phoneLabel {
       grid-area: 2/1;
       justify-self: right;
@@ -422,25 +593,27 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
-      align-self: flex-start;
-      background-color: #333333;
-      color: #a6a6a6; }
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .walkerInvite__form--button {
       grid-area: 3/2;
       justify-self: center;
       font-family: "Thasadith", sans-serif;
-      font-size: 3em;
+      padding: .8em .5em;
+      font-size: 2em;
       text-align: center;
-      color: #1190cb;
-      background-color: #333333;
-      padding: .5em 1em;
+      color: #e7f6fd;
+      background-color: #1190cb;
       border-radius: .5em;
-      border: solid 2px #1190cb;
-      margin: 1em 0em; }
+      border: solid 2px #e7f6fd;
+      cursor: pointer; }
     .walkerInvite__form--button:hover {
-      background-color: #1a1a1a;
+      background-color: transparent;
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
@@ -656,6 +829,16 @@ button.css-48ayfv {
     box-shadow: 0 0 12px #7ECEFF;
     outline: none;
     text-decoration: none; }
+
+.walkerfooter {
+  color: #1a1a1a;
+  text-align: center;
+  width: 100%;
+  padding: 2em; }
+  .walkerfooter__text {
+    font-size: 2em; }
+  .walkerfooter__logo {
+    height: 1.5em; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
@@ -1593,6 +1776,29 @@ button.css-48ayfv {
       grid-area: 2/1/3/16;
       box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
 
+.walkerDash {
+  height: 100%; }
+  .walkerDash__grid {
+    display: grid;
+    grid-template-columns: 15 1fr;
+    grid-template-rows: 1fr auto; }
+    .walkerDash__grid--sidebarNav {
+      grid-area: 1/1/2/2; }
+    .walkerDash__grid--main-content {
+      background-image: radial-gradient(#e6e6e6, #808080);
+      border: solid 0.25em #1190cb;
+      border-radius: 1em;
+      margin: 2em 2em 2em 0em;
+      grid-area: 1/2/2/16;
+      box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .walkerDash__grid--footer {
+      background-image: radial-gradient(#e6e6e6, #808080);
+      border: solid 0.25em #1190cb;
+      border-radius: 1em;
+      margin: 0em 2em 2em 2em;
+      grid-area: 2/1/3/16;
+      box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+
 .main-content {
   background-color: transparent;
   margin: 3em; }
@@ -1672,6 +1878,85 @@ button.css-48ayfv {
       justify-self: left;
       color: #e6e6e6; }
 
+.walker-main-content {
+  background-color: transparent;
+  margin: 3em; }
+  .walker-main-content__title {
+    font-family: "Mouse Memoirs", sans-serif;
+    color: #1190cb;
+    font-size: 4em;
+    text-align: center; }
+  .walker-main-content__body {
+    display: grid;
+    font-size: 2.5em;
+    grid-template-columns: .5fr .5fr 1fr 1fr  .5fr .5fr;
+    grid-template-rows: 1fr auto auto auto auto auto 1fr;
+    grid-gap: .5em;
+    color: #1190cb; }
+    .walker-main-content__body--firstNameLabel {
+      grid-area: 1/2;
+      justify-self: right; }
+    .walker-main-content__body--firstNameInput {
+      grid-area: 1/3;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--lastNameLabel {
+      grid-area: 1/4;
+      justify-self: right; }
+    .walker-main-content__body--lastNameInput {
+      grid-area: 1/5;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--userTypeLabel {
+      grid-area: 2/3;
+      justify-self: right; }
+    .walker-main-content__body--userTypeInput {
+      grid-area: 2/4;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--aboutMeLabel {
+      grid-area: 3/2;
+      justify-self: right; }
+    .walker-main-content__body--aboutMeInput {
+      grid-area: 3/3/4/6;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--addressLabel {
+      grid-area: 4/2;
+      justify-self: right; }
+    .walker-main-content__body--addressInput {
+      grid-area: 4/3/5/6;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--cityLabel {
+      grid-area: 5/2;
+      justify-self: right; }
+    .walker-main-content__body--cityInput {
+      grid-area: 5/3;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--stateLabel {
+      grid-area: 5/4;
+      justify-self: right; }
+    .walker-main-content__body--stateInput {
+      grid-area: 5/5;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--countryLabel {
+      grid-area: 7/4;
+      justify-self: right; }
+    .walker-main-content__body--countryInput {
+      grid-area: 7/5;
+      justify-self: left;
+      color: #1a1a1a; }
+    .walker-main-content__body--zipcodeLabel {
+      grid-area: 6/4;
+      justify-self: right; }
+    .walker-main-content__body--zipcodeInput {
+      grid-area: 6/5;
+      justify-self: left;
+      color: #1a1a1a; }
+
 .main-content-certify {
   height: 100%;
   display: grid;
@@ -1679,16 +1964,17 @@ button.css-48ayfv {
   grid-template-rows: auto 1fr  auto; }
   .main-content-certify__title {
     grid-area: 1/2;
-    font-family: "Over the Rainbow", cursive;
+    font-family: "Mouse Memoirs", sans-serif;
     padding: 1em;
     color: #1190cb;
     font-size: 5em; }
   .main-content-certify__form {
-    color: #a6a6a6;
+    color: #1a1a1a;
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr auto; }
+    grid-template-rows: 1fr 1fr 1fr auto;
+    grid-gap: 1em; }
     .main-content-certify__form--certificationsLabel {
       grid-area: 1/1;
       justify-self: right;
@@ -1698,11 +1984,13 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
-      align-self: flex-start;
-      background-color: #333333;
-      color: #a6a6a6; }
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .main-content-certify__form--servicesLabel {
       grid-area: 2/1;
       justify-self: right;
@@ -1712,40 +2000,45 @@ button.css-48ayfv {
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
-      align-self: flex-start;
-      background-color: #333333;
-      color: #a6a6a6; }
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .main-content-certify__form--availibilityLabel {
       grid-area: 3/1;
-      justify-self: left;
+      justify-self: right;
       font-size: 3em; }
     .main-content-certify__form--availibilityStatus {
       grid-area: 3/2;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
       padding: .5em;
-      border: solid 2px #1a1a1a;
+      border: solid 2px #a6a6a6;
       border-radius: .5em;
-      align-self: flex-start;
-      background-color: #333333;
-      color: #a6a6a6; }
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
     .main-content-certify__form--button {
       grid-area: 4/2;
       justify-self: center;
       font-family: "Thasadith", sans-serif;
-      font-size: 3em;
+      padding: .8em .5em;
+      font-size: 2em;
       text-align: center;
-      color: #1190cb;
-      background-color: #333333;
-      padding: .5em 1em;
+      color: #e7f6fd;
+      background-color: #1190cb;
       border-radius: .5em;
-      border: solid 2px #1190cb;
-      margin: 1em 0em; }
+      border: solid 2px #e7f6fd;
+      cursor: pointer; }
     .main-content-certify__form--button:hover {
-      background-color: #1a1a1a;
+      background-color: transparent;
       letter-spacing: 0.1em;
+      color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
 
 .walkerlogin {
