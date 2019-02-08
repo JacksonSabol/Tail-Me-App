@@ -8,7 +8,8 @@ import WalkerScheduleWalksWalker from "../../components/WalkerScheduleWalksWalke
 class ScheduleWalker extends Component {
     state = {
         date: new Date(),
-        events: []
+        events: [],
+        username: this.props.username
     };
 
     componentDidMount() {
@@ -16,7 +17,7 @@ class ScheduleWalker extends Component {
     };
 
     loadMyWalks = () => {
-        console.log("username", this.props.username)
+        this.setState({ username: this.props.username });
         const idWalker = this.props.walkerID
         API.getMyWalks(idWalker)
             .then(res => {
@@ -58,7 +59,8 @@ class ScheduleWalker extends Component {
                 
                     <WalkerScheduleWalksWalker
                         walkerID={this.props.walkerID}
-                        username={this.props.username}
+                        username={this.state.username}
+                        loadMyWalks={this.loadMyWalks}
                     />
                 </div>
 
