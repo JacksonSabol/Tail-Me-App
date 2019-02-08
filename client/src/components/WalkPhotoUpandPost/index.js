@@ -178,7 +178,7 @@ class WalkPhotoUpandPost extends Component {
                                         {
                                             isDragActive ?
                                                 <h1>Drop files here...</h1> :
-                                                <h1>Try dropping some files here, or click to select files to upload.</h1>
+                                                <h1 className="dropzoneText">Try dropping some files here, or click to select files to upload.</h1>
                                         }
 
                                     </div>
@@ -193,7 +193,7 @@ class WalkPhotoUpandPost extends Component {
                     options={this.state.onwnerList}
                     onChange={this.handleChangeList} />
                 <br></br>
-                <button onClick={this.handleTransferImages}>Send images to Owner</button>
+                <button className="dropzoneButton" onClick={this.handleTransferImages}>Send images to Owner</button>
                 <Gallery
                     enableImageSelection={true}
                     backdropClosesModal={true}

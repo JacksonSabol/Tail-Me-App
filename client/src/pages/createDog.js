@@ -73,26 +73,26 @@ class WalkerCertification extends Component {
             return <Redirect to={`/userProfile/${username}`} />;
         } else {
             return (
-                <div className="main-content-certify">
-                    <div className="main-content-certify__title">Add a Dog</div>
-                    <form className="main-content-certify__form" onSubmit={this.handleCreateDog}>
-                        <label className="main-content-certify__form--certificationsLabel">What is your dog's name?: </label>
-                        <input className="main-content-certify__form--certificationsInput"
+                <div className="createDog">
+                    <div className="createDog__title">Add a Dog</div>
+                    <form className="createDog__form" onSubmit={this.handleCreateDog}>
+                        <label className="createDog__form--nameLabel">What is your dog's name?: </label>
+                        <input className="createDog__form--nameInput"
                             type="text"
                             name="dogName"
                             value={this.state.dogName}
                             onChange={this.handleInputChange}
                             placeholder="Lassie"
                         />
-                        <label className="main-content-certify__form--servicesLabel">Enter an Emergency Contact Number: </label>
-                        <input className="main-content-certify__form--servicesInput"
+                        <label className="createDog__form--phoneLabel">Enter an Emergency Contact Number: </label>
+                        <input className="createDog__form--phoneInput"
                             type="text"
                             name="emergencyContact"
                             value={this.state.emergencyContact}
                             onChange={this.handleInputChange}
                             placeholder="415-867-5309"
                         />
-                        <button className="main-content-certify__form--button" type="submit">Add Your Dog</button>
+                        <button className="createDog__form--button" type="submit">Add Your Dog</button>
                     </form>
                 </div>
             );

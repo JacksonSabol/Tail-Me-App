@@ -31,6 +31,7 @@
 @import "components/SidebarNav.scss";
 @import "components/SidebarNavOwner.scss";
 @import "components/TodayWalks";
+@import "components/ownerWalks";
 @import "components/WalkerScheduleWalks";
 @import "components/WalkerScheduleWalksWalker";
 @import "components/InviteOwners";
@@ -65,3 +66,4 @@
 @import "pages/LoginWalker";
 @import "pages/splashWalker";
 @import "pages/aboutTailMeWalker";
+@import "pages/createDog";

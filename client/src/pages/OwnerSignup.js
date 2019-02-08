@@ -121,7 +121,9 @@ class OwnerSignup extends Component {
                         </div>
                     )}
                     <a className="ownerSignup__form--homeButton" href="/">Return to Home</a>
+                    <div className="ownerSignup__form--footer">
                     <Footer/>
+                    </div>
                 </div>
             );
         } else {

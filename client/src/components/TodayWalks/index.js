@@ -3,8 +3,9 @@ import { List, ListItem } from "../List";
 import API from "../../utils/API";
 import Moment from "moment";
 import GoogleMapReact from "google-map-react"
+import "../../index.css";
 
-//import "../index.css";
+
 
 const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
   <div style={{
@@ -194,45 +195,50 @@ class TodayWalks extends Component {
 
   render() {
     return (
-      <div>
+      <div className="TodayWalks">
         {this.state.walks.length ? (
-          <List>
-            <b>Upcoming Walks: </b>
+          <div className="TodayWalks__upcoming">
+          <List >
+            <div className="TodayWalks__upcoming--title">Upcoming Walks: </div>
             {this.state.walks.map(walk => (
               <ListItem key={walk.id}>
-                <p className="list-publish"> Walk Date:
+                <div className="TodayWalks__upcoming--list-publish"> Walk Date:
                 {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
                   {walk.checkInTime === null ? (
-                    <button onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
-                    (<button onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>)}
-                </p>
+                    <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
+                    (<button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>)}
+                </div>
               </ListItem>
             ))}
           </List>
+          </div>
+         
         ) : (
-            <p className="search__form--alert"> You don't have any upcoming walks!</p>
+            <p className="TodayWalks__alert"> You don't have any upcoming walks!</p>
           )}
 
         {this.state.pastWalks.length ? (
-          <List> <br></br>
-            <b>Walks History: </b>
+          <div className="TodayWalks__past">
+          <List> 
+            <div className="TodayWalks__past--title">Walks History: </div>
             {this.state.pastWalks.map(walk => (
               <ListItem key={walk.id}>
 
-                <p className="list-publish"> Walk Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}</p>
+                <div className="TodayWalks__past--list-publish"> Walk Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}</div>
 
-                <p className="list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</p>
+                <div className="TodayWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</div>
 
-                <p className="list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </p>
+                <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </div>
 
-                <p className="list-publish"> Total Time: {walk.totalTime} </p>
-                <button onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
+                <div className="TodayWalks__past--list-publish"> Total Time: {walk.totalTime} </div>
+                <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
 
               </ListItem>
             ))}
           </List>
+          </div>
         ) : (
-            <p className="search__form--alert"> You don't have any previous walks!</p>
+            <p className="TodayWalks__alert"> You don't have any previous walks!</p>
           )}
         {this.state.walkId ? (
           <div style={{ display: "flex" }}>

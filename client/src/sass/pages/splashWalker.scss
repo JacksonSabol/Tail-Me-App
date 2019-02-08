@@ -27,8 +27,8 @@
         grid-template-rows: 1fr auto auto;
         grid-template-areas:
         "t t t"
-        "b b b"
-        ". . .";
+        "e e e"
+        "g g g";
         
         &--text{
             grid-area: t;
@@ -38,7 +38,7 @@
             text-align: center;
         }
         &--link{
-            grid-area: b;
+            grid-area: e;
             font-family: $font-sans;
             font-size: 3em;
             text-align: center;
@@ -60,6 +60,29 @@
             outline: none; 
             text-decoration: none; 
         }
+        &--userregistration{
+            grid-area: g;
+            font-family: $font-sans;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentWhite;
+            background-color: $color-accentOne;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentWhite;
+            margin: 1em 0em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;
+            text-decoration: none;
+        }
+        &--userregistration:hover{
+            background-color: transparent;
+            letter-spacing: 0.1em;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+            outline: none; 
+            text-decoration: none
+        }
 
     }
     &__user{
@@ -77,23 +100,6 @@
             color: $color-light;
             margin: 1em;
             text-align: center;
-        }
-        &--authentification{
-            grid-area: c;
-            font-size: 2em;
-            text-align: center;
-            color: $color-lightest;
-            background-color: $color-dark;
-            padding: 1em 2em;
-            border-radius: .5em;
-            border: solid 2px $color-darkest;
-            margin: 1em;
-        }
-        &--authentification:hover{
-            background-color: $color-darkest;
-            letter-spacing: 0.1em;
-            color: $color-accentOne;
-            text-shadow: 2px 2px 8px $color-accentOne;
         }
         &--registration{
             grid-area: b;
