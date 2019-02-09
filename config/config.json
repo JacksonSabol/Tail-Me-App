@@ -20,10 +20,12 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "tailMeDb",
-    "host": "127.0.0.1",
+    "username": "j2bicxmontzc3clw",
+    "password": "e7vaz3vx8hfz16av",
+    "database": "aiwzp33edqg38sai",
+    "host": "d6vscs19jtah8iwb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "port": 3306,
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
