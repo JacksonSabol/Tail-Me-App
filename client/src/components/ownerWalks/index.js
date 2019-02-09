@@ -208,11 +208,8 @@ class ownerWalks extends Component {
 
                 {this.state.onClickButton ? (
 
-                    <div style={{
-                        display: "flex",
-
-                    }}>
-                        <div style={{ height: '50vh', width: '50%' }}>
+                    <div className="TodayWalks__past--map" style={{ display: "flex" }}>
+                        <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                                 defaultCenter={this.state.currentLocation}
@@ -223,7 +220,7 @@ class ownerWalks extends Component {
                                     <ListItem key={image.id}>
                                         <AnyReactComponent ///all of the props ie walk.img/walk.lat))}
                                             id={image.id}
-                                            icon="../paw-green-2020.svg"
+                                            icon="../paw-tailme-2020.svg"
                                             lat={image.GPSLatitude}
                                             lng={image.GPSLongitude}
                                             imageClick={this.handleImgClick}
@@ -233,7 +230,7 @@ class ownerWalks extends Component {
                             </GoogleMapReact>
                         </div>
 
-                        <div style={{ postition: "relative" }}>
+                        <div className="TodayWalks__past--mapimage">
                             {this.state.activeImage ?
                                 <img width={'300px'} src={this.state.activeImage}></img> : null}
                         </div>
