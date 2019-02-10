@@ -256,7 +256,7 @@ class TodayWalks extends Component {
                             {this.state.walks.map(walk => (
                                 <ListItem key={walk.id}>
                                     <div className="TodayWalks__upcoming--list-publish"> Walk Date:
-                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
+                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                                         {walk.checkInTime === null ? (
                                             <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
                                             (<button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>)}
@@ -277,13 +277,13 @@ class TodayWalks extends Component {
                             {this.state.pastWalks.map(walk => (
                                 <ListItem key={walk.id}>
 
-                                    <div className="TodayWalks__past--list-publish"> Walk Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}</div>
+                                    <div className="TodayWalks__past--list-publish"> Walk Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</div>
 
-                                    <div className="TodayWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</div>
+                                    <div className="TodayWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")}</div>
 
-                                    <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </div>
+                                    <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </div>
 
-                                    <div className="TodayWalks__past--list-publish"> Total Time: {walk.totalTime} </div>
+                                    <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div>
                                     <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
 
                                 </ListItem>

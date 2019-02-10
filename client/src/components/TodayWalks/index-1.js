@@ -113,14 +113,14 @@ class TodayWalks extends Component {
       });
   };
 
-  _onChange = ({ center, zoom }) => {
-    console.log("Center", this.state.center)
-    console.log("zoom", this.state.zoom)
-    this.setState({
-      center: center,
-      zoom: zoom
-    });
-  };
+  // _onChange = ({ center, zoom }) => {
+  //   console.log("Center", this.state.center)
+  //   console.log("zoom", this.state.zoom)
+  //   this.setState({
+  //     center: center,
+  //     zoom: zoom
+  //   });
+  // };
 
   handleImgClick = (id) => {
     console.log("id: ", id)
