@@ -148,6 +148,7 @@ class WalkPhotoUpandPost extends Component {
         })
         
     }
+    
 
     render() {
 
