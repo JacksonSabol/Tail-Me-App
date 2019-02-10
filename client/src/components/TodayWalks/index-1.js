@@ -113,14 +113,14 @@ class TodayWalks extends Component {
       });
   };
 
-  // _onChange = ({ center, zoom }) => {
-  //   console.log("Center", this.state.center)
-  //   console.log("zoom", this.state.zoom)
-  //   this.setState({
-  //     center: center,
-  //     zoom: zoom
-  //   });
-  // };
+  _onChange = ({ center, zoom }) => {
+    console.log("Center", this.state.center)
+    console.log("zoom", this.state.zoom)
+    this.setState({
+      center: center,
+      zoom: zoom
+    });
+  };
 
   handleImgClick = (id) => {
     console.log("id: ", id)
@@ -289,9 +289,9 @@ class TodayWalks extends Component {
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                 defaultCenter={this.state.currentLocation}
                 defaultZoom={this.state.zoom}
-                /* zoom = {this.state.zoom}
-                center={this.state.center} */
-                // onClick={this._onChange}
+                zoom = {this.state.zoom}
+                center={this.state.center} 
+                onClick={this._onChange}
               >
                 {this.state.images.map(image => (
                   <ListItem key={image.id}>
