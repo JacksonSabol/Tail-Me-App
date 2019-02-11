@@ -41,7 +41,8 @@ module.exports = {
 
             //I need to include in the invitation the URL with a ref with the Walker ID + the owner phonenumber and a specific login path
 
-            var invitation = `Hi ${ownerName}, ${walkerName} has invited you to join TailMe and setup all the info about your dog. http://tail-me.herokuapp.com/${urlCode1}/${urlCode2}`
+            var invitation = `Hi ${ownerName}, ${walkerName} has invited you to join TailMe and setup all the info about your dog. 
+            https://tail-me.herokuapp.com/owner/signup/${urlCode1}/${urlCode2}`
        
             console.log("invitation: ", invitation);
 
