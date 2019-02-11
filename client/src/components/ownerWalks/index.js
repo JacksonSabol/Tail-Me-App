@@ -34,6 +34,10 @@ class ownerWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
+        center: {
+            lat: 37.7924791,
+            lng: -122.1818368
+        },
         zoom: 14,
         activeImage: "",
         walks: [],
@@ -112,7 +116,11 @@ class ownerWalks extends Component {
                 this.setState({
                     onClickButton: true,
                     walkId: walkId,
-                    images: picsWithGpsInfo
+                    images: picsWithGpsInfo,
+                    currentLocation: {
+                        lat: parseFloat(picsWithGpsInfo[0].GPSLatitude),
+                        lng: parseFloat(picsWithGpsInfo[0].GPSLongitude)
+                    }
                     /* currentLocation: {
                          lat:res.data[0].GPSLatitude,
                          lng:res.data[0].GPSLongitude
@@ -122,7 +130,16 @@ class ownerWalks extends Component {
                 console.log(err)
             });
 
-    }
+    };
+
+    _onChange = ({ center, zoom }) => {
+        console.log("Center", this.state.center)
+        console.log("zoom", this.state.zoom)
+        this.setState({
+            center: center,
+            zoom: zoom
+        });
+    };
 
     handleImgClick = (id) => {
 
@@ -157,7 +174,7 @@ class ownerWalks extends Component {
                                     <ListItem key={walk.id}>
 
                                         <div className="ownerWalks__upcoming--list-publish"> Walk Date: 
-                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
+                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                                         </div>
                                     </ListItem>
 
@@ -181,16 +198,16 @@ class ownerWalks extends Component {
                                     <ListItem key={walk.id}>
 
                                         <div className="ownerWalks__past--list-publish"> Walk Date:
-                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:MM")}
+                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                                         </div>
 
 
 
-                                        <div className="ownerWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")}</div>
+                                        <div className="ownerWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")}</div>
 
-                                        <div className="ownerWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:MM:ss")} </div>
+                                        <div className="ownerWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </div>
 
-                                        <div className="ownerWalks__past--list-publish"> Total Time: {walk.totalTime} </div>
+                                        <div className="ownerWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div>
                                         <button className="ownerWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
 
 
@@ -211,21 +228,24 @@ class ownerWalks extends Component {
                     <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                         <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
-                                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-                                defaultCenter={this.state.currentLocation}
-                                defaultZoom={this.state.zoom}
+                               bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+                               defaultCenter={this.state.currentLocation}
+                               defaultZoom={this.state.zoom}
+                               zoom={this.state.zoom}
+                               center={this.props.center}
+                               onClick={this._onChange}
                             >
 
                                 {this.state.images.map(image => (
-                                    <ListItem key={image.id}>
-                                        <AnyReactComponent ///all of the props ie walk.img/walk.lat))}
+                                   
+                                        <AnyReactComponent key={image.id} ///all of the props ie walk.img/walk.lat))}
                                             id={image.id}
                                             icon="../paw-tailme-2020.svg"
                                             lat={image.GPSLatitude}
                                             lng={image.GPSLongitude}
                                             imageClick={this.handleImgClick}
                                         />
-                                    </ListItem>
+                              
                                 ))}
                             </GoogleMapReact>
                         </div>
