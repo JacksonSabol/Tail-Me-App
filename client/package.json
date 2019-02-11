@@ -4,12 +4,26 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "cloudinary-core": "^2.6.2",
+    "cloudinary-react": "^1.1.0",
     "dotenv": "^6.2.0",
+    "fullcalendar": "^3.10.0",
+    "fullcalendar-reactwrapper": "^1.0.7",
+    "fullcalendar-reactwrapper-with-scheduler": "^1.1.0",
+    "google-map-react": "^1.1.2",
     "google-maps-react": "^2.0.2",
     "react": "^16.7.0",
+    "react-datepicker": "^2.1.0",
+    "react-datetime": "^2.16.3",
+    "react-datetime-picker": "^2.1.1",
     "react-dom": "^16.7.0",
+    "react-dropzone": "^8.0.4",
+    "react-grid-gallery": "^0.5.3",
+    "react-image-file": "^0.3.0",
+    "react-multiselect-checkboxes": "^0.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.3"
+    "react-scripts": "2.1.3",
+    "twilio": "^3.27.1"
   },
   "scripts": {
     "start": "react-scripts start",
