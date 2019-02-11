@@ -6,7 +6,11 @@
 
 TailME is a service for professional dog walkers, dedicated to providing a premium experience to their clients, better and easier management of their business, and keeping puppies happy and well exercised. Here at TailME, we know the challenges of running a small business that you love, and we strive to facilitate you keeping those schedules filled and your clientele satisfied. To that end, we've developed a tool that allows you to intake chosen users, interact with them more meaningfully, manage accounts with greater effeciency and, if you choose, grow your business. Join us and help keep more healthy tails wagging!
 
-We employed HTML, CSS, SASS, JavaScript, Yarn, React.js, Express.js, Passport.js, Google Maps, Cron, Twilio, MySQL, and Sequelize to make this application. All of the task-specific React components are rendered when each page loads, and when the Class state changes on each page. User's are logged in, and their sensitive information is kept stateless, using JSON web tokens with an Express server with Passport.js handling the authentication.
+# ![Idea](tailMe.png)
+
+
+
+We employed HTML, CSS, SASS, JavaScript, Yarn, React.js, Express.js, Passport.js, Google Maps, Cron Jobs, Twilio, MySQL, and Sequelize to make this application. All of the task-specific React components are rendered when each page loads, and when the Class state changes on each page. User's are logged in, and their sensitive information is kept stateless, using JSON web tokens with an Express server with Passport.js handling the authentication.
 
 ### Usage:
 
@@ -137,40 +141,55 @@ class WalkerSignup extends Component {
         }
     }
  ```
+
+## Built With
+* HTML5 & CSS3
+* SAASS
+* JavaScript
+* Node.js
+* Express.js
+* Express-routes
+* React.js
+* Json
+* Cron Jobs
+
+## Yarn Packages Used
+```
+* axios
+* bcrypt-nodejs
+* body-parser
+* cloudinary
+* dotenv
+* Exif 
+* fs
+* fullCalendar
+* google-map-react
+* moment
+* passport
+* react-datetime-picker
+* react-dropzone
+* react-grid-gallery
+* twilio
+
+```
 ### Feel free to explore the application and get to managing your clients!
 
 [Link to TailMe](https://tail-me.herokuapp.com/)
 
 Thank you for reading!
 
-### Built With:
-* HTML
-* CSS
-* SASS
-* JavaScript
-* React.js
-* Yarn
-* JSON
-* GitHub
-* Heroku
-* bCrypt-NodeJS
-* Express.js
-* JSON Web Token
-* MySQL
-* Node.js
-* Passport.js
-* Sequelize
-* Axios
-* Cloudinary
-* Dotenv
-* Exif.js and Exif Parser
-* Google Maps
-* Moment.js
-* Cron
-* Twilio
+## Other resources
+
+* [Visual Studio Code](https://code.visualstudio.com/) - The editor used
+* [GitHub](https://github.com/) - Version Control
+* [Heroku](https://heroku.com) - Deployment
+
+## Versioning
+
+[GitHub](https://github.com/) for versioning. For the versions available, see the [tags on this repository](https://github.com/JacksonSabol/Tail-Me-App). 
 
 ### Built With ♥️ by Team TailMe
-* Isabel Arcones
-* Vivian Aguilar
-* Jackson Sabol
-* Michael True
+* [Isabel Arcones](https://www.linkedin.com/in/iarcones/)
+* [Vivian Aguilar](https://www.linkedin.com/in/vivian-aguilar-05124250/)
+* [Jackson Sabol](https://www.linkedin.com/in/jackson-sabol-77197175/)
+* [Michael True](https://www.linkedin.com/in/michaeldtrue/)
