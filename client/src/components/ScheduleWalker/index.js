@@ -50,6 +50,12 @@ class ScheduleWalker extends Component {
             .catch(err => console.log(err));
     }
 
+    handleEventClick(calEvent, jsEvent, view) {
+        console.log(calEvent);
+        // console.log(jsEvent);
+        // console.log(view);
+    };
+
     render() {
         return (
 
@@ -80,7 +86,7 @@ class ScheduleWalker extends Component {
                             events={this.state.events}
                             // select={this.handleSelection.bind(this)}
                             eventDrop={this.handleDropEvent.bind(this)}
-                            // eventClick={this.handleEventClick.bind(this)}
+                            eventClick={this.handleEventClick.bind(this)}
                             selectable={true}
                             selectHelper={true}
                         />
