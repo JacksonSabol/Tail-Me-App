@@ -1,12 +1,12 @@
 .walkerlogin{
-    background-image: radial-gradient( $color-lightest, $color-mid);
+    background-image: radial-gradient($color-lightest, $color-mid);
     height: 100%;
     display: grid;
     grid-template-columns:1fr auto 1fr;
     grid-template-rows: auto 1fr  auto;
     &__logo{
         grid-area: 1/2/1/4;
-        margin: 6em 2em;
+        margin:  2em;
     }
     &__title{
         grid-area: 1/1;
@@ -14,6 +14,7 @@
         font-family: $font-headingD;
         padding: 0em;
         color: $color-accentOne;
+        // color: $color-alert;
         font-size: 5em;
     }
     &__form{
@@ -21,16 +22,16 @@
         grid-area: 2/2;
         display:grid;
         grid-template-columns: 1fr ;
-        grid-template-rows:  (8) 1fr;
+        grid-template-rows:  (7) 1fr;
        
         &--usernameLabel{
-            grid-area: 3/1;
+            grid-area: 1/1;
             justify-self: left;
             align-self: flex-end;
             font-size: 3em;
         }
         &--usernameInput{
-            grid-area: 4/1;
+            grid-area: 2/1;
             align-self: flex-start;
             font-family: $font-sans;
             font-size: 3em;
@@ -44,13 +45,13 @@
             text-decoration: none;  
         }
         &--passwordLabel{
-            grid-area: 5/1;
+            grid-area: 3/1;
             justify-self: left;
             align-self: flex-end;
             font-size: 3em;
         }
         &--passwordInput{
-            grid-area: 6/1;
+            grid-area: 4/1;
             align-self: flex-start;
             font-family: $font-sans;
             font-size: 3em;
@@ -64,7 +65,7 @@
             text-decoration: none;  ;
         }
         &--submitButton{
-            grid-area: 7/1;
+            grid-area: 5/1;
             justify-self: left;
             font-family: $font-sans;
             font-size: 3em;
@@ -89,35 +90,76 @@
             outline: none;
             text-decoration: none; 
         }
+        &--alertOne{
+            grid-area: 6/1;
+            text-align: center;
+            font-family: $font-headingD;
+            font-size: 3em;
+            color: $color-alert;
+        
+        }
+        &--alertTwo{
+            grid-area: 6/1;
+            text-align:  center;
+            font-family: $font-headingD;
+            font-size: 3em;
+            color: $color-alert;
+            
+        }
+        &--alertButton{
+            grid-area: 7/1;
+            justify-self: left;
+            font-family: $font-sans;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentWhite;
+            background-color: $color-alert;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentWhite;
+            margin: 1em 0em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;
+            text-decoration: none;  
+        }
+        &--alertButton:hover{
+            background-color: transparent;
+            letter-spacing: 0.1em;
+            color: $color-alert;
+            text-shadow: 2px 2px 8px $color-alert;
+            outline: none; 
+            text-decoration: none;    
+        }
         &--footer{
-            grid-area: 8/1;
+            grid-area: 4/2;
             display:flex;
             justify-content: center;
         }
         &--homeButton{
             grid-area: 3/3;
             justify-self: right;
-            font-family: $font-sans;
             font-size: 3em;
             text-align: center;
-            color: $color-accentWhite;
-            background-color: $color-accentOne;
+            color: $color-accentOne;
+            background-color: $color-lightest;
             padding: .5em 1em;
             border-radius: .5em;
-            border: solid 2px $color-accentWhite;
-            margin: 1em 0em;
-            box-shadow:    0 0 12px $color-light;
-            outline: none;
-            text-decoration: none; 
+            border: solid 2px $color-accentOne;
+            margin: 1em 1em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;  
+            text-decoration: none;   
+
         }
         &--homeButton:hover{
             background-color: transparent;
             letter-spacing: 0.1em;
-            color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
-            box-shadow:    0 0 12px $color-accentLight;
-            outline: none;
-            text-decoration: none;
+            outline: none; 
+            text-decoration: none;    
+        }
+        &--homeIcon{
+            height: 2em;
         }
     }
 

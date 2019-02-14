@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
 import logo from "../images/tailMeLogo.png";
-import Footer from "../components/Footer";
+import homeIcon from "../images/homeIcon.png";
+import FooterWalker from "../components/FooterWalker";
 
 const title = 'Log Into';
 
@@ -49,10 +50,10 @@ class LoginWalker extends Component {
                     });
                 })
                 .catch(error => {
+                    console.log(error.resonse);
                     console.log(error.response.data);
                     if (
-                        error.response.data === 'bad username' ||
-                        error.response.data === 'passwords do not match'
+                        error.response.data === "Unauthorized"
                     ) {
                         this.setState({
                             showError: true,
@@ -76,7 +77,7 @@ class LoginWalker extends Component {
                     <p className="walkerlogin__title">{title}</p>
                     <img className="walkerlogin__logo" src={logo} alt="tailME logo" ></img>
                     <form className="walkerlogin__form" onSubmit={this.loginUser}>
-                    <label className="walkerlogin__form--usernameLabel">Enter your user name</label>
+                        <label className="walkerlogin__form--usernameLabel">Enter your user name</label>
                         <input className="walkerlogin__form--usernameInput"
                             value={this.state.username}
                             name="username"
@@ -84,7 +85,7 @@ class LoginWalker extends Component {
                             type="text"
                             placeholder="UserName"
                         />
-                         <label className="walkerlogin__form--passwordLabel">Enter your password</label>
+                        <label className="walkerlogin__form--passwordLabel">Enter your password</label>
                         <input className="walkerlogin__form--passwordInput"
                             value={this.state.password}
                             name="password"
@@ -93,21 +94,23 @@ class LoginWalker extends Component {
                             placeholder=""
                         />
                         <button type="submit" className="walkerlogin__form--submitButton">Log in</button>
+                        {showNullError && (
+                            <div>
+                                <p className="walkerlogin__form--alertOne">Username and password are required.</p>
+                            </div>
+                        )}
+                        {showError && (
+                            <div>
+                                <p className="walkerlogin__form--alertTwo">That username or password isn't recognized. Please try again or register now.</p>
+                                <p><a className="walkerlogin__form--alertButton"  href="/walker/signup">Sign up </a></p>
+                            </div>
+                        )}
                     </form>
-                    {showNullError && (
-                        <div>
-                            <p>The username or password cannot be null.</p>
-                        </div>
-                    )}
-                    {showError && (
-                        <div>
-                            <p>That username or password isn't recognized. Please try again or register now.</p>
-                            <p><a href="/walker/signup">Sign up as a Walker</a></p>
-                        </div>
-                    )}
-                    <a className="walkerlogin__form--homeButton" href="/">Return to Home</a>
+                    <a className="walkerlogin__form--homeButton" href="/">
+                        <img className="walkerlogin__form--homeIcon" src={homeIcon} alt="home icon" >
+                        </img> Home</a>
                     <div className="walkerlogin__form--footer">
-                    <Footer/>
+                        <FooterWalker />
                     </div>
                 </div>
             );
