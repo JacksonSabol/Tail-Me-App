@@ -82,36 +82,36 @@ class WalkPhotoUpandPost extends Component {
     }
 
     /* TO BE REPLACED BY ISABEL USE CLOUDINARY WIDGET  */
-    handleDrop = files => {
-        // Push all the axios request promise into a single array
+    // handleDrop = files => {
+    //     // Push all the axios request promise into a single array
        
-        const walkerId = this.props.WalkerID;
-        const uploaders = files.map(file => {
-            // Initial FormData
+    //     const walkerId = this.props.WalkerID;
+    //     const uploaders = files.map(file => {
+    //         // Initial FormData
             
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
-            formData.append("api_key", `${process.env.REACT_APP_CLOUDINARY_API_KEY}`); // Replace API key with your own Cloudinary key
-            formData.append("timestamp", (Date.now() / 1000) | 0);
-            formData.append("folder", 'tailMeApp');
+    //         const formData = new FormData();
+    //         formData.append("file", file);
+    //         formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
+    //         formData.append("api_key", `${process.env.REACT_APP_CLOUDINARY_API_KEY}`); // Replace API key with your own Cloudinary key
+    //         formData.append("timestamp", (Date.now() / 1000) | 0);
+    //         formData.append("folder", 'tailMeApp');
 
-            API.addPicturesToCloudinary(formData)
-                .then(response => {
-                    const data = response.data;
-                    const fileURL = data.secure_url; // You should store this URL for future references in your app
-                    const imageData = {
+    //         API.addPicturesToCloudinary(formData)
+    //             .then(response => {
+    //                 const data = response.data;
+    //                 const fileURL = data.secure_url; // You should store this URL for future references in your app
+    //                 const imageData = {
                       
-                        url: fileURL
-                    }
+    //                     url: fileURL
+    //                 }
 
-                    API.uploadPhotoWalks(imageData, walkerId )
-                        .then(res => {
-                            this.loadImages()
-                        })
-                }).catch(err => console.log("ERROR", err));
-        })
-    }
+    //                 API.uploadPhotoWalks(imageData, walkerId )
+    //                     .then(res => {
+    //                         this.loadImages()
+    //                     })
+    //             }).catch(err => console.log("ERROR", err));
+    //     })
+    // }
 
     /* Push image to gallery with selected state */
     onSelectImage(index, image) {
@@ -189,47 +189,46 @@ class WalkPhotoUpandPost extends Component {
 
     }
 
+    checkUploadResult = (result) => {
+        if (result.event === 'success') {
+            console.log(result)
+            console.log(result.info.url)
+            // const data = response.data;
+            const walkerId = this.props.WalkerID;
+            const fileURL = result.info.url; // You should store this URL for future references in your app
+            const imageData = {
+                
+                url: fileURL
+            }
+
+            API.uploadPhotoWalks(imageData, walkerId)
+                .then(res => {
+                    this.loadImages()
+                })
+        }
+    }
+
+    showWidget = () => {
+        let widget = window.cloudinary.createUploadWidget({
+            cloudName: `${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}`,
+            uploadPreset: `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`,
+            sources: [
+                "local",
+                "camera"
+            ],
+        }, (error, result) => { this.checkUploadResult(result) });
+        widget.open()
+    }
 
     render() {
 
         return (
 
             <div>
-                <form>
-                    <div className="FileUpload" style={{
-                        'textAlign': 'center'
-                    }}>
-                        <Dropzone
-                            onDrop={this.handleDrop}
-                            accept="image/*"
-                            activeClassName='active-dropzone'
+                  <div id='photo-form-container'>
+                    <button onClick={this.showWidget}>Upload Photo</button>
+                </div>
 
-                            multiple={true}>
-                            {({ getRootProps, getInputProps, isDragActive }) => {
-                                let styles = { ...baseStyle }
-                                styles = isDragActive ? { ...styles, ...activeStyle } : styles
-
-                                return (
-                                    <div
-                                        {...getRootProps()}
-                                        style={styles}
-                                        className={classNames('dropzone', { 'dropzone--isActive': isDragActive })}
-                                    >
-                                        <input {...getInputProps()} />
-                                        {
-                                            isDragActive ?
-                                                <h1>Drop files here...</h1> :
-                                                <h1 className="dropzoneText">Try dropping some files here, or click to select files to upload.</h1>
-                                        }
-
-                                    </div>
-                                )
-                            }}
-                        </Dropzone>
-
-
-                    </div>
-                </form>
                 <ReactSelect
                     options={this.state.walksList}
                     onChange={this.handleChangeList}
