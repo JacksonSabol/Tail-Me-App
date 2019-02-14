@@ -25,7 +25,7 @@ class WalkPhotoUpandPost extends Component {
         selectedFile: null,
         loaded: 0,
         gallery: [],
-        onwnerList: [],
+        walksList: [],
         selectedOptions: []
     }
 
@@ -33,9 +33,10 @@ class WalkPhotoUpandPost extends Component {
     componentDidMount() {
         // Load images from the gallery      
         this.loadImages()
-        this.loadOwners()
+        this.loadWalks()
     }
 
+    /* Walker - Walks images  */
     loadImages = () => {
         const idWalk = this.props.WalkerID;
         API.getImages(idWalk)
@@ -56,35 +57,38 @@ class WalkPhotoUpandPost extends Component {
 
     }
 
-    loadOwners = () => {
+    //update the List of selected walks
+    handleChangeList = (options) => {
+        this.setState({ selectedOptions: options });
+    }
+
+    /* Load walks for the dropdown Should we only display the walks of the day? Of the month? Walks that have no pictures?*/
+    loadWalks = () => {
         const idWalker = this.props.WalkerID;
-        API.getDogOwners(idWalker)
+        API.getMyWalks(idWalker)
             .then(res => {
-                const dataDogOwners = res.data.map(data => {
-                    const dataOwners = {
-                        label: `${data.user.firstName} ${data.user.lastName} - ${data.dogName}`,
+
+                const dataWalks = res.data.map(data => {
+
+                    const dataWalks = {
+                        label: `${data.walkDate} - ${data.dogOwner.dogName}`,
                         value: data.id
                     }
-                    return (dataOwners)
+                    return (dataWalks)
                 })
-                this.setState({ onwnerList: dataDogOwners })
+                this.setState({ walksList: dataWalks })
             })
             .catch(err => console.log(err));
     }
-    //Owner List event
-    handleChangeList = (options) => {
-        this.setState({ selectedOptions: options });
 
-    }
-
-
+    /* TO BE REPLACED BY ISABEL USE CLOUDINARY WIDGET  */
     handleDrop = files => {
         // Push all the axios request promise into a single array
-        const idWalk = 1; // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
+       
         const walkerId = this.props.WalkerID;
         const uploaders = files.map(file => {
             // Initial FormData
-            console.log("FIIIIIILLLLLLEEEE",file)
+            
             const formData = new FormData();
             formData.append("file", file);
             formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
@@ -92,16 +96,16 @@ class WalkPhotoUpandPost extends Component {
             formData.append("timestamp", (Date.now() / 1000) | 0);
             formData.append("folder", 'tailMeApp');
 
-            API.addPicturesToCloudinary(formData, idWalk)
+            API.addPicturesToCloudinary(formData)
                 .then(response => {
                     const data = response.data;
                     const fileURL = data.secure_url; // You should store this URL for future references in your app
                     const imageData = {
-                        walkId: 1, // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
+                      
                         url: fileURL
                     }
 
-                    API.uploadPhotoWalks(imageData, walkerId)
+                    API.uploadPhotoWalks(imageData, walkerId )
                         .then(res => {
                             this.loadImages()
                         })
@@ -109,46 +113,82 @@ class WalkPhotoUpandPost extends Component {
         })
     }
 
+    /* Push image to gallery with selected state */
     onSelectImage(index, image) {
         const images = this.state.images.slice();
-        console.log("images", images)
         const img = images[index];
-        console.log("img", img)
+
         if (img.hasOwnProperty("isSelected"))
             img.isSelected = !img.isSelected;
         else
             img.isSelected = true;
-
-
         this.setState({
             gallery: images
         });
 
     }
-    //Send Image to Owner
+
+
+
+    //Send Image to Walks
     handleTransferImages = () => {
-        const idWalk = 1; // Change to actual walkId from TodayWalks in loadWalks - add ID into new button next to Walk Map
+
+        /* Filter the Selected images form the gallery */
         const selectedImages = this.state.gallery.filter(image => image.isSelected === true)
-        console.log("Selected", selectedImages)
 
-        selectedImages.map(data => {
-            const dataImageOwner = {
-                dogOwnerId: this.state.onwnerList[0].value,
-                sendCustomer:true
-            }
-            const imageId=data.id
-            console.log("dataImageOwner", dataImageOwner)
+        /* Iterate through Selected Walks */
+        /* Have to figure out how to make just one iteration */
+        this.state.selectedOptions.map(walk => {
+            /* Iterate through Selected Images */
 
-            API.updateImageOwner(dataImageOwner, idWalk,imageId)
-                .then(res => {
-                  this.loadImages()
-                })
-                
-                return(selectedImages)
+            selectedImages.map(data => {
+
+                /* Check if the image is already on the mapping table and skip the insertion if exist - we should figure out what to do with the already mapped images.. or just leave it ..  But now is not possible to know which image is alrready mapped to which walk ..  */
+
+                API.checkImageExist(walk.value, data.id)
+                    .then(res => {
+
+                        const checkImage = res.data ? false : true
+
+                        /* IF not exist insert */
+                        const insertImageData = checkImage ? this.insertData(walk.value, data.id) : null;
+
+
+                    })
+                return (selectedImages)
+            })
         })
-        
     }
+
+    /* ANY CLUE WHY THIS DOESNT WORK?   */
+    /* IT DOESN RETURN THE VALUE */
+    /*   checkIfImageExist(walkId, imageId) {
     
+          
+          API.checkImageExist(walkId, imageId)
+              .then(res => {
+                //  console.log("length",res.data)
+                 const checkImage  = res.data ? false : true
+                  
+                  return checkImage
+              })
+             
+             
+      } */
+
+    /* Map images with walks*/
+    insertData(walkId, imageId) {
+        const dataImage = {
+            walkId: walkId,
+            imageId: imageId
+        }
+        API.addImagesToWalk(dataImage)
+            .then(res => {
+                this.loadImages()
+            })
+
+    }
+
 
     render() {
 
@@ -191,10 +231,12 @@ class WalkPhotoUpandPost extends Component {
                     </div>
                 </form>
                 <ReactSelect
-                    options={this.state.onwnerList}
-                    onChange={this.handleChangeList} />
+                    options={this.state.walksList}
+                    onChange={this.handleChangeList}
+                    isMulti={true}
+                />
                 <br></br>
-                <button className="dropzoneButton" onClick={this.handleTransferImages}>Send images to Owner</button>
+                <button className="dropzoneButton" onClick={this.handleTransferImages}>Send images to the Walk</button>
                 <Gallery
                     enableImageSelection={true}
                     backdropClosesModal={true}

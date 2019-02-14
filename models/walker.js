@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     walker.hasMany(models.invitationPending, {
       onDelete: "cascade"
     });
+
+    walker.hasMany(models.images, {
+      onDelete: "cascade"
+    });
   };
   return walker;
 };
