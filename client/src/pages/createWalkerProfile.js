@@ -239,7 +239,7 @@ class createWalkerProfile extends Component {
                 </div>
             );
         } else {
-            return <Redirect to={`/userProfileWalker/${username}`} />;
+            return <Redirect to={`/walker/create/qualifications/${username}`} />;
         }
     }
 }

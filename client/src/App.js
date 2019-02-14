@@ -18,6 +18,7 @@ import aboutTailMeWalker from "./pages/aboutTailMeWalker";
 import contactTailMe from "./pages/contactTailMe";
 import contactTailMeWalker from "./pages/contactTailMeWalker";
 import createWalkerProfile from "./pages/createWalkerProfile";
+import createWalkerQualifications from "./pages/createWalkerQualifications";
 import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
 import ProfileTestWalker from "./pages/ProfileTestWalker";
@@ -46,6 +47,7 @@ function App() {
         <Route exact path="/owner/signup" component={OwnerSignup} />
         <Route exact path="/walker/signup" component={WalkerSignupTest} />
         <Route exact path="/walker/create/:username" component={createWalkerProfile} />
+        <Route exact path="/walker/create/qualifications/:username" component={createWalkerQualifications} />
         <Route exact path="/owner/create/:username" component={createOwnerProfile} />
         <Route exact path="/ownerProfile/" component={ownerProfile} />
         <Route exact path="/walkerDashboard/" component={walkerDashboard} />

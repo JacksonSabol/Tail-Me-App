@@ -93,58 +93,6 @@ class ProfileContainer extends Component {
         this.setState({ currentPage: page });
     };
 
-    // Function to handle rendering the correct walker page from Sidebar Nav
-    renderWalkerPage = () => {
-        switch (this.state.currentPage) {
-            case "Home": return <Profile
-                username={this.state.username}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                userType={this.state.userType}
-                aboutMe={this.state.aboutMe}
-                address={this.state.address}
-                City={this.state.City}
-                State={this.state.State}
-                zipCode={this.state.zipCode}
-                country={this.state.country}
-            />;
-            case "Walks": return <TodayWalks
-                walkerId={this.state.userId}
-            />;
-            case "SchedWalks": return <ScheduleWalks
-                walkerID={this.state.userId}
-                handlePageChange={this.handlePageChange}
-            />;
-            case "FullSchedule": return <Schedule
-                walkerID={this.state.userId}
-                username={this.state.username}
-            />
-            case "Certs": return <WalkerCertification
-                username={this.state.username}
-            />;
-            case "Invite": return <InviteOwners
-                walkerId={this.state.userId}
-                walkerName={this.state.username}
-            />;
-            case "Map": return <ShowMap />;
-            case "Upload": return <WalkPhotoUpload
-                WalkerID={this.state.userId}
-            />;
-            default: return <Profile
-                username={this.state.username}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                userType={this.state.userType}
-                aboutMe={this.state.aboutMe}
-                address={this.state.address}
-                City={this.state.City}
-                State={this.state.State}
-                zipCode={this.state.zipCode}
-                country={this.state.country}
-            />;
-        }
-    };
-
     // Function to handle rendering the correct owner page from Sidebar Nav
     renderOwnerPage = () => {
         switch (this.state.currentPage) {
@@ -258,6 +206,8 @@ class ProfileContainer extends Component {
             return <Redirect to="/" />;
         } else if (!loggedIn) {
             return <Redirect to="/user/login" />;
+        } else if (userType === "walker") {
+            return <Redirect to={`/userProfileWalker/${username}`} />;
         } else {
             return (
                 <div className="ownerDash">

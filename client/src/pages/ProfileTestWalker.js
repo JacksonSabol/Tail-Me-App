@@ -143,44 +143,6 @@ class ProfileContainerWalker extends Component {
         }
     };
 
-    // Function to handle rendering the correct owner page from Sidebar Nav
-    renderOwnerPage = () => {
-        switch (this.state.currentPage) {
-            case "Home": return <Profile
-                username={this.state.username}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                userType={this.state.userType}
-                aboutMe={this.state.aboutMe}
-                address={this.state.address}
-                City={this.state.City}
-                State={this.state.State}
-                zipCode={this.state.zipCode}
-                country={this.state.country}
-            />;
-            case "Walks": return <TodayWalks
-                dogOwnerId={this.state.userId}
-            />;
-            case "Dogs": return <CreateDog
-                UserID={this.state.userId}
-                username={this.state.username}
-                handlePageChange={this.handlePageChange}
-            />;
-            default: return <Profile
-                username={this.state.username}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                userType={this.state.userType}
-                aboutMe={this.state.aboutMe}
-                address={this.state.address}
-                City={this.state.City}
-                State={this.state.State}
-                zipCode={this.state.zipCode}
-                country={this.state.country}
-            />;
-        }
-    };
-
     deleteUser = e => {
         let accessString = localStorage.getItem('JWT');
         if (accessString === null) {
@@ -223,6 +185,7 @@ class ProfileContainerWalker extends Component {
     render() {
         const {
             username,
+            userType,
             loggedIn,
             error,
             isLoading,
@@ -250,6 +213,8 @@ class ProfileContainerWalker extends Component {
             return <Redirect to="/" />;
         } else if (!loggedIn) {
             return <Redirect to="/user/loginWalker" />;
+        } else if (userType === "owner") {
+            return <Redirect to={`/userProfile/${username}`} />;
         } else {
             return (
                 <div className="walkerDash">
