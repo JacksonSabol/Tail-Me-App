@@ -13,7 +13,8 @@
         justify-self: right;
         font-family: $font-headingD;
         padding: 0em;
-        color: $color-accentOne;
+        // color: $color-accentOne;
+        color: $color-alert;
         font-size: 5em;
     }
     &__form{
@@ -21,7 +22,7 @@
         grid-area: 2/2;
         display:grid;
         grid-template-columns: 1fr ;
-        grid-template-rows:  (8) 1fr;
+        grid-template-rows:  (10) 1fr;
        
         &--usernameLabel{
             grid-area: 3/1;
@@ -89,35 +90,76 @@
             outline: none;
             text-decoration: none; 
         }
-        &--footer{
+        &--alertOne{
             grid-area: 8/1;
+            text-align: center;
+            font-family: $font-headingD;
+            font-size: 3em;
+            color: $color-alert;
+        
+        }
+        &--alertTwo{
+            grid-area: 8/1;
+            text-align:  center;
+            font-family: $font-sans;
+            font-size: 3em;
+            color: $color-alert;
+            
+        }
+        &--alertButton{
+            grid-area: 9/1;
+            justify-self: left;
+            font-family: $font-headingD;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentWhite;
+            background-color: $color-alert;
+            padding: .5em 1em;
+            border-radius: .5em;
+            border: solid 2px $color-accentWhite;
+            margin: 1em 0em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;
+            text-decoration: none;  
+        }
+        &--alertButton:hover{
+            background-color: transparent;
+            letter-spacing: 0.1em;
+            color: $color-alert;
+            text-shadow: 2px 2px 8px $color-alert;
+            outline: none; 
+            text-decoration: none;    
+        }
+        &--footer{
+            grid-area: 4/2;
             display:flex;
             justify-content: center;
         }
         &--homeButton{
             grid-area: 3/3;
             justify-self: right;
-            font-family: $font-sans;
             font-size: 3em;
             text-align: center;
-            color: $color-accentWhite;
-            background-color: $color-accentOne;
+            color: $color-accentOne;
+            background-color: $color-lightest;
             padding: .5em 1em;
             border-radius: .5em;
-            border: solid 2px $color-accentWhite;
-            margin: 1em 0em;
-            box-shadow:    0 0 12px $color-light;
-            outline: none;
-            text-decoration: none; 
+            border: solid 2px $color-accentOne;
+            margin: 1em 1em;
+            box-shadow:  .2em .2em  .5em .1em $color-medium;
+            outline: none;  
+            text-decoration: none;   
+
         }
         &--homeButton:hover{
             background-color: transparent;
             letter-spacing: 0.1em;
-            color: $color-accentOne;
             text-shadow: 2px 2px 8px $color-accentOne;
-            box-shadow:    0 0 12px $color-accentLight;
-            outline: none;
-            text-decoration: none;
+            outline: none; 
+            text-decoration: none;    
+        }
+        &--homeIcon{
+            height: 2em;
         }
     }
 

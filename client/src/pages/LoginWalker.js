@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
 import logo from "../images/tailMeLogo.png";
-import Footer from "../components/Footer";
+import homeIcon from "../images/homeIcon.png";
+import FooterWalker from "../components/FooterWalker";
 
 const title = 'Log Into';
 
@@ -49,10 +50,10 @@ class LoginWalker extends Component {
                     });
                 })
                 .catch(error => {
+                    console.log(error.resonse);
                     console.log(error.response.data);
                     if (
-                        error.response.data === 'bad username' ||
-                        error.response.data === 'passwords do not match'
+                        error.response.data === "Unauthorized" 
                     ) {
                         this.setState({
                             showError: true,
@@ -93,21 +94,23 @@ class LoginWalker extends Component {
                             placeholder=""
                         />
                         <button type="submit" className="walkerlogin__form--submitButton">Log in</button>
-                    </form>
                     {showNullError && (
                         <div>
-                            <p>The username or password cannot be null.</p>
+                            <p className="walkerlogin__form--alertOne">Username and password are required.</p>
                         </div>
                     )}
                     {showError && (
                         <div>
-                            <p>That username or password isn't recognized. Please try again or register now.</p>
-                            <p><a href="/walker/signup">Sign up as a Walker</a></p>
+                            <p className="walkerlogin__form--alertTwo">That username or password isn't recognized. Please try again or register now.</p>
+                            <p className="walkerlogin__form--alertButton" ><a href="/walker/signup">Sign up </a></p>
                         </div>
                     )}
-                    <a className="walkerlogin__form--homeButton" href="/">Return to Home</a>
+                    </form>
+                    <a className="walkerlogin__form--homeButton" href="/">
+                    <img className="walkerlogin__form--homeIcon" src={homeIcon} alt="home icon" >
+                    </img> Home</a>
                     <div className="walkerlogin__form--footer">
-                    <Footer/>
+                    <FooterWalker/>
                     </div>
                 </div>
             );

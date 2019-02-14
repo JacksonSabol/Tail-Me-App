@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
-import Footer from "../components/Footer";
+import FooterWalker from "../components/FooterWalker";
 import logo from "../images/tailMeLogo.png";
 import homeIcon from "../images/homeIcon.png";
 
@@ -57,8 +57,9 @@ class WalkerSignup extends Component {
                     });
                 })
                 .catch(error => {
+                    console.log(error.response)
                     console.log(error.response.data);
-                    if (error.response.data === 'That username is already taken.') {
+                    if (error.response.data === "Unauthorized") {
                         this.setState({
                             showError: true,
                             loginError: true,
@@ -109,7 +110,6 @@ class WalkerSignup extends Component {
                             placeholder="Password"
                         />
                         <button type="submit" className="walkerSignup__form--submitButton">Register</button>
-                    </form>
                     {showError === true && registerError === true && (
                         <div>
                             <p className="walkerSignup__form--alertOne">
@@ -120,14 +120,15 @@ class WalkerSignup extends Component {
                         <div>
                             <p className="walkerSignup__form--alertTwo">
                             That username is already taken. Please choose another, or login.</p>
-                            <p><a className="walkerSignup__form--alertButton" href="/user/login">Login</a></p>
+                            <p><a className="walkerSignup__form--alertButton" href="/user/LoginWalker">Login</a></p>
                         </div>
                     )}
+                    </form>
                     <a className="walkerSignup__form--homeButton" href="/">
                     <img className="walkerSignup__form--homeIcon" src={homeIcon} alt="home icon" >
                     </img> Home</a>
                     <div className="walkerSignup__form--footer">
-                    <Footer/>
+                    <FooterWalker/>
                     </div>
                 </div>
             );
