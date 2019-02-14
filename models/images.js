@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const images = sequelize.define('images', {
-    image: DataTypes.BLOB,
     sendCustomer: DataTypes.BOOLEAN,
     url: DataTypes.STRING,
     GPSLatitudeRef: DataTypes.STRING,
@@ -12,13 +11,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   images.associate = function (models) {
     // associations can be defined here
-    images.belongsTo(models.walks, {
+    images.belongsTo(models.walker, {
       foreignKey: {
         allowNull: false
       }
     });
 
-    images.belongsTo(models.dogOwner, {
+    images.hasMany(models.walkImages, {
+      onDelete: "cascade"
+    });
+  /*   images.belongsTo(models.dogOwner, {
       foreignKey: {
         allowNull: true
       }
@@ -28,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: {
         allowNull: true
       }
-    });
+    }); */
   };
   return images;
 };

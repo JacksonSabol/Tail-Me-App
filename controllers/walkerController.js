@@ -6,7 +6,6 @@ const axios = require("axios");
 module.exports = {
 
   addWalker: function (req, res) {
-    console.log(req.body);
     db.walker
       .upsert({
         id: req.body.userId,
@@ -20,7 +19,6 @@ module.exports = {
   },
 
   getWalkerWalks: function (req, res) {
-    console.log("test2")
     db.walks
       .findAll({
         attributes: [
@@ -87,7 +85,7 @@ module.exports = {
       fs.unlinkSync(filepath);
 
       let imageData = {
-        walkId: req.body.walkId,
+
         url: req.body.url,
         GPSLatitude: result.tags.GPSLatitude,
         GPSLongitude: result.tags.GPSLongitude,
@@ -109,8 +107,6 @@ module.exports = {
   },
 
   getImages: function (req, res) {
-
-    console.log("Get Images Walking..:", req.params.idWalk)
     db.images
       .findAll({
         where: {
@@ -123,7 +119,6 @@ module.exports = {
   },
 
   getWalksSchedule: function (req, res) {
-    console.log("Get Schedule..:", req.params.id)
     db.walks
       .findAll({
         attributes: [
@@ -147,8 +142,6 @@ module.exports = {
   },
 
   createSchedule: function (req, res) {
-    console.log("Create Schedule");
-    console.log(req.body);
     db.walks
       .bulkCreate(req.body)
       .then(dbModel => res.json(dbModel))
@@ -156,8 +149,6 @@ module.exports = {
   },
 
   getDogOwners: function (req, res) {
-    console.log("GetDogOwners");
-    console.log(req.body);
     db.dogOwner
       .findAll({
         include: [{
@@ -174,13 +165,10 @@ module.exports = {
   },
 
   updateWalk: function (req, res) {
-    console.log("Update");
-    console.log(req.body);
     db.walks
       .update(
         req.body,
         {
-
           where: {
             id: req.params.idWalk
           }
@@ -255,13 +243,10 @@ module.exports = {
   },
 
   updateImageOwner: function (req, res) {
-    console.log("Update Image Owner");
-    console.log(req.body);
     db.images
       .update(
         req.body,
         {
-
           where: {
             walkId: req.params.idWalk,
             id: req.params.idImage
@@ -269,5 +254,27 @@ module.exports = {
         })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  addImagesToWalk: function (req, res) {
+    db.walkImages
+      .create(
+        req.body,
+        {})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  checkImageExist: function (req, res) {
+    db.walkImages
+      .findOne({
+        where: {
+          walkId: req.params.walkId,
+          imageId: req.params.imageId
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
+
 };
