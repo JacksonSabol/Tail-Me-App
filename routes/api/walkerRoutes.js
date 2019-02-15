@@ -23,6 +23,12 @@ router.route("/:id/uploadPic")
 router.route("/walks/:idWalk/getImages")
   .get(walkerController.getImages);
 
+router.route("/walks/:idWalk/getAllImages")
+  .get(walkerController.getAllImages);
+
+//walks/images/${idWalk}
+router.route("/walks/images/:idWalk")
+  .get(walkerController.getImagesByWalk);
 
 router.route("/:id/walkSchedule")
   .get(walkerController.getWalksSchedule);
@@ -58,9 +64,12 @@ router.route("/createOwner/:owneruserid/:specialcode/:walkerid")
   .post(globalController.createInvitation);
 
 router.route("/walk/uploadImage")
-.post(walkerController.addImagesToWalk);
+  .post(walkerController.addImagesToWalk);
+
+router.route("/walk/image/update/:ImageID")
+  .put(walkerController.updateImageSentStatus);
 
 router.route("/walk/:walkId/:imageId")
-.get(walkerController.checkImageExist);
+  .get(walkerController.checkImageExist);
 
 module.exports = router;

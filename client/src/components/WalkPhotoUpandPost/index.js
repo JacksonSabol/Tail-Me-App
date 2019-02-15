@@ -25,6 +25,7 @@ class WalkPhotoUpandPost extends Component {
         selectedFile: null,
         loaded: 0,
         gallery: [],
+        galleryAll: [],
         walksList: [],
         selectedOptions: []
     }
@@ -57,6 +58,24 @@ class WalkPhotoUpandPost extends Component {
 
     }
 
+    loadAllImages = () => {
+        const idWalk = this.props.WalkerID;
+        API.getAllImages(idWalk)
+            .then(res => {
+                const dataGallery = res.data.map(data => {
+                    const imageData = {
+                        id: data.id,
+                        src: data.url,
+                        thumbnail: data.url,
+                        thumbnailWidth: 320,
+                        thumbnailHeight: 212
+                    }
+                    return (imageData)
+                })
+                this.setState({ galleryAll: dataGallery })
+            })
+    }
+
     //update the List of selected walks
     handleChangeList = (options) => {
         this.setState({ selectedOptions: options });
@@ -84,11 +103,11 @@ class WalkPhotoUpandPost extends Component {
     /* TO BE REPLACED BY ISABEL USE CLOUDINARY WIDGET  */
     // handleDrop = files => {
     //     // Push all the axios request promise into a single array
-       
+
     //     const walkerId = this.props.WalkerID;
     //     const uploaders = files.map(file => {
     //         // Initial FormData
-            
+
     //         const formData = new FormData();
     //         formData.append("file", file);
     //         formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
@@ -101,7 +120,7 @@ class WalkPhotoUpandPost extends Component {
     //                 const data = response.data;
     //                 const fileURL = data.secure_url; // You should store this URL for future references in your app
     //                 const imageData = {
-                      
+
     //                     url: fileURL
     //                 }
 
@@ -159,6 +178,35 @@ class WalkPhotoUpandPost extends Component {
             })
         })
     }
+    //Send Previously Sent Images to Walks
+    handleTransferImagesSent = () => {
+
+        /* Filter the Selected images form the gallery */
+        const selectedImages = this.state.galleryAll.filter(image => image.isSelected === true)
+
+        /* Iterate through Selected Walks */
+        /* Have to figure out how to make just one iteration */
+        this.state.selectedOptions.map(walk => {
+            /* Iterate through Selected Images */
+
+            selectedImages.map(data => {
+
+                /* Check if the image is already on the mapping table and skip the insertion if exist - we should figure out what to do with the already mapped images.. or just leave it ..  But now is not possible to know which image is alrready mapped to which walk ..  */
+
+                API.checkImageExist(walk.value, data.id)
+                    .then(res => {
+
+                        const checkImage = res.data ? false : true
+
+                        /* IF not exist insert */
+                        const insertImageData = checkImage ? this.insertData(walk.value, data.id) : null;
+
+
+                    })
+                return (selectedImages)
+            })
+        })
+    }
 
     /* ANY CLUE WHY THIS DOESNT WORK?   */
     /* IT DOESN RETURN THE VALUE */
@@ -184,7 +232,10 @@ class WalkPhotoUpandPost extends Component {
         }
         API.addImagesToWalk(dataImage)
             .then(res => {
-                this.loadImages()
+                API.updateImageSentStatus(imageId)
+                    .then(res => {
+                        this.loadImages()
+                    })
             })
 
     }
@@ -197,7 +248,7 @@ class WalkPhotoUpandPost extends Component {
             const walkerId = this.props.WalkerID;
             const fileURL = result.info.url; // You should store this URL for future references in your app
             const imageData = {
-                
+
                 url: fileURL
             }
 
@@ -225,7 +276,7 @@ class WalkPhotoUpandPost extends Component {
         return (
 
             <div>
-                  <div id='photo-form-container'>
+                <div id='photo-form-container'>
                     <button onClick={this.showWidget}>Upload Photo</button>
                 </div>
 
@@ -235,15 +286,27 @@ class WalkPhotoUpandPost extends Component {
                     isMulti={true}
                 />
                 <br></br>
-                <button className="dropzoneButton" onClick={this.handleTransferImages}>Send images to the Walk</button>
-                <Gallery
-                    enableImageSelection={true}
-                    backdropClosesModal={true}
-                    onSelectImage={this.onSelectImage}
-                    enableLightbox={true}
-                    images={this.state.gallery}
-                    showLightboxThumbnails={true} />
-
+                <div>
+                    <button className="dropzoneButton" onClick={this.handleTransferImages}>Send Images to the Walk</button>
+                    <Gallery
+                        enableImageSelection={true}
+                        backdropClosesModal={true}
+                        onSelectImage={this.onSelectImage}
+                        enableLightbox={true}
+                        images={this.state.gallery}
+                        showLightboxThumbnails={true} />
+                </div>
+                <div>
+                    <button className="dropzoneButton" onClick={this.loadAllImages}>Load All (Including Sent) Images</button>
+                    <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Send Images to the Walk</button>
+                    <Gallery
+                        enableImageSelection={true}
+                        backdropClosesModal={true}
+                        onSelectImage={this.onSelectImage}
+                        enableLightbox={true}
+                        images={this.state.galleryAll}
+                        showLightboxThumbnails={true} />
+                </div>
 
 
             </div>
