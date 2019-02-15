@@ -10,6 +10,8 @@ module.exports = {
       .upsert({
         id: req.body.userId,
         certification: req.body.certifications,
+        insurance: req.body.insurance,
+        bond: req.body.bond,
         services: req.body.services,
         status: "available",
         userId: req.body.userId
@@ -111,8 +113,34 @@ module.exports = {
       .findAll({
         where: {
           walkerId: req.params.idWalk,
-
+          sendCustomer: null
         }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  getAllImages: function (req, res) {
+    db.images
+      .findAll({
+        where: {
+          walkerId: req.params.idWalk
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  getImagesByWalk: function (req, res) {
+    db.walkImages
+      .findAll({
+        where: {
+          walkId: req.params.idWalk
+        },
+        include: [{
+          model: db.images,
+          required: true
+        }]
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -261,6 +289,21 @@ module.exports = {
       .create(
         req.body,
         {})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  updateImageSentStatus: function (req, res) {
+    db.images
+      .update(
+        {
+          sendCustomer: true
+        },
+        {
+          where: {
+            id: req.params.ImageID
+          }
+        })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

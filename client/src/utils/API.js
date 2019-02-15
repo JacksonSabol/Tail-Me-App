@@ -4,11 +4,11 @@ export default {
 
     // Gets the Walks
     getOwnerWalks: function (id) {
-     
+
         return axios.get(`/api/dogProfile/${id}/walks`);
     },
     getWalkerWalks: function (id) {
-    
+
         return axios.get(`/api/walker/${id}/walks`);
     },
     // Gets all walkers
@@ -28,7 +28,7 @@ export default {
 
     //DogProfile
     getDogProfile: function (id) {
-    
+
         return axios.get(`/api/dogProfile/${id}`);
     },
 
@@ -40,6 +40,10 @@ export default {
     //upload photo walks
     getImages: function (id) {
         return axios.get(`/api/walker/walks/${id}/getImages`)
+    },
+
+    getAllImages: function (id) {
+        return axios.get(`/api/walker/walks/${id}/getAllImages`)
     },
 
     //Get walks
@@ -87,23 +91,27 @@ export default {
             })
     },
 
-  
+
     getImagesOwner: function (idOwner) {
         return axios.get(`/api/dogProfile/${idOwner}/gallery`)
 
     },
     getImagesWalk: function (idWalk) {
-        return axios.get(`/api/walker/walks/${idWalk}/getImages`)
+        return axios.get(`/api/walker/walks/images/${idWalk}`)
 
     },
 
-    addImagesToWalk: function (data) { 
-        return axios.post(`/api/walker/walk/uploadImage`,data)
+    addImagesToWalk: function (data) {
+        return axios.post(`/api/walker/walk/uploadImage`, data)
 
     },
-    
-    checkImageExist : function(walkId,imageId) {
-    return axios.get(`/api/walker/walk/${walkId}/${imageId}`)
+    // /walk/image/update/:ImageID
+    updateImageSentStatus: function (imageId) {
+        return axios.put(`/api/walker/walk/image/update/${imageId}`)
+    },
+
+    checkImageExist: function (walkId, imageId) {
+        return axios.get(`/api/walker/walk/${walkId}/${imageId}`)
     }
-    
+
 };
