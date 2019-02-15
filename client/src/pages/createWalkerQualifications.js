@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
-import Footer from "../components/Footer";
+import FooterWalker from "../components/FooterWalker";
 import logo from "../images/tailMeLogo.png";
+import homeIcon from "../images/homeIcon.png";
 
 const loading = {
     margin: '1em',
@@ -135,41 +136,61 @@ class createWalkerQualifications extends Component {
             );
         } else if (!certAdded) {
             return (
-                <div className="ownerProfile">
-                    <img className="ownerProfile__logo" src={logo} alt="tailME logo" ></img>
-                    <p className="ownerProfile__title">{title}</p>
-                    <form className="ownerProfile__form" onSubmit={this.handleCreateQualifications}>
-                        <label className="ownerProfile__form--firstNameLabel">Do you have any certifications?</label>
-                        <input className="ownerProfile__form--firstNameInput"
+                <div className="walkerQualifications">
+                    <img className="walkerQualifications__logo" src={logo} alt="tailME logo" ></img>
+                    <p className="walkerQualifications__title">{title}</p>
+                    <form className="walkerQualifications__form" onSubmit={this.handleCreateQualifications}>
+                        <label className="walkerQualifications__form--certificationLabel">SF dog walker certification</label>
+                        <input className="walkerQualifications__form--certificationInput"
                             type="text"
                             name="certifications"
                             value={this.state.certifications}
                             onChange={this.handleInputChange}
-                            placeholder="Certified VA"
+                            placeholder="Certified "
                         />
-                        <label className="ownerProfile__form--lastNameLabel">Do you offer any specialty services?</label>
-                        <input className="ownerProfile__form--lastNameInput"
+                        <label className="walkerQualifications__form--insuranceLabel">Proof of insurance</label>
+                        <input className="walkerQualifications__form--insuranceInput"
+                            type="text"
+                            name="insureance"
+                            value={this.state.insurance}
+                            onChange={this.handleInputChange}
+                            placeholder="Insurance"
+                        />
+                        <label className="walkerQualifications__form--bondLabel">Proof of Bond</label>
+                        <input className="walkerQualifications__form--bondInput"
+                            type="text"
+                            name="bond"
+                            value={this.state.bond}
+                            onChange={this.handleInputChange}
+                            placeholder="Bond"
+                        />
+                        <label className="walkerQualifications__form--servicesLabel">Do you offer any specialty services?</label>
+                        <input className="walkerQualifications__form--servicesInput"
                             type="text"
                             name="services"
                             value={this.state.services}
                             onChange={this.handleInputChange}
                             placeholder="Good with aggressive dogs, etc..."
                         />
-                        <label className="ownerProfile__form--userTypeLabel">Are you accepting new clients?</label>
-                        <select className="ownerProfile__form--userTypeSelect"
+                        <label className="walkerQualifications__form--userTypeLabel">Are you accepting new clients?</label>
+                        <select className="walkerQualifications__form--userTypeSelect"
                          name="status" onChange={this.handleInputChange} value={this.state.status}>
                             <option value="available">Available for Hire</option>
                             <option value="unavailable">Not Available for Hire</option>
                         </select>
-                        <button type="submit" className="ownerProfile__form--submitButton">Add Your Qualifications</button>
-                    </form>
+                        <button type="submit" className="walkerQualifications__form--submitButton">Add Your Qualifications</button>
                     {dbError === true && (
                         <div>
-                            <p>An error occured while adding entries to the database.</p>
+                            <p className="walkerQualifications__form--alert">An error occured while adding entries to the database.</p>
                         </div>
                     )}
-                    <a className="ownerProfile__form--homeButton" href="/">Return to Home</a>
-                    <Footer />
+                    </form>
+                    <a className="walkerQualifications__form--homeButton" href="/">
+                        <img className="walkerQualifications__form--homeIcon" src={homeIcon} alt="home icon" >
+                        </img> Home</a>
+                        <div className="walkerQualifications__form--footer">
+                        <FooterWalker />
+                    </div>
                 </div>
             );
         } else {

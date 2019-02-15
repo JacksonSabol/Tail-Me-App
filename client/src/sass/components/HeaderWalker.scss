@@ -1,6 +1,6 @@
 .walkernav{
-    background-image: linear-gradient($color-lightest,$color-accentLight);
-    box-shadow: 0em 0em .5em .5em $color-accentOne;
+    background-image: linear-gradient($color-medium,$color-accentLight);
+    box-shadow: 0em 0em .5em .5em $color-dark;
     display: grid;
     grid-template-columns:(6) 1fr;
     grid-template-areas:
@@ -8,7 +8,8 @@
     &__logo{
         justify-self: center; 
         grid-area: l; 
-        background-color: $color-lightest;
+        background-image: radial-gradient( $color-lightest, $color-mid);
+        border: solid .25em $color-accentOne;
         border-radius: .5em;
         padding: 0em 3em;
         &--image{
@@ -19,8 +20,8 @@
     &__splash{
         justify-self: right;
         grid-area: s; 
-        background-color: $color-lightest;
-        border: solid 2px $color-lighter;
+        background-image: radial-gradient( $color-lightest, $color-mid);
+        border: solid .25em $color-accentOne;
         border-radius: .5em 0em 0em .5em;   
         padding:  0em 5em;    
         &--link{
@@ -45,8 +46,8 @@
     &__contact{
         justify-self: left; 
         grid-area: c;
-        background-color: $color-lightest; 
-        border: solid 2px $color-lighter;
+        background-image: radial-gradient( $color-lightest, $color-mid); 
+        border: solid .25em $color-accentOne;
         border-radius: 0em .5em .5em 0em; 
         padding:  0em 5em; 
         &--link{

@@ -34,8 +34,8 @@
         grid-area: 3/2;
         font-size: 2.5em;
         display: grid;
-        grid-template-columns: .25fr auto .25fr;
-        grid-template-rows: (10) auto;
+        grid-template-columns: .25fr 1fr.25fr;
+        grid-template-rows: (10) 1fr;
         justify-content: center;
 
         &--itemLink{

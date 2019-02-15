@@ -359,8 +359,8 @@ a {
     grid-area: 3/2;
     font-size: 2.5em;
     display: grid;
-    grid-template-columns: .25fr auto .25fr;
-    grid-template-rows: 10 auto;
+    grid-template-columns: 0.25fr 1fr 0.25fr;
+    grid-template-rows: 10 1fr;
     justify-content: center; }
     .sidebar__nav--itemLink {
       font-style: bold;
@@ -488,8 +488,8 @@ a {
       font-size: 1em; }
   .TodayWalks__alert {
     text-align: center;
-    font-family: "Over the Rainbow", cursive;
-    font-size: 6em;
+    font-family: "Mouse Memoirs", sans-serif;
+    font-size: 4em;
     color: #1190cb; }
   .TodayWalks__past {
     grid-area: 1/6/2/16;
@@ -845,15 +845,16 @@ button.css-48ayfv {
     text-shadow: 2px 2px 8px #1190cb; }
 
 .walkernav {
-  background-image: linear-gradient(#e6e6e6, #7ECEFF);
-  box-shadow: 0em 0em 0.5em 0.5em #1190cb;
+  background-image: linear-gradient(#4d4d4d, #7ECEFF);
+  box-shadow: 0em 0em 0.5em 0.5em #333333;
   display: grid;
   grid-template-columns: 6 1fr;
   grid-template-areas: "l . . . s c"; }
   .walkernav__logo {
     justify-self: center;
     grid-area: l;
-    background-color: #e6e6e6;
+    background-image: radial-gradient(#e6e6e6, #808080);
+    border: solid 0.25em #1190cb;
     border-radius: .5em;
     padding: 0em 3em; }
     .walkernav__logo--image {
@@ -861,8 +862,8 @@ button.css-48ayfv {
   .walkernav__splash {
     justify-self: right;
     grid-area: s;
-    background-color: #e6e6e6;
-    border: solid 2px #bfbfbf;
+    background-image: radial-gradient(#e6e6e6, #808080);
+    border: solid 0.25em #1190cb;
     border-radius: .5em 0em 0em .5em;
     padding: 0em 5em; }
     .walkernav__splash--link {
@@ -880,8 +881,8 @@ button.css-48ayfv {
   .walkernav__contact {
     justify-self: left;
     grid-area: c;
-    background-color: #e6e6e6;
-    border: solid 2px #bfbfbf;
+    background-image: radial-gradient(#e6e6e6, #808080);
+    border: solid 0.25em #1190cb;
     border-radius: 0em .5em .5em 0em;
     padding: 0em 5em; }
     .walkernav__contact--link {
@@ -2630,3 +2631,164 @@ button.css-48ayfv {
       letter-spacing: 0.1em;
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
+
+.walkerQualifications {
+  background-image: radial-gradient(#e6e6e6, #808080);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto; }
+  .walkerQualifications__logo {
+    grid-area: 1/2/1/4;
+    margin: 2em; }
+  .walkerQualifications__title {
+    grid-area: 2/1;
+    font-family: "Mouse Memoirs", sans-serif;
+    padding: 1em;
+    color: #1190cb;
+    font-size: 5.5em; }
+  .walkerQualifications__form {
+    color: #333333;
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 12 1fr; }
+    .walkerQualifications__form--certificationLabel {
+      grid-area: 1/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerQualifications__form--certificationInput {
+      grid-area: 2/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
+    .walkerQualifications__form--insuranceLabel {
+      grid-area: 3/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerQualifications__form--insuranceInput {
+      grid-area: 4/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
+    .walkerQualifications__form--bondLabel {
+      grid-area: 5/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerQualifications__form--bondInput {
+      grid-area: 6/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
+    .walkerQualifications__form--servicesLabel {
+      grid-area: 7/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerQualifications__form--servicesInput {
+      grid-area: 8/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
+    .walkerQualifications__form--userTypeLabel {
+      grid-area: 9/1;
+      justify-self: left;
+      align-self: flex-end;
+      font-size: 3em; }
+    .walkerQualifications__form--userTypeSelect {
+      grid-area: 10/1;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      align-self: flex-start;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none; }
+    .walkerQualifications__form--submitButton {
+      grid-area: 11/1;
+      justify-self: left;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      text-align: center;
+      color: #e7f6fd;
+      background-color: #1190cb;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #e7f6fd;
+      margin: 1em 0em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
+    .walkerQualifications__form--submitButton:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      color: #1190cb;
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+    .walkerQualifications__form--alert {
+      grid-area: 12/1;
+      text-align: center;
+      font-family: "Mouse Memoirs", sans-serif;
+      font-size: 3em;
+      color: red; }
+    .walkerQualifications__form--footer {
+      grid-area: 4/2;
+      display: flex;
+      justify-content: center; }
+    .walkerQualifications__form--homeButton {
+      grid-area: 3/3;
+      justify-self: right;
+      font-size: 3em;
+      text-align: center;
+      color: #1190cb;
+      background-color: #e6e6e6;
+      padding: .5em 1em;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: 1em 1em;
+      box-shadow: 0.2em 0.2em 0.5em 0.1em #4d4d4d;
+      outline: none;
+      text-decoration: none; }
+    .walkerQualifications__form--homeButton:hover {
+      background-color: transparent;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px #1190cb;
+      outline: none;
+      text-decoration: none; }
+    .walkerQualifications__form--homeIcon {
+      height: 2em; }
