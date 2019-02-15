@@ -56,3 +56,9 @@ a:active {
   /* Applies to activated links */
   text-decoration: none;
   outline: none; }
+
+  input:-webkit-autofill {
+    // border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 0 0px 9999px $color-lightest;
+
+  }

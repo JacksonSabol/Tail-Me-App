@@ -4,10 +4,10 @@
     height: 90%;
     color: $color-darkest;
     display:grid;
-    grid-template-columns: auto 1fr  1fr auto;
-    grid-template-rows: .5fr .5fr 1fr 1fr;
+    grid-template-columns: .75fr 1fr  1fr .75fr;
+    grid-template-rows:  auto auto 1fr;
     grid-template-areas:
-        ". . . . "
+       
         ". l  l ."
         ". a  w ."
         "f f f f ";
@@ -18,7 +18,8 @@
     }
     &__logo{
       grid-area: l;
-      justify-self: center;   
+      margin-top: 2em;
+      justify-self: center;  
     }
     &__about{
         grid-area: a;

@@ -15,7 +15,7 @@ function SidebarNav(props) {
                         href="#home"
                         onClick={() => props.handlePageChange("Home")}
                     >
-                        Dashboard
+                        Profile
                     </a>
                 </div>
                 <div className="sidebar__nav--itemWalks">
