@@ -4,14 +4,48 @@ import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar/dist/fullcalendar.css';
 import API from "../../utils/API";
 import WalkerScheduleWalksWalker from "../../components/WalkerScheduleWalksWalker";
+import Modal from 'react-modal';
 
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        zIndex:'1',
+        transform: 'translate(-50%, -50%)'
+        
+    }
+};
+
+/* Modal.setAppElement('ScheduleWalker') */
 class ScheduleWalker extends Component {
     state = {
         date: new Date(),
         events: [],
-        username: this.props.username
+        username: this.props.username,
+        modalIsOpen: false,
+       
     };
 
+    openModal = this.openModal.bind(this);
+    afterOpenModal = this.afterOpenModal.bind(this);
+    closeModal = this.closeModal.bind(this);
+
+
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
+    }
     componentDidMount() {
         this.loadMyWalks();
     };
@@ -51,33 +85,64 @@ class ScheduleWalker extends Component {
     }
 
     handleEventClick(calEvent, jsEvent, view) {
-        console.log(calEvent);
-        // console.log(jsEvent);
-        // console.log(view);
+        console.log("EventClick", calEvent);
+        console.log("jsEvent", jsEvent);
+        console.log("view", view);
+  
     };
 
     render() {
+
+        const myCustomButton = {
+            text: 'custom!',
+            click: function() {
+              alert('clicked the custom button!');
+            }
+        }
         return (
 
             <div id="example-component" className="walkerFullscheduleWrap">
 
                 <div className="walkerScheduleWalksContainer">
-                
+                    <Modal
+                        isOpen={this.state.modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                        contentLabel="Schedule Modal"
+                        ariaHideApp={false}
+                    >
+
+                        {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
+                        <button onClick={this.closeModal}>X</button>
+                        <WalkerScheduleWalksWalker
+                            walkerID={this.props.walkerID}
+                            username={this.state.username}
+                            loadMyWalks={this.loadMyWalks}
+                        />
+
+                    </Modal>
                     <WalkerScheduleWalksWalker
                         walkerID={this.props.walkerID}
                         username={this.state.username}
                         loadMyWalks={this.loadMyWalks}
                     />
+                    <main>
+                        <button onClick={this.openModal}>Open Modal</button>
+                    </main>
                 </div>
 
                 <div className="walkercalenderContainer">
                     <div className="walkerfullCalender" id="example-component">
                         <FullCalendar
                             id="your-custom-ID"
+                            customButtons= {
+                                myCustomButton
+                            }
                             header={{
-                                left: 'prev,next today myCustomButton',
+                                left: 'prev,next, today, myCustomButton ,<a href=text>text</a>' ,
                                 center: 'title',
-                                right: 'month,agendaWeek,agendaDay'
+                                right: 'month,agendaWeek,agendaDay,listMonth'
                             }}
                             defaultDate={this.state.date}
                             navLinks={true} // can click day/week names to navigate views
@@ -89,6 +154,7 @@ class ScheduleWalker extends Component {
                             eventClick={this.handleEventClick.bind(this)}
                             selectable={true}
                             selectHelper={true}
+                            
                         />
                     </div>
                 </div>

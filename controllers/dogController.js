@@ -31,23 +31,53 @@ module.exports = {
   getImagesOwner: function (req, res) {
 
     console.log("Get Images Owner..:", req.params.idOwner)
-    db.images
+
+    db.user
       .findAll({
         include: [{
           model: db.dogOwner,
-          required: true
-        }
-
+          required: true,
+          include: [{
+            model: db.walks,
+            required: true,
+            include: [{
+              model: db.walkImages,
+              required: true,
+              include: [{
+                model: db.images,
+                required: true
+              }]
+            },
+            ]
+          },
+          ]
+        },
         ],
         where: {
-          dogOwnerId: req.params.idOwner,
-
+          id: req.params.idOwner
         }
       })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => { console.log(err); res.status(422).json(err) });
   },
 
+
+  /* include: [
+    {
+      model: db.dogOwner,
+      include: [{
+        model: db.Walks,
+        include: [{
+          model: db.walkImages
+        }]
+      }]
+    }
+  ],
+  where: {
+    id: req.params.idOwner
+
+
+  } */
   getOwnerWalks: function (req, res) {
     console.log("test2")
     db.walks
@@ -60,8 +90,8 @@ module.exports = {
           'walkDate'
         ],
         where: {
-          dogOwnerId:req.params.id // This is the id of the dog, despite the table name being dogOwner
-          
+          dogOwnerId: req.params.id // This is the id of the dog, despite the table name being dogOwner
+
         }
         //pending how to compare two dates
         //           , where: 
