@@ -78,10 +78,11 @@ module.exports = function (app, passport) {
                 where: {
                     authId: req.user.id
                 },
-                include: [db.auth]
+                include: [db.auth, db.walker]
             }).then(user => {
                 if (user != null) {
                     console.log('user found in db from /findUser');
+                    console.log(user.walker.certification);
                     res.status(200).send({
                         UserID: user.id,
                         firstName: user.firstName,

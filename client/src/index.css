@@ -2086,6 +2086,11 @@ button.css-48ayfv {
     color: #1190cb;
     font-size: 4em;
     text-align: center; }
+  .walker-main-content__subtitle {
+    font-family: "Over the Rainbow", cursive;
+    color: #1a1a1a;
+    font-size: 4em;
+    text-align: center; }
   .walker-main-content__body {
     display: grid;
     font-size: 2.5em;

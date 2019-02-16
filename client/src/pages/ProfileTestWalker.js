@@ -13,6 +13,7 @@ import WalkerCertification from './WalkerCertification';
 import CreateDog from './createDog';
 import FooterWalker from "../components/FooterWalker";
 import HeaderWalker from "../components/HeaderWalker";
+import createWalkerQualifications from "./createWalkerQualifications";
 import "../index.css";
 
 
@@ -37,6 +38,7 @@ class ProfileContainerWalker extends Component {
         State: '',
         zipCode: 0,
         country: '',
+        certifications:'',
         loggedIn: false,
         isLoading: true,
         deleted: false,
@@ -72,6 +74,7 @@ class ProfileContainerWalker extends Component {
                         State: response.data.State,
                         zipCode: response.data.zipCode,
                         country: response.data.country,
+                        certifications: response.data.certifications,
                         loggedIn: true,
                         isLoading: false,
                         error: false
@@ -85,6 +88,9 @@ class ProfileContainerWalker extends Component {
                 });
         }
     }
+    Capitalize(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+        }
 
     // Function to handle Sidebar Navigation
     handlePageChange = page => {
@@ -98,13 +104,14 @@ class ProfileContainerWalker extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
-                userType={this.state.userType}
+                userType={this.Capitalize(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
                 City={this.state.City}
                 State={this.state.State}
                 zipCode={this.state.zipCode}
                 country={this.state.country}
+                certifications={this.state.certifications}
             />;
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}
@@ -132,13 +139,14 @@ class ProfileContainerWalker extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
-                userType={this.state.userType}
+                userType={this.Capitalize(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
                 City={this.state.City}
                 State={this.state.State}
                 zipCode={this.state.zipCode}
                 country={this.state.country}
+                certifications={this.state.certifications}
             />;
         }
     };
