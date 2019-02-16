@@ -117,7 +117,7 @@ class ProfileContainer extends Component {
                 handlePageChange={this.handlePageChange}
             />;
             case "Gallery": return <DogOwnerGallery
-                UserID={this.state.userId}
+                userId={this.state.userId}
                 username={this.state.username}
                 handlePageChange={this.handlePageChange}
             />;

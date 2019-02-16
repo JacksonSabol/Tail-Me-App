@@ -17,22 +17,35 @@ class DogOwnerGallery extends Component {
     }
 
     loadImages = () => {
-        const idOwner = 1; // This is the id of the dog, despite the table name being dogOwner - change to the dog id of the button clicked from Today Walks
-        API.getImagesOwner(idOwner)
+        const userId = this.props.userId;
+        API.getImagesOwner(userId)
             .then(res => {
-                const dataGallery = res.data.map(data => {
-                    const imageData = {
-                        id: data.id,
-                        src: data.url,
-                        thumbnail: data.url,
-                        thumbnailWidth: 320,
-                        thumbnailHeight: 212,
-                        caption: data.dogOwner.dogName
-                    }
-                    return (imageData)
-                })
+                console.log(res.data[0])
+                if (res.data[0]) {
+                    const walks = res.data[0].dogOwner.walks
 
-                this.setState({ gallery: dataGallery })
+                    const arrayPhotos = []
+                    const dataGallery = walks.map(data => {
+                        const walkImages = data.walkImages
+                        const imagesWalkGallery = walkImages.map(walkImage => {
+
+                            const imageData = {
+                                id: walkImage.image.id,
+                                src: walkImage.image.url,
+                                thumbnail: walkImage.image.url,
+                                thumbnailWidth: 320,
+                                thumbnailHeight: 212,
+
+                            }
+                            arrayPhotos.push(imageData)
+                        })
+                    })
+
+
+                    this.setState({ gallery: arrayPhotos })
+
+                }
+
             })
 
     }
