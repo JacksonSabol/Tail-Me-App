@@ -30,8 +30,6 @@ module.exports = {
 
   getImagesOwner: function (req, res) {
 
-    console.log("Get Images Owner..:", req.params.idOwner)
-
     db.user
       .findAll({
         include: [{
@@ -54,7 +52,7 @@ module.exports = {
         },
         ],
         where: {
-          id: req.params.idOwner
+          id: req.params.idUser
         }
       })
       .then(dbModel => res.json(dbModel))
