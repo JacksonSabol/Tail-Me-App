@@ -116,10 +116,10 @@ class ownerWalks extends Component {
                     onClickButton: true,
                     walkId: walkId,
                     images: picsWithGpsInfo,
-                    currentLocation: {
-                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-                    },
+                    // currentLocation: {
+                    //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+                    //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                    // },
                     center: {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                         lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
@@ -228,10 +228,10 @@ class ownerWalks extends Component {
                         <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
                                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-                               defaultCenter={this.state.currentLocation}
+                            //    defaultCenter={this.state.currentLocation}
                                defaultZoom={this.state.zoom}
                                zoom={this.state.zoom}
-                               center={this.props.center}
+                               center={this.state.currentLocation}
                                onClick={this._onChange}
                             >
 
@@ -240,8 +240,8 @@ class ownerWalks extends Component {
                                         <AnyReactComponent key={image.id} ///all of the props ie walk.img/walk.lat))}
                                             id={image.id}
                                             icon="../paw-tailme-2020.svg"
-                                            lat={image.GPSLatitude}
-                                            lng={image.GPSLongitude}
+                                            lat={image.image.GPSLatitude}
+                                            lng={image.image.GPSLongitude}
                                             imageClick={this.handleImgClick}
                                         />
                               

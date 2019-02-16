@@ -33,10 +33,10 @@ class TodayWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
-        center: {
-            lat: 37.7924791,
-            lng: -122.1818368
-        },
+        // center: {
+        //     lat: 37.7924791,
+        //     lng: -122.1818368
+        // },
         zoom: 14,
         activeImage: "",
         walks: [],
@@ -93,30 +93,30 @@ class TodayWalks extends Component {
         // console.log("walkId", walkId)
         API.getImagesWalk(walkId)
             .then(res => {
-                // console.log("back from getpics")
-                // console.log("getpics: ", res.data)
-                // console.log("getpics dot image: ", res.data[0].image)
+                console.log("back from getpics")
+                console.log("getpics: ", res.data)
+                console.log("getpics dot image: ", res.data[0].image)
                 // this.setState({
                 //   walks: res.data
                 // });
                 let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null);
-                // console.log("PICS GPS: ", picsWithGpsInfo)
-                // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
-                // console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLongitude)
-                //console.log("data[0]: ", res.data[0].GPSLatitude)
+                console.log("PICS GPS: ", picsWithGpsInfo)
+                console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
+                console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
+                // console.log("data[0]: ", res.data[0].GPSLatitude)
                 this.setState({
-                    onClickButton: true,
+                    // onClickButton: true,
                     showmap: true,
                     walkId: walkId,
                     images: picsWithGpsInfo,
                     currentLocation: {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                         lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-                    },
-                    center: {
-                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     }
+                    // center: {
+                    //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+                    //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                    // }
                 })
             }).catch(err => {
                 console.log(err)
@@ -127,8 +127,9 @@ class TodayWalks extends Component {
         console.log("Center", this.state.center)
         console.log("zoom", this.state.zoom)
         this.setState({
-            center: center,
+            currentLocation: center,
             zoom: zoom
+      
         });
     };
 
@@ -292,23 +293,24 @@ class TodayWalks extends Component {
                 ) : (
                         <p className="TodayWalks__alert"> You don't have any previous walks!</p>
                     )}
+
                 {this.state.walkId ? (
                     <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                         <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-                                defaultCenter={this.state.currentLocation}
+                                // defaultCenter={this.state.currentLocation}
                                 defaultZoom={this.state.zoom}
                                 zoom={this.state.zoom}
-                                center={this.props.center}
+                                center={this.state.currentLocation}
                                 onClick={this._onChange}
                             >
                                 {this.state.images.map(image => (
                                     <AnyReactComponent key={image.id}///all of the props ie walk.img/walk.lat))}
                                         id={image.id}
                                         icon="../paw-tailme-2020.svg"
-                                        lat={image.GPSLatitude}
-                                        lng={image.GPSLongitude}
+                                        lat={image.image.GPSLatitude}
+                                        lng={image.image.GPSLongitude}
                                         imageClick={this.handleImgClick}
                                     />
                                 ))}
