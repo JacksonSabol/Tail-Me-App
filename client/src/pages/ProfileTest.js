@@ -55,7 +55,7 @@ class ProfileContainer extends Component {
         }
         else {
             await axios
-                .get('/findUser', {
+                .get('/findOwner', {
                     params: {
                         username: this.props.match.params.username
                     },
@@ -88,6 +88,10 @@ class ProfileContainer extends Component {
         }
     }
 
+    capitalizeUserType(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     // Function to handle Sidebar Navigation
     handlePageChange = page => {
         this.setState({ currentPage: page });
@@ -100,7 +104,7 @@ class ProfileContainer extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
-                userType={this.state.userType}
+                userType={this.capitalizeUserType(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
                 City={this.state.City}
@@ -125,7 +129,7 @@ class ProfileContainer extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
-                userType={this.state.userType}
+                userType={this.capitalizeUserType(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
                 City={this.state.City}

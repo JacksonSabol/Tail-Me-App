@@ -38,7 +38,7 @@ class ProfileContainerWalker extends Component {
         State: '',
         zipCode: 0,
         country: '',
-        certifications:'',
+        certifications: '',
         loggedIn: false,
         isLoading: true,
         deleted: false,
@@ -55,7 +55,7 @@ class ProfileContainerWalker extends Component {
         }
         else {
             await axios
-                .get('/findUser', {
+                .get('/findWalker', {
                     params: {
                         username: this.props.match.params.username
                     },
@@ -88,9 +88,9 @@ class ProfileContainerWalker extends Component {
                 });
         }
     }
-    Capitalize(str){
+    capitalizeUserType(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
-        }
+    }
 
     // Function to handle Sidebar Navigation
     handlePageChange = page => {
@@ -104,7 +104,7 @@ class ProfileContainerWalker extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
-                userType={this.Capitalize(this.state.userType)}
+                userType={this.capitalizeUserType(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
                 City={this.state.City}
@@ -139,7 +139,7 @@ class ProfileContainerWalker extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
-                userType={this.Capitalize(this.state.userType)}
+                userType={this.capitalizeUserType(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
                 City={this.state.City}
@@ -239,7 +239,7 @@ class ProfileContainerWalker extends Component {
                         </div>
                     </div>
                     <div className="walkerDash__grid--footer" >
-                    <FooterWalker />
+                        <FooterWalker />
                     </div>
                 </div>
             );
