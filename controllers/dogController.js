@@ -61,23 +61,6 @@ module.exports = {
       .catch(err => { console.log(err); res.status(422).json(err) });
   },
 
-
-  /* include: [
-    {
-      model: db.dogOwner,
-      include: [{
-        model: db.Walks,
-        include: [{
-          model: db.walkImages
-        }]
-      }]
-    }
-  ],
-  where: {
-    id: req.params.idOwner
-
-
-  } */
   getOwnerWalks: function (req, res) {
     console.log("test2")
     db.walks
