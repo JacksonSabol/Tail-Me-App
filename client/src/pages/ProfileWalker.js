@@ -6,15 +6,16 @@ import "../index.css";
 function ProfileWalker(props) {
     return (
         <div className="walker-main-content">
-        <div className="walker-main-content__title">Profile</div>
+        <div className="walker-main-content__title">{props.userType} Profile</div>
+        <div className="walker-main-content__subtitle">{props.firstName}  {props.lastName}</div>
         <div className="walker-main-content__body">
             {/* <div className="main-content__body--profileimg"><img src={`data:image/jpeg;Base64,${this.state.profilePhoto}`} /></div> */}
-            <div className="walker-main-content__body--firstNameLabel">First Name:</div>
-            <div className="walker-main-content__body--firstNameInput">{props.firstName}</div>
-            <div className="walker-main-content__body--lastNameLabel">Last Name:</div>
+            {/* <div className="walker-main-content__body--firstNameLabel">First Name:</div> */}
+            <div className="walker-main-content__body--firstNameInput">{props.cerifications}</div>
+            {/* <div className="walker-main-content__body--lastNameLabel">Last Name:</div>
             <div className="walker-main-content__body--lastNameInput">{props.lastName}</div>
             <div className="walker-main-content__body--userTypeLabel">User Type:</div>
-            <div className="walker-main-content__body--userTypeInput">{props.userType}</div>
+            <div className="walker-main-content__body--userTypeInput">{props.userType}</div> */}
             <div className="walker-main-content__body--aboutMeLabel">About Me:</div>
             <div className="walker-main-content__body--aboutMeInput">{props.aboutMe}</div>
             <div className="walker-main-content__body--addressLabel">Address:</div>

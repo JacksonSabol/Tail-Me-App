@@ -2,6 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const walker = sequelize.define('walker', {
     certification: DataTypes.STRING,
+    insurance: DataTypes.STRING,
+    bond: DataTypes.STRING,
     services: DataTypes.STRING,
     logo: DataTypes.BLOB,
     status: {

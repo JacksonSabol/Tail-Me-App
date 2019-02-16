@@ -151,7 +151,7 @@ class createWalkerQualifications extends Component {
                         <label className="walkerQualifications__form--insuranceLabel">Proof of insurance</label>
                         <input className="walkerQualifications__form--insuranceInput"
                             type="text"
-                            name="insureance"
+                            name="insurance"
                             value={this.state.insurance}
                             onChange={this.handleInputChange}
                             placeholder="Insurance"
