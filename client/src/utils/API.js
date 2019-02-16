@@ -92,8 +92,8 @@ export default {
     },
 
 
-    getImagesOwner: function (idOwner) {
-        return axios.get(`/api/dogProfile/${idOwner}/gallery`)
+    getImagesOwner: function (idUser) {
+        return axios.get(`/api/dogProfile/${idUser}/gallery`)
 
     },
     getImagesWalk: function (idWalk) {

@@ -15,7 +15,7 @@ router.route("/create")
   .post(dogController.create);
 
 // Matches with "/api/"
-router.route("/:idOwner/gallery")
+router.route("/:idUser/gallery")
   .get(dogController.getImagesOwner);
 
   // Matches with "/api/dogProfile/:id/walks/"
