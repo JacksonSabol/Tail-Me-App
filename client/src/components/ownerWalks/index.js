@@ -107,24 +107,23 @@ class ownerWalks extends Component {
                 // this.setState({
                 //   walks: res.data
                 // });
-                let picsWithGpsInfo = res.data.filter(image =>
-                    image.GPSLatitude != null)
-                  console.log("PICS GPS: ", picsWithGpsInfo)
-                  console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLatitude)
-                  console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLongitude)
+                let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null)
+                //   console.log("PICS GPS: ", picsWithGpsInfo)
+                //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
+                //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
                 //console.log("data[0]: ", res.data[0].GPSLatitude)
                 this.setState({
                     onClickButton: true,
                     walkId: walkId,
                     images: picsWithGpsInfo,
                     currentLocation: {
-                        lat: parseFloat(picsWithGpsInfo[0].GPSLatitude),
-                        lng: parseFloat(picsWithGpsInfo[0].GPSLongitude)
+                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                    },
+                    center: {
+                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     }
-                    /* currentLocation: {
-                         lat:res.data[0].GPSLatitude,
-                         lng:res.data[0].GPSLongitude
-                     } */
                 })
             }).catch(err => {
                 console.log(err)
@@ -146,7 +145,7 @@ class ownerWalks extends Component {
         console.log("id: ", id)
         let clickWalk = this.state.images.filter(image => image.id === id)
         console.log(clickWalk)
-        this.setState({ activeImage: clickWalk[0].url })
+        this.setState({ activeImage: clickWalk[0].image.url })
 
     }
 
@@ -183,7 +182,7 @@ class ownerWalks extends Component {
                             </List>
                             </div>
                         ) : (
-                                <p className="ownerWalks__alert"> You don't have any upcomming walks!</p>
+                                <p className="ownerWalks__alert"> You don't have any upcoming walks!</p>
                             )}
 
                 
@@ -218,7 +217,7 @@ class ownerWalks extends Component {
                             </List>
                             </div>
                         ) : (
-                                <p className="ownerWalks__alert"> You don't have any walks!</p>
+                                <p className="ownerWalks__alert"> You don't have any previous walks!</p>
                             )}
 
               

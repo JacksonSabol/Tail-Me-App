@@ -19,6 +19,8 @@ class createWalkerQualifications extends Component {
         userId: 0,
         username: '',
         certifications: '',
+        insurance: '',
+        bond: '',
         services: '',
         status: '',
         loggedIn: false,
@@ -80,6 +82,8 @@ class createWalkerQualifications extends Component {
             .post('/api/walker/create', {
                 userId: this.state.userId,
                 certifications: this.state.certifications,
+                insurance: this.state.insurance,
+                bond: this.state.bond,
                 services: this.state.services,
                 status: this.state.status
             })

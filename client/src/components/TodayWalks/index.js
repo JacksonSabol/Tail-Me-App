@@ -105,7 +105,7 @@ class TodayWalks extends Component {
                 // console.log("PICS GPS loc: ", picsWithGpsInfo[0].GPSLongitude)
                 //console.log("data[0]: ", res.data[0].GPSLatitude)
                 this.setState({
-                    /*  onClickButton: true, */
+                    onClickButton: true,
                     showmap: true,
                     walkId: walkId,
                     images: picsWithGpsInfo,
@@ -113,7 +113,10 @@ class TodayWalks extends Component {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                         lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     },
-                    center: [picsWithGpsInfo[0].image.GPSLatitude, picsWithGpsInfo[0].image.GPSLongitude]
+                    center: {
+                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                    }
                 })
             }).catch(err => {
                 console.log(err)
@@ -289,13 +292,13 @@ class TodayWalks extends Component {
                 ) : (
                         <p className="TodayWalks__alert"> You don't have any previous walks!</p>
                     )}
-                {this.state.walkId  ? (
+                {this.state.walkId ? (
                     <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                         <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                                 defaultCenter={this.state.currentLocation}
-                                // defaultZoom={this.state.zoom}
+                                defaultZoom={this.state.zoom}
                                 zoom={this.state.zoom}
                                 center={this.props.center}
                                 onClick={this._onChange}
