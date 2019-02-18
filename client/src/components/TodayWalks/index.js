@@ -45,8 +45,6 @@ class TodayWalks extends Component {
         walkId: 0,
         images: [],
         pastWalks: [],
-        zoom: 12,
-        // center: [37.7924791, -122.1818368],
         showMap: false,
         locationckeck: false
     }
@@ -113,10 +111,7 @@ class TodayWalks extends Component {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                         lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     }
-                    // center: {
-                    //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                    //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-                    // }
+                  
                 })
             }).catch(err => {
                 console.log(err)
