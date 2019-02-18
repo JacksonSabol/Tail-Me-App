@@ -297,6 +297,7 @@ class WalkPhotoUpandPost extends Component {
                         showLightboxThumbnails={true} />
                 </div>
                 <div>
+                    {/* set to conditional rendering */}
                     <button className="dropzoneButton" onClick={this.loadAllImages}>Load All (Including Sent) Images</button>
                     <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Send Images to the Walk</button>
                     <Gallery

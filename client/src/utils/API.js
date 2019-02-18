@@ -71,9 +71,9 @@ export default {
         return axios.put(`/api/walker/check/${type}/${idWalk}/${lat}/${lng}`)
     },
 
-    //Walker invite signup to the owner
-    createInvitation: function (data) {
-        console.log("API.js -  createInvitation")
+    //Walker text invite signup to the owner
+    createTextInvitation: function (data) {
+        console.log("API.js -  createTextInvitation")
         return axios.post("/api/walker/invitecustomer/" + data.ownerName + "/" + data.phoneNumber + "/" + data.specialCode + "/" + data.walkerId + "/" + data.walkerName);
     },
     //Walker invite signup to the owner ("/createOwner/:owneruserid/:specialcode/:walkerid")
