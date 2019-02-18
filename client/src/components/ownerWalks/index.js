@@ -34,16 +34,12 @@ class ownerWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
-        center: {
-            lat: 37.7924791,
-            lng: -122.1818368
-        },
         zoom: 14,
         activeImage: "",
         walks: [],
         errorMessage: "",
         onClickButton: false,
-        walkId: "",
+        walkId: 0,
         images: [],
         pastWalks: []
 
@@ -58,44 +54,97 @@ class ownerWalks extends Component {
     // Function to load all TodayWalks from the database
     loadWalks = () => {
 
-        const id = 1
-        API.getOwnerWalks(id)
-            .then(res => {
+        /// this is the id in the user table not in the dogOwner table
+        let id = this.props.dogOwnerId;
+        console.log("id: ", id)
+        API.getOwnerId(id)
+            .then(res => { 
+                console.log("data from getOwnerId: ", res.data);
+                console.log(res.data.id)
+                // getOwnerwalks(res.data.id) 
+                API.getOwnerWalks(res.data.id)
+                .then(res => {
 
-                const dataFormat = res.data.map(data => {
+                    const dataFormat = res.data.map(data => {
 
-                    const start_time = Moment(data.checkInTime);
-                    const end_time = Moment(data.checkOutTime);
-                    const difference = end_time.diff(start_time, 'minutes', true);
+                        const start_time = Moment(data.checkInTime);
+                        const end_time = Moment(data.checkOutTime);
+                        const difference = end_time.diff(start_time, 'minutes', true);
 
-                    const finishedWalk = data.checkInTime === null ? false : true
+                        const finishedWalk = data.checkInTime === null ? false : true
 
-                    const dataFormatted = {
-                        checkInTime: data.checkInTime,
-                        checkOutTime: data.checkOutTime,
-                        totalTime: this.convertMinsToHrsMins(difference),
-                        id: data.id,
-                        walkDate: data.walkDate,
-                        finishedWalk: finishedWalk
+                        const dataFormatted = {
+                            checkInTime: data.checkInTime,
+                            checkOutTime: data.checkOutTime,
+                            totalTime: this.convertMinsToHrsMins(difference),
+                            id: data.id,
+                            walkDate: data.walkDate,
+                            finishedWalk: finishedWalk
 
-                    }
+                        }
 
 
-                    return (dataFormatted)
-                });
-                console.log("Data Format", dataFormat)
+                        return (dataFormatted)
+                    });
+                    console.log("Data Format", dataFormat)
 
-                const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
-                const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
-                console.log("UpcommingWalks", UpcommingWalks)
-                this.setState({
-                    walks: UpcommingWalks,
-                    pastWalks: finishedWalks
+                    const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
+                    const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
+                    console.log("UpcommingWalks", UpcommingWalks)
+                    console.log("finishedWalks", finishedWalks)
+                    this.setState({
+                        walks: UpcommingWalks,
+                        pastWalks: finishedWalks
+                    })
+
                 })
 
+                .catch(err => console.log(err));
+            
             })
-
             .catch(err => console.log(err));
+
+        // let getOwnerwalks = (id) => {
+        //     console.log("id",id)
+        //     API.getOwnerWalks(id)
+        //         .then(res => {
+
+        //             const dataFormat = res.data.map(data => {
+
+        //                 const start_time = Moment(data.checkInTime);
+        //                 const end_time = Moment(data.checkOutTime);
+        //                 const difference = end_time.diff(start_time, 'minutes', true);
+
+        //                 const finishedWalk = data.checkInTime === null ? false : true
+
+        //                 const dataFormatted = {
+        //                     checkInTime: data.checkInTime,
+        //                     checkOutTime: data.checkOutTime,
+        //                     totalTime: this.convertMinsToHrsMins(difference),
+        //                     id: data.id,
+        //                     walkDate: data.walkDate,
+        //                     finishedWalk: finishedWalk
+
+        //                 }
+
+
+        //                 return (dataFormatted)
+        //             });
+        //             console.log("Data Format", dataFormat)
+
+        //             const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
+        //             const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
+        //             console.log("UpcommingWalks", UpcommingWalks)
+        //             console.log("finishedWalks", finishedWalks)
+        //             this.setState({
+        //                 walks: UpcommingWalks,
+        //                 pastWalks: finishedWalks
+        //             })
+
+        //         })
+
+        //         .catch(err => console.log(err));
+        // }
     };
 
     handleOnClick = (walkId) => {
@@ -120,7 +169,7 @@ class ownerWalks extends Component {
                     //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                     //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     // },
-                    center: {
+                    currentLocation: {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                         lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     }
@@ -135,7 +184,7 @@ class ownerWalks extends Component {
         console.log("Center", this.state.center)
         console.log("zoom", this.state.zoom)
         this.setState({
-            center: center,
+            currentLocation: center,
             zoom: zoom
         });
     };
@@ -160,19 +209,19 @@ class ownerWalks extends Component {
     render() {
         return (
             <Container>
-                 <div className="ownerWalks">
-                
+                <div className="ownerWalks">
 
-                        {this.state.walks.length ? (
-                            <div className="ownerWalks__upcoming">
+
+                    {this.state.walks.length ? (
+                        <div className="ownerWalks__upcoming">
                             <List>
-                            <div className="ownerWalks__upcoming--title">Upcoming Walks: </div>
+                                <div className="ownerWalks__upcoming--title">Upcoming Walks: </div>
                                 {this.state.walks.map(walk => (
 
 
                                     <ListItem key={walk.id}>
 
-                                        <div className="ownerWalks__upcoming--list-publish"> Walk Date: 
+                                        <div className="ownerWalks__upcoming--list-publish"> Walk Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                                         </div>
                                     </ListItem>
@@ -180,17 +229,17 @@ class ownerWalks extends Component {
                                 ))}
 
                             </List>
-                            </div>
-                        ) : (
-                                <p className="ownerWalks__alert"> You don't have any upcoming walks!</p>
-                            )}
+                        </div>
+                    ) : (
+                            <p className="ownerWalks__alert"> You don't have any upcoming walks!</p>
+                        )}
 
-                
 
-                        {this.state.walks.length ? (
-                            <div className="ownerWalks__past">
-                            <List> 
-                            <div className="ownerWalks__past--title">Walks History: </div>
+
+                    {this.state.pastWalks.length ? (
+                        <div className="ownerWalks__past">
+                            <List>
+                                <div className="ownerWalks__past--title">Walks History: </div>
                                 {this.state.pastWalks.map(walk => (
 
 
@@ -215,28 +264,28 @@ class ownerWalks extends Component {
                                 ))}
 
                             </List>
-                            </div>
-                        ) : (
-                                <p className="ownerWalks__alert"> You don't have any previous walks!</p>
-                            )}
+                        </div>
+                    ) : (
+                            <p className="ownerWalks__alert"> You don't have any previous walks!</p>
+                        )}
 
-              
 
-                {this.state.onClickButton ? (
 
-                    <div className="TodayWalks__past--map" style={{ display: "flex" }}>
-                        <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
-                            <GoogleMapReact
-                               bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-                            //    defaultCenter={this.state.currentLocation}
-                               defaultZoom={this.state.zoom}
-                               zoom={this.state.zoom}
-                               center={this.state.currentLocation}
-                               onClick={this._onChange}
-                            >
+                    {this.state.onClickButton ? (
 
-                                {this.state.images.map(image => (
-                                   
+                        <div className="TodayWalks__past--map" style={{ display: "flex" }}>
+                            <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+                                    //    defaultCenter={this.state.currentLocation}
+                                    defaultZoom={this.state.zoom}
+                                    zoom={this.state.zoom}
+                                    center={this.state.currentLocation}
+                                    onClick={this._onChange}
+                                >
+
+                                    {this.state.images.map(image => (
+
                                         <AnyReactComponent key={image.id} ///all of the props ie walk.img/walk.lat))}
                                             id={image.id}
                                             icon="../paw-tailme-2020.svg"
@@ -244,20 +293,20 @@ class ownerWalks extends Component {
                                             lng={image.image.GPSLongitude}
                                             imageClick={this.handleImgClick}
                                         />
-                              
-                                ))}
-                            </GoogleMapReact>
+
+                                    ))}
+                                </GoogleMapReact>
+                            </div>
+
+                            <div className="TodayWalks__past--mapimage">
+                                {this.state.activeImage ?
+                                    <img width={'300px'} src={this.state.activeImage}></img> : null}
+                            </div>
                         </div>
 
-                        <div className="TodayWalks__past--mapimage">
-                            {this.state.activeImage ?
-                                <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div>
-                    </div>
+                    ) : null}
 
-                ) : null}
-
-            </div>
+                </div>
             </Container>
         );
     }

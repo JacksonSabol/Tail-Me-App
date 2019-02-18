@@ -112,6 +112,11 @@ export default {
 
     checkImageExist: function (walkId, imageId) {
         return axios.get(`/api/walker/walk/${walkId}/${imageId}`)
+    },
+
+    getOwnerId: function (idUserDog) {
+        console.log("idAPI:", idUserDog)
+        return axios.get(`/api/dogProfile/${idUserDog}/getId`)
     }
 
 };

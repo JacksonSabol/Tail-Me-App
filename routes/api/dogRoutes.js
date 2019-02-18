@@ -4,7 +4,6 @@ const dogController = require("../../controllers/dogController");
 // Matches with "/api/user
 router.route("/:id")
   .get(dogController.findOne)
-// .delete(userController.remove);
 
 // Matches with "/api/dogProfile/findWalker"
 router.route("/findWalker")
@@ -21,6 +20,10 @@ router.route("/:idUser/gallery")
   // Matches with "/api/dogProfile/:id/walks/"
 router.route("/:id/walks")
 .get(dogController.getOwnerWalks);
+
+// Matches with "/api/dogProfile/:id/getId"
+router.route("/:idUserDog/getId")
+  .get(dogController.getOwnerId)
 
 
 module.exports = router;

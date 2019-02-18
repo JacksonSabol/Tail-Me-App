@@ -60,7 +60,7 @@ module.exports = {
   },
 
   getOwnerWalks: function (req, res) {
-    console.log("test2")
+    console.log("dog Controller getOwnerWalks")
     db.walks
       .findAll({
         attributes: [
@@ -85,5 +85,15 @@ module.exports = {
       })
       .then(dbModel => { res.json(dbModel) })
       .catch(err => res.status(422).json(err))
-  }
+  },
+  getOwnerId: function (req, res) {
+    console.log("req.params.idUserDog:", req.params.idUserDog)
+    db.dogOwner.findOne({
+      where: {
+        userId: req.params.idUserDog
+      }
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
 };
