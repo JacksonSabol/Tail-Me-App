@@ -50,7 +50,7 @@ router.route("/check/:type/:idWalk/:lat/:lng")
 
 // Matches with "/api/walker/invitecustomer/..."
 router.route("/invitecustomer/:name/:phone/:specialcode/:walkerid/:walkername")
-  .post(globalController.createInvitation);
+  .post(globalController.createTextInvitation);
 
 router.route
   ("/:id/uploadImages")
@@ -61,7 +61,7 @@ router.route
 
 // Matches with "/api/walker/createOwner/..."
 router.route("/createOwner/:owneruserid/:specialcode/:walkerid")
-  .post(globalController.createInvitation);
+  .post(globalController.createOwner);
 
 router.route("/walk/uploadImage")
   .post(walkerController.addImagesToWalk);

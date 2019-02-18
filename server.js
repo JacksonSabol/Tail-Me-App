@@ -45,6 +45,7 @@ require("./config/passport/passport.js")(passport, db.auth);
 app.use(express.static("client/build"));
 // Import routes
 require("./routes/auth-routes.js")(app, passport);
+require("./routes/mail-routes")(app);
 app.use(routes);
 //require("./routes/html-routes.js")(app);
 //require("./routes/walker-api-routes.js")(app);

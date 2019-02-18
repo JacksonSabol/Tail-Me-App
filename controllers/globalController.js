@@ -4,7 +4,7 @@ module.exports = {
 
     // need to clean the code to make one API call for twilio with invitation body and phoneTO, to be called from any other function.. This fuction will be called from: server reminders, createInvitation, alert walker a customer has signed up,...
 
-    createInvitation: function (req, res) {
+    createTextInvitation: function (req, res) {
 
         console.log("params from global controller: ", req.params)
         walkerName = req.params.walkername;
