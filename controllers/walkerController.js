@@ -205,6 +205,16 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  deleteWalk: function (req, res) {
+    db.walks.destroy({
+      where: {
+        id: req.params.idWalk
+      }
+    })
+      .then(walkDeleted => res.json(walkDeleted))
+      .catch(err => res.status(422).json(err));
+  },
+
   updateCheckInOut: function (req, res) {
     console.log("updateCheckInOut");
     console.log(req.params.type);

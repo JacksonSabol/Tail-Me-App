@@ -65,6 +65,10 @@ export default {
         return axios.put(`/api/walker/schedule/${idWalk}`, data)
 
     },
+    deleteWalk: function (idWalk) {
+        return axios.delete(`/api/walker/walks/delete/${idWalk}`)
+
+    },
     updateCheckInOut: function (type, idWalk, lat, lng) {
         console.log("API.js: ", type, idWalk, lat, lng)
         // return axios.put(`/api/walker/check/${type}/${idWalk}`, data)

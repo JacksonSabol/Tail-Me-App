@@ -45,6 +45,10 @@ router.route("/:idWalker/getDogOwners")
 router.route("/schedule/:idWalk")
   .put(walkerController.updateWalk)
 
+// /api/walker/walks/delete/idWalk to delete a walk
+router.route("/walks/delete/:idWalk")
+  .delete(walkerController.deleteWalk)
+
 router.route("/check/:type/:idWalk/:lat/:lng")
   .put(walkerController.updateCheckInOut)
 
