@@ -9,7 +9,8 @@ class WalkerScheduleWalksWalker extends Component {
   state = {
     date: new Date(),
     onwnerList: [],
-    selectedOptions: []
+    selectedOptions: [],
+
   }
 
   componentDidMount() {
@@ -56,7 +57,8 @@ class WalkerScheduleWalksWalker extends Component {
 
     API.addSchedule(selectedOwners, idWalker)
       .then(res => {
-        this.props.loadMyWalks();
+        console.log("From WalkerScheduleWalksWalker", this.props.walkerID);
+        this.props.loadMyWalks(idWalker);
       })
   }
 
