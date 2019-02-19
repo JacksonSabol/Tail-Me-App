@@ -57,8 +57,7 @@ class WalkerScheduleWalksWalker extends Component {
 
     API.addSchedule(selectedOwners, idWalker)
       .then(res => {
-        console.log("From WalkerScheduleWalksWalker", this.props.walkerID);
-        this.props.loadMyWalks(idWalker);
+        this.props.closeModal();
       })
   }
 

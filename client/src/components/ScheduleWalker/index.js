@@ -60,6 +60,7 @@ class ScheduleWalker extends Component {
     };
 
     closeModal() {
+        this.loadMyWalks(this.state.walkerId);
         this.setState({ modalIsOpen: false });
     };
     // Event click modal
@@ -183,6 +184,7 @@ class ScheduleWalker extends Component {
                             walkerID={this.state.walkerId}
                             username={this.state.username}
                             loadMyWalks={this.loadMyWalks}
+                            closeModal={this.closeModal}
                         />
                     </Modal>
                 </div>
