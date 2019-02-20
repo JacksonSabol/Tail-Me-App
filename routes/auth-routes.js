@@ -115,7 +115,8 @@ module.exports = function (app, passport) {
             }).then(user => {
                 if (user != null) {
                     console.log('user found in db from /findWalker');
-                    console.log(user.walker.certification);
+                    console.log(user.walker.status);
+
                     res.status(200).send({
                         UserID: user.id,
                         firstName: user.firstName,
@@ -126,7 +127,13 @@ module.exports = function (app, passport) {
                         City: user.City,
                         State: user.State,
                         zipCode: user.zipCode,
-                        country: user.country
+                        country: user.country,
+                        certification: user.walker.certification,
+                        insurance: user.walker.insurance,
+                        bond: user.walker.bond,
+                        services: user.walker.services,
+                        availibility: user.walker.status
+
                     });
                 } else {
                     console.log('no user exists in db with that username');

@@ -2098,10 +2098,10 @@ button.css-48ayfv {
     grid-template-rows: 1fr auto auto auto auto auto 1fr;
     grid-gap: .5em;
     color: #1190cb; }
-    .walker-main-content__body--firstNameLabel {
+    .walker-main-content__body--certificationLabel {
       grid-area: 1/2;
       justify-self: right; }
-    .walker-main-content__body--firstNameInput {
+    .walker-main-content__body--certificationInput {
       grid-area: 1/3;
       justify-self: left;
       color: #1a1a1a; }
@@ -2179,13 +2179,13 @@ button.css-48ayfv {
     grid-area: 2/2;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr auto;
     grid-gap: 1em; }
-    .main-content-certify__form--certificationsLabel {
+    .main-content-certify__form--certificationLabel {
       grid-area: 1/1;
       justify-self: right;
       font-size: 3em; }
-    .main-content-certify__form--certificationsInput {
+    .main-content-certify__form--certificationInput {
       grid-area: 1/2;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
@@ -2197,11 +2197,11 @@ button.css-48ayfv {
       box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
-    .main-content-certify__form--servicesLabel {
+    .main-content-certify__form--insuranceLabel {
       grid-area: 2/1;
       justify-self: right;
       font-size: 3em; }
-    .main-content-certify__form--servicesInput {
+    .main-content-certify__form--insuranceInput {
       grid-area: 2/2;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
@@ -2213,11 +2213,11 @@ button.css-48ayfv {
       box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
-    .main-content-certify__form--availibilityLabel {
+    .main-content-certify__form--bondLabel {
       grid-area: 3/1;
       justify-self: right;
       font-size: 3em; }
-    .main-content-certify__form--availibilityStatus {
+    .main-content-certify__form--bondInput {
       grid-area: 3/2;
       font-family: "Thasadith", sans-serif;
       font-size: 3em;
@@ -2229,8 +2229,40 @@ button.css-48ayfv {
       box-shadow: inset 0 0 12px #7ECEFF;
       outline: none;
       text-decoration: none; }
-    .main-content-certify__form--button {
+    .main-content-certify__form--servicesLabel {
+      grid-area: 4/1;
+      justify-self: right;
+      font-size: 3em; }
+    .main-content-certify__form--servicesInput {
       grid-area: 4/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .main-content-certify__form--availibilityLabel {
+      grid-area: 5/1;
+      justify-self: right;
+      font-size: 3em; }
+    .main-content-certify__form--availibilityStatus {
+      grid-area: 5/2;
+      font-family: "Thasadith", sans-serif;
+      font-size: 3em;
+      padding: .5em;
+      border: solid 2px #a6a6a6;
+      border-radius: .5em;
+      background-color: #e7f6fd;
+      color: #333333;
+      box-shadow: inset 0 0 12px #7ECEFF;
+      outline: none;
+      text-decoration: none; }
+    .main-content-certify__form--button {
+      grid-area: 6/2;
       justify-self: right;
       font-family: "Thasadith", sans-serif;
       padding: .8em .5em;

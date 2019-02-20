@@ -13,7 +13,7 @@ import WalkerCertification from './WalkerCertification';
 import CreateDog from './createDog';
 import FooterWalker from "../components/FooterWalker";
 import HeaderWalker from "../components/HeaderWalker";
-import createWalkerQualifications from "./createWalkerQualifications";
+import CreateWalkerQualifications from "./createWalkerQualifications";
 import "../index.css";
 
 
@@ -38,7 +38,11 @@ class ProfileContainerWalker extends Component {
         State: '',
         zipCode: 0,
         country: '',
-        certifications: '',
+        certification: '',
+        insurance: '',
+        bond: '',
+        services: '',
+        availibility: '',
         loggedIn: false,
         isLoading: true,
         deleted: false,
@@ -74,7 +78,11 @@ class ProfileContainerWalker extends Component {
                         State: response.data.State,
                         zipCode: response.data.zipCode,
                         country: response.data.country,
-                        certifications: response.data.certifications,
+                        certification: response.data.certification,
+                        insurance: response.data.insurance,
+                        bond: response.data.bond,
+                        services: response.data.services,
+                        availibility: response.data.availibility,
                         loggedIn: true,
                         isLoading: false,
                         error: false
@@ -111,7 +119,11 @@ class ProfileContainerWalker extends Component {
                 State={this.state.State}
                 zipCode={this.state.zipCode}
                 country={this.state.country}
-                certifications={this.state.certifications}
+                certification={this.state.certification}
+                insurance={this.state.insurance}
+                bond={this.state.bond}
+                services={this.state.services}
+                availibility={this.state.availibility}
             />;
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}
@@ -126,6 +138,11 @@ class ProfileContainerWalker extends Component {
             />
             case "Certs": return <WalkerCertification
                 username={this.state.username}
+                certification={this.state.certification}
+                insurance={this.state.insurance}
+                bond={this.state.bond}
+                services={this.state.services}
+                availibility={this.state.availibility}
             />;
             case "Invite": return <InviteOwners
                 walkerId={this.state.userId}
@@ -146,7 +163,11 @@ class ProfileContainerWalker extends Component {
                 State={this.state.State}
                 zipCode={this.state.zipCode}
                 country={this.state.country}
-                certifications={this.state.certifications}
+                certification={this.state.certification}
+                insurance={this.state.insurance}
+                bond={this.state.bond}
+                services={this.state.services}
+                availibility={this.state.availibility}
             />;
         }
     };

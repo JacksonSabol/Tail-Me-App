@@ -28,6 +28,16 @@ function ProfileWalker(props) {
             <div className="walker-main-content__body--zipcodeInput">{props.zipCode}</div>
             <div className="walker-main-content__body--countryLabel">Country:</div>
             <div className="walker-main-content__body--countryInput">{props.country}</div>
+            <div className="walker-main-content__body--certificationLabel">Certification:</div>
+            <div className="walker-main-content__body--certificationInput">{props.certification}</div>
+            <div className="walker-main-content__body--insuranceLabel">Insurance:</div>
+            <div className="walker-main-content__body--insuranceInput">{props.insurance}</div>
+            <div className="walker-main-content__body--bondLabel">Bond:</div>
+            <div className="walker-main-content__body--bondInput">{props.bond}</div>
+            <div className="walker-main-content__body--servicesLabel">Services:</div>
+            <div className="walker-main-content__body--servicesInput">{props.services}</div>
+            <div className="walker-main-content__body--availibilityLabel">Availibility:</div>
+            <div className="walker-main-content__body--availibilityInput">{props.availibility}</div>
         </div>
         </div>
     );
