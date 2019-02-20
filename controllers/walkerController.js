@@ -1,6 +1,6 @@
 const db = require("../models");
 const axios = require("axios");
-
+const Moment = require("moment");
 
 // Defining methods for the walkerController
 module.exports = {
@@ -221,7 +221,7 @@ module.exports = {
     console.log(req.params.idWalk);
     console.log(req.params.lat);
     console.log(req.params.lng);
-
+    
     // console.log("checkinGPSLatitude: ", req.body.latitude)
     // console.log("checkinGPSLongitude: ", req.body.longitude)
 
@@ -229,7 +229,10 @@ module.exports = {
       var data = {
         checkinTime: Date.now(),
         checkinGPSLatitude: req.params.lat,
-        checkinGPSLongitude: req.params.lat
+        checkinGPSLongitude: req.params.lat,
+
+        //Here is the note for insertion 
+        note: `Your dog has been picked up on ${Moment(Date.now()).format("MM/DD/YYYY - HH:mm")} \n\n Note1:\n\n Note2: \n\n Note3:`
       }
       db.walks
         .update(
@@ -243,11 +246,11 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     }
     else if (req.params.type === "out") {
-
       var data = {
         finishTime: Date.now(),
         checkoutGPSLatitude: req.params.lat,
-        checkoutGPSLongitude: req.params.lat
+        checkoutGPSLongitude: req.params.lat,
+        note: req.body.note
       }
       console.log(data)
       db.walks
@@ -319,6 +322,9 @@ module.exports = {
   },
 
   checkImageExist: function (req, res) {
+    console.log("test")
+    console.log("res", req.body)
+    console.log("req params", req.params)
     db.walkImages
       .findOne({
         where: {
@@ -328,6 +334,36 @@ module.exports = {
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+
+  getWalkNote: function (req, res) {
+   
+    db.walks
+      .findOne({
+        where: {
+          id: req.params.walkId
+
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {console.log("ERROR",err);res.status(422).json(err)});
+  },
+
+  updateNote: function (req, res) {
+    console.log(req.body)
+    db.walks
+      .update(
+        req.body,
+        {
+          where: {
+            id: req.params.walkId
+          }
+        })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {console.log("ERROR",err);res.status(422).json(err)});
   }
+
+
 
 };
