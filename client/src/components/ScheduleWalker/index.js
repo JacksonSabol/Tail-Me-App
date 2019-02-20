@@ -4,7 +4,9 @@ import FullCalendar from 'fullcalendar-reactwrapper';
 import 'fullcalendar/dist/fullcalendar.css';
 import API from "../../utils/API";
 import WalkerScheduleWalksWalker from "../../components/WalkerScheduleWalksWalker";
+import Moment from "moment";
 import Modal from 'react-modal';
+Modal.setAppElement('#root');
 
 const customStyles = {
     content: {
@@ -13,50 +15,69 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        zIndex:'1',
-        transform: 'translate(-50%, -50%)'
-        
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'rgb(17,144,202)',
+        opacity: '1'
     }
 };
 
-/* Modal.setAppElement('ScheduleWalker') */
 class ScheduleWalker extends Component {
     state = {
         date: new Date(),
         events: [],
         username: this.props.username,
+        walkerId: this.props.walkerID,
         modalIsOpen: false,
-       
+        walkId: 0,
+        walkStart: "",
+        walkEnd: "",
+        walkTitle: "",
+        eventModalOpen: false
     };
 
     openModal = this.openModal.bind(this);
     afterOpenModal = this.afterOpenModal.bind(this);
     closeModal = this.closeModal.bind(this);
 
+    openEventModal = this.openEventModal.bind(this);
+    afterOpenEventModal = this.afterOpenEventModal.bind(this);
+    closeEventModal = this.closeEventModal.bind(this);
 
     openModal() {
         this.setState({ modalIsOpen: true });
-    }
-
+    };
+    // Event click modal - probably unnecessary
+    openEventModal() {
+        this.setState({ eventModalOpen: true });
+    };
     afterOpenModal() {
         // references are now sync'd and can be accessed.
-        
-    }
 
-    closeModal() {
-        this.setState({ modalIsOpen: false });
-    }
-    componentDidMount() {
-        this.loadMyWalks();
+    };
+    // Event click modal
+    afterOpenEventModal() {
+
     };
 
-    loadMyWalks = () => {
-        this.setState({ username: this.props.username });
-        const idWalker = this.props.walkerID
-        API.getMyWalks(idWalker)
+    closeModal() {
+        this.loadMyWalks(this.state.walkerId);
+        this.setState({ modalIsOpen: false });
+    };
+    // Event click modal
+    closeEventModal() {
+        this.setState({ eventModalOpen: false });
+    };
+
+    componentDidMount() {
+        this.loadMyWalks(this.state.walkerId);
+    };
+
+    loadMyWalks(id) {
+        // const walkerId = this.state.walkerID;
+        console.log("State from ScheduleWalker", this.state);
+        API.getMyWalks(id)
             .then(res => {
                 const dataFormat = res.data.map(data => {
-                    console.log("checkin", data.checkInTime)
                     const dataFormatted = {
                         start: data.walkDate,
                         end: data.checkOutTime,
@@ -65,15 +86,22 @@ class ScheduleWalker extends Component {
                     }
                     return (dataFormatted)
                 });
-                console.log("Data Format", dataFormat)
-                this.setState({ events: dataFormat })
+                this.setState({ events: dataFormat });
             })
             .catch(err => console.log(err));
-    }
+    };
+
+    // Cancel a walk
+    cancelWalk(id) {
+        API.deleteWalk(id)
+            .then(res => {
+                this.closeEventModal();
+                this.loadMyWalks(this.state.walkerId);
+            })
+            .catch(err => console.log(err));
+    };
 
     handleDropEvent(event) {
-        console.log(event.id)
-        console.log(event.start)
         const data = {
             walkDate: event.start
         }
@@ -84,26 +112,65 @@ class ScheduleWalker extends Component {
             .catch(err => console.log(err));
     }
 
-    handleEventClick(calEvent, jsEvent, view) {
-        console.log("EventClick", calEvent);
-        console.log("jsEvent", jsEvent);
-        console.log("view", view);
-  
+    handleEventClick(event, jsEvent, view) {
+        if (event.end) {
+            this.setState({
+                walkId: event.id,
+                walkTitle: event.title,
+                walkStart: Moment(event.start._i, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"),
+                walkEnd: Moment(event.end._i, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"),
+                eventModalOpen: true
+            });
+        } else {
+            this.setState({
+                walkId: event.id,
+                walkTitle: event.title,
+                walkStart: Moment(event.start._i, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"),
+                walkEnd: "In-Progress",
+                eventModalOpen: true
+            });
+        }
     };
 
     render() {
+        const {
+            walkId,
+            walkStart,
+            walkEnd,
+            walkTitle
+        } = this.state;
 
-        const myCustomButton = {
-            text: 'custom!',
-            click: function() {
-              alert('clicked the custom button!');
+        const customButtons = {
+            scheduleButton: {
+                text: 'Schedule a Walk',
+                click: this.openModal
             }
         }
+
         return (
 
-            <div id="example-component" className="walkerFullscheduleWrap">
-
-                <div className="walkerScheduleWalksContainer">
+            <div className="walkerFullscheduleWrap">
+                <div className="walkerFullscheduleWrap__modals" style={{ zIndex: '2' }}>
+                    <Modal
+                        isOpen={this.state.eventModalOpen}
+                        onAfterOpen={this.afterOpenEventModal}
+                        onRequestClose={this.closeEventModal}
+                        // className="walkerFullscheduleWrap__eventModal"
+                        style={customStyles}
+                        contentLabel="Event Modal"
+                        aria-labelledby="event-modal"
+                    >
+                        <button className="walkerFullscheduleWrap__eventModal--closeButton" onClick={this.closeEventModal}>X</button>
+                        <p className="walkerFullscheduleWrap__eventModal--eventTitle">Walk for {walkTitle}</p>
+                        <div className="walkerFullscheduleWrap__eventModal--eventBody">
+                            <p className="walkerFullscheduleWrap__eventModal--startTime"> Start Time: {walkStart}</p>
+                            <p className="walkerFullscheduleWrap__eventModal--endTime"> End Time: {walkEnd} </p>
+                        </div>
+                        <div className="walkerFullscheduleWrap__eventModal--footer">
+                            <button onClick={this.closeEventModal}>Close</button>
+                            <button onClick={this.cancelWalk.bind(this, walkId)}>Cancel Walk</button>
+                        </div>
+                    </Modal>
                     <Modal
                         isOpen={this.state.modalIsOpen}
                         onAfterOpen={this.afterOpenModal}
@@ -112,41 +179,37 @@ class ScheduleWalker extends Component {
                         contentLabel="Schedule Modal"
                         ariaHideApp={false}
                     >
-
-                        {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
                         <button onClick={this.closeModal}>X</button>
                         <WalkerScheduleWalksWalker
-                            walkerID={this.props.walkerID}
+                            walkerID={this.state.walkerId}
                             username={this.state.username}
                             loadMyWalks={this.loadMyWalks}
+                            closeModal={this.closeModal}
                         />
-
                     </Modal>
+                </div>
+                <div className="walkerScheduleWalksContainer">
                     <WalkerScheduleWalksWalker
-                        walkerID={this.props.walkerID}
+                        walkerID={this.state.walkerId}
                         username={this.state.username}
                         loadMyWalks={this.loadMyWalks}
                     />
-                    <main>
-                        <button onClick={this.openModal}>Open Modal</button>
-                    </main>
                 </div>
 
-                <div className="walkercalenderContainer">
-                    <div className="walkerfullCalender" id="example-component">
+                <div className="walkercalenderContainer" style={{ zIndex: '0' }}>
+                    <div className="walkerfullCalender">
                         <FullCalendar
                             id="your-custom-ID"
-                            customButtons= {
-                                myCustomButton
-                            }
+                            customButtons={customButtons}
                             header={{
-                                left: 'prev,next, today, myCustomButton ,<a href=text>text</a>' ,
+                                left: 'prev,next,today scheduleButton',
                                 center: 'title',
                                 right: 'month,agendaWeek,agendaDay,listMonth'
                             }}
                             defaultDate={this.state.date}
                             navLinks={true} // can click day/week names to navigate views
                             editable={true}
+                            handleWindowResize={true} // currently does nothing
                             eventLimit={true} // allow "more" link when too many events
                             events={this.state.events}
                             // select={this.handleSelection.bind(this)}
@@ -154,7 +217,7 @@ class ScheduleWalker extends Component {
                             eventClick={this.handleEventClick.bind(this)}
                             selectable={true}
                             selectHelper={true}
-                            
+
                         />
                     </div>
                 </div>
