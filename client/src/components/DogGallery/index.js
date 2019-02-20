@@ -28,13 +28,13 @@ class DogOwnerGallery extends Component {
                     const dataGallery = walks.map(data => {
                         const walkImages = data.walkImages
                         const imagesWalkGallery = walkImages.map(walkImage => {
-
-                            const imageData = {
+                             const imageData = {
                                 id: walkImage.image.id,
                                 src: walkImage.image.url,
                                 thumbnail: walkImage.image.url,
                                 thumbnailWidth: 320,
                                 thumbnailHeight: 212,
+                                caption: `${res.data[0].dogOwner.dogName} - ${data.walkDate}`
 
                             }
                             arrayPhotos.push(imageData)
