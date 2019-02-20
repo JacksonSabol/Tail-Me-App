@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import SidebarNav from '../components/SidebarNav';
+import TopBarNavWalker from '../components/TopBarNavWalker';
 import Profile from './Profile';
 import ProfileWalker from "./ProfileWalker";
 import TodayWalks from '../components/TodayWalks';
@@ -247,8 +248,10 @@ class ProfileContainerWalker extends Component {
         } else {
             return (
                 <div className="walkerDash">
-                    <HeaderWalker />
                     <div className="walkerDash__grid">
+                    <div className="walkerDash__grid--header">
+                    <TopBarNavWalker />
+                    </div>
                         <SidebarNav className="walkerDash__grid--sidebarNav"
                             username={username}
                             currentPage={this.state.currentPage}
