@@ -20,23 +20,27 @@ class TextOwner extends Component {
         });
     };
 
+    handlePhoneNumberChange = (event) => {
+        let clientPhone = event.target.value;
+        clientPhone = clientPhone.substring(0, 10);
+        this.setState({phone: clientPhone.replace(/\D/,'')});
+      }
+
     handleInviteSubmit = event => {
         event.preventDefault();
-        // console.log(this.state.phone.slice(1, this.state.phone.length));
         if (this.state.name === '' || this.state.phone === '') {
             this.setState({ fieldError: true });
         } else {
             const data = {
                 ownerName: this.state.name,
                 phoneNumber: this.state.phone,
-                specialCode: this.state.phone.slice(1, this.state.phone.length),
+                specialCode: this.state.phone,
                 walkerId: this.props.walkerId,
                 walkerName: this.props.walkerName
             }
 
             API.createTextInvitation(data)
                 .then(res => {
-                    // console.log("back from createinvitation")
                     this.setState({
                         name: "",
                         phone: "",
@@ -74,13 +78,13 @@ class TextOwner extends Component {
                                     type="Dog Owner"
                                     placeholder="Name"
                                 />
-                                <label className="walkerInvite__form--phoneLabel">Client Phone Number:</label>
+                                <label className="walkerInvite__form--phoneLabel">Client Phone Number (US Numbers Only):</label>
                                 <input className="walkerInvite__form--phoneInput"
+                                    type="tel"
                                     value={this.state.phone}
                                     name="phone"
-                                    onChange={this.handleInputChange}
-                                    type="number"
-                                    placeholder="10 digit number"
+                                    onChange={this.handlePhoneNumberChange}
+                                    placeholder="e.g. 4158675309"
                                 />
                                 <button className="walkerInvite__form--button" onClick={this.handleInviteSubmit}>Send Invitation</button>
                             </form>
