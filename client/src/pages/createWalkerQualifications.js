@@ -22,7 +22,7 @@ class createWalkerQualifications extends Component {
         insurance: '',
         bond: '',
         services: '',
-        status: '',
+        availibility: '',
         loggedIn: false,
         certAdded: false,
         isLoading: true,
@@ -85,7 +85,7 @@ class createWalkerQualifications extends Component {
                 insurance: this.state.insurance,
                 bond: this.state.bond,
                 services: this.state.services,
-                status: this.state.status
+                availibility: this.state.availibility
             })
             .then(response => {
                 this.setState({
@@ -178,7 +178,7 @@ class createWalkerQualifications extends Component {
                         />
                         <label className="walkerQualifications__form--userTypeLabel">Are you accepting new clients?</label>
                         <select className="walkerQualifications__form--userTypeSelect"
-                         name="status" onChange={this.handleInputChange} value={this.state.status}>
+                         name="availibility" onChange={this.handleInputChange} value={this.state.availibility}>
                             <option value="available">Available for Hire</option>
                             <option value="unavailable">Not Available for Hire</option>
                         </select>
