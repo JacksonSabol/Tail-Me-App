@@ -33,7 +33,8 @@ module.exports = {
         where: {
           walkerId: req.params.id
 
-        }
+        },
+        include: [db.dogOwner]
         //pending how to compare two dates
         //           , where: 
         //db.sequelize.where(db.sequelize.fn('char_length', db.sequelize.col('issues')), 6)
@@ -232,7 +233,7 @@ module.exports = {
         checkinGPSLongitude: req.params.lat,
 
         //Here is the note for insertion 
-        note: `Your dog has been picked up on ${Moment(Date.now()).format("MM/DD/YYYY - HH:mm")} \n\n Note1:\n\n Note2: \n\n Note3:`
+        note: `Your dog, ${req.body.dogName}, was picked up at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}\n\nPoop:\n\nPee: \n\nPlay: \n\nAdditional Notes: \n\n`
       }
       db.walks
         .update(
@@ -262,7 +263,8 @@ module.exports = {
             }
           })
         .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        .catch(err => console.log(err));
+        // .catch(err => res.status(422).json(err));
 
     }
     else { (res.json("type error, need to be 'in' or 'out' for the check")) }

@@ -55,13 +55,15 @@ class TodayWalks extends Component {
         errorMessage: "",
         onClickButton: false,
         walkId: 0,
+        mapWalkId: 0,
+        noteWalkId: 0,
         images: [],
         pastWalks: [],
         showMap: false,
         locationckeck: false,
         modalIsOpen: false,
         valueNote: "",
-        enableEmail:false
+        enableEmail: false
     }
     handleChange = this.handleChange.bind(this);
     handleSubmit = this.handleSubmit.bind(this);
@@ -78,8 +80,6 @@ class TodayWalks extends Component {
     }
     // Life-cycle function that executes when the components mount (page loads)
     componentDidMount() {
-        console.log("this.state")
-        console.log(this.state)
         this.loadWalks();
     }
     // Function to load all TodayWalks from the database
@@ -87,6 +87,7 @@ class TodayWalks extends Component {
         const id = this.props.walkerId;
         API.getWalkerWalks(id)
             .then(res => {
+                console.log("loadWalks response: ", res.data);
                 const dataFormat = res.data.map(data => {
                     const start_time = Moment(data.checkInTime);
                     const end_time = Moment(data.checkOutTime);
@@ -97,16 +98,17 @@ class TodayWalks extends Component {
                         checkOutTime: data.checkOutTime,
                         totalTime: this.convertMinsToHrsMins(difference),
                         id: data.id,
+                        dogName: data.dogOwner.dogName,
                         walkDate: data.walkDate,
                         finishedWalk: finishedWalk
                     }
                     return (dataFormatted)
                 });
                 const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
-                const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
-            
+                const upcomingWalks = dataFormat.filter(data => data.finishedWalk === false)
+
                 this.setState({
-                    walks: UpcommingWalks,
+                    walks: upcomingWalks,
                     pastWalks: finishedWalks
                 })
             })
@@ -114,24 +116,24 @@ class TodayWalks extends Component {
     };
 
     handleOnClick = (walkId) => {
-       
+
         API.getImagesWalk(walkId)
             .then(res => {
-                console.log("back from getpics")
-                console.log("getpics: ", res.data)
-                console.log("getpics dot image: ", res.data[0].image)
+                // console.log("back from getpics")
+                // console.log("getpics: ", res.data)
+                // console.log("getpics dot image: ", res.data[0].image)
                 // this.setState({
                 //   walks: res.data
                 // });
                 let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null);
-                console.log("PICS GPS: ", picsWithGpsInfo)
-                console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
-                console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
+                // console.log("PICS GPS: ", picsWithGpsInfo)
+                // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
+                // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
                 // console.log("data[0]: ", res.data[0].GPSLatitude)
                 this.setState({
                     // onClickButton: true,
                     showmap: true,
-                    walkId: walkId,
+                    mapWalkId: walkId,
                     images: picsWithGpsInfo,
                     currentLocation: {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
@@ -145,8 +147,8 @@ class TodayWalks extends Component {
     };
 
     _onChange = ({ center, zoom }) => {
-        console.log("Center", this.state.center)
-        console.log("zoom", this.state.zoom)
+        // console.log("Center", this.state.center)
+        // console.log("zoom", this.state.zoom)
         this.setState({
             currentLocation: center,
             zoom: zoom
@@ -155,30 +157,33 @@ class TodayWalks extends Component {
     };
 
     handleImgClick = (id) => {
-        console.log("id: ", id)
+        // console.log("id: ", id)
         let clickWalk = this.state.images.filter(image => image.id === id)
-        console.log(clickWalk)
+        // console.log(clickWalk)
         this.setState({ activeImage: clickWalk[0].image.url })
     };
 
 
-    handleCheckIn = (walkId) => {
+    handleCheckIn = (walkId, dogName) => {
 
-
+        // Pass dogName as an object
+        const dogData = {
+            dogName: dogName
+        }
         // if the location in the browser is not activated we update the checkin time and keep the coords we value 0
 
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 let coords = pos.coords;
 
-                console.log("walkId IN: ", walkId);
-                console.log("coords IN: ", coords);
+                // console.log("walkId IN: ", walkId);
+                // console.log("coords IN: ", coords);
 
 
-                API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude)
+                API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude, dogData)
                     .then(res => {
-                        console.log("back from update checkIn")
-                        console.log("updateCheck: ", res.data)
+                        // console.log("back from update checkIn")
+                        // console.log("updateCheck: ", res.data)
                         // this.setState({
                         //   walks: res.data
                         // });
@@ -198,10 +203,10 @@ class TodayWalks extends Component {
                 latitude: 0,
                 longitude: 0
             }
-            API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude)
+            API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude, dogData)
                 .then(res => {
-                    console.log("back from update checkIn")
-                    console.log("updateCheck: ", res.data)
+                    // console.log("back from update checkIn")
+                    // console.log("updateCheck: ", res.data)
                     // this.setState({
                     //   walks: res.data
                     // });
@@ -216,25 +221,26 @@ class TodayWalks extends Component {
         }
     };
 
-    handleCheckOut = (walkId) => {
-        
+    handleCheckOut = (walkId, dogName) => {
+
         API.getNote(walkId)
             .then(res => {
                 //Here is the note to insert at the bottom of the email
-                const noteCheckOut = "Text for checkOut"
+                const noteCheckOut = `Your dog, ${dogName}, was dropped off at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}.\n\nKind Regards,\n\n`;
                 const dataNote = {
-                    note: `${res.data.note} \n\n\n ${noteCheckOut}`
+                    dogName: dogName,
+                    note: `${res.data.note}\n\n\n${noteCheckOut}`
                 }
                 if (navigator && navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(pos => {
                         let coords = pos.coords;
-                        console.log("walkId OUT: ", walkId);
-                        console.log("coords OUT: ", coords);
+                        // console.log("walkId OUT: ", walkId);
+                        // console.log("coords OUT: ", coords);
                         // update walks start time and coordinates and end time and coords
                         API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude, dataNote)
                             .then(res => {
-                                console.log("back from update checkIn")
-                                console.log("updateCheck: ", res.data)
+                                // console.log("back from update checkIn")
+                                // console.log("updateCheck: ", res.data)
                                 // this.setState({
                                 //   walks: res.data
                                 // });
@@ -255,8 +261,8 @@ class TodayWalks extends Component {
                     }
                     API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude, dataNote)
                         .then(res => {
-                            console.log("back from update checkIn")
-                            console.log("updateCheck: ", res.data)
+                            // console.log("back from update checkIn")
+                            // console.log("updateCheck: ", res.data)
                             this.loadWalks();
                         }).catch(err => {
                             console.log(err)
@@ -270,16 +276,16 @@ class TodayWalks extends Component {
 
     };
 
-    handleOnClickNote = (walkId,review) => {
+    handleOnClickNote = (walkId, review) => {
         //For conditional Render. If Review Mode then enable Email Button
-        const enabelEmail=review?this.setState({enableEmail:true}):this.setState({enableEmail:false})
-        
+        const enabelEmail = review ? this.setState({ enableEmail: true }) : this.setState({ enableEmail: false })
+
         //Get Note to send to the Modal
         API.getNote(walkId)
             .then(res => {
                 this.setState({
                     valueNote: res.data.note,
-                    walkId: walkId
+                    noteWalkId: walkId
                 })
 
             }).catch(err => {
@@ -295,12 +301,12 @@ class TodayWalks extends Component {
 
     //Update the walk note
     handleSubmit(event) {
-      event.preventDefault();
+        event.preventDefault();
         const notes = {
             note: this.state.valueNote
         }
 
-        API.addNote(this.state.walkId, notes)
+        API.addNote(this.state.noteWalkId, notes)
             .then(res => {
                 this.closeModal()
             }).catch(err => {
@@ -334,24 +340,19 @@ class TodayWalks extends Component {
                             <div className="TodayWalks__upcoming--title">Upcoming Walks: </div>
                             {this.state.walks.map(walk => (
                                 <ListItem key={walk.id}>
-                                    <div className="TodayWalks__upcoming--list-publish"> Walk Date:
+                                    <div className="TodayWalks__upcoming--list-publish"> Walk for {walk.dogName} on Date:
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                                         {walk.checkInTime === null ? (
-                                            <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
+                                            <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, walk.id, walk.dogName)}>Check-in </button>) :
                                             (
                                                 <div>
-                                                    <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id)}>
+                                                    <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id, walk.dogName)}>
                                                         Check-out
                                                     </button>
-
-                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id,false)}
-
-                                                    >Add Walk Notes</button>
+                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, false)}>
+                                                        Add Walk Notes
+                                                    </button>
                                                 </div>
-
-
-
-
                                             )}
                                     </div>
                                 </ListItem>
@@ -366,32 +367,35 @@ class TodayWalks extends Component {
                 {this.state.pastWalks.length ? (
                     <div className="TodayWalks__past">
                         <List>
-                            <div className="TodayWalks__past--title">Walks History: </div>
+                            <div className="TodayWalks__past--title">Completed Walks: </div>
                             {this.state.pastWalks.map(walk => (
                                 <ListItem key={walk.id}>
 
-                                    <div className="TodayWalks__past--list-publish"> Walk Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</div>
+                                    <div className="TodayWalks__past--list-publish"> Walk  for {walk.dogName} on Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</div>
 
                                     <div className="TodayWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")}</div>
 
                                     <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </div>
 
                                     <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div>
-                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
 
-                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id,true)}
+                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>
+                                        Map the Walk
+                                    </button>
 
-                                    >Review Walk Notes</button>
+                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, true)}>
+                                        Review Walk Notes
+                                    </button>
 
                                 </ListItem>
                             ))}
                         </List>
                     </div>
                 ) : (
-                        <p className="TodayWalks__alert"> You don't have any previous walks!</p>
+                        <p className="TodayWalks__alert"> You don't have any completed walks!</p>
                     )}
 
-                {this.state.walkId ? (
+                {this.state.mapWalkId ? (
                     <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                         <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
@@ -434,17 +438,17 @@ class TodayWalks extends Component {
                     <button onClick={this.closeModal}>X</button>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                        <textarea value={this.state.valueNote} onChange={this.handleChange}
+                            <textarea value={this.state.valueNote} onChange={this.handleChange}
                                 rows="15" cols="50" />
 
                         </label>
                         <br></br>
                         <input type="submit" value="Submit" />
-                        
-                       {/*  conditional render for the send email button */}
+
+                        {/*  conditional render for the send email button */}
 
                         {this.state.enableEmail ? (
-                        <button onClick={this.handleSendEmail.bind(this)} > Send  Email</button>
+                            <button onClick={this.handleSendEmail.bind(this)}>Send Email</button>
                         ) : null}
                     </form>
 

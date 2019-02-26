@@ -12,29 +12,29 @@ module.exports = (sequelize, DataTypes) => {
     stars: DataTypes.INTEGER,
     finish: DataTypes.BOOLEAN,
     Billed: DataTypes.BOOLEAN,
-    note:DataTypes.STRING,
-    emailSent:DataTypes.BOOLEAN,
+    note: DataTypes.TEXT,
+    emailSent: DataTypes.BOOLEAN,
     status: {
       type: DataTypes.ENUM('pending', 'done', 'cancel')
-  },
-    rate: DataTypes.DECIMAL(4,2)
+    },
+    rate: DataTypes.DECIMAL(4, 2)
   }, {});
-  walks.associate = function(models) {
+  walks.associate = function (models) {
     // associations can be defined here
 
     walks.belongsTo(models.walker, {
-    foreignKey: {
+      foreignKey: {
         allowNull: false
       }
     });
 
     walks.belongsTo(models.dogOwner, {
       foreignKey: {
-          allowNull: false
-        }
-      });
-    
-    
+        allowNull: false
+      }
+    });
+
+
     walks.hasMany(models.path, {
       onDelete: "cascade"
     });
