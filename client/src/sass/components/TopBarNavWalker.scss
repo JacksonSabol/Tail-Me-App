@@ -19,7 +19,7 @@
     }
     &__brand{
         grid-area: 1/1;
-        margin: .5em 1em;
+        margin: 0em 1em;
         
         &--logo{
             height: 4em;
@@ -52,6 +52,9 @@
         &--itemLink{
             font-style: bold;
             color: black;
+            // outline: none;
+            // background-color: transparent;
+            // text-decoration: none; 
         }
         &--itemLink:hover{
             color: $color-accentOne;
@@ -72,6 +75,8 @@
         }
         &--profile{
             height: 1.5em;
+            outline: none;
+            background-color: transparent;
         }
         &--itemWalks{
             grid-area:1/4;
@@ -89,6 +94,7 @@
         }
         &--walks{
             height:1.5em;
+            
         }
         &--itemSchedWalks{
             grid-area: 1/5;
