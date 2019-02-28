@@ -110,6 +110,7 @@ class ProfileContainerWalker extends Component {
 
     // Function to handle rendering the correct walker page from Sidebar Nav
     renderWalkerPage = () => {
+        const walkerFullName = this.state.firstName + " " + this.state.lastName;
         switch (this.state.currentPage) {
             case "Home": return <ProfileWalker
                 username={this.state.username}
@@ -130,7 +131,7 @@ class ProfileContainerWalker extends Component {
             />;
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}
-                walkerName={this.state.username}
+                walkerName={walkerFullName}
                 walkerEmail={this.state.userEmail}
             />;
             // case "SchedWalks": return <ScheduleWalksWalker
@@ -151,7 +152,7 @@ class ProfileContainerWalker extends Component {
             />;
             case "Invite": return <InviteOwners
                 walkerId={this.state.userId}
-                walkerName={this.state.username}
+                walkerName={this.state.walkerFullName}
             />;
             case "Map": return <ShowMap />;
             case "Upload": return <WalkPhotoUpload

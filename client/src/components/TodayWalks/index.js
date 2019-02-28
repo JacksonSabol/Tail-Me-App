@@ -55,7 +55,7 @@ class TodayWalks extends Component {
         walks: [],
         errorMessage: "",
         onClickButton: false,
-        walkerUsername: this.props.walkerName,
+        walkerFullName: this.props.walkerName,
         walkerEmail: this.props.walkerEmail,
         walkId: 0,
         mapWalkId: 0,
@@ -239,7 +239,7 @@ class TodayWalks extends Component {
         API.getNote(walkId)
             .then(res => {
                 //Here is the note to insert at the bottom of the email
-                const noteCheckOut = `Your dog, ${dogName}, was dropped off at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}.\n\nKind Regards,\n\n`;
+                const noteCheckOut = `Your dog, ${dogName}, was dropped off at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}.\n\nKind Regards,\n\n${this.state.walkerFullName}`;
                 const dataNote = {
                     dogName: dogName,
                     note: `${res.data.note}\n\n\n${noteCheckOut}`
@@ -336,7 +336,7 @@ class TodayWalks extends Component {
     handleSendEmail(event) {
         event.preventDefault();
         const data = {
-            walkerName: this.state.walkerUsername,
+            walkerName: this.state.walkerFullName,
             walkerEmail: this.state.walkerEmail,
             ownerName: this.state.noteOwnerName,
             ownerEmail: this.state.noteOwnerEmail,
