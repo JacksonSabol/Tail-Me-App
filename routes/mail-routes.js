@@ -3,11 +3,9 @@ module.exports = app => {
     require('dotenv').config();
     const nodemailer = require('nodemailer');
     var db = require("../models");
-
+    // Post route to invite clients via email
     app.post('/mail/invite', (req, res, next) => {
-        console.log(req.body);
-
-        walkerName = req.body.walkerName;
+        const walkerName = req.body.walkerName;
         db.invitationPending
             .create({
                 phoneNumber: req.body.email,
@@ -56,4 +54,41 @@ module.exports = app => {
             // .catch(err => res.status(422).json(err));
             .catch(err => console.log(err));
     });
+    // Post route to send walk notes to owner
+    app.post('/mail/notes', (req, res, next) => {
+        console.log(req.body);
+        // Define varables to be used in the automated message
+        const walkerName = req.body.walkerName;
+        const walkerEmail = req.body.walkerEmail;
+        const ownerName = req.body.ownerName;
+        const ownerEmail = req.body.ownerEmail;
+        const subject = req.body.subject;
+        const message = req.body.notes;
+
+        // Set up connection to TailMe gmail account
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: `${process.env.EMAIL_ADDRESS}`,
+                pass: `${process.env.EMAIL_PASSWORD}`,
+            },
+        });
+
+        // Define message for nodemailer
+        const mailOptions = {
+            from: `${walkerEmail}`,
+            to: `${ownerEmail}`,
+            subject: `TailMe - ${subject}`,
+            text: `${message}`
+        };
+        // Send mail to client
+        transporter.sendMail(mailOptions, function (err, response) {
+            if (err) {
+                console.error('there was an error: ', err);
+            } else {
+                console.log('here is the res: ', response);
+                res.status(200).json('Invite email sent');
+            }
+        });
+    })
 };

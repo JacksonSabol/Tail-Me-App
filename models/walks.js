@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     stars: DataTypes.INTEGER,
     finish: DataTypes.BOOLEAN,
     Billed: DataTypes.BOOLEAN,
+    note:DataTypes.STRING,
+    emailSent:DataTypes.BOOLEAN,
     status: {
       type: DataTypes.ENUM('pending', 'done', 'cancel')
   },

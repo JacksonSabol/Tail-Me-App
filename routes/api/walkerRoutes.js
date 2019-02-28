@@ -73,7 +73,14 @@ router.route("/walk/uploadImage")
 router.route("/walk/image/update/:ImageID")
   .put(walkerController.updateImageSentStatus);
 
-router.route("/walk/:walkId/:imageId")
+router.route("/walk/checkImage/:walkId/:imageId")
   .get(walkerController.checkImageExist);
+
+router.route("/walk/:walkId/addNote")
+.put(walkerController.updateNote); 
+
+router.route("/walk/getnote/:walkId")
+.get(walkerController.getWalkNote); 
+
 
 module.exports = router;

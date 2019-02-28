@@ -4,7 +4,19 @@ import API from "../../utils/API";
 import Moment from "moment";
 import GoogleMapReact from "google-map-react"
 import "../../index.css";
+import Modal from 'react-modal';
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        zIndex: '1',
+        transform: 'translate(-50%, -50%)'
 
+    }
+};
 
 
 const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
@@ -46,7 +58,23 @@ class TodayWalks extends Component {
         images: [],
         pastWalks: [],
         showMap: false,
-        locationckeck: false
+        locationckeck: false,
+        modalIsOpen: false,
+        valueNote: "",
+        enableEmail:false
+    }
+    handleChange = this.handleChange.bind(this);
+    handleSubmit = this.handleSubmit.bind(this);
+    openModal = this.openModal.bind(this);
+    closeModal = this.closeModal.bind(this);
+
+
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
     }
     // Life-cycle function that executes when the components mount (page loads)
     componentDidMount() {
@@ -60,7 +88,6 @@ class TodayWalks extends Component {
         API.getWalkerWalks(id)
             .then(res => {
                 const dataFormat = res.data.map(data => {
-                    console.log("data:", data)
                     const start_time = Moment(data.checkInTime);
                     const end_time = Moment(data.checkOutTime);
                     const difference = end_time.diff(start_time, 'minutes', true);
@@ -75,10 +102,9 @@ class TodayWalks extends Component {
                     }
                     return (dataFormatted)
                 });
-                console.log("Data Format", dataFormat)
                 const finishedWalks = dataFormat.filter(data => data.finishedWalk === true)
                 const UpcommingWalks = dataFormat.filter(data => data.finishedWalk === false)
-                console.log("UpcommingWalks", UpcommingWalks)
+            
                 this.setState({
                     walks: UpcommingWalks,
                     pastWalks: finishedWalks
@@ -88,7 +114,7 @@ class TodayWalks extends Component {
     };
 
     handleOnClick = (walkId) => {
-        // console.log("walkId", walkId)
+       
         API.getImagesWalk(walkId)
             .then(res => {
                 console.log("back from getpics")
@@ -111,7 +137,7 @@ class TodayWalks extends Component {
                         lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
                         lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     }
-                  
+
                 })
             }).catch(err => {
                 console.log(err)
@@ -124,7 +150,7 @@ class TodayWalks extends Component {
         this.setState({
             currentLocation: center,
             zoom: zoom
-      
+
         });
     };
 
@@ -147,6 +173,7 @@ class TodayWalks extends Component {
 
                 console.log("walkId IN: ", walkId);
                 console.log("coords IN: ", coords);
+
 
                 API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude)
                     .then(res => {
@@ -190,47 +217,102 @@ class TodayWalks extends Component {
     };
 
     handleCheckOut = (walkId) => {
-
-        if (navigator && navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                let coords = pos.coords;
-                console.log("walkId OUT: ", walkId);
-                console.log("coords OUT: ", coords);
-                // update walks start time and coordinates and end time and coords
-                //
-                API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude)
-                    .then(res => {
-                        console.log("back from update checkIn")
-                        console.log("updateCheck: ", res.data)
-                        // this.setState({
-                        //   walks: res.data
-                        // });
-                        this.loadWalks();
-                        //console.log("data[0]: ", res.data[0].GPSLatitude)
-                        // this.setState({
-                        //   locationckeck: true
-                        // })
-                    }).catch(err => {
-                        console.log(err)
+        
+        API.getNote(walkId)
+            .then(res => {
+                //Here is the note to insert at the bottom of the email
+                const noteCheckOut = "Text for checkOut"
+                const dataNote = {
+                    note: `${res.data.note} \n\n\n ${noteCheckOut}`
+                }
+                if (navigator && navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(pos => {
+                        let coords = pos.coords;
+                        console.log("walkId OUT: ", walkId);
+                        console.log("coords OUT: ", coords);
+                        // update walks start time and coordinates and end time and coords
+                        API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude, dataNote)
+                            .then(res => {
+                                console.log("back from update checkIn")
+                                console.log("updateCheck: ", res.data)
+                                // this.setState({
+                                //   walks: res.data
+                                // });
+                                this.loadWalks();
+                                //console.log("data[0]: ", res.data[0].GPSLatitude)
+                                // this.setState({
+                                //   locationckeck: true
+                                // })
+                            }).catch(err => {
+                                console.log(err)
+                            });
                     });
+                }
+                else {
+                    let coords = {
+                        latitude: 0,
+                        longitude: 0
+                    }
+                    API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude, dataNote)
+                        .then(res => {
+                            console.log("back from update checkIn")
+                            console.log("updateCheck: ", res.data)
+                            this.loadWalks();
+                        }).catch(err => {
+                            console.log(err)
+                        });
+                }
+
+
+            }).catch(err => {
+                console.log(err)
             });
-        }
-        else {
-            let coords = {
-                latitude: 0,
-                longitude: 0
-            }
-            API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude)
-                .then(res => {
-                    console.log("back from update checkIn")
-                    console.log("updateCheck: ", res.data)
-                    this.loadWalks();
-                }).catch(err => {
-                    console.log(err)
-                });
-        }
 
     };
+
+    handleOnClickNote = (walkId,review) => {
+        //For conditional Render. If Review Mode then enable Email Button
+        const enabelEmail=review?this.setState({enableEmail:true}):this.setState({enableEmail:false})
+        
+        //Get Note to send to the Modal
+        API.getNote(walkId)
+            .then(res => {
+                this.setState({
+                    valueNote: res.data.note,
+                    walkId: walkId
+                })
+
+            }).catch(err => {
+                console.log(err)
+            });
+        this.openModal()
+    }
+
+    //Get the value of the note
+    handleChange(event) {
+        this.setState({ valueNote: event.target.value });
+    }
+
+    //Update the walk note
+    handleSubmit(event) {
+      event.preventDefault();
+        const notes = {
+            note: this.state.valueNote
+        }
+
+        API.addNote(this.state.walkId, notes)
+            .then(res => {
+                this.closeModal()
+            }).catch(err => {
+                console.log(err)
+            });
+
+    }
+
+    //Send Email Code
+    handleSendEmail() {
+        console.log("sendEmail")
+    }
 
     convertMinsToHrsMins = (mins) => {
         let h = Math.floor(mins / 60);
@@ -243,6 +325,8 @@ class TodayWalks extends Component {
 
     render() {
         return (
+
+
             <div className="TodayWalks">
                 {this.state.walks.length ? (
                     <div className="TodayWalks__upcoming">
@@ -254,7 +338,21 @@ class TodayWalks extends Component {
                                          {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
                                         {walk.checkInTime === null ? (
                                             <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, walk.id)}>Check-in </button>) :
-                                            (<button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id)}>Check-out </button>)}
+                                            (
+                                                <div>
+                                                    <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id)}>
+                                                        Check-out
+                                                    </button>
+
+                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id,false)}
+
+                                                    >Add Walk Notes</button>
+                                                </div>
+
+
+
+
+                                            )}
                                     </div>
                                 </ListItem>
                             ))}
@@ -280,6 +378,10 @@ class TodayWalks extends Component {
 
                                     <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div>
                                     <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Walk Map</button>
+
+                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id,true)}
+
+                                    >Review Walk Notes</button>
 
                                 </ListItem>
                             ))}
@@ -318,6 +420,35 @@ class TodayWalks extends Component {
                     </div>
 
                 ) : null}
+
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Add Note"
+                    ariaHideApp={false}
+                >
+
+                    {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
+                    <button onClick={this.closeModal}>X</button>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                        <textarea value={this.state.valueNote} onChange={this.handleChange}
+                                rows="15" cols="50" />
+
+                        </label>
+                        <br></br>
+                        <input type="submit" value="Submit" />
+                        
+                       {/*  conditional render for the send email button */}
+
+                        {this.state.enableEmail ? (
+                        <button onClick={this.handleSendEmail.bind(this)} > Send  Email</button>
+                        ) : null}
+                    </form>
+
+                </Modal>
             </div>
         );
     }
