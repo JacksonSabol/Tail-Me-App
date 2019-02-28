@@ -73,8 +73,6 @@ class ScheduleWalker extends Component {
     };
 
     loadMyWalks(id) {
-        // const walkerId = this.state.walkerID;
-        console.log("State from ScheduleWalker", this.state);
         API.getMyWalks(id)
             .then(res => {
                 const dataFormat = res.data.map(data => {

@@ -65,15 +65,15 @@ export default {
         return axios.put(`/api/walker/schedule/${idWalk}`, data)
 
     },
-   
+
     deleteWalk: function (idWalk) {
         return axios.delete(`/api/walker/walks/delete/${idWalk}`)
 
     },
-    updateCheckInOut: function (type, idWalk, lat, lng,dataNote) {
-        console.log("API.js: ", type, idWalk, lat, lng)
+    updateCheckInOut: function (type, idWalk, lat, lng, dataNote) {
+        console.log("API.js: ", type, idWalk, lat, lng,)
         // return axios.put(`/api/walker/check/${type}/${idWalk}`, data)
-        return axios.put(`/api/walker/check/${type}/${idWalk}/${lat}/${lng}`,dataNote)
+        return axios.put(`/api/walker/check/${type}/${idWalk}/${lat}/${lng}`, dataNote)
     },
 
     //Walker text invite signup to the owner
@@ -125,9 +125,9 @@ export default {
         return axios.get(`/api/dogProfile/${idUserDog}/getId`)
     },
 
-    addNote: function (walkId,notes) {
-     
-        return axios.put(`/api/walker/walk/${walkId}/addNote`,notes)
+    addNote: function (walkId, notes) {
+
+        return axios.put(`/api/walker/walk/${walkId}/addNote`, notes)
     },
     getNote: function (walkId) {
         return axios.get(`/api/walker/walk/getnote/${walkId}`)
