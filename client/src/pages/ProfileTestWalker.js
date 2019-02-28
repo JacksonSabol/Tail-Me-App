@@ -152,7 +152,7 @@ class ProfileContainerWalker extends Component {
             />;
             case "Invite": return <InviteOwners
                 walkerId={this.state.userId}
-                walkerName={this.state.walkerFullName}
+                walkerName={walkerFullName}
             />;
             case "Map": return <ShowMap />;
             case "Upload": return <WalkPhotoUpload

@@ -480,6 +480,7 @@ class TodayWalks extends Component {
                     {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
                     <button onClick={this.closeModal}>X</button>
                     <form onSubmit={this.handleSubmit}>
+                        <p>Email Subject: Walk Summary for {this.state.noteDogName} at {this.state.noteCheckOutTime}</p>
                         <label>
                             <textarea value={this.state.valueNote} onChange={this.handleChange}
                                 rows="15" cols="50" />
