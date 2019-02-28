@@ -118,6 +118,7 @@ module.exports = function (app, passport) {
                     console.log(user.walker.certification);
                     res.status(200).send({
                         UserID: user.id,
+                        email: user.auth.email,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         userType: user.userType,

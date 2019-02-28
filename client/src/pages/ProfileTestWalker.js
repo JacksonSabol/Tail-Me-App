@@ -29,6 +29,7 @@ class ProfileContainerWalker extends Component {
         currentPage: "Home",
         userId: 0,
         username: '',
+        userEmail: '',
         firstName: '',
         lastName: '',
         userType: '',
@@ -65,6 +66,7 @@ class ProfileContainerWalker extends Component {
                     this.setState({
                         userId: response.data.UserID,
                         username: this.props.match.params.username,
+                        userEmail: response.data.email,
                         firstName: response.data.firstName,
                         lastName: response.data.lastName,
                         userType: response.data.userType,
@@ -115,6 +117,8 @@ class ProfileContainerWalker extends Component {
             />;
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}
+                walkerName={this.state.username}
+                walkerEmail={this.state.userEmail}
             />;
             // case "SchedWalks": return <ScheduleWalksWalker
             //     walkerID={this.state.userId}

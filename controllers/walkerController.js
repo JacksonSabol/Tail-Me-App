@@ -34,7 +34,15 @@ module.exports = {
           walkerId: req.params.id
 
         },
-        include: [db.dogOwner]
+        include: [{
+          model: db.dogOwner,
+          include: [{
+            model: db.user,
+            include: [{
+              model: db.auth
+            }]
+          }]
+        }]
         //pending how to compare two dates
         //           , where: 
         //db.sequelize.where(db.sequelize.fn('char_length', db.sequelize.col('issues')), 6)
@@ -222,7 +230,7 @@ module.exports = {
     console.log(req.params.idWalk);
     console.log(req.params.lat);
     console.log(req.params.lng);
-    
+
     // console.log("checkinGPSLatitude: ", req.body.latitude)
     // console.log("checkinGPSLongitude: ", req.body.longitude)
 
@@ -264,7 +272,7 @@ module.exports = {
           })
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
-        // .catch(err => res.status(422).json(err));
+      // .catch(err => res.status(422).json(err));
 
     }
     else { (res.json("type error, need to be 'in' or 'out' for the check")) }
@@ -340,7 +348,7 @@ module.exports = {
 
 
   getWalkNote: function (req, res) {
-   
+
     db.walks
       .findOne({
         where: {
@@ -349,7 +357,7 @@ module.exports = {
         }
       })
       .then(dbModel => res.json(dbModel))
-      .catch(err => {console.log("ERROR",err);res.status(422).json(err)});
+      .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
   },
 
   updateNote: function (req, res) {
@@ -363,7 +371,7 @@ module.exports = {
           }
         })
       .then(dbModel => res.json(dbModel))
-      .catch(err => {console.log("ERROR",err);res.status(422).json(err)});
+      .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
   }
 
 

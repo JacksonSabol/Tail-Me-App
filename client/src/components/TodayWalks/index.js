@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem } from "../List";
+import axios from 'axios';
 import API from "../../utils/API";
 import Moment from "moment";
 import GoogleMapReact from "google-map-react"
@@ -54,6 +55,8 @@ class TodayWalks extends Component {
         walks: [],
         errorMessage: "",
         onClickButton: false,
+        walkerUsername: this.props.walkerName,
+        walkerEmail: this.props.walkerEmail,
         walkId: 0,
         mapWalkId: 0,
         noteWalkId: 0,
@@ -63,6 +66,10 @@ class TodayWalks extends Component {
         locationckeck: false,
         modalIsOpen: false,
         valueNote: "",
+        noteOwnerName: "",
+        noteOwnerEmail: "",
+        noteDogName: "",
+        noteCheckOutTime: 0,
         enableEmail: false
     }
     handleChange = this.handleChange.bind(this);
@@ -99,6 +106,8 @@ class TodayWalks extends Component {
                         totalTime: this.convertMinsToHrsMins(difference),
                         id: data.id,
                         dogName: data.dogOwner.dogName,
+                        dogOwnerName: data.dogOwner.user.firstName + " " + data.dogOwner.user.lastName,
+                        dogOwnerEmail: data.dogOwner.user.auth.email,
                         walkDate: data.walkDate,
                         finishedWalk: finishedWalk
                     }
@@ -222,7 +231,11 @@ class TodayWalks extends Component {
     };
 
     handleCheckOut = (walkId, dogName) => {
-
+        // const walkerName = this.props.walkerName;
+        // const walkerEmail = this.props.walkerEmail;
+        // const ownerName = this.props.ownerName; // Add function to get owner name and/or add it to each dog
+        // const ownerEmail = this.props.ownerName; // Add function to get owner email and/or add it to each dog
+        // const subject = `Walk Summary for ${dogName} at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}`; // Maybe change to subject field on Modal that autopopulates with this
         API.getNote(walkId)
             .then(res => {
                 //Here is the note to insert at the bottom of the email
@@ -276,7 +289,7 @@ class TodayWalks extends Component {
 
     };
 
-    handleOnClickNote = (walkId, review) => {
+    handleOnClickNote = (walkId, dogName, dogOwnerName, dogOwnerEmail, review, checkOutTime) => {
         //For conditional Render. If Review Mode then enable Email Button
         const enabelEmail = review ? this.setState({ enableEmail: true }) : this.setState({ enableEmail: false })
 
@@ -285,7 +298,11 @@ class TodayWalks extends Component {
             .then(res => {
                 this.setState({
                     valueNote: res.data.note,
-                    noteWalkId: walkId
+                    noteWalkId: walkId,
+                    noteOwnerName: dogOwnerName,
+                    noteOwnerEmail: dogOwnerEmail,
+                    noteDogName: dogName,
+                    noteCheckOutTime: checkOutTime
                 })
 
             }).catch(err => {
@@ -316,8 +333,34 @@ class TodayWalks extends Component {
     }
 
     //Send Email Code
-    handleSendEmail() {
-        console.log("sendEmail")
+    handleSendEmail(event) {
+        event.preventDefault();
+        const data = {
+            walkerName: this.state.walkerUsername,
+            walkerEmail: this.state.walkerEmail,
+            ownerName: this.state.noteOwnerName,
+            ownerEmail: this.state.noteOwnerEmail,
+            subject: `Walk Summary for ${this.state.noteDogName} at ${this.state.noteCheckOutTime}`, // Maybe change to subject field on Modal that autopopulates with this
+            notes: this.state.valueNote
+        }
+        axios
+            .post('/mail/notes', {
+                walkerName: data.walkerName,
+                walkerEmail: data.walkerEmail,
+                ownerName: data.ownerName,
+                ownerEmail: data.ownerEmail,
+                subject: data.subject,
+                notes: data.notes
+            })
+            .then(response => {
+                console.log(response);
+                this.closeModal();
+                // this.setState({ messageSent: true });
+            })
+            .catch(error => {
+                console.log(error);
+                // this.setState({ error: true });
+            });
     }
 
     convertMinsToHrsMins = (mins) => {
@@ -349,7 +392,7 @@ class TodayWalks extends Component {
                                                     <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id, walk.dogName)}>
                                                         Check-out
                                                     </button>
-                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, false)}>
+                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, walk.dogName, walk.dogOwnerName, walk.dogOwnerEmail, false)}>
                                                         Add Walk Notes
                                                     </button>
                                                 </div>
@@ -383,7 +426,7 @@ class TodayWalks extends Component {
                                         Map the Walk
                                     </button>
 
-                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, true)}>
+                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, walk.dogName, walk.dogOwnerName, walk.dogOwnerEmail, true, Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>
                                         Review Walk Notes
                                     </button>
 
