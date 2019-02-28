@@ -374,8 +374,6 @@ class TodayWalks extends Component {
 
     render() {
         return (
-
-
             <div className="TodayWalks">
                 {this.state.walks.length ? (
                     <div className="TodayWalks__upcoming">
@@ -392,7 +390,7 @@ class TodayWalks extends Component {
                                                     <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id, walk.dogName)}>
                                                         Check-out
                                                     </button>
-                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, walk.dogName, walk.dogOwnerName, walk.dogOwnerEmail, false)}>
+                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, walk.dogName, walk.dogOwnerName, walk.dogOwnerEmail, false, 0)}>
                                                         Add Walk Notes
                                                     </button>
                                                 </div>
@@ -479,15 +477,20 @@ class TodayWalks extends Component {
 
                     {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
                     <button onClick={this.closeModal}>X</button>
+                    {this.state.noteCheckOutTime === 0 ? (
+                        <p>Walk In-Progress</p>
+                    ) : (
+                            <p>Email Subject: Walk Summary for {this.state.noteDogName} at {this.state.noteCheckOutTime}</p>
+                        )
+                    }
                     <form onSubmit={this.handleSubmit}>
-                        <p>Email Subject: Walk Summary for {this.state.noteDogName} at {this.state.noteCheckOutTime}</p>
                         <label>
                             <textarea value={this.state.valueNote} onChange={this.handleChange}
                                 rows="15" cols="50" />
 
                         </label>
                         <br></br>
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Save" />
 
                         {/*  conditional render for the send email button */}
 
