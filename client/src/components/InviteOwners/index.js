@@ -36,11 +36,10 @@ class InviteOwners extends Component {
                 <div className="inviteDash">
                     <div className="inviteDash__nav">
                         {/* <button className="inviteDash__nav--emailActive" onClick={this.renderEmailInvite}></button> */}
-                        <button className="walkerInvite__form--button" onClick={this.renderEmailInvite} disabled>Invite By Email</button>
+                        <button className="inviteDash__nav--buttonEmail" onClick={this.renderEmailInvite} disabled>Invite By Email</button>
                         {/* <button className="inviteDash__nav--text" onClick={this.renderTextInvite}></button> */}
-                        <button className="walkerInvite__form--button" onClick={this.renderTextInvite}>Invite By Text</button>
+                        <button className="inviteDash__nav--buttonText" onClick={this.renderTextInvite}>Invite By Text</button>
                     </div>
-                    <br />
                     <div className="inviteDash__main-content">
                         <EmailOwner
                             walkerId={this.state.walkerId}
@@ -54,11 +53,10 @@ class InviteOwners extends Component {
                 <div className="inviteDash">
                     <div className="inviteDash__nav">
                         {/* <button className="inviteDash__nav--email" onClick={this.renderEmailInvite}></button> */}
-                        <button className="walkerInvite__form--button" onClick={this.renderEmailInvite}>Invite By Email</button>
+                        <button className="inviteDash__nav--buttonEmail" onClick={this.renderEmailInvite}>Invite By Email</button>
                         {/* <button className="inviteDash__nav--textActive" onClick={this.renderTextInvite}></button> */}
-                        <button className="walkerInvite__form--button" onClick={this.renderTextInvite} disabled>Invite By Text</button>
+                        <button className="inviteDash__nav--buttonText" onClick={this.renderTextInvite} disabled>Invite By Text</button>
                     </div>
-                    <br />
                     <div className="inviteDash__main-content">
                         <TextOwner
                             walkerId={this.state.walkerId}

@@ -1,5 +1,13 @@
 import React from "react";
 import logo from "../../images/tailMeLogo.png";
+import certificationIcon from "../../images/certificationIcon.png";
+import imagesIcon from"../../images/imagesIcon.png";
+import inviteIcon from "../../images/inviteIcon.png";
+import logoutIcon from "../../images/logoutIcon.png";
+import mapIcon from "../../images/mapIcon.png";
+import profileIcon from "../../images/profileIcon.png";
+import scheduleIcon from "../../images/scheduleIcon.png";
+import walkIcon from "../../images/walkIcon.png";
 import "../../index.css";
 
 // Depending on the current path, make props set an "active" class on the appropriate navigation link item
@@ -7,24 +15,27 @@ import "../../index.css";
 function TopBarNavWalker(props) {
     return (
         <div className="topBarWalker">
-            <a href="/" className="topBarWalker__brand"><img src={logo} className="topBarWalker__brand--logo" alt="^_^" /></a>
+            <button href="/" className="topBarWalker__brand"><img src={logo} className="topBarWalker__brand--logo" alt="^_^" />
+            <span className="topBarWalker__brand--logotooltip">Home</span>
+            </button>
             <p className="topBarWalker__title">Welcome, {props.username}!</p>
             <div className="topBarWalker__nav">
                 <div className="topBarWalker__nav--itemDashboard">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#home"
                         onClick={() => props.handlePageChange("Home")}
                     >
-                        Profile
-                    </a>
+                        <img className="topBarWalker__nav--profile" src={profileIcon} alt="profile icon" ></img>
+                    </button>
                 </div>
                 <div className="topBarWalker__nav--itemWalks">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#walks"
                         onClick={() => props.handlePageChange("Walks")}
                     >
-                        Upcoming Walks
-                    </a>
+                     <img className="topBarWalker__nav--walks" src={walkIcon} alt="walk icon" ></img>
+                        {/* Upcoming Walks */}
+                    </button>
                 </div>
                 {/* <div className="topBarWalker__nav--itemSchedWalks">
                     <a className="topBarWalker__nav--itemLink"
@@ -35,52 +46,58 @@ function TopBarNavWalker(props) {
                     </a>
                 </div> */}
                 <div className="topBarWalker__nav--itemSchedWalks">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#fullschedule"
                         onClick={() => props.handlePageChange("FullSchedule")}
                     >
-                        Full Schedule
-                    </a>
+                     <img className="topBarWalker__nav--schedule" src={scheduleIcon} alt="scheduleicon" ></img>
+                        {/* Full Schedule */}
+                    </button>
                 </div>
                 <div className="topBarWalker__nav--itemFullSchedule">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#invite"
                         onClick={() => props.handlePageChange("Invite")}
                     >
-                        Invite Clients
-                    </a>
+                     <img className="topBarWalker__nav--invite" src={inviteIcon} alt="invite icon" ></img>
+                        {/* Invite Clients */}
+                    </button>
                 </div>
                 <div className="topBarWalker__nav--itemInvite">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#certs"
                         onClick={() => props.handlePageChange("Certs")}
                     >
-                        Update Qualifications
-                    </a>
+                     <img className="topBarWalker__nav--certification" src={certificationIcon} alt="certification icon" ></img>
+                        {/* Update Qualifications */}
+                    </button>
                 </div>
                 <div className="topBarWalker__nav--itemCerts">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#map"
                         onClick={() => props.handlePageChange("Map")}
                     >
-                        Map
-                    </a>
+                     <img className="topBarWalker__nav--map" src={mapIcon} alt="map icon" ></img>
+                        {/* Map */}
+                    </button>
                 </div>
                 <div className="topBarWalker__nav--itemMap">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#upload"
                         onClick={() => props.handlePageChange("Upload")}
                     >
-                        Upload Images
-                    </a>
+                     <img className="topBarWalker__nav--images" src={imagesIcon} alt="images icon" ></img>
+                        {/* Upload Images */}
+                    </button>
                 </div>
                 <div className="topBarWalker__nav--itemNotifications">
-                    <a className="topBarWalker__nav--itemLink"
+                    <button className="topBarWalker__nav--itemLink"
                         href="#"
                         onClick={() => props.handleLogOut()}
                     >
-                        Log Out
-                    </a>
+                     <img className="topBarWalker__nav--logout" src={logoutIcon} alt="logout icon" ></img>
+                        {/* Log Out */}
+                    </button>
                 </div>
                 {/* <div className="topBarWalker__nav--item">
                     <a
