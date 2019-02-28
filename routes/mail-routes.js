@@ -66,11 +66,19 @@ module.exports = app => {
 
         // Define message for nodemailer
         const mailOptions = {
-            from: `${walkerEmail}`,
+            from: {
+                name: walkerName,
+                address: walkerEmail
+            },
             to: `${ownerEmail}`,
+            cc: [{
+                name: walkerName,
+                address: walkerEmail
+            }],
             subject: `TailMe - ${subject}`,
             text: `Hi ${ownerName}, TailMe user ${walkerName} has completed a walk with your dog. Below are the details.\n\n${message}`
         };
+        console.log(mailOptions);
         // Send mail to client
         transporter.sendMail(mailOptions, function (err, response) {
             if (err) {
