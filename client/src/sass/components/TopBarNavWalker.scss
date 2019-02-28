@@ -4,7 +4,7 @@
     border:solid .25em $color-accentOne;
     border-radius: 1em;
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: auto auto 1fr ;
     grid-template-rows:  1fr ;
     // justify-content: center;
     box-shadow: 0em 0em .5em .5em $color-darkest;
@@ -15,18 +15,30 @@
         font-family: $font-headingD;
         font-size: 3em;
         color: $color-accentOne;
-        margin: .5em;
+        margin: .75em 1em;
     }
     &__brand{
         grid-area: 1/1;
-        margin: 1em;
+        margin: .5em 1em;
+        
         &--logo{
             height: 4em;
             font-size: 1em;
             border: solid .25em $color-accentOne;
             border-radius: 1em;
-            padding: .5em;
-
+            padding: 1.5em;
+        }
+        &--logotooltip{
+            visibility: hidden;
+            background-color: $color-accentOne;
+            color: $color-lightest;
+            text-align: center;
+            font-size: 1em;
+            position:absolute;
+            z-index: 1;
+        }
+        &--logo:hover{
+            background-color: $color-lightest;
         }
     }
     &__nav{
@@ -45,40 +57,154 @@
             color: $color-accentOne;
         }
         &--itemDashboard{
-            grid-area: 1/1;
-            padding: 0.25em 1em;
+            grid-area: 1/3;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none; 
+        }
+        &--itemDashboard:hover{
+            background-color: $color-lightest;
+        }
+        &--profile{
+            height: 1.5em;
         }
         &--itemWalks{
-            grid-area:1/2;
-            padding: 0.25em 1em;
+            grid-area:1/4;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemWalks:hover{
+            background-color: $color-lightest;
+        }
+        &--walks{
+            height:1.5em;
         }
         &--itemSchedWalks{
-            grid-area: 1/3;
-            padding: 0.25em 1em;
+            grid-area: 1/5;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemSchedWalks:hover{
+            background-color: $color-lightest; 
+        }
+        &--schedule{
+            height: 1.5em;
         }
         &--itemFullSchedule{
-            grid-area: 1/4;
-            padding: 0.25em 1em;
+            grid-area: 1/6;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemFullSchedule:hover{
+            background-color: $color-lightest;
         }
         &--itemInvite{
-            grid-area: 1/5;
-            padding: 0.25em 1em;
+            grid-area: 1/7;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemInvite:hover{
+            background-color: $color-lightest;
+        }
+        &--invite{
+            height: 1.5em;
         }
         &--itemCerts{
-            grid-area: 1/6;
-            padding: 0.25em 1em;
+            grid-area: 1/8;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemCerts:hover{
+            background-color: $color-lightest;
+        }
+        &--certification{
+            height: 1.5em;
         }
         &--itemMap{
-            grid-area: 1/7;
-            padding: 0.25em 1em;
+            grid-area: 1/9;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemMap:hover{
+            background-color: $color-lightest;
+        }
+        &--map{
+            height: 1.5em;
         }
         &--itemNotifications{
-            grid-area: 1/8;
-            padding: 0.25em 1em;
+            grid-area: 1/10;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemNotifications:hover{
+            background-color: $color-lightest;
+        }
+        &--images{
+            height: 1.5em;
         }
         &--itemLogout{
-            grid-area: 1/9;
-            padding: 0.25em 1em;;
+            grid-area: 1/11;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-light;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemLogout:hover{
+            background-color: $color-lightest;
+        }
+        &--logout{
+            height: 1.5em;
         }
     }
 

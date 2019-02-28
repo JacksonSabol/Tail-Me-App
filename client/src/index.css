@@ -806,6 +806,47 @@ button.css-48ayfv {
       color: #1190cb;
       text-shadow: 2px 2px 8px #1190cb; }
 
+.inviteDash__nav {
+  margin: 2em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr; }
+  .inviteDash__nav--buttonEmail {
+    grid-area: 1/2;
+    justify-self: center;
+    font-family: "Thasadith", sans-serif;
+    padding: .8em .5em;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    cursor: pointer; }
+  .inviteDash__nav--buttonEmail:hover {
+    background-color: transparent;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .inviteDash__nav--buttonText {
+    grid-area: 1/3;
+    justify-self: center;
+    font-family: "Thasadith", sans-serif;
+    padding: .8em .5em;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    cursor: pointer; }
+  .inviteDash__nav--buttonText:hover {
+    background-color: transparent;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+
 .showMap {
   margin: 3em; }
   .showMap__title {
@@ -1034,7 +1075,7 @@ button.css-48ayfv {
   border: solid 0.25em #1190cb;
   border-radius: 1em;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto auto 1fr;
   grid-template-rows: 1fr;
   box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
   .topBarWalker__title {
@@ -1042,16 +1083,26 @@ button.css-48ayfv {
     font-family: "Mouse Memoirs", sans-serif;
     font-size: 3em;
     color: #1190cb;
-    margin: .5em; }
+    margin: .75em 1em; }
   .topBarWalker__brand {
     grid-area: 1/1;
-    margin: 1em; }
+    margin: .5em 1em; }
     .topBarWalker__brand--logo {
       height: 4em;
       font-size: 1em;
       border: solid 0.25em #1190cb;
       border-radius: 1em;
-      padding: .5em; }
+      padding: 1.5em; }
+    .topBarWalker__brand--logotooltip {
+      visibility: hidden;
+      background-color: #1190cb;
+      color: #e6e6e6;
+      text-align: center;
+      font-size: 1em;
+      position: absolute;
+      z-index: 1; }
+    .topBarWalker__brand--logo:hover {
+      background-color: #e6e6e6; }
   .topBarWalker__nav {
     grid-area: 1/3;
     font-size: 2.5em;
@@ -1065,32 +1116,129 @@ button.css-48ayfv {
     .topBarWalker__nav--itemLink:hover {
       color: #1190cb; }
     .topBarWalker__nav--itemDashboard {
-      grid-area: 1/1;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemWalks {
-      grid-area: 1/2;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemSchedWalks {
       grid-area: 1/3;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemFullSchedule {
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemDashboard:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--profile {
+      height: 1.5em; }
+    .topBarWalker__nav--itemWalks {
       grid-area: 1/4;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemInvite {
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemWalks:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--walks {
+      height: 1.5em; }
+    .topBarWalker__nav--itemSchedWalks {
       grid-area: 1/5;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemCerts {
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemSchedWalks:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--schedule {
+      height: 1.5em; }
+    .topBarWalker__nav--itemFullSchedule {
       grid-area: 1/6;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemMap {
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemFullSchedule:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--itemInvite {
       grid-area: 1/7;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemNotifications {
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemInvite:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--invite {
+      height: 1.5em; }
+    .topBarWalker__nav--itemCerts {
       grid-area: 1/8;
-      padding: 0.25em 1em; }
-    .topBarWalker__nav--itemLogout {
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemCerts:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--certification {
+      height: 1.5em; }
+    .topBarWalker__nav--itemMap {
       grid-area: 1/9;
-      padding: 0.25em 1em; }
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemMap:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--map {
+      height: 1.5em; }
+    .topBarWalker__nav--itemNotifications {
+      grid-area: 1/10;
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemNotifications:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--images {
+      height: 1.5em; }
+    .topBarWalker__nav--itemLogout {
+      grid-area: 1/11;
+      padding: .5em 1.5em;
+      background-color: transparent;
+      border-radius: .5em;
+      border: solid 2px #1190cb;
+      margin: .25em .25em;
+      box-shadow: 0 0 12px #a6a6a6;
+      outline: none;
+      text-decoration: none; }
+    .topBarWalker__nav--itemLogout:hover {
+      background-color: #e6e6e6; }
+    .topBarWalker__nav--logout {
+      height: 1.5em; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
