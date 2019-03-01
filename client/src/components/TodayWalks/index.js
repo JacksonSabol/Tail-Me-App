@@ -239,10 +239,11 @@ class TodayWalks extends Component {
         API.getNote(walkId)
             .then(res => {
                 //Here is the note to insert at the bottom of the email
+                const noteCheckOutHeading = `Hi ${this.state.noteOwnerName}, I have completed a walk with your dog, ${this.state.noteDogName}. Below are the details.`;
                 const noteCheckOut = `Your dog, ${dogName}, was dropped off at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}.\n\nKind Regards,\n\n${this.state.walkerFullName}`;
                 const dataNote = {
                     dogName: dogName,
-                    note: `${res.data.note}\n\n\n${noteCheckOut}`
+                    note: `${noteCheckOutHeading}\n\n${res.data.note}\n\n${noteCheckOut}`
                 }
                 if (navigator && navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(pos => {
@@ -338,7 +339,6 @@ class TodayWalks extends Component {
         const data = {
             walkerName: this.state.walkerFullName,
             walkerEmail: this.state.walkerEmail,
-            ownerName: this.state.noteOwnerName,
             ownerEmail: this.state.noteOwnerEmail,
             subject: `Walk Summary for ${this.state.noteDogName} at ${this.state.noteCheckOutTime}`, // Maybe change to subject field on Modal that autopopulates with this
             notes: this.state.valueNote
@@ -348,7 +348,6 @@ class TodayWalks extends Component {
                 walkerName: data.walkerName,
                 walkerEmail: data.walkerEmail,
                 ownerName: data.ownerName,
-                ownerEmail: data.ownerEmail,
                 subject: data.subject,
                 notes: data.notes
             })

@@ -59,7 +59,6 @@ module.exports = app => {
         // Define varables to be used in the automated message
         const walkerName = req.body.walkerName;
         const walkerEmail = req.body.walkerEmail;
-        const ownerName = req.body.ownerName;
         const ownerEmail = req.body.ownerEmail;
         const subject = req.body.subject;
         const message = req.body.notes;
@@ -76,7 +75,7 @@ module.exports = app => {
                 address: walkerEmail
             }],
             subject: `TailMe - ${subject}`,
-            text: `Hi ${ownerName}, TailMe user ${walkerName} has completed a walk with your dog. Below are the details.\n\n${message}`
+            text: message
         };
         console.log(mailOptions);
         // Send mail to client
