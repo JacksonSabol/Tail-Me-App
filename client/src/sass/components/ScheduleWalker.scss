@@ -6,13 +6,14 @@
 }
 .walkercalenderContainer{
     grid-area: 1/2;
-    border: solid .25em $color-accentOne;
-    border-radius: 1em;
-    box-shadow: 0em 0em .5em .5em $color-medium;
+    // border: solid .25em $color-accentOne;
+    // border-radius: 1em;
+    // box-shadow: 0em 0em .5em .5em $color-medium;
     margin:1em;
     font-family: $font-sans;
-    width: 800px;
-    padding-left: 6em;
+    z-index: 0;
+    // width: 120em;
+    // padding-left: 6em;
     
 }
 th.fc-day-header{

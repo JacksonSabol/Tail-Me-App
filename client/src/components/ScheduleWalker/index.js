@@ -186,15 +186,15 @@ class ScheduleWalker extends Component {
                         />
                     </Modal>
                 </div>
-                <div className="walkerScheduleWalksContainer">
+                {/* <div className="walkerScheduleWalksContainer">
                     <WalkerScheduleWalksWalker
                         walkerID={this.state.walkerId}
                         username={this.state.username}
                         loadMyWalks={this.loadMyWalks}
                     />
-                </div>
+                </div> */}
 
-                <div className="walkercalenderContainer" style={{ zIndex: '0' }}>
+                <div className="walkercalenderContainer">
                     <div className="walkerfullCalender">
                         <FullCalendar
                             id="your-custom-ID"
