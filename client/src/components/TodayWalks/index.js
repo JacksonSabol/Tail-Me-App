@@ -112,6 +112,7 @@ class TodayWalks extends Component {
                         dogOwnerName: data.dogOwner.user.firstName + " " + data.dogOwner.user.lastName,
                         dogOwnerEmail: data.dogOwner.user.auth.email,
                         walkDate: data.walkDate,
+                        status: data.status,
                         finishedWalk: finishedWalk
                     }
                     return (dataFormatted)
@@ -368,7 +369,8 @@ class TodayWalks extends Component {
     convertMinsToHrsMins = (mins) => {
         let h = Math.floor(mins / 60);
         let m = mins % 60;
-        h = h < 1 ? '00' : '0' + h;
+        h = h < 10 ? '0' + h : h;
+        h = h < 1 ? '00' : h;
         m = m > 0 ? Math.round(m) : m;
         m = m < 10 ? '0' + m : m;
         return `${h}h:${m}m`;
@@ -380,20 +382,49 @@ class TodayWalks extends Component {
         const { pastWalks } = this.state;
 
         const columns = [{
-            id: 'date',
+            // id: 'date',
             Header: 'Date',
-            accessor: data => data.walkDate,
+            // accessor: data => data.walkDate,
+            accessor: 'walkDate',
             Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
         }, {
-            id: 'dogName',
+            // id: 'dogName',
             Header: 'Dog',
-            accessor: data => data.dogOwner.dogName,
+            // accessor: data => data.dogOwner.dogName,
+            accessor: 'dogName',
             Cell: props => <span>{props.value}</span>
         }, {
-            id: 'checkinTime',
+            // id: 'checkinTime',
             Header: 'Check In',
-            accessor: data => data.checkInTime,
+            // accessor: data => data.checkInTime,
+            accessor: 'checkInTime',
             Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            // id: 'checkOutTime',
+            Header: 'Check Out',
+            // accessor: data => data.checkOutTime,
+            accessor: 'checkOutTime',
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            // id: 'totalTime',
+            Header: 'Total Time',
+            // accessor: data => data.totalTime,
+            accessor: 'totalTime',
+            Cell: props => <span>{props.value}</span>
+        }, 
+        // {
+        //     // id: 'notes',
+        //     Header: 'Notes',
+        //     // accessor: data => data.checkInTime,
+        //     accessor: 'checkInTime',
+        //     Cell: props => <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, props.id, props.dogName, props.dogOwnerName, props.dogOwnerEmail, true, Moment(props.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button>
+        // }, 
+        {
+            // id: 'checkinTime',
+            Header: 'Status',
+            // accessor: data => data.checkInTime,
+            accessor: 'status',
+            Cell: props => <span>{props.value}</span>
         }]
         return (
             <div className="TodayWalks">
@@ -528,6 +559,8 @@ class TodayWalks extends Component {
                     <ReactTable
                         data={pastWalks}
                         columns={columns}
+                        defaultPageSize={10}
+                        className="-striped -highlight"
                     />
                 </div> */}
             </div>
