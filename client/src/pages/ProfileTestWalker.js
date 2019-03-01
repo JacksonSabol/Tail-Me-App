@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import SidebarNav from '../components/SidebarNav';
+// import SidebarNav from '../components/SidebarNav';
 import TopBarNavWalker from '../components/TopBarNavWalker';
-import Profile from './Profile';
 import ProfileWalker from "./ProfileWalker";
 import TodayWalks from '../components/TodayWalks';
 import InviteOwners from "../components/InviteOwners";
-import ShowMap from "../components/ShowMap";
 import WalkPhotoUpload from "../components/WalkPhotoUpandPost";
 import ScheduleWalker from '../components/ScheduleWalker';
 import WalkerCertification from './WalkerCertification';
-import CreateDog from './createDog';
 import FooterWalker from "../components/FooterWalker";
-import HeaderWalker from "../components/HeaderWalker";
-import CreateWalkerQualifications from "./createWalkerQualifications";
 import "../index.css";
 
 
@@ -134,10 +129,6 @@ class ProfileContainerWalker extends Component {
                 walkerName={walkerFullName}
                 walkerEmail={this.state.userEmail}
             />;
-            // case "SchedWalks": return <ScheduleWalksWalker
-            //     walkerID={this.state.userId}
-            //     handlePageChange={this.handlePageChange}
-            // />;
             case "FullSchedule": return <ScheduleWalker
                 walkerID={this.state.userId}
                 username={this.state.username}
@@ -154,7 +145,6 @@ class ProfileContainerWalker extends Component {
                 walkerId={this.state.userId}
                 walkerName={walkerFullName}
             />;
-            case "Map": return <ShowMap />;
             case "Upload": return <WalkPhotoUpload
                 WalkerID={this.state.userId}
             />;
@@ -254,15 +244,20 @@ class ProfileContainerWalker extends Component {
             return (
                 <div className="walkerDash">
                     <div className="walkerDash__grid">
-                    <div className="walkerDash__grid--header">
-                    <TopBarNavWalker />
-                    </div>
-                        <SidebarNav className="walkerDash__grid--sidebarNav"
+                        <div className="walkerDash__grid--header">
+                            <TopBarNavWalker
+                                username={username}
+                                currentPage={this.state.currentPage}
+                                handlePageChange={this.handlePageChange}
+                                handleLogOut={this.handleLogOut}
+                            />
+                        </div>
+                        {/* <SidebarNav className="walkerDash__grid--sidebarNav"
                             username={username}
                             currentPage={this.state.currentPage}
                             handlePageChange={this.handlePageChange}
                             handleLogOut={this.handleLogOut}
-                        />
+                        /> */}
                         <div className="walkerDash__grid--main-content">
                             {this.renderWalkerPage()}
                         </div>
