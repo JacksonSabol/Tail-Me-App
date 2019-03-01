@@ -6,6 +6,9 @@ import Moment from "moment";
 import GoogleMapReact from "google-map-react"
 import "../../index.css";
 import Modal from 'react-modal';
+import ReactTable from "react-table";
+import 'react-table/react-table.css'
+
 const customStyles = {
     content: {
         top: '50%',
@@ -340,7 +343,7 @@ class TodayWalks extends Component {
             walkerName: this.state.walkerFullName,
             walkerEmail: this.state.walkerEmail,
             ownerEmail: this.state.noteOwnerEmail,
-            subject: `Walk Summary for ${this.state.noteDogName} at ${this.state.noteCheckOutTime}`, // Maybe change to subject field on Modal that autopopulates with this
+            subject: `Walk Summary for ${this.state.noteDogName} at ${this.state.noteCheckOutTime}`,
             notes: this.state.valueNote
         }
         axios
@@ -365,13 +368,33 @@ class TodayWalks extends Component {
     convertMinsToHrsMins = (mins) => {
         let h = Math.floor(mins / 60);
         let m = mins % 60;
-        h = h < 10 ? '0' + h : h;
+        h = h < 1 ? '00' : '0' + h;
+        m = m > 0 ? Math.round(m) : m;
         m = m < 10 ? '0' + m : m;
         return `${h}h:${m}m`;
     };
 
 
     render() {
+        // React Table Test
+        const { pastWalks } = this.state;
+
+        const columns = [{
+            id: 'date',
+            Header: 'Date',
+            accessor: data => data.walkDate,
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            id: 'dogName',
+            Header: 'Dog',
+            accessor: data => data.dogOwner.dogName,
+            Cell: props => <span>{props.value}</span>
+        }, {
+            id: 'checkinTime',
+            Header: 'Check In',
+            accessor: data => data.checkInTime,
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }]
         return (
             <div className="TodayWalks">
                 {this.state.walks.length ? (
@@ -417,7 +440,8 @@ class TodayWalks extends Component {
 
                                     <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </div>
 
-                                    <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div>
+                                    {/* <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div> */}
+                                    <div className="TodayWalks__past--list-publish"> Total Time: {walk.totalTime}</div>
 
                                     <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>
                                         Map the Walk
@@ -499,6 +523,13 @@ class TodayWalks extends Component {
                     </form>
 
                 </Modal>
+                {/* React Table Test */}
+                {/* <div>
+                    <ReactTable
+                        data={pastWalks}
+                        columns={columns}
+                    />
+                </div> */}
             </div>
         );
     }
