@@ -6,6 +6,9 @@ import Moment from "moment";
 import GoogleMapReact from "google-map-react"
 import "../../index.css";
 import Modal from 'react-modal';
+import ReactTable from "react-table";
+import 'react-table/react-table.css'
+
 const customStyles = {
     content: {
         top: '50%',
@@ -109,6 +112,7 @@ class TodayWalks extends Component {
                         dogOwnerName: data.dogOwner.user.firstName + " " + data.dogOwner.user.lastName,
                         dogOwnerEmail: data.dogOwner.user.auth.email,
                         walkDate: data.walkDate,
+                        status: data.status,
                         finishedWalk: finishedWalk
                     }
                     return (dataFormatted)
@@ -239,10 +243,11 @@ class TodayWalks extends Component {
         API.getNote(walkId)
             .then(res => {
                 //Here is the note to insert at the bottom of the email
+                const noteCheckOutHeading = `Hi ${this.state.noteOwnerName}, I have completed a walk with your dog, ${this.state.noteDogName}. Below are the details.`;
                 const noteCheckOut = `Your dog, ${dogName}, was dropped off at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}.\n\nKind Regards,\n\n${this.state.walkerFullName}`;
                 const dataNote = {
                     dogName: dogName,
-                    note: `${res.data.note}\n\n\n${noteCheckOut}`
+                    note: `${noteCheckOutHeading}\n\n${res.data.note}\n\n${noteCheckOut}`
                 }
                 if (navigator && navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(pos => {
@@ -338,9 +343,8 @@ class TodayWalks extends Component {
         const data = {
             walkerName: this.state.walkerFullName,
             walkerEmail: this.state.walkerEmail,
-            ownerName: this.state.noteOwnerName,
             ownerEmail: this.state.noteOwnerEmail,
-            subject: `Walk Summary for ${this.state.noteDogName} at ${this.state.noteCheckOutTime}`, // Maybe change to subject field on Modal that autopopulates with this
+            subject: `Walk Summary for ${this.state.noteDogName} at ${this.state.noteCheckOutTime}`,
             notes: this.state.valueNote
         }
         axios
@@ -348,7 +352,6 @@ class TodayWalks extends Component {
                 walkerName: data.walkerName,
                 walkerEmail: data.walkerEmail,
                 ownerName: data.ownerName,
-                ownerEmail: data.ownerEmail,
                 subject: data.subject,
                 notes: data.notes
             })
@@ -367,12 +370,62 @@ class TodayWalks extends Component {
         let h = Math.floor(mins / 60);
         let m = mins % 60;
         h = h < 10 ? '0' + h : h;
+        h = h < 1 ? '00' : h;
+        m = m > 0 ? Math.round(m) : m;
         m = m < 10 ? '0' + m : m;
         return `${h}h:${m}m`;
     };
 
 
     render() {
+        // React Table Test
+        const { pastWalks } = this.state;
+
+        const columns = [{
+            // id: 'date',
+            Header: 'Date',
+            // accessor: data => data.walkDate,
+            accessor: 'walkDate',
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            // id: 'dogName',
+            Header: 'Dog',
+            // accessor: data => data.dogOwner.dogName,
+            accessor: 'dogName',
+            Cell: props => <span>{props.value}</span>
+        }, {
+            // id: 'checkinTime',
+            Header: 'Check In',
+            // accessor: data => data.checkInTime,
+            accessor: 'checkInTime',
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            // id: 'checkOutTime',
+            Header: 'Check Out',
+            // accessor: data => data.checkOutTime,
+            accessor: 'checkOutTime',
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            // id: 'totalTime',
+            Header: 'Total Time',
+            // accessor: data => data.totalTime,
+            accessor: 'totalTime',
+            Cell: props => <span>{props.value}</span>
+        }, 
+        // {
+        //     // id: 'notes',
+        //     Header: 'Notes',
+        //     // accessor: data => data.checkInTime,
+        //     accessor: 'checkInTime',
+        //     Cell: props => <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, props.id, props.dogName, props.dogOwnerName, props.dogOwnerEmail, true, Moment(props.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button>
+        // }, 
+        {
+            // id: 'checkinTime',
+            Header: 'Status',
+            // accessor: data => data.checkInTime,
+            accessor: 'status',
+            Cell: props => <span>{props.value}</span>
+        }]
         return (
             <div className="TodayWalks">
                 {this.state.walks.length ? (
@@ -418,7 +471,8 @@ class TodayWalks extends Component {
 
                                     <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </div>
 
-                                    <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div>
+                                    {/* <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div> */}
+                                    <div className="TodayWalks__past--list-publish"> Total Time: {walk.totalTime}</div>
 
                                     <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>
                                         Map the Walk
@@ -500,6 +554,15 @@ class TodayWalks extends Component {
                     </form>
 
                 </Modal>
+                {/* React Table Test */}
+                {/* <div>
+                    <ReactTable
+                        data={pastWalks}
+                        columns={columns}
+                        defaultPageSize={10}
+                        className="-striped -highlight"
+                    />
+                </div> */}
             </div>
         );
     }

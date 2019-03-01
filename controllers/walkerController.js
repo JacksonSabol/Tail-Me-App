@@ -28,7 +28,8 @@ module.exports = {
           [db.sequelize.fn('date_format', db.sequelize.col('checkinTime'), '%Y-%m-%d %H:%i:%s'), 'checkInTime'],
 
           [db.sequelize.fn('date_format', db.sequelize.col('finishTime'), '%Y-%m-%d %H:%i:%s'), 'checkOutTime'],
-          'walkDate'
+          'walkDate',
+          'status'
         ],
         where: {
           walkerId: req.params.id

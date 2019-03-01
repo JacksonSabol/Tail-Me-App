@@ -27,7 +27,8 @@ class WalkPhotoUpandPost extends Component {
         gallery: [],
         galleryAll: [],
         walksList: [],
-        selectedOptions: []
+        selectedOptions: [],
+        showSentButton: false
     }
 
 
@@ -53,7 +54,11 @@ class WalkPhotoUpandPost extends Component {
                     return (imageData)
                 })
 
-                this.setState({ gallery: dataGallery })
+                this.setState({
+                    gallery: dataGallery,
+                    galleryAll: [],
+                    showSentButton: false
+                })
             })
 
     }
@@ -72,7 +77,10 @@ class WalkPhotoUpandPost extends Component {
                     }
                     return (imageData)
                 })
-                this.setState({ galleryAll: dataGallery })
+                this.setState({
+                    galleryAll: dataGallery,
+                    showSentButton: true
+                })
             })
     }
 
@@ -287,7 +295,7 @@ class WalkPhotoUpandPost extends Component {
                 />
                 <br></br>
                 <div>
-                    <button className="dropzoneButton" onClick={this.handleTransferImages}>Send Images to the Walk</button>
+                    <button className="dropzoneButton" onClick={this.handleTransferImages}>Add Images to the Walk</button>
                     <Gallery
                         enableImageSelection={true}
                         backdropClosesModal={true}
@@ -297,10 +305,12 @@ class WalkPhotoUpandPost extends Component {
                         showLightboxThumbnails={true} />
                 </div>
                 <div>
-                    {/* set to conditional rendering */}
                     <button className="dropzoneButton" onClick={this.loadAllImages}>Load All (Including Sent) Images</button>
-                    <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Send Images to the Walk</button>
-                    <Gallery
+                    {this.state.showSentButton ? (
+                        <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Add Sent Images to the Walk</button>
+                    ) : (null)
+                    }
+                    < Gallery
                         enableImageSelection={true}
                         backdropClosesModal={true}
                         onSelectImage={this.onSelectImage}

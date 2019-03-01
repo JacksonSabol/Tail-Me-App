@@ -4,7 +4,7 @@ import certificationIcon from "../../images/certificationIcon.png";
 import imagesIcon from"../../images/imagesIcon.png";
 import inviteIcon from "../../images/inviteIcon.png";
 import logoutIcon from "../../images/logoutIcon.png";
-import mapIcon from "../../images/mapIcon.png";
+// import mapIcon from "../../images/mapIcon.png";
 import profileIcon from "../../images/profileIcon.png";
 import scheduleIcon from "../../images/scheduleIcon.png";
 import walkIcon from "../../images/walkIcon.png";
@@ -22,91 +22,61 @@ function TopBarNavWalker(props) {
             <div className="topBarWalker__nav">
                 <div className="topBarWalker__nav--itemDashboard">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#home"
                         onClick={() => props.handlePageChange("Home")}
                     >
                         <img className="topBarWalker__nav--profile" src={profileIcon} alt="profile icon" ></img>
+                        {/* <label className="topBarWalker__nav--profileLabel">Profile</label> */}
                     </button>
                 </div>
                 <div className="topBarWalker__nav--itemWalks">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#walks"
                         onClick={() => props.handlePageChange("Walks")}
                     >
                      <img className="topBarWalker__nav--walks" src={walkIcon} alt="walk icon" ></img>
-                        {/* Upcoming Walks */}
+                        {/* <label className="topBarWalker__nav--walksLabel">My Walks</label> */}
                     </button>
                 </div>
-                {/* <div className="topBarWalker__nav--itemSchedWalks">
-                    <a className="topBarWalker__nav--itemLink"
-                        href="#schedwalks"
-                        onClick={() => props.handlePageChange("SchedWalks")}
-                    >
-                        Schedule a Walk
-                    </a>
-                </div> */}
                 <div className="topBarWalker__nav--itemSchedWalks">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#fullschedule"
                         onClick={() => props.handlePageChange("FullSchedule")}
                     >
                      <img className="topBarWalker__nav--schedule" src={scheduleIcon} alt="scheduleicon" ></img>
-                        {/* Full Schedule */}
+                     {/* <label className="topBarWalker__nav--scheduleLabel">Schedule</label> */}
                     </button>
                 </div>
                 <div className="topBarWalker__nav--itemFullSchedule">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#invite"
                         onClick={() => props.handlePageChange("Invite")}
                     >
                      <img className="topBarWalker__nav--invite" src={inviteIcon} alt="invite icon" ></img>
-                        {/* Invite Clients */}
+                     {/* <label className="topBarWalker__nav--inviteLabel">Invite Clients</label> */}
                     </button>
                 </div>
                 <div className="topBarWalker__nav--itemInvite">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#certs"
                         onClick={() => props.handlePageChange("Certs")}
                     >
                      <img className="topBarWalker__nav--certification" src={certificationIcon} alt="certification icon" ></img>
-                        {/* Update Qualifications */}
+                     {/* <label className="topBarWalker__nav--certificationLabel">Update Qualifications</label> */}
                     </button>
                 </div>
                 <div className="topBarWalker__nav--itemCerts">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#map"
-                        onClick={() => props.handlePageChange("Map")}
-                    >
-                     <img className="topBarWalker__nav--map" src={mapIcon} alt="map icon" ></img>
-                        {/* Map */}
-                    </button>
-                </div>
-                <div className="topBarWalker__nav--itemMap">
-                    <button className="topBarWalker__nav--itemLink"
-                        href="#upload"
                         onClick={() => props.handlePageChange("Upload")}
                     >
                      <img className="topBarWalker__nav--images" src={imagesIcon} alt="images icon" ></img>
-                        {/* Upload Images */}
+                     {/* <label className="topBarWalker__nav--imagesLabel">Upload Images</label> */}
                     </button>
                 </div>
-                <div className="topBarWalker__nav--itemNotifications">
+                <div className="topBarWalker__nav--itemMap">
                     <button className="topBarWalker__nav--itemLink"
                         href="#"
                         onClick={() => props.handleLogOut()}
                     >
                      <img className="topBarWalker__nav--logout" src={logoutIcon} alt="logout icon" ></img>
-                        {/* Log Out */}
+                     {/* <label className="topBarWalker__nav--logoutLabel">Log Out</label> */}
                     </button>
                 </div>
-                {/* <div className="topBarWalker__nav--item">
-                    <a
-                        href="#map"
-                        onClick={() => props.deleteUser}
-                    >
-                        Delete Account
-                    </a>
-                </div> */}
             </div>
         </div>
     );
