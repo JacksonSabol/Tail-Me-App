@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EmailOwner from "./emailOwner"
 import TextOwner from "./textOwner"
-
+import CustomerList from "../Customers"
 class InviteOwners extends Component {
     state = {
         walkerName: this.props.walkerName,
@@ -46,6 +46,7 @@ class InviteOwners extends Component {
                             walkerName={this.state.walkerName}
                         />;
                     </div>
+                    <CustomerList></CustomerList>
                 </div>
             );
         } else {
@@ -63,9 +64,11 @@ class InviteOwners extends Component {
                             walkerName={this.state.walkerName}
                         />;
                     </div>
+                    <CustomerList></CustomerList>
                 </div>
             );
         }
+      
 
     }
 

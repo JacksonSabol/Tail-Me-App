@@ -131,5 +131,10 @@ export default {
     },
     getNote: function (walkId) {
         return axios.get(`/api/walker/walk/getnote/${walkId}`)
+    },
+
+    getWalkerCustomers: function (id) {
+
+        return axios.get(`/api/walker/getWalkerCustomers/${id}`)
     }
 };
