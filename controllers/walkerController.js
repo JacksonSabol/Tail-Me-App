@@ -373,6 +373,20 @@ module.exports = {
         })
       .then(dbModel => res.json(dbModel))
       .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
+  },
+  getWalkerCustomers: function (req, res) {
+   
+    db.user
+      .findAll({
+        include: [{
+          model: db.dogOwner,
+           where: {
+            walkerId: req.params.id
+          }
+        }]
+        })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
   }
 
 

@@ -83,4 +83,7 @@ router.route("/walk/getnote/:walkId")
 .get(walkerController.getWalkNote); 
 
 
+router.route("/getWalkerCustomers/:id")
+.get(walkerController.getWalkerCustomers);
+
 module.exports = router;
