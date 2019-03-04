@@ -87,7 +87,8 @@ class CustomerList extends Component {
         }
 
         API.editUserData(userId, dogOwnerId, userData).then(res => {
-            this.loadCustomers();
+            //prevent reload of the table.. uncomment if reload wanted.
+           /*  this.loadCustomers(); */
         })
     }
 
