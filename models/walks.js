@@ -39,9 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade"
     });
 
-    walks.hasMany(models.walkImages, {
-      onDelete: "cascade"
-    });
+    
   };
   return walks;
 };

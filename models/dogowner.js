@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     dogOwner.hasMany(models.walks, {
       onDelete: "cascade"
     });
+   
     
   };
   return dogOwner;
