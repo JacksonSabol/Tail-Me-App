@@ -46,7 +46,9 @@ class InviteOwners extends Component {
                             walkerName={this.state.walkerName}
                         />;
                     </div>
-                    <CustomerList></CustomerList>
+                    <CustomerList
+                        walkerId={this.state.walkerId}
+                    />
                 </div>
             );
         } else {
@@ -64,11 +66,13 @@ class InviteOwners extends Component {
                             walkerName={this.state.walkerName}
                         />;
                     </div>
-                    <CustomerList></CustomerList>
+                    <CustomerList
+                        walkerId={this.state.walkerId}
+                    />
                 </div>
             );
         }
-      
+
 
     }
 

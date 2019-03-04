@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { List, ListItem } from "../List";
 import axios from 'axios';
 import API from "../../utils/API";
 import Moment from "moment";
@@ -379,9 +378,52 @@ class TodayWalks extends Component {
 
     render() {
         // React Table Test
-        const { pastWalks } = this.state;
+        const { walks, pastWalks } = this.state;
 
-        const columns = [{
+        const columnsUpcoming = [{
+            // id: 'date',
+            Header: 'Date',
+            // accessor: data => data.walkDate,
+            accessor: 'walkDate',
+            Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</span>
+        }, {
+            // id: 'dogName',
+            Header: 'Dog',
+            // accessor: data => data.dogOwner.dogName,
+            accessor: 'dogName',
+            Cell: props => <span>{props.value}</span>
+        }, {
+            // id: 'checkinTime',
+            Header: 'Check-In/Check-Out',
+            // accessor: data => data.checkInTime,
+            // accessor: 'checkInTime',
+            Cell: row => row.original.checkInTime === null ? (
+                <div><button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, row.original.id, row.original.dogName)}>Check-in </button></div>
+            ) : (
+                    <div>
+                        <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, row.original.id, row.original.dogName)}>
+                            Check-out
+                        </button>
+                    </div>
+                )
+        }, {
+            // id: 'notes',
+            Header: 'Notes',
+            // accessor: data => data.checkInTime,
+            // accessor: 'checkInTime',
+            Cell: row => row.original.checkInTime === null ? (null) : (
+                <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button></div>
+            )
+        },
+        {
+            // id: 'checkinTime',
+            Header: 'Status',
+            // accessor: data => data.checkInTime,
+            accessor: 'status',
+            Cell: props => <span>{props.value}</span>
+        }];
+
+        const columnsPast = [{
             // id: 'date',
             Header: 'Date',
             // accessor: data => data.walkDate,
@@ -411,85 +453,144 @@ class TodayWalks extends Component {
             // accessor: data => data.totalTime,
             accessor: 'totalTime',
             Cell: props => <span>{props.value}</span>
-        }, 
-        // {
-        //     // id: 'notes',
-        //     Header: 'Notes',
-        //     // accessor: data => data.checkInTime,
-        //     accessor: 'checkInTime',
-        //     Cell: props => <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, props.id, props.dogName, props.dogOwnerName, props.dogOwnerEmail, true, Moment(props.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button>
-        // }, 
+        },
+        {
+            // id: 'notes',
+            Header: 'Notes',
+            // accessor: data => data.checkInTime,
+            // accessor: 'checkInTime',
+            Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button></div>
+        },
         {
             // id: 'checkinTime',
             Header: 'Status',
             // accessor: data => data.checkInTime,
             accessor: 'status',
             Cell: props => <span>{props.value}</span>
-        }]
+        }];
         return (
             <div className="TodayWalks">
-                {this.state.walks.length ? (
-                    <div className="TodayWalks__upcoming">
-                        <List >
-                            <div className="TodayWalks__upcoming--title">Upcoming Walks: </div>
-                            {this.state.walks.map(walk => (
-                                <ListItem key={walk.id}>
-                                    <div className="TodayWalks__upcoming--list-publish"> Walk for {walk.dogName} on Date:
-                                         {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}
-                                        {walk.checkInTime === null ? (
-                                            <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, walk.id, walk.dogName)}>Check-in </button>) :
-                                            (
-                                                <div>
-                                                    <button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckOut.bind(this, walk.id, walk.dogName)}>
-                                                        Check-out
-                                                    </button>
-                                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, walk.dogName, walk.dogOwnerName, walk.dogOwnerEmail, false, 0)}>
-                                                        Add Walk Notes
-                                                    </button>
-                                                </div>
-                                            )}
+                <div className="TodayWalks__reactTableUpcoming">
+                <span className="TodayWalks__reactTableUpcoming--title">Upcoming Walks: </span>
+                    {this.state.walks.length ? (
+                        <ReactTable
+                            data={walks}
+                            columns={columnsUpcoming}
+                            // minWidth={100}
+                            className="TodayWalks__reactTableUpcoming--table -striped -highlight"
+                            pageSizeOptions={[5, 10, 20, 25, 50, 100]}
+                            showPagination={true}
+                            sortable={true}
+                            defaultSorted={[
+                                {
+                                    id: "walkDate",
+                                    desc: false
+                                }
+                            ]}
+                            multiSort={true}
+                            resizable={true}
+                            defaultPageSize={5}
+                            minRows={3}
+                            SubComponent={row => {
+                                // SubComponent for accessing original row values
+                                const columns = [
+                                    {
+                                        Header: "Property",
+                                        accessor: "property",
+                                        width: 200,
+                                        Cell: ci => {
+                                            return `${ci.value}:`;
+                                        },
+                                        style: {
+                                            backgroundColor: "#DDD",
+                                            textAlign: "right",
+                                            fontWeight: "bold"
+                                        }
+                                    }
+                                ];
+                                const rowData = Object.keys(row.original).map(key => {
+                                    return {
+                                        property: key,
+                                        value: row.original[key].toString()
+                                    };
+                                });
+                                return (
+                                    <div style={{ padding: "10px", width: "40%" }}>
+                                        <ReactTable
+                                            data={rowData}
+                                            columns={columns}
+                                            pageSize={rowData.length}
+                                            showPagination={false}
+                                        />
                                     </div>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </div>
-
-                ) : (
-                        <p className="TodayWalks__alert"> You don't have any upcoming walks!</p>
-                    )}
-
-                {this.state.pastWalks.length ? (
-                    <div className="TodayWalks__past">
-                        <List>
-                            <div className="TodayWalks__past--title">Completed Walks: </div>
-                            {this.state.pastWalks.map(walk => (
-                                <ListItem key={walk.id}>
-
-                                    <div className="TodayWalks__past--list-publish"> Walk  for {walk.dogName} on Date: {Moment(walk.walkDate, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm")}</div>
-
-                                    <div className="TodayWalks__past--list-publish"> Check In Time: {Moment(walk.checkInTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")}</div>
-
-                                    <div className="TodayWalks__past--list-publish"> Check Out Time: {Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("HH:mm:ss")} </div>
-
-                                    {/* <div className="TodayWalks__past--list-publish"> Total Time: {Moment(walk.totalTime, "HH:mm").format("HH:mm")}</div> */}
-                                    <div className="TodayWalks__past--list-publish"> Total Time: {walk.totalTime}</div>
-
-                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>
-                                        Map the Walk
-                                    </button>
-
-                                    <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, walk.id, walk.dogName, walk.dogOwnerName, walk.dogOwnerEmail, true, Moment(walk.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>
-                                        Review Walk Notes
-                                    </button>
-
-                                </ListItem>
-                            ))}
-                        </List>
-                    </div>
-                ) : (
-                        <p className="TodayWalks__alert"> You don't have any completed walks!</p>
-                    )}
-
+                                );
+                            }}
+                        />
+                    ) : (
+                            <p className="TodayWalks__alert">There are no upcoming walks scheduled.</p>
+                        )}
+                </div>
+                <div className="TodayWalks__reactTablePast">
+                    {/* <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Map the Walk</button> */}
+                    <span className="TodayWalks__reactTablePast--title">Completed Walks: </span>
+                    {this.state.pastWalks.length ? (
+                        <ReactTable
+                            data={pastWalks}
+                            columns={columnsPast}
+                            // minWidth={100}
+                            className="TodayWalks__reactTablePast--table -striped -highlight"
+                            pageSizeOptions={[5, 10, 20, 25, 50, 100]}
+                            showPagination={true}
+                            sortable={true}
+                            defaultSorted={[
+                                {
+                                    id: "walkDate",
+                                    desc: true
+                                }
+                            ]}
+                            multiSort={true}
+                            resizable={true}
+                            defaultPageSize={5}
+                            minRows={3}
+                            SubComponent={row => {
+                                // SubComponent for accessing original row values
+                                const columns = [
+                                    {
+                                        Header: "Property",
+                                        accessor: "property",
+                                        width: 200,
+                                        Cell: ci => {
+                                            return `${ci.value}:`;
+                                        },
+                                        style: {
+                                            backgroundColor: "#DDD",
+                                            textAlign: "right",
+                                            fontWeight: "bold"
+                                        }
+                                    }
+                                ];
+                                const rowData = Object.keys(row.original).map(key => {
+                                    return {
+                                        property: key,
+                                        value: row.original[key].toString()
+                                    };
+                                });
+                                return (
+                                    <div style={{ padding: "10px", width: "40%" }}>
+                                        <ReactTable
+                                            data={rowData}
+                                            columns={columns}
+                                            pageSize={rowData.length}
+                                            showPagination={false}
+                                        />
+                                    </div>
+                                );
+                            }}
+                        />
+                    ) : (
+                            <p className="TodayWalks__alert">No history of previous walks found.</p>
+                        )}
+                </div>
                 {this.state.mapWalkId ? (
                     <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                         <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
@@ -554,15 +655,6 @@ class TodayWalks extends Component {
                     </form>
 
                 </Modal>
-                {/* React Table Test */}
-                {/* <div>
-                    <ReactTable
-                        data={pastWalks}
-                        columns={columns}
-                        defaultPageSize={10}
-                        className="-striped -highlight"
-                    />
-                </div> */}
             </div>
         );
     }
