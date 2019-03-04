@@ -1,0 +1,152 @@
+.topBarOwner{
+    background-image: radial-gradient(#4d4d4d, #333333);
+    border: solid .25em $color-accentOne;
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: auto auto 1fr ;
+    grid-template-rows:  1fr ;
+    box-shadow: 0em 0em .5em .5em $color-darkest;
+
+
+    &__title{
+        grid-area: 1/2;
+        font-family: $font-headingD;
+        font-size: 3em;
+        color: $color-accentOne;
+        margin: .75em 1em;
+    }
+    &__brand{
+        grid-area: 1/1;
+        margin: 0em 1em;
+        
+        &--logo{
+            height: 4em;
+            font-size: 1em;
+            border: solid .25em $color-accentOne;
+            border-radius: 1em;
+            padding: 1.5em;
+        }
+        &--logotooltip{
+            visibility: hidden;
+            background-color: $color-accentOne;
+            color: $color-lightest;
+            text-align: center;
+            font-size: 1em;
+            position:absolute;
+            z-index: 1;
+        }
+        &--logo:hover{
+            background-color: $color-medium;
+        }
+    }
+    &__nav{
+        grid-area: 1/3;
+        font-size: 2.5em;
+        display: grid;
+        grid-template-columns: (5) 1fr;
+        grid-template-rows:  1fr;
+        justify-content: right;
+
+        &--itemLink{
+            font-style: bold;
+            color: black;
+            // outline: none;
+            // background-color: transparent;
+            // text-decoration: none; 
+        }
+        &--itemLink:hover{
+            color: $color-medium;
+        }
+        &--itemDashboard{
+            grid-area: 1/3;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-mid;
+            outline: none;
+            text-decoration: none; 
+        }
+        &--itemDashboard:hover{
+            background-color: $color-medium;
+        }
+        &--profile{
+            height: 1.5em;
+            outline: none;
+            background-color: transparent;
+        }
+        &--itemWalks{
+            grid-area:1/4;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-mid;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemWalks:hover{
+            background-color: $color-medium;
+        }
+        &--walks{
+            height:1.5em;
+            
+        }
+        &--itemMyDogs{
+            grid-area: 1/5;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-mid;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemMyDogs:hover{
+            background-color: $color-medium; 
+        }
+        &--dogs{
+            height: 1.5em;
+        }
+        &--itemGallery{
+            grid-area: 1/6;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-mid;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemGallery:hover{
+            background-color: $color-medium;
+        }
+        &--images{
+            height: 1.5em;
+        }
+        &--itemLogout{
+            grid-area: 1/7;
+            padding: .5em 1.5em;
+            background-color: transparent;
+            border-radius: .5em;
+            border: solid 2px $color-accentOne;
+            margin: .25em .25em;
+            box-shadow:    0 0 12px $color-mid;
+            outline: none;
+            text-decoration: none;
+        }
+        &--itemLogout:hover{
+            background-color: $color-medium;
+        }
+        &--logout{
+            height: 1.5em;
+        }
+
+    }
+
+
+}

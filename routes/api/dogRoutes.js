@@ -18,11 +18,11 @@ router.route("/:idUser/gallery")
   .get(dogController.getImagesOwner);
 
   // Matches with "/api/dogProfile/:id/walks/"
-router.route("/:id/walks")
-.get(dogController.getOwnerWalks);
+// router.route("/:id/walks")
+// .get(dogController.getOwnerWalks);
 
 // Matches with "/api/dogProfile/:id/getId"
-router.route("/:idUserDog/getId")
+router.route("/:id/getId")
   .get(dogController.getOwnerId)
 
 

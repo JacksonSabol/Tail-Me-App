@@ -87,13 +87,25 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
   getOwnerId: function (req, res) {
-    console.log("req.params.idUserDog:", req.params.idUserDog)
-    db.dogOwner.findOne({
+    // console.log("req.params.idUserDog:", req.params.idUserDog)
+    db.dogOwner.findAll({
+      include: [db.walks],
       where: {
-        userId: req.params.idUserDog
-      }
+        userId: req.params.id
+      },
+      attributes: [
+        'id',
+        'dogName',
+        'emergencyContact',
+        'userId',
+        [db.sequelize.fn('date_format', db.sequelize.col('walks.checkinTime'), '%Y-%m-%d %H:%i:%s'), 'checkInTime'],
+
+        [db.sequelize.fn('date_format', db.sequelize.col('walks.finishTime'), '%Y-%m-%d %H:%i:%s'), 'checkOutTime'],
+        'walks.walkDate'
+      ]
     })
       .then(dbModel => res.json(dbModel))
+      // .then(dbModel => console.log(dbModel))
       .catch(err => res.status(422).json(err));
   },
 };
