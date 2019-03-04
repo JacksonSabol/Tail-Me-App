@@ -2,11 +2,15 @@ import axios from "axios";
 
 export default {
 
-    // Gets the Walks
-    getOwnerWalks: function (id) {
-
-        return axios.get(`/api/dogProfile/${id}/walks`);
+    // Gets owner Walks - other one is unnecessary when joining tables in dogController
+    getOwnerId: function (id) {
+        // console.log("idAPI:", id)
+        return axios.get(`/api/dogProfile/${id}/getId`)
     },
+    // getOwnerWalks: function (id) {
+
+    //     return axios.get(`/api/dogProfile/${id}/walks`);
+    // },
     getWalkerWalks: function (id) {
 
         return axios.get(`/api/walker/${id}/walks`);
@@ -118,11 +122,6 @@ export default {
     checkImageExist: function (walkId, imageId) {
         console.log("IMAGE")
         return axios.get(`/api/walker/walk/checkImage/${walkId}/${imageId}`)
-    },
-
-    getOwnerId: function (idUserDog) {
-        console.log("idAPI:", idUserDog)
-        return axios.get(`/api/dogProfile/${idUserDog}/getId`)
     },
 
     addNote: function (walkId, notes) {

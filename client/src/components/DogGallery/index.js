@@ -70,7 +70,7 @@ class DogOwnerGallery extends Component {
     render() {
         return (
             <div>
-                <p className="rdtPicker__title">My Gallery</p>
+                <p className="ownerGalleryTitle">My Gallery</p>
                 <Gallery
                     enableImageSelection={true}
                     backdropClosesModal={true}
