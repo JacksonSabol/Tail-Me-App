@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   walkImages.associate = function(models) {
     // associations can be defined here
-    walkImages.belongsTo(models.walks, {
+    walkImages.belongsTo(models.user, {
       foreignKey: {
         allowNull: false
       }

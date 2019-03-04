@@ -86,4 +86,10 @@ router.route("/walk/getnote/:walkId")
 router.route("/getWalkerCustomers/:id")
 .get(walkerController.getWalkerCustomers);
 
+router.route("/editCustomerInfo/:userId/:dogOwnerId")
+.put(walkerController.editUserInfo);
+
+router.route("/deleteUser/:userId")
+.delete(walkerController.deleteUserData);
+
 module.exports = router;

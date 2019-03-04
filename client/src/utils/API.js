@@ -136,5 +136,15 @@ export default {
     getWalkerCustomers: function (id) {
 
         return axios.get(`/api/walker/getWalkerCustomers/${id}`)
+    },
+
+    editUserData: function (userId,dogOwnerId,userData) {
+
+        return axios.put(`/api/walker/editCustomerInfo/${userId}/${dogOwnerId}`,userData)
+    },
+    deleteUserData: function (userId) {
+        return axios.delete(`/api/walker/deleteUser/${userId}/`) 
     }
+    
+   
 };

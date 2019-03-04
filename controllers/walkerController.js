@@ -375,20 +375,59 @@ module.exports = {
       .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
   },
   getWalkerCustomers: function (req, res) {
-   
+
     db.user
       .findAll({
         include: [{
           model: db.dogOwner,
-           where: {
+          where: {
             walkerId: req.params.id
           }
         }]
-        })
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
-  }
+  },
 
+  editUserInfo: function (req, res) {
+    //Edit User table Information
+    db.user
+      .update(
+        req.body.userDataObj,
+        {
+          where: {
+            id: req.params.userId
+          }
+        }
+      )
+      .then(dbModel => {
+        //Edit dogOwner table Information
+        db.dogOwner
+          .update(
+            req.body.dogOwnerDataObj,
+            {
+              where: {
+                id: req.params.dogOwnerId
+              }
+            }
+          )
+        res.json(dbModel)
+      })
+      .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
+  },
+
+  deleteUserData: function(req,res) {
+    //Delete user from auth and on cascade from all tables.
+    db.auth
+    .destroy(
+      {
+        where: {
+          id: req.params.userId
+        }
+      }
+    ) .then(dbModel => res.json(dbModel))
+    .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
+  }
 
 
 };

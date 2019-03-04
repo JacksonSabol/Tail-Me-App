@@ -11,28 +11,30 @@ class CustomerList extends Component {
         customers: []
 
     }
+    handleSubmit = this.handleSubmit.bind(this);
     componentDidMount() {
         this.loadCustomers();
     }
-    // Function to load all TodayWalks from the database
+    // Function to load all Customer Info from the database
     loadCustomers = () => {
         const id = 1;
         API.getWalkerCustomers(id)
             .then(res => {
-             
+
                 const dataFormat = res.data.map(data => {
                     const users = {
 
                         customerName: data.firstName + " " + data.lastName,
-                        firstName:data.firstName,
-                        lastName:data.lastName,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
                         address: data.address,
                         city: data.City,
                         state: data.State,
                         zipCode: data.zipCode,
                         dog: data.dogOwner.dogName,
                         emergencyContact: data.dogOwner.emergencyContact,
-                        dogOwnerId: data.dogOwner.id
+                        dogOwnerId: data.dogOwner.id,
+                        userId: data.id
                     }
                     return (users)
                 })
@@ -46,35 +48,64 @@ class CustomerList extends Component {
             .catch(err => console.log(err));
     };
 
-    editMethod = (row) => {
-        console.log("test", row)
+    //Delete User
+    deleteMethod = (userId) => {
+        console.log("test", userId)
+        API.deleteUserData(userId).then(res => {
+            this.loadCustomers();
+        })
+
+
     }
-    deleteMethod = (row) => {
-        console.log("test", row)
+
+    //Edit User Data
+    handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+
+        const editUserData = {
+            firstName: data.get('firstName'),
+            lastName: data.get('lastName'),
+            address: data.get('address'),
+            City: data.get('city'),
+            State: data.get('state'),
+            zipCode: data.get('zipCode')
+
+        }
+        const editDogOwnerData = {
+            dogName: data.get('dog'),
+            emergencyContact: data.get('emergencyContact')
+        }
+
+        const userId = data.get('userId');
+        const dogOwnerId = data.get('dogOwnerId');
+
+        //Create an Object of Objects, one to upadate user table and  the other one to update dogOwner table
+        const userData = {
+            userDataObj: editUserData,
+            dogOwnerDataObj: editDogOwnerData
+        }
+
+        API.editUserData(userId, dogOwnerId, userData).then(res => {
+            this.loadCustomers();
+        })
     }
 
     render() {
 
-
+        //Data table headers
         const columns = [{
-
             Header: 'Customer Name',
             accessor: 'customerName',
-            
         },
         {
-
             Header: 'First Name',
             accessor: 'firstName',
-            
         },
         {
-
             Header: 'Last Name',
             accessor: 'lastName',
-            
         },
-        
         {
             Header: 'Dog',
             accessor: 'dog'
@@ -102,18 +133,10 @@ class CustomerList extends Component {
             filterable: false
         },
         {
-            Cell: row => (
-                <div >
-                    <button className="TodayWalks__past--list-publish-button" onClick={() => this.editMethod(row.original.dogOwnerId)}>Edit</button>
-
-                </div>
-            ),
-            filterable: false
-
-        }, {
+            id: 'delete',
             Cell: row => (
                 <div>
-                    <button className="TodayWalks__past--list-publish-button" onClick={() => this.deleteMethod(row.original.dogOwnerId)}>Delete</button>
+                    <button className="TodayWalks__past--list-publish-button" onClick={() => this.deleteMethod(row.original.userId)}>Delete</button>
 
                 </div>
             ),
@@ -121,7 +144,7 @@ class CustomerList extends Component {
         }
         ]
         return (
-            <div style={{ width: "80%", margin: "0 auto"}}>
+            <div style={{ width: "80%", margin: "0 auto" }}>
                 <TreeTable
                     filterable
                     defaultFilterMethod={(filter, row, column) => {
@@ -142,43 +165,73 @@ class CustomerList extends Component {
                     resizable={true}
                     defaultPageSize={5}
                     minRows={3}
-                    className='-striped -highlight' 
+                    className='-striped -highlight'
                     pivotBy={["customerName"]}
-                    
+
                     SubComponent={row => {
-                        // a SubComponent just for the final detail
-                        const columns = [
-                            {
-                                Header: "Property",
-                                accessor: "property",
-                                width: 200,
-                                Cell: ci => {
-                                    return `${ci.value}:`;
-                                },
-                                style: {
-                                    backgroundColor: "#DDD",
-                                    textAlign: "right",
-                                    fontWeight: "bold"
-                                }
-                            },
-                            { Header: "Value", accessor: "value" }
-                        ];
+                        // a SubComponent to display edit form
+                       // Dynamic creation of the input fields
                         const rowData = Object.keys(row.original).map(key => {
-                            return {
-                                property: key,
-                                value: row.original[key].toString()
-                            };
+                            return (
+                                <tr key={row.original[key].toString()} >
+                                    {(() => {
+                                      //create hidden fields for ids.
+                                        if (key == 'dogOwnerId' || key == 'userId' || key == 'customerName') {
+                                            return (
+                                                <React.Fragment>
+                                                    <td>
+                                                        <input type='hidden' name={key} defaultValue={row.original[key].toString()} />
+                                                    </td>
+                                                </React.Fragment>
+                                            )
+                                        } else {
+                                            return (
+                                                <React.Fragment>
+
+                                                    <td style={{ textAlign: "right" }}>
+                                                        <label>
+                                                            {(() => {
+                                                                //Modify the display name of each field
+                                                                switch (key) {
+                                                                    case "firstName": return "First Name:";
+                                                                    case "lastName": return "Last Name:";
+                                                                    case "address": return "Address:";
+                                                                    case "city": return "City:";
+                                                                    case "state": return "State:";
+                                                                    case "zipCode": return "Zip Code:";
+                                                                    case "dog": return "Dog:";
+                                                                    case "emergencyContact": return "Emergency Contact";
+                                                                    default: return "N/A";
+                                                                }
+                                                            })()}
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input type='text' name={key} defaultValue={row.original[key].toString()} onChange={this.handleInputChange} style={{ width: "100%" }} />
+                                                    </td>
+
+                                                </React.Fragment>
+                                            )
+                                        }
+                                    })()}
+
+                                </tr>
+
+                            );
                         });
-                        return (
-                            <div style={{ padding: "10px", width: "40%" }}>
-                                <ReactTable
-                                    data={rowData}
-                                    columns={columns}
-                                    pageSize={rowData.length}
-                                    showPagination={false}
-                                />
-                            </div>
-                        );
+                        return (<form onSubmit={this.handleSubmit}>
+                            {/* Create table for edit Form */}
+                            <table style={{ width: "50%" }}>
+                                <tbody>
+                                    {rowData}
+                                    <tr><td style={{ textAlign: "center" }} colSpan={2}>
+                                        <button type="submit" value="Edit" className="TodayWalks__past--list-publish-button">Edit </button>
+                                    </td></tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        )
+
                     }}
                 />
             </div>
