@@ -471,6 +471,26 @@ a {
   display: grid;
   grid-template-columns: 15 1fr;
   grid-template-rows: auto auto; }
+  .TodayWalks__reactTableUpcoming {
+    grid-area: 1/1/2/16;
+    border: solid 0.25em #1190cb;
+    border-radius: 1em;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .TodayWalks__reactTableUpcoming--table {
+      width: 100%; }
+  .TodayWalks__reactTablePast {
+    grid-area: 2/1/3/16;
+    border: solid 0.25em #1190cb;
+    border-radius: 1em;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .TodayWalks__reactTablePast--table {
+      width: 100%; }
   .TodayWalks__upcoming {
     grid-area: 1/1/2/6;
     border: solid 0.25em #1190cb;
@@ -526,7 +546,7 @@ a {
       border-radius: .5em;
       font-size: 1em; }
     .TodayWalks__past--map {
-      grid-area: 2/1/3/16;
+      grid-area: 3/1/4/16;
       margin: 1em;
       padding: 1em;
       border: solid 2px #1190cb;

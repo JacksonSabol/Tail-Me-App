@@ -16,7 +16,7 @@ class CustomerList extends Component {
     }
     // Function to load all TodayWalks from the database
     loadCustomers = () => {
-        const id = 1;
+        const id = this.props.walkerId;
         API.getWalkerCustomers(id)
             .then(res => {
              
