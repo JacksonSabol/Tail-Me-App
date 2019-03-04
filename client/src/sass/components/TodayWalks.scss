@@ -13,6 +13,12 @@
         display: flex;
         flex-wrap: wrap;
         box-shadow: 0em 0em .5em .5em $color-darkest;
+        &--title{
+            color: $color-accentOne;
+            font-size: 2em;
+            font-family: $font-headingD;
+            margin-left: 1em;
+        }
         &--table{
             width: 100%;
         }
@@ -25,6 +31,12 @@
         display: flex;
         flex-wrap: wrap;
         box-shadow: 0em 0em .5em .5em $color-darkest;
+        &--title{
+            color: $color-accentOne;
+            font-size: 2em;
+            font-family: $font-headingD;
+            margin-left: 1em;
+        }
         &--table{
             width: 100%;
         }

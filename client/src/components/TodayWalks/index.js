@@ -470,8 +470,8 @@ class TodayWalks extends Component {
         }];
         return (
             <div className="TodayWalks">
-                {/* React Table Test */}
                 <div className="TodayWalks__reactTableUpcoming">
+                <span className="TodayWalks__reactTableUpcoming--title">Upcoming Walks: </span>
                     {this.state.walks.length ? (
                         <ReactTable
                             data={walks}
@@ -527,11 +527,12 @@ class TodayWalks extends Component {
                             }}
                         />
                     ) : (
-                            <p className="TodayWalks__alert"> You don't have any upcoming walks!</p>
+                            <p className="TodayWalks__alert">There are no upcoming walks scheduled.</p>
                         )}
                 </div>
                 <div className="TodayWalks__reactTablePast">
                     {/* <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Map the Walk</button> */}
+                    <span className="TodayWalks__reactTablePast--title">Completed Walks: </span>
                     {this.state.pastWalks.length ? (
                         <ReactTable
                             data={pastWalks}
@@ -587,7 +588,7 @@ class TodayWalks extends Component {
                             }}
                         />
                     ) : (
-                            <p className="TodayWalks__alert"> You don't have any completed walks!</p>
+                            <p className="TodayWalks__alert">No history of previous walks found.</p>
                         )}
                 </div>
                 {this.state.mapWalkId ? (

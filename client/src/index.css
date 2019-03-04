@@ -479,6 +479,11 @@ a {
     display: flex;
     flex-wrap: wrap;
     box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .TodayWalks__reactTableUpcoming--title {
+      color: #1190cb;
+      font-size: 2em;
+      font-family: "Mouse Memoirs", sans-serif;
+      margin-left: 1em; }
     .TodayWalks__reactTableUpcoming--table {
       width: 100%; }
   .TodayWalks__reactTablePast {
@@ -489,6 +494,11 @@ a {
     display: flex;
     flex-wrap: wrap;
     box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
+    .TodayWalks__reactTablePast--title {
+      color: #1190cb;
+      font-size: 2em;
+      font-family: "Mouse Memoirs", sans-serif;
+      margin-left: 1em; }
     .TodayWalks__reactTablePast--table {
       width: 100%; }
   .TodayWalks__upcoming {
