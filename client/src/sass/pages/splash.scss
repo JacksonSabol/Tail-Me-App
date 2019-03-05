@@ -1,5 +1,10 @@
 .splash{
-    background-image: radial-gradient($color-medium,$color-dark);
+    &__bg{
+        width: 100%;
+        &--image{
+            width: 100%;
+        }
+    }
     &__grid{
     height: 90%;
     display:grid;

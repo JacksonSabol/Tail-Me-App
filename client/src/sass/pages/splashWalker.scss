@@ -1,190 +1,284 @@
 .walkersplash{
-    background-image: radial-gradient( $color-lightest, $color-mid);
+    // background-image: "../images/splashImage_01.jpg";
+    &__bg{
+        width: 100%;
+        position: relative;
+        text-align: center;
+        color: $color-accentOne;
+        box-shadow: inset 0 0 40px 40px black;
+        &--headingT{
+            font-family: $font-headingC;
+            font-size: 35em;
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%); 
+            animation-name: movingT;
+            animation-duration: 20s;
+            animation-timing-function: ease;
+        }
+        &--headinga{
+            font-family: $font-headingC;
+            font-size: 20em;
+            position: absolute;
+            top: 50%;
+            left: 46%;
+            transform: translate(-50%, -50%);
+            animation-name: movinga;
+            animation-duration: 20s;
+            animation-timing-function: ease; 
+        }
+        &--headingi{
+            font-family: $font-headingC;
+            font-size: 20em;
+            position: absolute;
+            top: 50%;
+            left: 51%;
+            transform: translate(-50%, -50%);
+            animation-name: movingi;
+            animation-duration: 20s;
+            animation-timing-function: ease; 
+        }
+        &--headingl{
+            font-family: $font-headingC;
+            font-size: 20em;
+            position: absolute;
+            top: 50%;
+            left: 54%;
+            transform: translate(-50%, -50%);
+            animation-name: movingl;
+            animation-duration: 20s;
+            animation-timing-function: ease; 
+        }
+        &--headingm{
+            font-family: $font-headingC;
+            font-size: 29em;
+            position: absolute;
+            top: 50%;
+            left: 64%;
+            transform: translate(-50%, -50%);
+            animation-name: movingm;
+            animation-duration: 20s;
+            animation-timing-function: ease-out; 
+        }
+        &--headinge{
+            font-family: $font-headingC;
+            font-size: 20em;
+            position: absolute;
+            top: 50%;
+            left: 74%;
+            transform: translate(-50%, -50%);
+            animation-name: movinge;
+            animation-duration: 20s;
+            animation-timing-function: ease-out; 
+        }
+        &--image{
+            width: 100%;
+            position: relative;
+            z-index: -2;
+        }
+        &--imageshadow {
+            width: 100%;
+            box-shadow: inset 0 0 30em 15em $color-darkest;
+
+        }
+        &--subheadingA{
+            font-size: 4em;
+            color: $color-accentWhite;
+            position: absolute;
+            top: 70%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            animation-name: subheadingFade;
+            animation-duration: 20s;
+            animation-timing-function: ease;
+
+        }
+        &--subheadingB{
+            font-size: 4em;
+            color: $color-accentWhite;
+            position: absolute;
+            top: 75%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            animation-name: subheadingFade;
+            animation-duration: 20s;
+            animation-timing-function: ease;
+            
+        }
+        &--icon{
+            height: 60em;
+            position: absolute;
+            opacity: .20;
+            top:32.5%;
+            left: 84%;
+            transform: translate(-50%, -50%);
+            animation-name: iconFade;
+            animation-duration: 20s;
+            animation-timing-function: ease;
+        }
+    }
+    &__nav{
+        position: sticky;
+        width: 100%;
+        top: 0;
+        height: 10em;
+        background: $color-darkest;
+        z-index: 2;
+            &--userregistration{
+                float: right;
+                font-family: $font-sans;
+                font-size: 2em;
+                text-align: center;
+                color: $color-accentWhite;
+                background-color: transparent;
+                padding: .5em 1em;
+                margin: .5em 1em;
+                border-left: 2px solid $color-accentWhite;
+                outline: none;
+                text-decoration: none;
+            }
+            &--userregistration:hover{
+                background-color: transparent;
+                color: $color-accentOne;
+                text-shadow: 2px 2px 8px $color-accentOne;
+                outline: none; 
+                text-decoration: none
+            }
+        
+        
+            
+            &--walkerauthentification{
+                float: right;
+                font-family: $font-sans;
+                font-size: 2em;
+                text-align: center;
+                color: $color-accentWhite;
+                background-color: transparent;
+                padding: .5em 1em;
+                border-left: solid 2px $color-accentWhite;
+                margin: .5em 1em;
+                outline: none;
+                text-decoration: none;  
+            }
+            &--walkerauthentification:hover{
+                background-color: transparent;
+                color: $color-accentOne;
+                text-shadow: 2px 2px 8px $color-accentOne;
+                outline: none; 
+                text-decoration: none; 
+            }
+            &--walkerregistration{
+                float: right;
+                font-family: $font-sans;
+                font-size: 2em;
+                text-align: center;
+                color: $color-accentWhite;
+                background-color: transparent;
+                padding: .5em 1em;
+                // border-left: solid 2px $color-accentWhite;
+                margin: .5em 1em;
+                outline: none;
+                text-decoration: none;  
+            }
+            &--walkerregistration:hover{
+                background-color: transparent;
+                color: $color-accentOne;
+                text-shadow: 2px 2px 8px $color-accentOne;
+                outline: none; 
+                text-decoration: none; 
+            }
+        }
     &__grid{
-    height: 90%;
-    color: $color-darkest;
+    color: $color-lightest;
     display:grid;
-    grid-template-columns: .75fr 1fr  1fr .75fr;
-    grid-template-rows:  auto auto 1fr;
-    grid-template-areas:
-       
-        ". l  l ."
-        ". a  w ."
-        "f f f f ";
-        
-    grid-gap: 4em;
-    // justify-content: center;
-    // align-content: center;
+    grid-template-columns: .5fr 1fr 1fr 1fr .5fr;
+    grid-template-rows: 1fr auto auto auto auto auto 1fr;   
+    grid-gap: 6em;
+    justify-content: center;
+    align-content: center;
+    &--logo{
+      grid-area: 1/3;
+      margin-top: 4em;
+      justify-self: center; 
+      border-bottom: solid 2px $color-accentOne;
     }
-    &__logo{
-      grid-area: l;
-      margin-top: 2em;
-      justify-self: center;  
+    &--text{
+        grid-area: 2/2/3/5;
+        font-size: 2.5em;
+        justify-self: center;
+        margin: 4em;
     }
-    &__about{
-        grid-area: a;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr auto auto;
-        grid-template-areas:
-        "t t t"
-        "e e e"
-        "g g g";
-        
-        &--text{
-            grid-area: t;
-            font-size: 2.5em;
-            color: $color-darkest;
-            margin: 1em;
-            text-align: center;
-        }
-        &--link{
-            grid-area: e;
-            font-family: $font-sans;
-            font-size: 3em;
-            text-align: center;
-            color: $color-accentWhite;
-            background-color: $color-accentOne;
-            padding: .5em 1em;
-            border-radius: .5em;
-            border: solid 2px $color-accentWhite;
-            margin: 1em 0em;
-            box-shadow:  .2em .2em  .5em .1em $color-medium;
-            outline: none;
-            text-decoration: none;  
-        }
-        &--link:hover{
-            background-color: transparent;
-            letter-spacing: 0.1em;
-            color: $color-accentOne;
-            text-shadow: 2px 2px 8px $color-accentOne;
-            outline: none; 
-            text-decoration: none; 
-        }
-        &--userregistration{
-            grid-area: g;
-            font-family: $font-sans;
-            font-size: 3em;
-            text-align: center;
-            color: $color-accentWhite;
-            background-color: $color-accentOne;
-            padding: .5em 1em;
-            border-radius: .5em;
-            border: solid 2px $color-accentWhite;
-            margin: 1em 0em;
-            box-shadow:  .2em .2em  .5em .1em $color-medium;
-            outline: none;
-            text-decoration: none;
-        }
-        &--userregistration:hover{
-            background-color: transparent;
-            letter-spacing: 0.1em;
-            color: $color-accentOne;
-            text-shadow: 2px 2px 8px $color-accentOne;
-            outline: none; 
-            text-decoration: none
-        }
+   
+    
+    &--profileIcon{
+        grid-area: 3/2;
+        height: 12em;
+        justify-self: center;
+    }
+    &--profileText{
+        grid-area: 4/2;
+        font-size: 2em;
 
     }
-    &__user{
-        grid-area: u;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr auto auto;
-        grid-template-areas:
-        "t t t"
-        "c c c"
-        "b b b";
-        &--text{
-            grid-area: t;
-            font-size: 2.5em;
-            color: $color-light;
-            margin: 1em;
-            text-align: center;
-        }
-        &--registration{
-            grid-area: b;
-            font-size: 2em;
-            text-align: center;
-            color: $color-lightest;
-            background-color: $color-dark;
-            padding: 1em 2em;
-            border-radius: .5em;
-            border: solid 2px $color-darkest;
-            margin: 1em;
-        }
-        &--registration:hover{
-            background-color: $color-darkest;
-            letter-spacing: 0.1em;
-            color: $color-accentOne;
-            text-shadow: 2px 2px 8px $color-accentOne;
-        }
+    &--walkIcon{
+        grid-area: 3/3;
+        height: 12em;
+        justify-self: center;
     }
-    &__walker{
-        grid-area: w;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr auto auto;
-        grid-template-areas:
-        "t t t"
-        "c c c"
-        "b b b";
-        &--text{
-            grid-area: t;
-            font-size: 2.5em;
-            color: $color-darkest;
-            margin: 1em;
-            text-align: center;
-        }
-        &--authentification{
-            grid-area: c;
-            font-family: $font-sans;
-            font-size: 3em;
-            text-align: center;
-            color: $color-accentWhite;
-            background-color: $color-accentOne;
-            padding: .5em 1em;
-            border-radius: .5em;
-            border: solid 2px $color-accentWhite;
-            margin: 1em 0em;
-            box-shadow:  .2em .2em  .5em .1em $color-medium;
-            outline: none;
-            text-decoration: none;  
-        }
-        &--authentification:hover{
-            background-color: transparent;
-            letter-spacing: 0.1em;
-            color: $color-accentOne;
-            text-shadow: 2px 2px 8px $color-accentOne;
-            outline: none; 
-            text-decoration: none; 
-        }
-        &--registration{
-            grid-area: b;
-            font-family: $font-sans;
-            font-size: 3em;
-            text-align: center;
-            color: $color-accentWhite;
-            background-color: $color-accentOne;
-            padding: .5em 1em;
-            border-radius: .5em;
-            border: solid 2px $color-accentWhite;
-            margin: 1em 0em;
-            box-shadow:  .2em .2em  .5em .1em $color-medium;
-            outline: none;
-            text-decoration: none;  
-        }
-        &--registration:hover{
-            background-color: transparent;
-            letter-spacing: 0.1em;
-            color: $color-accentOne;
-            text-shadow: 2px 2px 8px $color-accentOne;
-            outline: none; 
-            text-decoration: none; 
-        }
+    &--walkText{
+        grid-area: 4/3;
+        font-size: 2em;
+
     }
+    &--scheduleIcon{
+        grid-area: 3/4;
+        height: 12em;
+        justify-self: center;
+    }
+    &--scheduleText{
+        grid-area: 4/4;
+        font-size: 2em;
+
+    }
+    &--inviteIcon{
+        grid-area: 5/2;
+        height: 12em;
+        justify-self: center;
+    }
+    &--inviteText{
+        grid-area: 6/2;
+        font-size: 2em;
+
+    }
+    &--mapIcon{
+        grid-area: 5/3;
+        height: 12em;
+        justify-self: center;
+    }
+    &--mapText{
+        grid-area: 6/3;
+        font-size: 2em;
+
+    }
+    &--imagesIcon{
+        grid-area: 5/4;
+        height: 12em;
+        justify-self: center;
+    }
+    &--imagesText{
+        grid-area: 6/4;
+        font-size: 2em;
+
+    }
+   
+    
+}
+       
+  
     &__footer{
-        grid-area: f;
+        margin-top: 8em;
+        grid-area: 7/3;
         display: flex;
         justify-content: center;
     }
