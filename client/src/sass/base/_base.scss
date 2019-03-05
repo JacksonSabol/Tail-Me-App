@@ -12,7 +12,7 @@ html {
       font-size: 75%; //1rem = 12px 12/16 = 75%
     }
     @include responsive(t-view) {
-      font-size: 87%;
+      font-size: 67%;
     }
   
     @include responsive(t-land) { // width < 1200?
