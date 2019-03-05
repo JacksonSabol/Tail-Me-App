@@ -11,6 +11,9 @@ html {
     @include responsive(l-desk) {
       font-size: 75%; //1rem = 12px 12/16 = 75%
     }
+    @include responsive(t-view) {
+      font-size: 87%;
+    }
   
     @include responsive(t-land) { // width < 1200?
       font-size: 56.25%; //1rem = 9px 9/16 = 56.25%

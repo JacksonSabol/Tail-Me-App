@@ -8,7 +8,7 @@
         box-shadow: inset 0 0 40px 40px black;
         &--headingT{
             font-family: $font-headingC;
-            font-size: 40em;
+            font-size: 35em;
             position: absolute;
             top: 50%;
             left: 40%;
@@ -19,7 +19,7 @@
         }
         &--headinga{
             font-family: $font-headingC;
-            font-size: 25em;
+            font-size: 20em;
             position: absolute;
             top: 50%;
             left: 46%;
@@ -30,7 +30,7 @@
         }
         &--headingi{
             font-family: $font-headingC;
-            font-size: 25em;
+            font-size: 20em;
             position: absolute;
             top: 50%;
             left: 51%;
@@ -41,7 +41,7 @@
         }
         &--headingl{
             font-family: $font-headingC;
-            font-size: 25em;
+            font-size: 20em;
             position: absolute;
             top: 50%;
             left: 54%;
@@ -52,7 +52,7 @@
         }
         &--headingm{
             font-family: $font-headingC;
-            font-size: 34em;
+            font-size: 29em;
             position: absolute;
             top: 50%;
             left: 64%;
@@ -63,10 +63,10 @@
         }
         &--headinge{
             font-family: $font-headingC;
-            font-size: 25em;
+            font-size: 20em;
             position: absolute;
             top: 50%;
-            left: 72%;
+            left: 74%;
             transform: translate(-50%, -50%);
             animation-name: movinge;
             animation-duration: 20s;
@@ -83,7 +83,7 @@
 
         }
         &--subheadingA{
-            font-size: 6em;
+            font-size: 4em;
             color: $color-accentWhite;
             position: absolute;
             top: 70%;
@@ -95,7 +95,7 @@
 
         }
         &--subheadingB{
-            font-size: 6em;
+            font-size: 4em;
             color: $color-accentWhite;
             position: absolute;
             top: 75%;
@@ -128,7 +128,7 @@
             &--userregistration{
                 float: right;
                 font-family: $font-sans;
-                font-size: 3em;
+                font-size: 2em;
                 text-align: center;
                 color: $color-accentWhite;
                 background-color: transparent;
@@ -151,7 +151,7 @@
             &--walkerauthentification{
                 float: right;
                 font-family: $font-sans;
-                font-size: 3em;
+                font-size: 2em;
                 text-align: center;
                 color: $color-accentWhite;
                 background-color: transparent;
@@ -171,7 +171,7 @@
             &--walkerregistration{
                 float: right;
                 font-family: $font-sans;
-                font-size: 3em;
+                font-size: 2em;
                 text-align: center;
                 color: $color-accentWhite;
                 background-color: transparent;
@@ -205,7 +205,7 @@
     }
     &--text{
         grid-area: 2/2/3/5;
-        font-size: 4em;
+        font-size: 2.5em;
         justify-self: center;
         margin: 4em;
     }
@@ -218,7 +218,7 @@
     }
     &--profileText{
         grid-area: 4/2;
-        font-size: 3em;
+        font-size: 2em;
 
     }
     &--walkIcon{
@@ -228,7 +228,7 @@
     }
     &--walkText{
         grid-area: 4/3;
-        font-size: 3em;
+        font-size: 2em;
 
     }
     &--scheduleIcon{
@@ -238,7 +238,7 @@
     }
     &--scheduleText{
         grid-area: 4/4;
-        font-size: 3em;
+        font-size: 2em;
 
     }
     &--inviteIcon{
@@ -248,7 +248,7 @@
     }
     &--inviteText{
         grid-area: 6/2;
-        font-size: 3em;
+        font-size: 2em;
 
     }
     &--mapIcon{
@@ -258,7 +258,7 @@
     }
     &--mapText{
         grid-area: 6/3;
-        font-size: 3em;
+        font-size: 2em;
 
     }
     &--imagesIcon{
@@ -268,7 +268,7 @@
     }
     &--imagesText{
         grid-area: 6/4;
-        font-size: 3em;
+        font-size: 2em;
 
     }
    
