@@ -68,12 +68,12 @@ router.route("/createOwner/:owneruserid/:specialcode/:walkerid")
   .post(globalController.createOwner);
 
 router.route("/walk/uploadImage")
-  .post(walkerController.addImagesToWalk);
+  .post(walkerController.addImagesToUser);
 
 router.route("/walk/image/update/:ImageID")
   .put(walkerController.updateImageSentStatus);
 
-router.route("/walk/checkImage/:walkId/:imageId")
+router.route("/walk/checkImage/:userId/:imageId")
   .get(walkerController.checkImageExist);
 
 router.route("/walk/:walkId/addNote")

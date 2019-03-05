@@ -308,7 +308,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  addImagesToWalk: function (req, res) {
+  addImagesToUser: function (req, res) {
     db.walkImages
       .create(
         req.body,
@@ -339,7 +339,7 @@ module.exports = {
     db.walkImages
       .findOne({
         where: {
-          walkId: req.params.walkId,
+          userId: req.params.userId,
           imageId: req.params.imageId
         }
       })
