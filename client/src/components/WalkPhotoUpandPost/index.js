@@ -93,7 +93,7 @@ class WalkPhotoUpandPost extends Component {
 
     loadOwners = () => {
         console.log("Dog Owner")
-        const idWalker = 1;
+        const idWalker = this.props.walkerId;
 
         API.getDogOwners(idWalker)
            .then(res => {
