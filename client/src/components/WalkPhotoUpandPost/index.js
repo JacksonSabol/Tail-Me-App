@@ -89,28 +89,11 @@ class WalkPhotoUpandPost extends Component {
         this.setState({ selectedOptions: options });
     }
 
-    /* Load walks for the dropdown Should we only display the walks of the day? Of the month? Walks that have no pictures?*/
-    /* loadWalks = () => {
-        const idWalker = this.props.WalkerID;
-        API.getMyWalks(idWalker)
-            .then(res => {
-
-                const dataWalks = res.data.map(data => {
-
-                    const dataWalks = {
-                        label: `${data.walkDate} - ${data.dogOwner.dogName}`,
-                        value: data.id
-                    }
-                    return (dataWalks)
-                })
-                this.setState({ walksList: dataWalks })
-            })
-            .catch(err => console.log(err));
-    } */
+    
 
     loadOwners = () => {
         console.log("Dog Owner")
-        const idWalker = 1;
+        const idWalker = this.props.walkerId;
 
         API.getDogOwners(idWalker)
            .then(res => {
@@ -118,7 +101,7 @@ class WalkPhotoUpandPost extends Component {
                const dataDogOwners = res.data.map(data => {
                    const dataOwners = {
                        label: `${data.user.firstName} ${data.user.lastName} - ${data.dogName}`,
-                       value: data.id
+                       value: data.userId
                    }
                    return (dataOwners)
                })
@@ -127,39 +110,6 @@ class WalkPhotoUpandPost extends Component {
            .catch(err => console.log(err));
    }
  
-
-    /* TO BE REPLACED BY ISABEL USE CLOUDINARY WIDGET  */
-    // handleDrop = files => {
-    //     // Push all the axios request promise into a single array
-
-    //     const walkerId = this.props.WalkerID;
-    //     const uploaders = files.map(file => {
-    //         // Initial FormData
-
-    //         const formData = new FormData();
-    //         formData.append("file", file);
-    //         formData.append("upload_preset", `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
-    //         formData.append("api_key", `${process.env.REACT_APP_CLOUDINARY_API_KEY}`); // Replace API key with your own Cloudinary key
-    //         formData.append("timestamp", (Date.now() / 1000) | 0);
-    //         formData.append("folder", 'tailMeApp');
-
-    //         API.addPicturesToCloudinary(formData)
-    //             .then(response => {
-    //                 const data = response.data;
-    //                 const fileURL = data.secure_url; // You should store this URL for future references in your app
-    //                 const imageData = {
-
-    //                     url: fileURL
-    //                 }
-
-    //                 API.uploadPhotoWalks(imageData, walkerId )
-    //                     .then(res => {
-    //                         this.loadImages()
-    //                     })
-    //             }).catch(err => console.log("ERROR", err));
-    //     })
-    // }
-
     /* Push image to gallery with selected state */
     onSelectImage(index, image) {
         const images = this.state.images.slice();
@@ -187,7 +137,7 @@ class WalkPhotoUpandPost extends Component {
         /* Have to figure out how to make just one iteration */
         this.state.selectedOptions.map(user => {
             /* Iterate through Selected Images */
-            console.log("USER VALUE" , user.value)
+      
             selectedImages.map(data => {
 
                 /* Check if the image is already on the mapping table and skip the insertion if exist - we should figure out what to do with the already mapped images.. or just leave it ..  But now is not possible to know which image is alrready mapped to which walk ..  */
@@ -211,7 +161,7 @@ class WalkPhotoUpandPost extends Component {
 
         /* Filter the Selected images form the gallery */
         const selectedImages = this.state.galleryAll.filter(image => image.isSelected === true)
-        
+
         /* Iterate through Selected Walks */
         this.state.selectedOptions.map(user => {
             /* Iterate through Selected Images */
@@ -219,7 +169,7 @@ class WalkPhotoUpandPost extends Component {
             selectedImages.map(data => {
 
                 /* Check if the image is already on the mapping table and skip the insertion if exist - we should figure out what to do with the already mapped images.. or just leave it ..  But now is not possible to know which image is alrready mapped to which walk ..  */
-                console.log("User Info", user.value)
+               
                 API.checkImageExist(user.value, data.id)
                     .then(res => {
 
@@ -235,28 +185,14 @@ class WalkPhotoUpandPost extends Component {
         })
     }
 
-    /* ANY CLUE WHY THIS DOESNT WORK?   */
-    /* IT DOESN RETURN THE VALUE */
-    /*   checkIfImageExist(walkId, imageId) {
-    
-          
-          API.checkImageExist(walkId, imageId)
-              .then(res => {
-                //  console.log("length",res.data)
-                 const checkImage  = res.data ? false : true
-                  
-                  return checkImage
-              })
-             
-             
-      } */
-
     /* Map images with walks*/
     insertData(userId, imageId) {
         const dataImage = {
             userId: userId,
             imageId: imageId
         }
+        console.log("insertData" , userId)
+        console.log("insertData image" , imageId)
         API.addImagesToUser(dataImage)
             .then(res => {
                 API.updateImageSentStatus(imageId)
@@ -269,9 +205,7 @@ class WalkPhotoUpandPost extends Component {
 
     checkUploadResult = (result) => {
         if (result.event === 'success') {
-            console.log(result)
-            console.log(result.info.url)
-            // const data = response.data;
+          
             const walkerId = this.props.WalkerID;
             const fileURL = result.info.url; // You should store this URL for future references in your app
             const imageData = {
@@ -326,7 +260,7 @@ class WalkPhotoUpandPost extends Component {
                 <div>
                     <button className="dropzoneButton" onClick={this.loadAllImages}>Load All (Including Sent) Images</button>
                     {this.state.showSentButton ? (
-                        <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Add Sent Images to the Walk</button>
+                        <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Add Sent Images to the User</button>
                     ) : (null)
                     }
                     < Gallery

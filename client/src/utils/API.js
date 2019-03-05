@@ -110,7 +110,7 @@ export default {
 
     },
 
-    addImagesToWalk: function (data) {
+    addImagesToUser: function (data) {
         return axios.post(`/api/walker/walk/uploadImage`, data)
 
     },
@@ -119,9 +119,9 @@ export default {
         return axios.put(`/api/walker/walk/image/update/${imageId}`)
     },
 
-    checkImageExist: function (walkId, imageId) {
+    checkImageExist: function (userId, imageId) {
         console.log("IMAGE")
-        return axios.get(`/api/walker/walk/checkImage/${walkId}/${imageId}`)
+        return axios.get(`/api/walker/walk/checkImage/${userId}/${imageId}`)
     },
 
     addNote: function (walkId, notes) {
