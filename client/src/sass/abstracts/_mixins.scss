@@ -13,16 +13,32 @@
       @media only screen and (max-width: 37.5em) { @content }; //600px 
     }
   
+    @if $breakpoint == t-port-phone {
+      @media only screen and (max-width: 47.5em) { @content }; //760px
+    }
+    
     @if $breakpoint == t-port {
-      @media only screen and (max-width: 52.5em) { @content }; //900px
+      @media only screen and (max-width: 56.25em) { @content }; //900px
+    }
+
+    @if $breakpoint == t-port-mid-land {
+      @media only screen and (max-width: 63.125em) { @content }; //1010px
+    }
+
+    @if $breakpoint == t-port-land {
+      @media only screen and (max-width: 66.25em) { @content }; //1060px
     }
   
+    @if $breakpoint == t-land-port {
+      @media only screen and (max-width: 70.625em) { @content }; // 1130px
+    }
+
     @if $breakpoint == t-land {
-      @media only screen and (max-width: 75em) { @content }; //1200px
+      @media only screen and (max-width: 78.75em) { @content }; //1200px
     }
 
     @if $breakpoint == t-view {
-      @media only screen and (max-width: 93em) { @content }; 
+      @media only screen and (max-width: 89em) { @content }; 
     }
   
     @if $breakpoint == l-desk {

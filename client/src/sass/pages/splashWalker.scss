@@ -5,7 +5,13 @@
         position: relative;
         text-align: center;
         color: $color-accentOne;
-        box-shadow: inset 0 0 40px 40px black;
+        box-shadow: inset 0 0 1.5em .75em $color-darkest;
+        @include responsive(t-port) { // width < 900
+            box-shadow: inset 0 0 0.75em 0.375em $color-darkest;
+        }
+        @include responsive(phone) { // width < 600
+            box-shadow: inset 0 0 0.375em 0.1875em $color-darkest;
+        }
         &--headingT{
             font-family: $font-headingC;
             font-size: 35em;
@@ -83,7 +89,7 @@
 
         }
         &--subheadingA{
-            font-size: 4em;
+            font-size: 3em;
             color: $color-accentWhite;
             position: absolute;
             top: 70%;
@@ -95,7 +101,7 @@
 
         }
         &--subheadingB{
-            font-size: 4em;
+            font-size: 3em;
             color: $color-accentWhite;
             position: absolute;
             top: 75%;
@@ -116,6 +122,12 @@
             animation-name: iconFade;
             animation-duration: 20s;
             animation-timing-function: ease;
+            @include responsive(t-port) { // width < 900
+                height: 40em; 
+            }
+            @include responsive(phone) { // width < 600
+                height: 25em; 
+            }
         }
     }
     &__nav{
@@ -125,6 +137,12 @@
         height: 10em;
         background: $color-darkest;
         z-index: 2;
+        @include responsive(t-port-mid-land) { // width < 1010
+            height: 6em; 
+        }
+        @include responsive(t-port-phone) { // width < 760
+            height: 4em; 
+        }
             &--userregistration{
                 float: right;
                 font-family: $font-sans;
@@ -193,21 +211,27 @@
     color: $color-lightest;
     display:grid;
     grid-template-columns: .5fr 1fr 1fr 1fr .5fr;
-    grid-template-rows: 1fr auto auto auto auto auto 1fr;   
-    grid-gap: 6em;
+    grid-template-rows: auto 1fr auto auto auto auto 1fr;   
+    grid-gap: 4em;
     justify-content: center;
     align-content: center;
     &--logo{
-      grid-area: 1/3;
-      margin-top: 4em;
-      justify-self: center; 
-      border-bottom: solid 2px $color-accentOne;
+        grid-area: 1/2/2/5;
+        margin-top: 4em;
+        justify-self: center; 
+        border-bottom: solid 2px $color-accentOne;
+        @include responsive(t-port) { // width < 900
+            width: 20em; 
+        }
     }
     &--text{
         grid-area: 2/2/3/5;
         font-size: 2.5em;
         justify-self: center;
-        margin: 4em;
+        margin: 0 4em 4em 4em;
+        @include responsive(t-port) { // width < 900
+            margin: 0 4em 4em 4em;
+        }
     }
    
     
@@ -215,6 +239,9 @@
         grid-area: 3/2;
         height: 12em;
         justify-self: center;
+        @include responsive(t-port) { // width < 900
+            height: 8em; //1rem = 8px 8/16 = 50%
+        }
     }
     &--profileText{
         grid-area: 4/2;
@@ -225,6 +252,9 @@
         grid-area: 3/3;
         height: 12em;
         justify-self: center;
+        @include responsive(t-port) { // width < 900
+            height: 8em; //1rem = 8px 8/16 = 50%
+        }
     }
     &--walkText{
         grid-area: 4/3;
@@ -235,6 +265,9 @@
         grid-area: 3/4;
         height: 12em;
         justify-self: center;
+        @include responsive(t-port) { // width < 900
+            height: 8em; //1rem = 8px 8/16 = 50%
+        }
     }
     &--scheduleText{
         grid-area: 4/4;
@@ -245,6 +278,9 @@
         grid-area: 5/2;
         height: 12em;
         justify-self: center;
+        @include responsive(t-port) { // width < 900
+            height: 8em; //1rem = 8px 8/16 = 50%
+        }
     }
     &--inviteText{
         grid-area: 6/2;
@@ -255,6 +291,9 @@
         grid-area: 5/3;
         height: 12em;
         justify-self: center;
+        @include responsive(t-port) { // width < 900
+            height: 8em; //1rem = 8px 8/16 = 50%
+        }
     }
     &--mapText{
         grid-area: 6/3;
@@ -265,6 +304,9 @@
         grid-area: 5/4;
         height: 12em;
         justify-self: center;
+        @include responsive(t-port) { // width < 900
+            height: 8em; //1rem = 8px 8/16 = 50%
+        }
     }
     &--imagesText{
         grid-area: 6/4;
@@ -278,7 +320,7 @@
   
     &__footer{
         margin-top: 8em;
-        grid-area: 7/3;
+        grid-area: 7/2/8/5;
         display: flex;
         justify-content: center;
     }

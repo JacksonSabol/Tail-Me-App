@@ -39,8 +39,8 @@ class splashWalker extends Component {
                     <div className="walkersplash__bg--headingl">l</div>
                     <div className="walkersplash__bg--headingm">M</div>
                     <div className="walkersplash__bg--headinge">e</div>
-                    <div className="walkersplash__bg--subheadingA">The place for independent DOG walkers to </div>
-                    <div className="walkersplash__bg--subheadingB">manage their clients </div>
+                    <div className="walkersplash__bg--subheadingA">The place for independent DOG walkers </div>
+                    <div className="walkersplash__bg--subheadingB">to manage their clients </div>
                     <div className="walkersplash__bg--imageshadow">
                         <img className="walkersplash__bg--image" src={Background} alt="open field"></img>
                     </div>

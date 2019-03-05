@@ -281,21 +281,33 @@ html {
   @media only screen and (min-width: 112.5em) {
     html {
       font-size: 75%; } }
-  @media only screen and (max-width: 93em) {
+  @media only screen and (max-width: 89em) {
     html {
-      font-size: 67%; } }
-  @media only screen and (max-width: 75em) {
+      font-size: 62.5%; } }
+  @media only screen and (max-width: 78.75em) {
     html {
       font-size: 56.25%; } }
-  @media only screen and (max-width: 52.5em) {
+  @media only screen and (max-width: 70.625em) {
     html {
-      font-size: 50%; } }
-  @media only screen and (max-width: 37.5em) {
+      font-size: 53%; } }
+  @media only screen and (max-width: 66.25em) {
+    html {
+      font-size: 51%; } }
+  @media only screen and (max-width: 63.125em) {
+    html {
+      font-size: 45%; } }
+  @media only screen and (max-width: 56.25em) {
     html {
       font-size: 37.5%; } }
+  @media only screen and (max-width: 47.5em) {
+    html {
+      font-size: 30%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 25.5%; } }
   @media only screen and (max-width: 33em) {
     html {
-      font-size: 29%; } }
+      font-size: 22%; } }
   @media only screen and (max-width: 25.5em) {
     html {
       font-size: 20%; } }
@@ -3049,7 +3061,13 @@ button.css-48ayfv {
   position: relative;
   text-align: center;
   color: #1190cb;
-  box-shadow: inset 0 0 40px 40px black; }
+  box-shadow: inset 0 0 1.5em 0.75em #1a1a1a; }
+  @media only screen and (max-width: 56.25em) {
+    .walkersplash__bg {
+      box-shadow: inset 0 0 0.75em 0.375em #1a1a1a; } }
+  @media only screen and (max-width: 37.5em) {
+    .walkersplash__bg {
+      box-shadow: inset 0 0 0.375em 0.1875em #1a1a1a; } }
   .walkersplash__bg--headingT {
     font-family: "Carter One", cursive;
     font-size: 35em;
@@ -3118,7 +3136,7 @@ button.css-48ayfv {
     width: 100%;
     box-shadow: inset 0 0 30em 15em #1a1a1a; }
   .walkersplash__bg--subheadingA {
-    font-size: 4em;
+    font-size: 3em;
     color: #e7f6fd;
     position: absolute;
     top: 70%;
@@ -3128,7 +3146,7 @@ button.css-48ayfv {
     animation-duration: 20s;
     animation-timing-function: ease; }
   .walkersplash__bg--subheadingB {
-    font-size: 4em;
+    font-size: 3em;
     color: #e7f6fd;
     position: absolute;
     top: 75%;
@@ -3147,6 +3165,12 @@ button.css-48ayfv {
     animation-name: iconFade;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--icon {
+        height: 40em; } }
+    @media only screen and (max-width: 37.5em) {
+      .walkersplash__bg--icon {
+        height: 25em; } }
 
 .walkersplash__nav {
   position: sticky;
@@ -3155,6 +3179,12 @@ button.css-48ayfv {
   height: 10em;
   background: #1a1a1a;
   z-index: 2; }
+  @media only screen and (max-width: 63.125em) {
+    .walkersplash__nav {
+      height: 6em; } }
+  @media only screen and (max-width: 47.5em) {
+    .walkersplash__nav {
+      height: 4em; } }
   .walkersplash__nav--userregistration {
     float: right;
     font-family: "Thasadith", sans-serif;
@@ -3213,24 +3243,33 @@ button.css-48ayfv {
   color: #e6e6e6;
   display: grid;
   grid-template-columns: .5fr 1fr 1fr 1fr .5fr;
-  grid-template-rows: 1fr auto auto auto auto auto 1fr;
-  grid-gap: 6em;
+  grid-template-rows: auto 1fr auto auto auto auto 1fr;
+  grid-gap: 4em;
   justify-content: center;
   align-content: center; }
   .walkersplash__grid--logo {
-    grid-area: 1/3;
+    grid-area: 1/2/2/5;
     margin-top: 4em;
     justify-self: center;
     border-bottom: solid 2px #1190cb; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--logo {
+        width: 20em; } }
   .walkersplash__grid--text {
     grid-area: 2/2/3/5;
     font-size: 2.5em;
     justify-self: center;
-    margin: 4em; }
+    margin: 0 4em 4em 4em; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--text {
+        margin: 0 4em 4em 4em; } }
   .walkersplash__grid--profileIcon {
     grid-area: 3/2;
     height: 12em;
     justify-self: center; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--profileIcon {
+        height: 8em; } }
   .walkersplash__grid--profileText {
     grid-area: 4/2;
     font-size: 2em; }
@@ -3238,6 +3277,9 @@ button.css-48ayfv {
     grid-area: 3/3;
     height: 12em;
     justify-self: center; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--walkIcon {
+        height: 8em; } }
   .walkersplash__grid--walkText {
     grid-area: 4/3;
     font-size: 2em; }
@@ -3245,6 +3287,9 @@ button.css-48ayfv {
     grid-area: 3/4;
     height: 12em;
     justify-self: center; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--scheduleIcon {
+        height: 8em; } }
   .walkersplash__grid--scheduleText {
     grid-area: 4/4;
     font-size: 2em; }
@@ -3252,6 +3297,9 @@ button.css-48ayfv {
     grid-area: 5/2;
     height: 12em;
     justify-self: center; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--inviteIcon {
+        height: 8em; } }
   .walkersplash__grid--inviteText {
     grid-area: 6/2;
     font-size: 2em; }
@@ -3259,6 +3307,9 @@ button.css-48ayfv {
     grid-area: 5/3;
     height: 12em;
     justify-self: center; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--mapIcon {
+        height: 8em; } }
   .walkersplash__grid--mapText {
     grid-area: 6/3;
     font-size: 2em; }
@@ -3266,13 +3317,16 @@ button.css-48ayfv {
     grid-area: 5/4;
     height: 12em;
     justify-self: center; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__grid--imagesIcon {
+        height: 8em; } }
   .walkersplash__grid--imagesText {
     grid-area: 6/4;
     font-size: 2em; }
 
 .walkersplash__footer {
   margin-top: 8em;
-  grid-area: 7/3;
+  grid-area: 7/2/8/5;
   display: flex;
   justify-content: center; }
 
