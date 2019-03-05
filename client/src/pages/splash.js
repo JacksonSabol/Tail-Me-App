@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import "../index.css";
 import logo from "../images/tailMeLogo.png";
 import Footer from "../components/Footer";
+import Background from "../images/splashImage_01.jpg";
 
 
 class splash extends Component {
     render() {
         return (
             <div className="splash">
+            <div className="splash__bg">
+            <img className="splash__bg--image"src={Background} alt="open field"></img>
                 <div className="splash__grid">
                     <img className="splash__logo" src={logo} alt="tailME logo" ></img>
                     <div className="splash__about">
@@ -40,6 +43,7 @@ class splash extends Component {
                         <Link className="splash__walker--registration" to="/user/LoginWalker">
                             walker log in
                     </Link>
+                    </div> 
                     </div>
                     <div className="splash__footer">
                     <Footer/>
