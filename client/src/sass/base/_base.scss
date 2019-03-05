@@ -12,22 +12,38 @@ html {
       font-size: 75%; //1rem = 12px 12/16 = 75%
     }
     @include responsive(t-view) {
-      font-size: 67%;
+      font-size: 62.5%; 
     }
   
     @include responsive(t-land) { // width < 1200?
       font-size: 56.25%; //1rem = 9px 9/16 = 56.25%
     }
-  
+
+    @include responsive(t-land-port) { // width < 1130
+      font-size: 53%; //
+    }
+
+    @include responsive(t-port-land) { // width < 1060
+      font-size: 51%; //
+    }
+
+    @include responsive(t-port-mid-land) { // width < 1010
+      font-size: 45%; //
+    }
+    
     @include responsive(t-port) { // width < 900?
-      font-size: 50%; //1rem = 8px 8/16 = 50%
+      font-size: 37.5%; //1rem = 8px 8/16 = 50%
+    }
+
+    @include responsive(t-port-phone) { // width < 760?
+      font-size: 30%; //
     }
   
     @include responsive(phone) { // width < 600?
-      font-size: 37.5%; //1rem = 6px 6/16 = 37.5%
+      font-size: 25.5%; //1rem = 6px 6/16 = 37.5%
     }
     @include responsive(mid-mini) { //
-      font-size: 29%; //
+      font-size: 22%; //
     }
     @include responsive(mini) { //
       font-size: 20%; //
