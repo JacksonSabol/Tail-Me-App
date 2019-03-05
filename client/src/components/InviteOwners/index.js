@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import EmailOwner from "./emailOwner"
 import TextOwner from "./textOwner"
 import CustomerList from "../Customers"
+import Tabs from 'react-responsive-tabs';
+import 'react-responsive-tabs/styles.css';
 class InviteOwners extends Component {
     state = {
         walkerName: this.props.walkerName,
@@ -21,58 +23,49 @@ class InviteOwners extends Component {
     renderEmailInvite = () => {
         this.setState({
             inviteText: false,
-            inviteEmail: true
+            inviteEmail: true,
+            custumerList: false
         });
     };
 
     render() {
-        const {
-            inviteText,
-            inviteEmail
-        } = this.state;
 
-        if (inviteText === false && inviteEmail === true) {
-            return (
-                <div className="inviteDash">
-                    <div className="inviteDash__nav">
-                        {/* <button className="inviteDash__nav--emailActive" onClick={this.renderEmailInvite}></button> */}
-                        <button className="inviteDash__nav--buttonEmail" onClick={this.renderEmailInvite} disabled>Invite By Email</button>
-                        {/* <button className="inviteDash__nav--text" onClick={this.renderTextInvite}></button> */}
-                        <button className="inviteDash__nav--buttonText" onClick={this.renderTextInvite}>Invite By Text</button>
-                    </div>
-                    <div className="inviteDash__main-content">
-                        <EmailOwner
-                            walkerId={this.state.walkerId}
-                            walkerName={this.state.walkerName}
-                        />;
-                    </div>
-                    <CustomerList
-                        walkerId={this.state.walkerId}
-                    />
-                </div>
-            );
-        } else {
-            return (
-                <div className="inviteDash">
-                    <div className="inviteDash__nav">
-                        {/* <button className="inviteDash__nav--email" onClick={this.renderEmailInvite}></button> */}
-                        <button className="inviteDash__nav--buttonEmail" onClick={this.renderEmailInvite}>Invite By Email</button>
-                        {/* <button className="inviteDash__nav--textActive" onClick={this.renderTextInvite}></button> */}
-                        <button className="inviteDash__nav--buttonText" onClick={this.renderTextInvite} disabled>Invite By Text</button>
-                    </div>
-                    <div className="inviteDash__main-content">
-                        <TextOwner
-                            walkerId={this.state.walkerId}
-                            walkerName={this.state.walkerName}
-                        />;
-                    </div>
-                    <CustomerList
-                        walkerId={this.state.walkerId}
-                    />
-                </div>
-            );
+        const invites = [
+            {
+                name: 'Invite by Text', component: <TextOwner
+                    walkerId={this.state.walkerId}
+                    walkerName={this.state.walkerName}
+                />
+            },
+            {
+                name: 'Invite by Email', component: <EmailOwner
+                    walkerId={this.state.walkerId}
+                    walkerName={this.state.walkerName}
+                />
+            },
+            {
+                name: 'Customer List', component: <CustomerList
+                    walkerId={this.state.walkerId}
+                />
+            }
+
+        ];
+
+        function getTabs() {
+            return invites.map(invite => ({
+
+                tabClassName: 'tab', // Optional
+                panelClassName: 'panel', // Optional
+                title: invite.name,
+                content: invite.component,
+            }));
         }
-
+        return(
+            <div style={{ width: "80%", margin: "0 auto" }}>
+        <Tabs items={getTabs()} />
+        </div>
+        )
+       
 
     }
 

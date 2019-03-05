@@ -88,7 +88,7 @@ class CustomerList extends Component {
 
         API.editUserData(userId, dogOwnerId, userData).then(res => {
             //prevent reload of the table.. uncomment if reaload wanted.
-           /*  this.loadCustomers(); */
+            /*  this.loadCustomers(); */
         })
     }
 
@@ -145,7 +145,10 @@ class CustomerList extends Component {
         }
         ]
         return (
-            <div style={{ width: "80%", margin: "0 auto" }}>
+            <div className="TodayWalks">
+             
+                 <div /* className="TodayWalks__reactTableUpcoming" */ /* style={{ width: "80%", margin: "0 auto" }} */> 
+                 <span className="TodayWalks__reactTableUpcoming--title">Customer List: </span> 
                 <TreeTable
                     filterable
                     defaultFilterMethod={(filter, row, column) => {
@@ -166,17 +169,17 @@ class CustomerList extends Component {
                     resizable={true}
                     defaultPageSize={5}
                     minRows={3}
-                    className='-striped -highlight'
+                    className="TodayWalks__reactTableUpcoming--table -striped -highlight"
                     pivotBy={["customerName"]}
 
                     SubComponent={row => {
                         // a SubComponent to display edit form
-                       // Dynamic creation of the input fields
+                        // Dynamic creation of the input fields
                         const rowData = Object.keys(row.original).map(key => {
                             return (
                                 <tr key={row.original[key].toString()} >
                                     {(() => {
-                                      //create hidden fields for ids.
+                                        //create hidden fields for ids.
                                         if (key == 'dogOwnerId' || key == 'userId' || key == 'customerName') {
                                             return (
                                                 <React.Fragment>
@@ -226,7 +229,7 @@ class CustomerList extends Component {
                                 <tbody>
                                     {rowData}
                                     <tr><td style={{ textAlign: "center" }} colSpan={2}>
-                                        <button type="submit" value="Edit" className="TodayWalks__past--list-publish-button">Edit </button>
+                                        <button type="submit" value="Edit" className="TodayWalks__past--list-publish-button">Edit Customer Info.</button>
                                     </td></tr>
                                 </tbody>
                             </table>
@@ -235,8 +238,8 @@ class CustomerList extends Component {
 
                     }}
                 />
+                </div>
             </div>
-
         )
     }
 
