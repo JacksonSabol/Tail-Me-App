@@ -427,7 +427,37 @@ module.exports = {
       }
     ) .then(dbModel => res.json(dbModel))
     .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
-  }
+  },
 
+  updatePath: function(req,res) {
+    //Updte the walk coords in the path record
 
+    let data = {
+
+      lat: req.params.lat,
+      lng: req.params.lng,
+      walkId: req.params.walkId
+    }
+
+    db.path
+      .create(data)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => {
+        console.log("Error", err)
+        res.status(422).json(err)
+      });
+    },
+
+    getPath: function(req,res) {
+      //get the walk coords in the path record
+      console.log("getpath-parmas:", req.params)
+      db.path
+      .findAll({
+        where: {
+          walkId: req.params.walkId
+        }
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
+    }
 };

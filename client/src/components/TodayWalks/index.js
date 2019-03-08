@@ -63,6 +63,7 @@ class TodayWalks extends Component {
         mapWalkId: 0,
         noteWalkId: 0,
         images: [],
+        walkPoints: [],
         pastWalks: [],
         showMap: false,
         locationckeck: false,
@@ -72,7 +73,8 @@ class TodayWalks extends Component {
         noteOwnerEmail: "",
         noteDogName: "",
         noteCheckOutTime: 0,
-        enableEmail: false
+        enableEmail: false,
+        intervalID: 0
     }
     handleChange = this.handleChange.bind(this);
     handleSubmit = this.handleSubmit.bind(this);
@@ -90,6 +92,7 @@ class TodayWalks extends Component {
     // Life-cycle function that executes when the components mount (page loads)
     componentDidMount() {
         this.loadWalks();
+
     }
     // Function to load all TodayWalks from the database
     loadWalks = () => {
@@ -134,9 +137,11 @@ class TodayWalks extends Component {
                 // console.log("back from getpics")
                 // console.log("getpics: ", res.data)
                 // console.log("getpics dot image: ", res.data[0].image)
+
                 // this.setState({
                 //   walks: res.data
                 // });
+
                 let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null);
                 // console.log("PICS GPS: ", picsWithGpsInfo)
                 // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
@@ -158,6 +163,30 @@ class TodayWalks extends Component {
             });
     };
 
+    handleOnClickMap = (walkId) => {
+
+        API.getPath(walkId)
+        .then(res => {
+          
+            console.log("path points:", res.data)
+    
+            this.setState({
+                // onClickButton: true,
+                walkPoints: res.data,
+                showmap: true,
+                mapWalkId: walkId,
+                currentLocation: {
+                    lat: parseFloat(res.data[0].lat),
+                    lng: parseFloat(res.data[0].lng)
+                }
+
+            })
+
+        }).catch(err => {
+            console.log(err)
+        });
+    };
+
     _onChange = ({ center, zoom }) => {
         // console.log("Center", this.state.center)
         // console.log("zoom", this.state.zoom)
@@ -177,33 +206,62 @@ class TodayWalks extends Component {
 
 
     handleCheckIn = (walkId, dogName) => {
-
+        console.log("checkin")
         // Pass dogName as an object
         const dogData = {
             dogName: dogName
         }
+
         // if the location in the browser is not activated we update the checkin time and keep the coords we value 0
 
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 let coords = pos.coords;
 
-                // console.log("walkId IN: ", walkId);
-                // console.log("coords IN: ", coords);
+                console.log("coords IN: ", coords);
+               
+                // set the timmer record walk geolocation points 
+
+                this.intervalID = setInterval(() => {
+                    console.log("recpath", walkId)
+                    let options = {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    };
+
+                    function success(pos) {
+                        var crd = pos.coords;
+
+                        console.log('Your current position is:');
+                        console.log(`Latitude : ${crd.latitude}`);
+                        console.log(`Longitude: ${crd.longitude}`);
+                        console.log(`More or less ${crd.accuracy} meters.`);
+                        let coords = pos.coords;
+                        console.log("coords innside recpath", coords)
+
+                        API.updatePath(walkId, coords.latitude, coords.longitude)
+                            .then(res => {
+                                console.log("back from update path")
+                            }).catch(err => {
+                                console.log(err)
+                            });
+                    }
+
+                    function error(err) {
+                        console.warn(`ERROR(${err.code}): ${err.message}`);
+                    }
+
+                    navigator.geolocation.getCurrentPosition(success, error, options);
+
+                }, 300000);
 
 
                 API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude, dogData)
                     .then(res => {
-                        // console.log("back from update checkIn")
-                        // console.log("updateCheck: ", res.data)
-                        // this.setState({
-                        //   walks: res.data
-                        // });
+                   
                         this.loadWalks();
-                        //console.log("data[0]: ", res.data[0].GPSLatitude)
-                        // this.setState({
-                        //   locationckeck: true
-                        // })
+                
                     }).catch(err => {
                         console.log(err)
                     });
@@ -231,14 +289,21 @@ class TodayWalks extends Component {
                     console.log(err)
                 });
         }
+
+
     };
 
     handleCheckOut = (walkId, dogName) => {
+        console.log("checkout")
         // const walkerName = this.props.walkerName;
         // const walkerEmail = this.props.walkerEmail;
         // const ownerName = this.props.ownerName; // Add function to get owner name and/or add it to each dog
         // const ownerEmail = this.props.ownerName; // Add function to get owner email and/or add it to each dog
         // const subject = `Walk Summary for ${dogName} at ${Moment(Date.now()).format("HH:mm - MM/DD/YYYY")}`; // Maybe change to subject field on Modal that autopopulates with this
+
+        // clearTimeout(timeWalk)
+        clearInterval(this.intervalID);
+
         API.getNote(walkId)
             .then(res => {
                 //Here is the note to insert at the bottom of the email
@@ -254,6 +319,7 @@ class TodayWalks extends Component {
                         // console.log("walkId OUT: ", walkId);
                         // console.log("coords OUT: ", coords);
                         // update walks start time and coordinates and end time and coords
+
                         API.updateCheckInOut("out", walkId, coords.latitude, coords.longitude, dataNote)
                             .then(res => {
                                 // console.log("back from update checkIn")
@@ -397,6 +463,7 @@ class TodayWalks extends Component {
             Header: 'Check-In/Check-Out',
             // accessor: data => data.checkInTime,
             // accessor: 'checkInTime',
+
             Cell: row => row.original.checkInTime === null ? (
                 <div><button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, row.original.id, row.original.dogName)}>Check-in </button></div>
             ) : (
@@ -435,7 +502,9 @@ class TodayWalks extends Component {
             // accessor: data => data.dogOwner.dogName,
             accessor: 'dogName',
             Cell: props => <span>{props.value}</span>
-        }, {
+        }, 
+        
+        {
             // id: 'checkinTime',
             Header: 'Check In',
             // accessor: data => data.checkInTime,
@@ -462,6 +531,13 @@ class TodayWalks extends Component {
             Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button></div>
         },
         {
+            // id: '?????',
+            Header: 'Map the Walk',
+            // accessor: data => data.checkInTime,
+            // accessor: 'checkInTime',
+            Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, row.original.id)}>Map</button></div>
+        },
+        {
             // id: 'checkinTime',
             Header: 'Status',
             // accessor: data => data.checkInTime,
@@ -471,7 +547,7 @@ class TodayWalks extends Component {
         return (
             <div className="TodayWalks">
                 <div className="TodayWalks__reactTableUpcoming">
-                <span className="TodayWalks__reactTableUpcoming--title">Upcoming Walks: </span>
+                    <span className="TodayWalks__reactTableUpcoming--title">Upcoming Walks: </span>
                     {this.state.walks.length ? (
                         <ReactTable
                             data={walks}
@@ -531,7 +607,8 @@ class TodayWalks extends Component {
                         )}
                 </div>
                 <div className="TodayWalks__reactTablePast">
-                    {/* <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClick.bind(this, walk.id)}>Map the Walk</button> */}
+                    {/* <button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, 47)}>Map the Walk</button> */}
+
                     <span className="TodayWalks__reactTablePast--title">Completed Walks: </span>
                     {this.state.pastWalks.length ? (
                         <ReactTable
@@ -602,13 +679,13 @@ class TodayWalks extends Component {
                                 center={this.state.currentLocation}
                                 onClick={this._onChange}
                             >
-                                {this.state.images.map(image => (
-                                    <AnyReactComponent key={image.id}///all of the props ie walk.img/walk.lat))}
-                                        id={image.id}
+                                {this.state.walkPoints.map(point => (
+                                    <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
+                                        id={point.id}
                                         icon="../paw-tailme-2020.svg"
-                                        lat={image.image.GPSLatitude}
-                                        lng={image.image.GPSLongitude}
-                                        imageClick={this.handleImgClick}
+                                        lat={point.lat}
+                                        lng={point.lng}
+                                        // imageClick={this.handleImgClick}
                                     />
                                 ))}
                             </GoogleMapReact>

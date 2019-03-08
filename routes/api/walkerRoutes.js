@@ -92,4 +92,10 @@ router.route("/editCustomerInfo/:userId/:dogOwnerId")
 router.route("/deleteUser/:userId")
 .delete(walkerController.deleteUserData);
 
+router.route("/updatepath/:walkId/:lat/:lng")
+.post(walkerController.updatePath);
+
+router.route("/getpath/:walkId")
+.get(walkerController.getPath);
+
 module.exports = router;
