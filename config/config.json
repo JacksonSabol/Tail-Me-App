@@ -21,6 +21,12 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "dialectOptions": {
+      "useUTC": true,
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "-08:00"
   }
 }
