@@ -63,13 +63,15 @@ class WalkerScheduleWalksWalker extends Component {
     return (
       <div className="walkerrdtPicker">
         <p className="walkerrdtPicker__title">Schedule a Walk</p>
+        <div className="walkerrdtPicker__picker">
         <DateTimePicker
           onChange={this.onChange}
           value={this.state.date}
-          className="walkerrdtPicker__picker"
+          className="class1"
           disableClock={true}
           calendarClassName='class1'
-        />
+          />
+          </div>
         <div className="walkerrdtPicker__select">
           <ReactMultiSelectCheckboxes
             options={this.state.ownerList}
