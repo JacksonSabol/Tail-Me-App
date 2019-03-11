@@ -5,13 +5,6 @@
         position: relative;
         text-align: center;
         color: $color-accentOne;
-        box-shadow: inset 0 0 1.5em .75em $color-darkest;
-        @include responsive(t-port) { // width < 900
-            box-shadow: inset 0 0 0.75em 0.375em $color-darkest;
-        }
-        @include responsive(phone) { // width < 600
-            box-shadow: inset 0 0 0.375em 0.1875em $color-darkest;
-        }
         &--headingT{
             font-family: $font-headingC;
             font-size: 35em;
@@ -86,6 +79,12 @@
         &--imageshadow {
             width: 100%;
             box-shadow: inset 0 0 30em 15em $color-darkest;
+            @include responsive(t-port) { // width < 900
+                box-shadow: inset 0 0 15em 7.5em $color-darkest;
+            }
+            @include responsive(phone) { // width < 600
+                box-shadow: inset 0 0 7.5em 3.75em $color-darkest;
+            }
 
         }
         &--subheadingA{

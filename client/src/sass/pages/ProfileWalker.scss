@@ -9,14 +9,14 @@
         grid-area: 1/2;
         font-family: $font-headingD;
         color: $color-accentOne;
-        font-size:4em;
+        font-size:5em;
         text-align:center;
     }
     &__subtitle{
         grid-area: 2/2;
         font-family: $font-cursive;
         color: $color-darkest;
-        font-size:4em;
+        font-size:5em;
         text-align:center;
     }
     &__availibility{
@@ -25,10 +25,11 @@
         font-family: $font-headingD;
         font-size: 4em;
         color: $color-accentWhite;
-        background-color: $color-accentOne;
+        background-color: $color-accentLight;
         border: .05em solid $color-accentWhite;
-        border-radius: 1em;
-        padding: .5em;
+        box-shadow: 0em 0em .5em .25em $color-lightest;
+        border-radius: 3em;
+        padding: 1.5em .8em;
         justify-self: center;
         align-self: center;
 
@@ -52,6 +53,62 @@
             justify-self: left;
             color: $color-darkest;
         }
+        &--certificationInput{
+            grid-area: 2/2;
+            justify-self: center;
+            color: $color-darkest;
+        }
+        &--bondInput{
+            grid-area: 3/2;
+            justify-self: center;
+            color: $color-darkest;
+        }
+        &--insuranceInput{
+            grid-area: 4/2;
+            justify-self: center;
+            color: $color-darkest;
+        }
+        &--servicesLabel {
+            grid-area: 5/2;
+            justify-self: right;
+            color: $color-accentOne;
+        }
+        &--servicesInput {
+            grid-area: 5/3/6/5;
+            justify-self: left;
+            color: $color-darkest;
+        }
+        &--addressLabel {
+            grid-area: 2/4;
+            justify-self: right;
+            color: $color-accentOne;
+        }
+        &--addressInput {
+            grid-area: 2/5;
+            justify-self: left;
+            color: $color-darkest;
+        }
+        &--cityInput {
+            grid-area: 3/5;
+            justify-self: left;
+            color: $color-darkest;
+        }
+        &--stateInput {
+            grid-area: 4/5;
+            justify-self: left;
+            color: $color-darkest;
+        }
+        &--countryInput {
+            grid-area: 5/5;
+            justify-self: left;
+            color: $color-darkest;
+        }
+        &--zipcodeInput {
+            grid-area: 6/5;
+            justify-self: right;
+            color: $color-darkest;
+        }
+        
         
 
     }

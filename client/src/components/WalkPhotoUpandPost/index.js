@@ -236,9 +236,9 @@ class WalkPhotoUpandPost extends Component {
 
         return (
 
-            <div>
-                <div id='photo-form-container'>
-                    <button onClick={this.showWidget}>Upload Photo</button>
+            <div className="photos">
+                <div className="photos__upload" id='photo-form-container'>
+                    <button className="photos__upload--btn"onClick={this.showWidget}>Upload Photo</button>
                 </div>
 
                 <ReactSelect
@@ -246,9 +246,8 @@ class WalkPhotoUpandPost extends Component {
                     onChange={this.handleChangeList}
                     isMulti={true}
                 />
-                <br></br>
-                <div>
-                    <button className="dropzoneButton" onClick={this.handleTransferImages}>Send Image to the User</button>
+                <div className="photos__dropZone">
+                    <button className="photos__dropZone--btn" onClick={this.handleTransferImages}>Send Image to the User</button>
                     <Gallery
                         enableImageSelection={true}
                         backdropClosesModal={true}
@@ -257,10 +256,10 @@ class WalkPhotoUpandPost extends Component {
                         images={this.state.gallery}
                         showLightboxThumbnails={true} />
                 </div>
-                <div>
-                    <button className="dropzoneButton" onClick={this.loadAllImages}>Load All (Including Sent) Images</button>
+                <div className="photos__gallery">
+                    <button className="photos__gallery--btn" onClick={this.loadAllImages}>Load All (Including Sent) Images</button>
                     {this.state.showSentButton ? (
-                        <button className="dropzoneButton" onClick={this.handleTransferImagesSent}>Add Sent Images to the User</button>
+                        <button className="photos__gallery--btn" onClick={this.handleTransferImagesSent}>Add Sent Images to the User</button>
                     ) : (null)
                     }
                     < Gallery

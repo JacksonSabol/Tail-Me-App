@@ -133,3 +133,24 @@
     }
 
 }
+.RRT__tab.tab {
+    color: $color-darkest;
+    font-size: 2.5em;
+    border-top: 2px solid $color-accentOne;
+    border-right: 2px solid $color-accentOne;
+    border-left: 2px solid $color-accentOne;
+    background-color: $color-mid;
+    border-radius: 1em 1em 0em 0em;
+}
+.RRT__tab.tab.RRT__tab--selected{
+            background-color: $color-lightest;
+            color: $color-accentOne;
+}
+.RRT__container {
+    margin: 2em;
+}
+.RRT__panel.panel {
+    background-color: $color-lightest;
+    border: 2px solid $color-accentOne;
+    border-radius: 0em 1em 1em 1em;
+}
