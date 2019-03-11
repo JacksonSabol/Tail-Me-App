@@ -98,4 +98,8 @@ router.route("/updatepath/:walkId/:lat/:lng")
 router.route("/getpath/:walkId")
 .get(walkerController.getPath);
 
+router.route("/uploadProfilePicture/:userId")
+  .put(walkerController.uploadProfilePicture);
+
+ 
 module.exports = router;
