@@ -108,6 +108,7 @@ class ProfileContainerWalker extends Component {
         const walkerFullName = this.state.firstName + " " + this.state.lastName;
         switch (this.state.currentPage) {
             case "Home": return <ProfileWalker
+                userId={this.state.userId}
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}

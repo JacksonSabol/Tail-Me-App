@@ -11,7 +11,7 @@ function ProfileWalker(props) {
     return (
 
         <WalkerProfileDashboard
-
+            userId={props.userId}
             username={props.username}
             firstName={props.firstName}
             lastName={props.lastName}

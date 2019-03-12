@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import API from "../../utils/API";
 import "../../index.css";
 import WalkerUserInfo from "./walkerUserInfo";
 import WalkerEditUserInfo from "./walkerEditUserInfo";
@@ -16,6 +15,34 @@ class WalkerProfileInfo extends Component {
         this.setState({
             editClick: true
         })
+    }
+
+    checkUploadResult = (result) => {
+       
+        if (result.event === 'success') {
+          
+            const userId = this.props.userId;
+            const file = result.info.url; // You should store this URL for future references in your app
+            const fileURL = {
+
+                url: file
+            }
+            API.uploadProfilePicture(userId, fileURL)
+                .then(res => {
+                   
+                })
+        }
+    }
+    showWidget = () => {
+        let widget = window.cloudinary.createUploadWidget({
+            cloudName: `${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}`,
+            uploadPreset: `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`,
+            sources: [
+                "local",
+                "camera"
+            ],
+        }, (error, result) => { this.checkUploadResult(result) });
+        widget.open()
     }
     render() {
         const { username, editClick } = this.state;
@@ -84,9 +111,10 @@ class WalkerProfileInfo extends Component {
                         availibility={this.props.availibility}
 
                     />
-                    <button className="photos__gallery--btn" onClick={this.handleEditUserClick}>Edit My Info</button></div>
-
-
+                    <button className="photos__gallery--btn" onClick={this.handleEditUserClick}>Edit My Info</button>
+                    <button className="photos__upload--btn"onClick={this.showWidget}>Upload Profile Picture</button>
+                
+                </div>
             );
         }
     }
