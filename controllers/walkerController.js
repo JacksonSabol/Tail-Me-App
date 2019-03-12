@@ -476,5 +476,20 @@ module.exports = {
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
-    }
+    },
+
+    uploadProfilePicture: function (req, res) {
+      console.log("uploadProfilePicture", req.body)
+      console.log("uploadProfilePicture", req.params)
+      db.user
+        .update(
+          {profilePhotoURL: req.body.url},
+          {
+            where: {
+              id: req.params.userId
+            }
+          })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
+    },
 };
