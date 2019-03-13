@@ -133,7 +133,11 @@
     }
 
 }
+.InviteOwners {
+    margin: 2em;;
+}
 .RRT__tab.tab {
+    width: 15%;
     color: $color-darkest;
     font-size: 2.5em;
     border-top: 2px solid $color-accentOne;
@@ -150,6 +154,7 @@
     margin: 2em;
 }
 .RRT__panel.panel {
+    width: 100%;
     background-color: $color-lightest;
     border: 2px solid $color-accentOne;
     border-radius: 0em 1em 1em 1em;

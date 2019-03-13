@@ -1,8 +1,10 @@
 
 .TodayWalks{
     font-size: 2em;
+    // padding: .2em;
     color: $color-darkest;
     background-color:  $color-lightest;
+    border-radius: .25em;
     display:grid;
     grid-template-columns: (15) 1fr;
     grid-template-rows:  auto auto ;
@@ -21,6 +23,8 @@
             margin-left: 1em;
         }
         &--table{
+            display: flex;
+            flex-wrap: wrap;
             width: 100%;
         }
     }
@@ -44,6 +48,7 @@
     }
     // Using some of these styles still for buttons - cleanup in the future
     &__upcoming{
+
         grid-area: 1/1/2/6;
         border: solid .25em $color-accentOne;
         border-radius: 1em;

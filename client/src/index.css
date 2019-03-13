@@ -765,6 +765,7 @@ a {
   font-size: 2em;
   color: #1a1a1a;
   background-color: #e6e6e6;
+  border-radius: .25em;
   display: grid;
   grid-template-columns: 15 1fr;
   grid-template-rows: auto auto; }
@@ -782,6 +783,8 @@ a {
       font-family: "Mouse Memoirs", sans-serif;
       margin-left: 1em; }
     .TodayWalks__reactTableUpcoming--table {
+      display: flex;
+      flex-wrap: wrap;
       width: 100%; }
   .TodayWalks__reactTablePast {
     grid-area: 2/1/3/16;
@@ -1198,7 +1201,11 @@ button.css-48ayfv {
     color: #1190cb;
     text-shadow: 2px 2px 8px #1190cb; }
 
+.InviteOwners {
+  margin: 2em; }
+
 .RRT__tab.tab {
+  width: 15%;
   color: #1a1a1a;
   font-size: 2.5em;
   border-top: 2px solid #1190cb;
@@ -1215,6 +1222,7 @@ button.css-48ayfv {
   margin: 2em; }
 
 .RRT__panel.panel {
+  width: 100%;
   background-color: #e6e6e6;
   border: 2px solid #1190cb;
   border-radius: 0em 1em 1em 1em; }
@@ -1731,6 +1739,16 @@ button.css-48ayfv {
       background-color: #e6e6e6; }
     .topBarWalker__nav--logout {
       height: 1.5em; }
+
+.CustomerList {
+  color: #1a1a1a;
+  font-size: 2em; }
+  .CustomerList__table {
+    width: 100%; }
+    .CustomerList__table--title {
+      font-family: "Mouse Memoirs", sans-serif;
+      color: #1190cb;
+      font-size: 3em; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
@@ -2705,6 +2723,7 @@ button.css-48ayfv {
       border-radius: 1em;
       box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
     .walkerDash__grid--main-content {
+      padding: .4em;
       background-image: radial-gradient(#e6e6e6, #808080);
       border: solid 0.25em #1190cb;
       border-radius: 1em;
