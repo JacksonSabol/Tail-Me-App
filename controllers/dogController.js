@@ -32,23 +32,23 @@ module.exports = {
 
     db.user
       .findAll({
+        include: [{
+          model: db.walkImages,
+          required: true,
           include: [{
-            model: db.walkImages,
-            required: true,
-            include: [{
-              model: db.images,
-              required: true
-            }]
-          
-      },
+            model: db.images,
+            required: true
+          }]
+
+        },
         ],
         where: {
           id: req.params.idUser
         }
       })
       .then(dbModel => res.json(dbModel))
-    .catch(err => { console.log(err); res.status(422).json(err) });
-},
+      .catch(err => { console.log(err); res.status(422).json(err) });
+  },
 
   getOwnerWalks: function (req, res) {
     console.log("dog Controller getOwnerWalks")
@@ -77,26 +77,24 @@ module.exports = {
       .then(dbModel => { res.json(dbModel) })
       .catch(err => res.status(422).json(err))
   },
-getOwnerId: function (req, res) {
-  // console.log("req.params.idUserDog:", req.params.idUserDog)
-  db.dogOwner.findAll({
-    include: [db.walks],
-    where: {
-      userId: req.params.id
-    },
-    attributes: [
-      'id',
-      'dogName',
-      'emergencyContact',
-      'userId',
-      [db.sequelize.fn('date_format', db.sequelize.col('walks.checkinTime'), '%Y-%m-%d %H:%i:%s'), 'checkInTime'],
+  getOwnerId: function (req, res) {
+    // console.log("req.params.idUserDog:", req.params.idUserDog)
+    db.walks.findAll({
+      attributes: [
+        'id',
+        [db.sequelize.fn('date_format', db.sequelize.col('checkinTime'), '%Y-%m-%d %H:%i:%s'), 'checkInTime'],
 
-      [db.sequelize.fn('date_format', db.sequelize.col('walks.finishTime'), '%Y-%m-%d %H:%i:%s'), 'checkOutTime'],
-      'walks.walkDate'
-    ]
-  })
-    .then(dbModel => res.json(dbModel))
-    // .then(dbModel => console.log(dbModel))
-    .catch(err => res.status(422).json(err));
-},
+        [db.sequelize.fn('date_format', db.sequelize.col('finishTime'), '%Y-%m-%d %H:%i:%s'), 'checkOutTime'],
+        'walkDate'
+      ],
+      include: [db.dogOwner],
+      where: {
+        userId: req.params.id
+      }
+    })
+      .then(dbModel => res.json(dbModel))
+      // .then(dbModel => console.log(dbModel))
+      // .catch(err => res.status(422).json(err));
+      .catch(err => console.log(err));
+  },
 };

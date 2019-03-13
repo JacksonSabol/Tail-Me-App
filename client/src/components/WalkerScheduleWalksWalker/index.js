@@ -24,7 +24,8 @@ class WalkerScheduleWalksWalker extends Component {
         const dataDogOwners = res.data.map(data => {
           const dataOwners = {
             label: `${data.user.firstName} ${data.user.lastName} - ${data.dogName}`,
-            value: data.id
+            value: data.id,
+            userId: data.userId
           }
           return (dataOwners)
         })
@@ -45,6 +46,7 @@ class WalkerScheduleWalksWalker extends Component {
       const idOwner = data.value;
       const dataOwners = {
         walkerId: idWalker,
+        userId: data.userId,
         dogOwnerId: idOwner,
         status: 'pending',
         finish: 0,
