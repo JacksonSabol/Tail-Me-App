@@ -28,12 +28,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
+    // Associate the dogs
     walks.belongsTo(models.dogOwner, {
       foreignKey: {
         allowNull: false
       }
     });
 
+    // Associate the dog owner with each walk to make querying easier
+    walks.belongsTo(models.user, {
+      foreignKey: {
+        allowNull: false
+      }
+    })
 
     walks.hasMany(models.path, {
       onDelete: "cascade"

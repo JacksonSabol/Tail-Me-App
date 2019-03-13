@@ -104,7 +104,7 @@ class ProfileContainer extends Component {
                 country={this.state.country}
             />;
             case "Walks": return <OwnerWalks
-                dogOwnerId={this.state.userId}
+                OwnerID={this.state.userId}
             />;
             // Make it my dogs with react table and existing CreateDog component
             case "Dogs": return <CreateDog

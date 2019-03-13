@@ -27,7 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade"
     });
 
-    user.hasOne(models.dogOwner, {
+    user.hasMany(models.dogOwner, {
+      onDelete: "cascade"
+    });
+    user.hasMany(models.walks, {
       onDelete: "cascade"
     });
     user.hasMany(models.walkImages, {

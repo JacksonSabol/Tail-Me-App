@@ -157,7 +157,7 @@ module.exports = function (app, passport) {
             }).then(user => {
                 if (user != null) {
                     console.log('user found in db from /findOwner');
-                    console.log(user.dogOwner.dogName);
+                    // console.log(user.dogOwner.dogName);
                     res.status(200).send({
                         UserID: user.id,
                         firstName: user.firstName,
