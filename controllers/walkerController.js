@@ -9,12 +9,29 @@ module.exports = {
     db.walker
       .upsert({
         id: req.body.userId,
-        certification: req.body.certifications,
+        certification: req.body.certification,
         insurance: req.body.insurance,
         bond: req.body.bond,
         services: req.body.services,
         status: "available",
         userId: req.body.userId
+      })
+      .then(dbmodel => res.status(200).send(dbmodel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateWalkerProfile: function (req, res) {
+    db.user
+      .upsert({
+        id: req.body.userId,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        aboutMe: req.body.aboutMe,
+        address: req.body.address,
+        City: req.body.City,
+        State: req.body.State,
+        zipCode: req.body.zipCode,
+        country: req.body.country,
+
       })
       .then(dbmodel => res.status(200).send(dbmodel))
       .catch(err => res.status(422).json(err));
@@ -459,5 +476,20 @@ module.exports = {
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
-    }
+    },
+
+    uploadProfilePicture: function (req, res) {
+      console.log("uploadProfilePicture", req.body)
+      console.log("uploadProfilePicture", req.params)
+      db.user
+        .update(
+          {profilePhotoURL: req.body.url},
+          {
+            where: {
+              id: req.params.userId
+            }
+          })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
+    },
 };

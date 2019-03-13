@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import "../index.css";
+import "../../index.css";
 
 
-class walkerProfile extends Component {
+class WalkerCertification extends Component {
     state = {
         userId: 0,
-        firstName: '',
-        lastName: '' ,
-        aboutMe: '',
-        address: '',
-        city: '',
-        state: '',
-        zipCode: ''
+        username: '',
+        certification: '' ,
+        services: '',
+        availibility: '',
+        insurance: '',
+        bond: '',
+        certAdded: false
     };
 
     async componentDidMount() {
@@ -80,7 +80,7 @@ class walkerProfile extends Component {
         } else {
             return (
                 <div className="main-content-certify">
-                <div className="main-content-certify__title">Walker Profile Update</div>
+              {/*   <div className="main-content-certify__title">Walker Profile Update</div> */}
                     <form className="main-content-certify__form" onSubmit={this.handleWalkerCert}>
                     <label className="main-content-certify__form--certificationLabel">Certification:</label>
                     <input className="main-content-certify__form--certificationInput"
@@ -122,6 +122,7 @@ class walkerProfile extends Component {
                         </select>
                         <button className="main-content-certify__form--button" type="submit">Update</button>
                     </form>
+                
                 </div>
             );
         }
@@ -129,4 +130,4 @@ class walkerProfile extends Component {
 }
 
 
-export default walkerProfile
+export default WalkerCertification;

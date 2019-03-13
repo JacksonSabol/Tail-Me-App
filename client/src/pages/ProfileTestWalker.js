@@ -108,6 +108,7 @@ class ProfileContainerWalker extends Component {
         const walkerFullName = this.state.firstName + " " + this.state.lastName;
         switch (this.state.currentPage) {
             case "Home": return <ProfileWalker
+                userId={this.state.userId}
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
@@ -123,6 +124,9 @@ class ProfileContainerWalker extends Component {
                 bond={this.state.bond}
                 services={this.state.services}
                 availibility={this.state.availibility}
+                //When click on the tabl and you are on the edir Profile it is not possible to go back if you do not edit.. I place this here but it does not work anyway
+                editClick={false}
+
             />;
             case "Walks": return <TodayWalks
                 walkerId={this.state.userId}

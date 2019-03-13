@@ -151,5 +151,10 @@ export default {
 
     getPath: function (walkId) {
         return axios.get(`/api/walker/getpath/${walkId}/`) 
+    },
+
+    uploadProfilePicture: function (userId, data) {
+        console.log("API-uploadProfilePicture", userId, data)
+        return axios.put(`/api/walker/uploadProfilePicture/${userId}`, data) 
     }
 };

@@ -9,6 +9,11 @@ const globalController = require("../../controllers/globalController");
 router.route("/create")
   .post(walkerController.addWalker);
 
+// /api/walker/updateProfile
+router.route("/updateProfile")
+  .post(walkerController.updateWalkerProfile);
+
+
 // Matches with "/api/walker/:id/walks/"
 router.route("/:id/walks")
   .get(walkerController.getWalkerWalks);
@@ -77,25 +82,29 @@ router.route("/walk/checkImage/:userId/:imageId")
   .get(walkerController.checkImageExist);
 
 router.route("/walk/:walkId/addNote")
-.put(walkerController.updateNote); 
+  .put(walkerController.updateNote);
 
 router.route("/walk/getnote/:walkId")
-.get(walkerController.getWalkNote); 
+  .get(walkerController.getWalkNote);
 
 
 router.route("/getWalkerCustomers/:id")
-.get(walkerController.getWalkerCustomers);
+  .get(walkerController.getWalkerCustomers);
 
 router.route("/editCustomerInfo/:userId/:dogOwnerId")
-.put(walkerController.editUserInfo);
+  .put(walkerController.editUserInfo);
 
 router.route("/deleteUser/:userId")
-.delete(walkerController.deleteUserData);
+  .delete(walkerController.deleteUserData);
 
 router.route("/updatepath/:walkId/:lat/:lng")
-.post(walkerController.updatePath);
+  .post(walkerController.updatePath);
 
 router.route("/getpath/:walkId")
-.get(walkerController.getPath);
+  .get(walkerController.getPath);
 
+router.route("/uploadProfilePicture/:userId")
+  .put(walkerController.uploadProfilePicture);
+
+ 
 module.exports = router;

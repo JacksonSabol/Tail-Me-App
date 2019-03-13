@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import API from "../utils/API";
 import "../index.css";
 
 
@@ -71,6 +72,35 @@ class WalkerCertification extends Component {
                 console.log(error);
             });
     };
+    checkUploadResult = (result) => {
+        console.log("checkUploadResult", result)
+        if (result.event === 'success') {
+          
+            const userId = this.state.userId;
+            const file = result.info.url; // You should store this URL for future references in your app
+            const fileURL = {
+
+                url: file
+            }
+            console.log("checkUploadResult", this.state.userId)
+            API.uploadProfilePicture(userId, fileURL)
+                .then(res => {
+                    console.log("updated user profile pic")
+                })
+        }
+    }
+    showWidget = () => {
+        console.log("showWidget", this.state.userId)
+        let widget = window.cloudinary.createUploadWidget({
+            cloudName: `${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}`,
+            uploadPreset: `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`,
+            sources: [
+                "local",
+                "camera"
+            ],
+        }, (error, result) => { this.checkUploadResult(result) });
+        widget.open()
+    }
 
     render() {
         const { username, certAdded } = this.state;
@@ -81,6 +111,9 @@ class WalkerCertification extends Component {
             return (
                 <div className="main-content-certify">
                 <div className="main-content-certify__title">Walker Profile Update</div>
+                <div className="photos__upload" id='photo-form-container'>
+                    <button className="photos__upload--btn"onClick={this.showWidget}>Upload Profile Picture</button>
+                </div>
                     <form className="main-content-certify__form" onSubmit={this.handleWalkerCert}>
                     <label className="main-content-certify__form--certificationLabel">Certification:</label>
                     <input className="main-content-certify__form--certificationInput"
@@ -121,6 +154,7 @@ class WalkerCertification extends Component {
                             <option value="unavailable">Not Available for Hire</option>
                         </select>
                         <button className="main-content-certify__form--button" type="submit">Update</button>
+                       
                     </form>
                 </div>
             );
