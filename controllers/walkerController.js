@@ -400,9 +400,11 @@ module.exports = {
           where: {
             walkerId: req.params.id
           }
-        }]
+        }],
+        raw:true
       })
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => 
+        res.json(dbModel))
       .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
   },
 
