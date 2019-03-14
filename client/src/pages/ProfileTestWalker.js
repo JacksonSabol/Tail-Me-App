@@ -265,9 +265,9 @@ class ProfileContainerWalker extends Component {
                         <div className="walkerDash__grid--main-content">
                             {this.renderWalkerPage()}
                         </div>
-                    </div>
                     <div className="walkerDash__grid--footer" >
                         <FooterWalker />
+                    </div>
                     </div>
                 </div>
             );

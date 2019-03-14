@@ -145,10 +145,10 @@ class CustomerList extends Component {
         }
         ]
         return (
-            <div className="TodayWalks">
+            <div className="CustomerList">
              
-                 <div /* className="TodayWalks__reactTableUpcoming" */ /* style={{ width: "80%", margin: "0 auto" }} */> 
-                 <span className="TodayWalks__reactTableUpcoming--title">Customer List: </span> 
+                 <div className="CustomerList__table"> 
+                 <span className="CustomerList__table--title">Customer List: </span> 
                 <TreeTable
                     filterable
                     defaultFilterMethod={(filter, row, column) => {

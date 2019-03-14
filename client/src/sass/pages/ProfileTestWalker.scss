@@ -2,11 +2,11 @@
     height: 100%; 
     margin: 2em;
     &__grid{
-    display: grid;
-    grid-template-columns: (15) 1fr;
-    grid-template-rows:  auto 1fr auto  ;
-    grid-gap: 2em;
-
+        display: grid;
+        grid-template-columns: (15) 1fr;
+        grid-template-rows:  auto 1fr auto  ;
+        grid-gap: 2em;
+        
         &--header{
             grid-area: 1/1/2/16;
             background-image: radial-gradient( $color-lightest, $color-mid);
@@ -16,9 +16,12 @@
             box-shadow: 0em 0em .5em .5em $color-darkest;
         }
         // &--sidebarNav{
-        //     grid-area: 2/1/3/2
-        // }
-        &--main-content{
+            //     grid-area: 2/1/3/2
+            // }
+            &--main-content{
+            // width: 100%;
+            display: flex;
+            padding: .4em;
             background-image: radial-gradient( $color-lightest, $color-mid);
             border: solid .25em $color-accentOne;
             border-radius: 1em;

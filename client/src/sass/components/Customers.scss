@@ -1,0 +1,12 @@
+.CustomerList{
+    color: $color-darkest;
+    font-size: 2em;
+    &__table{
+        width: 100%;
+        &--title{
+            font-family: $font-headingD;
+            color: $color-accentOne;
+            font-size: 3em;
+        }
+    }
+}

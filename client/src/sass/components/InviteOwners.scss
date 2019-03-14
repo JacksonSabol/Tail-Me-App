@@ -133,7 +133,12 @@
     }
 
 }
+.InviteOwners {
+    width: 100%;
+    margin: 2em;;
+}
 .RRT__tab.tab {
+    width: 15%;
     color: $color-darkest;
     font-size: 2.5em;
     border-top: 2px solid $color-accentOne;
@@ -147,9 +152,16 @@
             color: $color-accentOne;
 }
 .RRT__container {
-    margin: 2em;
+    padding: 2em;
+    width: 98%;
+    @include responsive(phone) { // width < 600
+        width: 800px; 
+    }
+    // width: 800px;
+    // display: inline;
 }
 .RRT__panel.panel {
+    width: 100%;
     background-color: $color-lightest;
     border: 2px solid $color-accentOne;
     border-radius: 0em 1em 1em 1em;

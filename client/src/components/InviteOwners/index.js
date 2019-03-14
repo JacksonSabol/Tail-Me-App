@@ -61,7 +61,7 @@ class InviteOwners extends Component {
             }));
         }
         return(
-            <div style={{ width: "80%", margin: "0 auto" }}>
+            <div className="InviteOwners">
         <Tabs items={getTabs()} />
         </div>
         )
