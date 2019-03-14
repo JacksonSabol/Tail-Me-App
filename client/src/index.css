@@ -1202,6 +1202,7 @@ button.css-48ayfv {
     text-shadow: 2px 2px 8px #1190cb; }
 
 .InviteOwners {
+  width: 100%;
   margin: 2em; }
 
 .RRT__tab.tab {
@@ -1219,7 +1220,11 @@ button.css-48ayfv {
   color: #1190cb; }
 
 .RRT__container {
-  margin: 2em; }
+  padding: 2em;
+  width: 98%; }
+  @media only screen and (max-width: 37.5em) {
+    .RRT__container {
+      width: 800px; } }
 
 .RRT__panel.panel {
   width: 100%;
@@ -2723,6 +2728,7 @@ button.css-48ayfv {
       border-radius: 1em;
       box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; }
     .walkerDash__grid--main-content {
+      display: flex;
       padding: .4em;
       background-image: radial-gradient(#e6e6e6, #808080);
       border: solid 0.25em #1190cb;

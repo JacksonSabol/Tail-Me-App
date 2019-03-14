@@ -134,6 +134,7 @@
 
 }
 .InviteOwners {
+    width: 100%;
     margin: 2em;;
 }
 .RRT__tab.tab {
@@ -151,7 +152,13 @@
             color: $color-accentOne;
 }
 .RRT__container {
-    margin: 2em;
+    padding: 2em;
+    width: 98%;
+    @include responsive(phone) { // width < 600
+        width: 800px; 
+    }
+    // width: 800px;
+    // display: inline;
 }
 .RRT__panel.panel {
     width: 100%;
