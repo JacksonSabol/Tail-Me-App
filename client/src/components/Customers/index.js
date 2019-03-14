@@ -20,27 +20,24 @@ class CustomerList extends Component {
         const id = this.props.walkerId;
         API.getWalkerCustomers(id)
             .then(res => {
-
                 const dataFormat = res.data.map(data => {
                     const users = {
 
                         customerName: data.firstName + " " + data.lastName,
                         firstName: data.firstName,
                         lastName: data.lastName,
-                        profilePhotoURL: data.profilePhotoURL,
                         address: data.address,
                         city: data.City,
                         state: data.State,
                         zipCode: data.zipCode,
-                        dog: data.dogOwner.dogName,
-                        emergencyContact: data.dogOwner.emergencyContact,
-                        dogOwnerId: data.dogOwner.id,
+                        dog: data["dogOwners.dogName"],
+                        emergencyContact: data["dogOwners.emergencyContact"],
+                        dogOwnerId: data["dogOwners.id"],
                         userId: data.id
                     }
                     return (users)
+
                 })
-
-
                 this.setState({
                     customers: dataFormat
                 })
@@ -51,7 +48,6 @@ class CustomerList extends Component {
 
     //Delete User
     deleteMethod = (userId) => {
-        console.log("test", userId)
         API.deleteUserData(userId).then(res => {
             this.loadCustomers();
         })
@@ -90,6 +86,7 @@ class CustomerList extends Component {
         API.editUserData(userId, dogOwnerId, userData).then(res => {
             //prevent reload of the table.. uncomment if reaload wanted.
             /*  this.loadCustomers(); */
+            this.loadCustomers();
         })
     }
 
@@ -111,6 +108,8 @@ class CustomerList extends Component {
         {
             Header: 'Dog',
             accessor: 'dog'
+
+
         },
         {
             Header: 'Address',
@@ -147,98 +146,99 @@ class CustomerList extends Component {
         ]
         return (
             <div className="CustomerList">
-             
-                 <div className="CustomerList__table"> 
-                 <span className="CustomerList__table--title">Customer List: </span> 
-                <TreeTable
-                    filterable
-                    defaultFilterMethod={(filter, row, column) => {
-                        const id = filter.pivotId || filter.id;
-                        return row[id] !== undefined
-                            ? String(row[id])
-                                .toLowerCase()
-                                .includes(filter.value.toLowerCase())
-                            : true;
-                    }}
-                    data={this.state.customers}
-                    columns={columns}
-                    minWidth={100}
-                    pageSizeOptions={[5, 10, 20, 25, 50, 100]}
-                    showPagination={true}
-                    sortable={true}
-                    multiSort={true}
-                    resizable={true}
-                    defaultPageSize={5}
-                    minRows={3}
-                    className="TodayWalks__reactTableUpcoming--table -striped -highlight"
-                    pivotBy={["customerName"]}
 
-                    SubComponent={row => {
-                        // a SubComponent to display edit form
-                        // Dynamic creation of the input fields
-                        const rowData = Object.keys(row.original).map(key => {
-                            return (
-                                <tr key={row.original[key].toString()} >
-                                    {(() => {
-                                        //create hidden fields for ids.
-                                        if (key == 'dogOwnerId' || key == 'userId' || key == 'customerName') {
-                                            return (
-                                                <React.Fragment>
-                                                    <td>
-                                                        <input type='hidden' name={key} defaultValue={row.original[key].toString()} />
-                                                    </td>
-                                                </React.Fragment>
-                                            )
-                                        } else {
-                                            return (
-                                                <React.Fragment>
+                <div className="CustomerList__table">
+                    <span className="CustomerList__table--title">Customer List: </span>
+                    <TreeTable
+                        filterable
+                        defaultFilterMethod={(filter, row, column) => {
+                            const id = filter.pivotId || filter.id;
+                            return row[id] !== undefined
+                                ? String(row[id])
+                                    .toLowerCase()
+                                    .includes(filter.value.toLowerCase())
+                                : true;
+                        }}
+                        data={this.state.customers}
+                        columns={columns}
+                        minWidth={100}
+                        pageSizeOptions={[5, 10, 20, 25, 50, 100]}
+                        showPagination={true}
+                        sortable={true}
+                        multiSort={true}
+                        resizable={true}
+                        defaultPageSize={5}
+                        minRows={3}
+                        className="TodayWalks__reactTableUpcoming--table -striped -highlight"
+                        pivotBy={["customerName"]}
 
-                                                    <td style={{ textAlign: "right" }}>
-                                                        <label>
-                                                            {(() => {
-                                                                //Modify the display name of each field
-                                                                switch (key) {
-                                                                    case "firstName": return "First Name:";
-                                                                    case "lastName": return "Last Name:";
-                                                                    case "address": return "Address:";
-                                                                    case "city": return "City:";
-                                                                    case "state": return "State:";
-                                                                    case "zipCode": return "Zip Code:";
-                                                                    case "dog": return "Dog:";
-                                                                    case "emergencyContact": return "Emergency Contact";
-                                                                    default: return "N/A";
-                                                                }
-                                                            })()}
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <input type='text' name={key} defaultValue={row.original[key].toString()} onChange={this.handleInputChange} style={{ width: "100%" }} />
-                                                    </td>
+                        SubComponent={row => {
+                            // a SubComponent to display edit form
+                            // Dynamic creation of the input fields
+                            const rowData = Object.keys(row.original).map(key => {
+                                return (
+                                    <tr key={
+                                        row.original[key].toString()} >
+                                        {(() => {
+                                            //create hidden fields for ids.
+                                            if (key == 'dogOwnerId' || key == 'userId' || key == 'customerName') {
+                                                return (
+                                                    <React.Fragment>
+                                                        <td>
+                                                            <input type='hidden' name={key} defaultValue={row.original[key].toString()} />
+                                                        </td>
+                                                    </React.Fragment>
+                                                )
+                                            } else {
+                                                return (
+                                                    <React.Fragment>
 
-                                                </React.Fragment>
-                                            )
-                                        }
-                                    })()}
+                                                        <td style={{ textAlign: "right" }}>
+                                                            <label>
+                                                                {(() => {
+                                                                    //Modify the display name of each field
+                                                                    switch (key) {
+                                                                        case "firstName": return "First Name:";
+                                                                        case "lastName": return "Last Name:";
+                                                                        case "address": return "Address:";
+                                                                        case "city": return "City:";
+                                                                        case "state": return "State:";
+                                                                        case "zipCode": return "Zip Code:";
+                                                                        case "dog": return "Dog:";
+                                                                        case "emergencyContact": return "Emergency Contact";
+                                                                        default: return "N/A";
+                                                                    }
+                                                                })()}
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type='text' name={key} defaultValue={row.original[key].toString()} onChange={this.handleInputChange} style={{ width: "100%" }} />
+                                                        </td>
 
-                                </tr>
+                                                    </React.Fragment>
+                                                )
+                                            }
+                                        })()}
 
-                            );
-                        });
-                        return (<form onSubmit={this.handleSubmit}>
-                            {/* Create table for edit Form */}
-                            <table style={{ width: "50%" }}>
-                                <tbody>
-                                    {rowData}
-                                    <tr><td style={{ textAlign: "center" }} colSpan={2}>
-                                        <button type="submit" value="Edit" className="TodayWalks__past--list-publish-button">Edit Customer Info.</button>
-                                    </td></tr>
-                                </tbody>
-                            </table>
-                        </form>
-                        )
+                                    </tr>
 
-                    }}
-                />
+                                );
+                            });
+                            return (<form onSubmit={this.handleSubmit}>
+                                {/* Create table for edit Form */}
+                                <table style={{ width: "50%" }}>
+                                    <tbody>
+                                        {rowData}
+                                        <tr><td style={{ textAlign: "center" }} colSpan={2}>
+                                            <button type="submit" value="Edit" className="TodayWalks__past--list-publish-button">Edit Customer Info.</button>
+                                        </td></tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            )
+
+                        }}
+                    />
                 </div>
             </div>
         )
