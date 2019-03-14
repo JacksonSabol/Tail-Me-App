@@ -170,6 +170,7 @@ class CustomerList extends Component {
                         defaultPageSize={5}
                         minRows={3}
                         className="TodayWalks__reactTableUpcoming--table -striped -highlight"
+                        //here we can also group by dog if we wanted to 
                         pivotBy={["customerName"]}
 
                         SubComponent={row => {
