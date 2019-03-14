@@ -448,9 +448,9 @@ module.exports = {
 
   updatePath: function(req,res) {
     //Updte the walk coords in the path record
-
+    console.log("updatePath: ", req.params)
     let data = {
-
+      pointType: req.params.pointType,
       lat: req.params.lat,
       lng: req.params.lng,
       walkId: req.params.walkId

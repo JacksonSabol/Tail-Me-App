@@ -27,6 +27,7 @@ class CustomerList extends Component {
                         customerName: data.firstName + " " + data.lastName,
                         firstName: data.firstName,
                         lastName: data.lastName,
+                        profilePhotoURL: data.profilePhotoURL,
                         address: data.address,
                         city: data.City,
                         state: data.State,

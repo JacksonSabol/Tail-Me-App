@@ -13,7 +13,8 @@ class walkerProfile extends Component {
         address: '',
         city: '',
         state: '',
-        zipCode: ''
+        zipCode: '',
+        profilePhotoURL: ''
     };
 
     async componentDidMount() {

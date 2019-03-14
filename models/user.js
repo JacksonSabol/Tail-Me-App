@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     aboutMe: DataTypes.STRING,
     profilePhoto: DataTypes.BLOB,
-    profilePhotoURL: DataTypes.STRING,
+    profilePhotoURL: {
+      type: DataTypes.STRING,
+      defaultValue: 'https://www.flynz.co.nz/wp-content/uploads/profile-placeholder.png'
+    },
     address: DataTypes.STRING,
     City: DataTypes.STRING,
     State: DataTypes.STRING,

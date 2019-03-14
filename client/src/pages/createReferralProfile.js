@@ -23,6 +23,7 @@ class createReferralProfile extends Component {
         userType: '',
         aboutMe: '',
         profilePhoto: [],
+        profilePhotoURL: '',
         address: '',
         City: '',
         State: '',
