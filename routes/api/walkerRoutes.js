@@ -97,7 +97,7 @@ router.route("/editCustomerInfo/:userId/:dogOwnerId")
 router.route("/deleteUser/:userId")
   .delete(walkerController.deleteUserData);
 
-router.route("/updatepath/:walkId/:lat/:lng")
+router.route("/updatepath/:pointType/:walkId/:lat/:lng")
   .post(walkerController.updatePath);
 
 router.route("/getpath/:walkId")

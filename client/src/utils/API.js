@@ -145,8 +145,8 @@ export default {
         return axios.delete(`/api/walker/deleteUser/${userId}/`) 
     },
     
-    updatePath: function (walkId, lat, lng) {
-        return axios.post(`/api/walker/updatepath/${walkId}/${lat}/${lng}/`) 
+    updatePath: function (pointType, walkId, lat, lng) {
+        return axios.post(`/api/walker/updatepath/${pointType}/${walkId}/${lat}/${lng}/`) 
     },
 
     getPath: function (walkId) {
