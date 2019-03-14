@@ -58,6 +58,7 @@ class WalkerProfileInfo extends Component {
                                 username={this.props.username}
                                 firstName={this.props.firstName}
                                 lastName={this.props.lastName}
+                                profilePhotoURL={this.props.profilePhotoURL}
                                 userType={this.props.username}
                                 aboutMe={this.props.aboutMe}
                                 address={this.props.address}
@@ -97,6 +98,7 @@ class WalkerProfileInfo extends Component {
                         username={this.props.username}
                         firstName={this.props.firstName}
                         lastName={this.props.lastName}
+                        profilePhotoURL={this.props.profilePhotoURL}
                         userType={this.props.username}
                         aboutMe={this.props.aboutMe}
                         address={this.props.address}

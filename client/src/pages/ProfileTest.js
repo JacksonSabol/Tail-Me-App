@@ -23,6 +23,7 @@ class ProfileContainer extends Component {
         username: '',
         firstName: '',
         lastName: '',
+        profilePhotoURL: '',
         userType: '',
         aboutMe: '',
         address: '',
@@ -58,6 +59,7 @@ class ProfileContainer extends Component {
                         username: this.props.match.params.username,
                         firstName: response.data.firstName,
                         lastName: response.data.lastName,
+                        profilePhotoURL: response.data.profilePhotoURL,
                         userType: response.data.userType,
                         aboutMe: response.data.aboutMe,
                         address: response.data.address,
@@ -95,6 +97,7 @@ class ProfileContainer extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
+                profilePhotoURL={this.state.profilePhotoURL}
                 userType={this.capitalizeUserType(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}
@@ -121,6 +124,7 @@ class ProfileContainer extends Component {
                 username={this.state.username}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
+                profilePhotoURL={this.state.profilePhotoURL}
                 userType={this.capitalizeUserType(this.state.userType)}
                 aboutMe={this.state.aboutMe}
                 address={this.state.address}

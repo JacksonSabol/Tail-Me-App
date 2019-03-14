@@ -7,6 +7,7 @@ import "../../index.css";
 
 
 function WalkerUserInfo(props) {
+    console.log("WalkerUserInfo:", props)
    
     return (
         <div className="walker-main-content">
@@ -22,6 +23,8 @@ function WalkerUserInfo(props) {
             <div className="walker-main-content__body--userTypeLabel">User Type:</div>
             <div className="walker-main-content__body--userTypeInput">{props.userType}</div> */}
                 <div className="walker-main-content__body--aboutMeLabel">About me:</div>
+                <div><img src={props.profilePhotoURL}  width="300" height="150"></img></div>
+                {/* <div><img src="http://res.cloudinary.com/viaro-networks-inc/image/upload/v1552544141/IMG_5409_zcbfmg.jpg" width="300" height="150"></img></div> */}
                 <div className="walker-main-content__body--aboutMeInput">{props.aboutMe}</div>
                 <div className="walker-main-content__body--addressLabel">Address:</div>
                 <div className="walker-main-content__body--addressInput">{props.address}</div>
