@@ -15,7 +15,7 @@ function ProfileWalker(props) {
             username={props.username}
             firstName={props.firstName}
             lastName={props.lastName}
-            photoProfileURL={props.photoProfileURL}
+            profilePhotoURL={props.profilePhotoURL}
             userType={props.username}
             aboutMe={props.aboutMe}
             address={props.address}
