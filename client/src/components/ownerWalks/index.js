@@ -36,7 +36,7 @@ class ownerWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
-        zoom: 12,
+        zoom: 14,
         activeImage: "",
         walks: [],
         errorMessage: "",
@@ -448,10 +448,10 @@ class ownerWalks extends Component {
                                     ))}
                             </GoogleMapReact>
                         </div>
-                        <div className="ownerWalks__past--mapimage">
+                        {/* <div className="ownerWalks__past--mapimage">
                             {this.state.activeImage ?
                                 <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div>
+                        </div> */}
                     </div>
 
                 ) : null}

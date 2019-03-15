@@ -738,10 +738,10 @@ class TodayWalks extends Component {
                                     ))}
                             </GoogleMapReact>
                         </div>
-                        <div className="TodayWalks__past--mapimage">
+                        {/* <div className="TodayWalks__past--mapimage">
                             {this.state.activeImage ?
                                 <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div>
+                        </div> */}
                     </div>
 
                 ) : null}
