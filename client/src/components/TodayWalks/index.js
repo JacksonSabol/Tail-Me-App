@@ -53,7 +53,7 @@ class TodayWalks extends Component {
         //     lat: 37.7924791,
         //     lng: -122.1818368
         // },
-        zoom: 12,
+        zoom: 13,
         activeImage: "",
         walks: [],
         errorMessage: "",
@@ -131,38 +131,40 @@ class TodayWalks extends Component {
             .catch(err => console.log(err));
     };
 
-    handleOnClick = (walkId) => {
+    // handleOnClick = (walkId) => {
 
-        API.getImagesWalk(walkId)
-            .then(res => {
-                // console.log("back from getpics")
-                // console.log("getpics: ", res.data)
-                // console.log("getpics dot image: ", res.data[0].image)
+    //     API.getImagesWalk(walkId)
+    //         .then(res => {
+    //             // console.log("back from getpics")
+    //             // console.log("getpics: ", res.data)
+    //             // console.log("getpics dot image: ", res.data[0].image)
 
-                // this.setState({
-                //   walks: res.data
-                // });
+    //             // this.setState({
+    //             //   walks: res.data
+    //             // });
 
-                let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null);
-                // console.log("PICS GPS: ", picsWithGpsInfo)
-                // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
-                // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
-                // console.log("data[0]: ", res.data[0].GPSLatitude)
-                this.setState({
-                    // onClickButton: true,
-                    showmap: true,
-                    mapWalkId: walkId,
-                    images: picsWithGpsInfo,
-                    currentLocation: {
-                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-                    }
+    //             let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null);
+    //             // console.log("PICS GPS: ", picsWithGpsInfo)
+    //             // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
+    //             // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
+    //             // console.log("data[0]: ", res.data[0].GPSLatitude)
+    //             let middlePoint = picsWithGpsInfo.length / 2;
+    //             console.log("middlePoint ", middlePoint);
+    //             this.setState({
+    //                 // onClickButton: true,
+    //                 showmap: true,
+    //                 mapWalkId: walkId,
+    //                 images: picsWithGpsInfo,
+    //                 currentLocation: {
+    //                     lat: parseFloat(picsWithGpsInfo[middlePoint].image.GPSLatitude),
+    //                     lng: parseFloat(picsWithGpsInfo[middlePoint].image.GPSLongitude)
+    //                 }
 
-                })
-            }).catch(err => {
-                console.log(err)
-            });
-    };
+    //             })
+    //         }).catch(err => {
+    //             console.log(err)
+    //         });
+    // };
 
     handleOnClickMap = (walkId) => {
 
@@ -170,15 +172,16 @@ class TodayWalks extends Component {
             .then(res => {
 
                 console.log("path points:", res.data)
-
+                let middlePoint = res.data.length / 2;
+                console.log("middlePoint ", middlePoint);
                 this.setState({
                     // onClickButton: true,
                     walkPoints: res.data,
                     showmap: true,
                     mapWalkId: walkId,
                     currentLocation: {
-                        lat: parseFloat(res.data[0].lat),
-                        lng: parseFloat(res.data[0].lng)
+                        lat: parseFloat(res.data[middlePoint].lat),
+                        lng: parseFloat(res.data[middlePoint].lng)
                     }
 
                 })

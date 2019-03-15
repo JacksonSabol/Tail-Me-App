@@ -36,7 +36,7 @@ class ownerWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
-        zoom: 14,
+        zoom: 13,
         activeImage: "",
         walks: [],
         errorMessage: "",
@@ -130,14 +130,17 @@ class ownerWalks extends Component {
 
                 console.log("path points:", res.data)
 
+                let middlePoint = res.data.length / 2;
+                console.log("middlePoint ", middlePoint);
+
                 this.setState({
                     // onClickButton: true,
                     walkPoints: res.data,
                     showmap: true,
                     mapWalkId: walkId,
                     currentLocation: {
-                        lat: parseFloat(res.data[0].lat),
-                        lng: parseFloat(res.data[0].lng)
+                        lat: parseFloat(res.data[middlePoint].lat),
+                        lng: parseFloat(res.data[middlePoint].lng)
                     }
 
                 })
