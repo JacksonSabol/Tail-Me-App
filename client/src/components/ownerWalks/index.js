@@ -36,7 +36,7 @@ class ownerWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
-        zoom: 14,
+        zoom: 13,
         activeImage: "",
         walks: [],
         errorMessage: "",
@@ -103,6 +103,10 @@ class ownerWalks extends Component {
                 //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
                 //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
                 //console.log("data[0]: ", res.data[0].GPSLatitude)
+                console.log("path points:", res.data)
+
+                let middlePoint = res.data.length / 2;
+                console.log("middlePoint ", middlePoint);
                 this.setState({
                     onClickButton: true,
                     walkId: walkId,
@@ -112,8 +116,8 @@ class ownerWalks extends Component {
                     //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
                     // },
                     currentLocation: {
-                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                        lat: parseFloat(res.data[middlePoint].lat),
+                        lng: parseFloat(res.data[middlePoint].lng)
                     }
                 })
             }).catch(err => {
