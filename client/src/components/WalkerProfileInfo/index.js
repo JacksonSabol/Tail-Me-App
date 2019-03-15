@@ -17,6 +17,13 @@ class WalkerProfileInfo extends Component {
         })
     }
 
+    handleCancelEdit = event => {
+        event.preventDefault();
+        this.setState({
+            editClick: false
+        })
+    }
+
     checkUploadResult = (result) => {
        
         if (result.event === 'success') {
@@ -49,7 +56,12 @@ class WalkerProfileInfo extends Component {
         if (editClick) {
 
             return (
+
                 <div className="main-content">
+
+               
+                    <button className="photos__gallery--btn" onClick={this.handleCancelEdit}>Cancel</button>
+
                     <div className="main-content-userEdition__title">Update My Info</div>
                     <div className="main-content-userEdition">
 
@@ -111,15 +123,10 @@ class WalkerProfileInfo extends Component {
                         bond={this.props.bond}
                         services={this.props.services}
                         availibility={this.props.availibility}
-
+                        handleEditUserClick={this.handleEditUserClick}
+                        showWidget={this.showWidget}
                     />
-                    <div className="walker-main-content__editInfo">
-                    <button className="walker-main-content__editInfo--button" onClick={this.handleEditUserClick}>Edit My Info</button>
-                    </div>
-                    <div className="walker-main-content__photoUpload">
-                    <button className="walker-main-content__photoUpload--button"onClick={this.showWidget}>Upload Profile Picture</button>
-                    </div>
-                
+
                 </div>
             );
         }
