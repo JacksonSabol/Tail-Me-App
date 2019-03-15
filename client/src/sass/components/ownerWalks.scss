@@ -110,6 +110,36 @@
             border-radius: .5em;
             font-size: 1em;
         }
+        &--map {
+            grid-area: 3/1/4/16;
+            margin: 1em;
+            padding: 1em;
+            border: solid 2px #1190cb;
+            border-radius: .5em;
+            font-size: 1em;
+            box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; 
+
+        }
+        &--mapmap {
+            background-color: #1a1a1a;
+            margin: 1em;
+            padding: 0.2em;
+            border: solid 2px #1190cb;
+            border-radius: .5em;
+            font-size: 1em;
+            box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; 
+
+        }
+        &--mapimage {
+            background-color: #1a1a1a;
+            margin: 1em;
+            padding: 0.2em;
+            border: solid 2px #1190cb;
+            border-radius: .5em;
+            font-size: 1em;
+            box-shadow: 0em 0em 0.5em 0.5em #1a1a1a; 
+
+        }
     }
 }
 

@@ -56,8 +56,12 @@ class WalkerProfileInfo extends Component {
         if (editClick) {
 
             return (
-                <div>
+
+                <div className="main-content">
+
+               
                     <button className="photos__gallery--btn" onClick={this.handleCancelEdit}>Cancel</button>
+
                     <div className="main-content-userEdition__title">Update My Info</div>
                     <div className="main-content-userEdition">
 
@@ -100,7 +104,7 @@ class WalkerProfileInfo extends Component {
 
             return (
 
-                <div>
+                <div className="main-content">
 
                     <WalkerUserInfo
                         username={this.props.username}
@@ -122,6 +126,7 @@ class WalkerProfileInfo extends Component {
                         handleEditUserClick={this.handleEditUserClick}
                         showWidget={this.showWidget}
                     />
+
                 </div>
             );
         }
