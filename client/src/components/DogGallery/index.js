@@ -8,7 +8,10 @@ import Gallery from 'react-grid-gallery';
 class DogOwnerGallery extends Component {
     state = {
         gallery: [],
-        selectedOptions: []
+        selectedOptions: [],
+        showMap: false,
+        buttonText: "Show Map",
+        title: "My Gallery"
     }
 
     componentDidMount() {
@@ -25,19 +28,16 @@ class DogOwnerGallery extends Component {
                     const users = res.data[0].walkImages
                     const arrayPhotos = []
                     const imagesWalkGallery = users.map(walkImage => {
-                             const imageData = {
-                                id: walkImage.image.id,
-                                src: walkImage.image.url,
-                                thumbnail: walkImage.image.url,
-                                thumbnailWidth: 320,
-                                thumbnailHeight: 212,
-                                /* caption: `${res.data[0].dogOwner.dogName} - ${data.walkDate}` */
+                        const imageData = {
+                            id: walkImage.image.id,
+                            src: walkImage.image.url,
+                            thumbnail: walkImage.image.url,
+                            thumbnailWidth: 320,
+                            thumbnailHeight: 212,
 
-                            }
-                            arrayPhotos.push(imageData)
-                        })
-                  /*   }) */
-
+                        }
+                        arrayPhotos.push(imageData)
+                    })
 
                     this.setState({ gallery: arrayPhotos })
 
@@ -47,35 +47,49 @@ class DogOwnerGallery extends Component {
 
     }
 
-    /* Leave to select option for send or delete */
-    /*  onSelectImage(index, image) {
-         const images = this.state.images.slice();
-         console.log("images", images)
-         const img = images[index];
-         console.log("img", img)
-         if (img.hasOwnProperty("isSelected"))
-             img.isSelected = !img.isSelected;
-         else
-             img.isSelected = true;
- 
-         this.setState({
-             gallery: images
-         });
- 
-     } */
+
+    handleShowClick = event => {
+        event.preventDefault();
+        if (this.state.showMap == false) {
+            this.setState({
+                showMap: true,
+                buttonText: "Show Gallery",
+                title: "My Map"
+            })
+        } else {
+            this.setState({
+                showMap: false,
+                buttonText: "Show Map",
+                title: "My Gallery"
+            })
+        }
+
+    }
 
     render() {
+
         return (
             <div>
-                <p className="ownerGalleryTitle">My Gallery</p>
-                <Gallery
-                    enableImageSelection={true}
-                    backdropClosesModal={true}
-                    onSelectImage={this.onSelectImage}
-                    enableLightbox={true}
-                    images={this.state.gallery}
-                    showLightboxThumbnails={true}
-                />
+                <p className="ownerGalleryTitle">{this.state.title}</p>
+                <button className="photos__gallery--btn" onClick={this.handleShowClick}>{this.state.buttonText}</button>
+
+                {!this.state.showMap ? (
+                    <Gallery
+                        enableImageSelection={true}
+                        backdropClosesModal={true}
+                        onSelectImage={this.onSelectImage}
+                        enableLightbox={true}
+                        images={this.state.gallery}
+                        showLightboxThumbnails={true}
+                    />
+
+                ) : (
+
+                        <div>
+
+                        </div>
+
+                    )}
             </div>
         )
     }
