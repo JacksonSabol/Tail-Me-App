@@ -152,7 +152,7 @@ class ProfileContainerWalker extends Component {
                 walkerId={this.state.userId}
                 walkerName={walkerFullName}
             />;
-            case "Upload": return <WalkPhotoUpload
+            case "Gallery": return <WalkPhotoUpload
                 WalkerID={this.state.userId}
             />;
             default: return <ProfileWalker

@@ -22,7 +22,7 @@ const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
         borderRadius: '100%',
         transform: 'translate(-50%, -50%)',
     }}
-        // onClick={() => imageClick(id)}
+        onClick={() => imageClick(id)}
     >
         <img src={icon}></img>
 
@@ -43,9 +43,7 @@ class ownerWalks extends Component {
         onClickButton: false,
         walkId: 0,
         images: [],
-        pastWalks: [],
-        walkPoints: [],
-        showMap: false
+        pastWalks: []
 
     }
     // Life-cycle function that executes when the components mount (page loads)
@@ -91,64 +89,43 @@ class ownerWalks extends Component {
             .catch(err => console.log(err));
     };
 
-    // handleOnClick = (walkId) => {
-    //     console.log("walkId", walkId)
-    //     API.getImagesWalk(walkId)
-    //         .then(res => {
-    //             console.log("back from getpics")
-    //             console.log("getpics: ", res.data)
-    //             // this.setState({
-    //             //   walks: res.data
-    //             // });
-    //             let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null)
-    //             //   console.log("PICS GPS: ", picsWithGpsInfo)
-    //             //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
-    //             //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
-    //             //console.log("data[0]: ", res.data[0].GPSLatitude)
-    //             this.setState({
-    //                 onClickButton: true,
-    //                 walkId: walkId,
-    //                 images: picsWithGpsInfo,
-    //                 // currentLocation: {
-    //                 //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-    //                 //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-    //                 // },
-    //                 currentLocation: {
-    //                     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-    //                     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-    //                 }
-    //             })
-    //         }).catch(err => {
-    //             console.log(err)
-    //         });
-
-    // };
-    handleOnClickMap = (walkId) => {
-
-        API.getPath(walkId)
+    handleOnClick = (walkId) => {
+        console.log("walkId", walkId)
+        API.getImagesWalk(walkId)
             .then(res => {
-
+                console.log("back from getpics")
+                console.log("getpics: ", res.data)
+                // this.setState({
+                //   walks: res.data
+                // });
+                let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null)
+                //   console.log("PICS GPS: ", picsWithGpsInfo)
+                //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
+                //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
+                //console.log("data[0]: ", res.data[0].GPSLatitude)
                 console.log("path points:", res.data)
 
                 let middlePoint = res.data.length / 2;
                 console.log("middlePoint ", middlePoint);
-
                 this.setState({
-                    // onClickButton: true,
-                    walkPoints: res.data,
-                    showmap: true,
-                    mapWalkId: walkId,
+                    onClickButton: true,
+                    walkId: walkId,
+                    images: picsWithGpsInfo,
+                    // currentLocation: {
+                    //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+                    //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                    // },
                     currentLocation: {
                         lat: parseFloat(res.data[middlePoint].lat),
                         lng: parseFloat(res.data[middlePoint].lng)
                     }
-
                 })
-
             }).catch(err => {
                 console.log(err)
             });
+
     };
+
     _onChange = ({ center, zoom }) => {
         console.log("Center", this.state.center)
         console.log("zoom", this.state.zoom)
@@ -222,20 +199,6 @@ class ownerWalks extends Component {
             Header: 'Total Time',
             accessor: 'totalTime',
             Cell: props => <span>{props.value}</span>
-        },
-        {
-            // id: 'notes',
-            Header: 'Notes',
-            // // accessor: data => data.checkInTime,
-            // // accessor: 'checkInTime',
-            // Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button></div>
-        },
-        {
-            // id: '?????',
-            Header: 'Map the Walk',
-            // accessor: data => data.checkInTime,
-            // accessor: 'checkInTime',
-            Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, row.original.id)}>Map</button></div>
         },
         // {
         //     Header: 'Map the Walk',
@@ -402,9 +365,9 @@ class ownerWalks extends Component {
                             <p className="ownerWalks__alert">No history of previous walks found.</p>
                         )}
                 </div>
-                {this.state.mapWalkId ? (
+                {/* {this.state.mapWalkId ? (
                     <div className="ownerWalks__past--map" style={{ display: "flex" }}>
-                        <div className="ownerWalks__past--mapmap" style={{ height: '50vh', width: '100%' }}>
+                        <div className="ownerWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                                 // defaultCenter={this.state.currentLocation}
@@ -413,51 +376,24 @@ class ownerWalks extends Component {
                                 center={this.state.currentLocation}
                                 onClick={this._onChange}
                             >
-                                {this.state.walkPoints
-                                    .filter(point => point.pointType === "in")
-                                    .map(point => (
-                                        <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
-                                            id={point.id}
-                                            icon="../paw-green-2020.svg"
-                                            lat={point.lat}
-                                            lng={point.lng}
-                                        // imageClick={this.handleImgClick}
-                                        />
-
-                                    ))}
-                                {this.state.walkPoints
-                                    .filter(point => point.pointType === "dot")
-                                    .map(point => (
-                                        <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
-                                            id={point.id}
-                                            icon="../paw-tailme-2020.svg"
-                                            lat={point.lat}
-                                            lng={point.lng}
-                                        // imageClick={this.handleImgClick}
-                                        />
-
-                                    ))}
-                                {this.state.walkPoints
-                                    .filter(point => point.pointType === "out")
-                                    .map(point => (
-                                        <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
-                                            id={point.id}
-                                            icon="../paw-red-2020.svg"
-                                            lat={point.lat}
-                                            lng={point.lng}
-                                        // imageClick={this.handleImgClick}
-                                        />
-
-                                    ))}
+                                {this.state.walkPoints.map(point => (
+                                    <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
+                                        id={point.id}
+                                        icon="../paw-tailme-2020.svg"
+                                        lat={point.lat}
+                                        lng={point.lng}
+                                    // imageClick={this.handleImgClick}
+                                    />
+                                ))}
                             </GoogleMapReact>
                         </div>
-                        {/* <div className="ownerWalks__past--mapimage">
+                        <div className="ownerWalks__past--mapimage">
                             {this.state.activeImage ?
                                 <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div> */}
+                        </div>
                     </div>
 
-                ) : null}
+                ) : null} */}
             </div>
         );
     }

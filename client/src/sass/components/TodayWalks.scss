@@ -1,13 +1,13 @@
 
 .TodayWalks{
+    width: 100%;
     font-size: 2em;
-    // padding: .2em;
     color: $color-darkest;
     background-color:  $color-lightest;
     border-radius: .25em;
     display:grid;
     grid-template-columns: (15) 1fr;
-    grid-template-rows:  auto auto ;
+    grid-template-rows:  auto ;
     &__reactTableUpcoming{
         grid-area: 1/1/2/16;
         border: solid .25em $color-accentOne;
@@ -23,8 +23,6 @@
             margin-left: 1em;
         }
         &--table{
-            display: flex;
-            flex-wrap: wrap;
             width: 100%;
         }
     }

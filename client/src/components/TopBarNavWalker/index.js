@@ -44,7 +44,7 @@ function TopBarNavWalker(props) {
                      {/* <label className="topBarWalker__nav--scheduleLabel">Schedule</label> */}
                     </button>
                 </div>
-                <div className="topBarWalker__nav--itemFullSchedule">
+                <div className="topBarWalker__nav--itemInvite">
                     <button className="topBarWalker__nav--itemLink"
                         onClick={() => props.handlePageChange("Invite")}
                     >
@@ -52,25 +52,16 @@ function TopBarNavWalker(props) {
                      {/* <label className="topBarWalker__nav--inviteLabel">Invite Clients</label> */}
                     </button>
                 </div>
-                <div className="topBarWalker__nav--itemInvite">
+                <div className="topBarWalker__nav--itemGallery">
                     <button className="topBarWalker__nav--itemLink"
-                        onClick={() => props.handlePageChange("Certs")}
-                    >
-                     <img className="topBarWalker__nav--certification" src={certificationIcon} alt="certification icon" ></img>
-                     {/* <label className="topBarWalker__nav--certificationLabel">Update Qualifications</label> */}
-                    </button>
-                </div>
-                <div className="topBarWalker__nav--itemCerts">
-                    <button className="topBarWalker__nav--itemLink"
-                        onClick={() => props.handlePageChange("Upload")}
+                        onClick={() => props.handlePageChange("Gallery")}
                     >
                      <img className="topBarWalker__nav--images" src={imagesIcon} alt="images icon" ></img>
                      {/* <label className="topBarWalker__nav--imagesLabel">Upload Images</label> */}
                     </button>
                 </div>
-                <div className="topBarWalker__nav--itemMap">
+                <div className="topBarWalker__nav--itemLogout">
                     <button className="topBarWalker__nav--itemLink"
-                        href="#"
                         onClick={() => props.handleLogOut()}
                     >
                      <img className="topBarWalker__nav--logout" src={logoutIcon} alt="logout icon" ></img>
