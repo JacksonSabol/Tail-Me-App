@@ -45,9 +45,9 @@
         grid-area: 1/3;
         font-size: 2.5em;
         display: grid;
-        grid-template-columns: (10) 1fr;
+        grid-template-columns: (9) 1fr;
         grid-template-rows:  1fr;
-        justify-content: center;
+        justify-content: right;
 
         &--itemLink{
             font-style: bold;
@@ -113,22 +113,8 @@
         &--schedule{
             height: 1.5em;
         }
-        &--itemFullSchedule{
-            grid-area: 1/6;
-            padding: .5em 1.5em;
-            background-color: transparent;
-            border-radius: .5em;
-            border: solid 2px $color-accentOne;
-            margin: .25em .25em;
-            box-shadow:    0 0 12px $color-light;
-            outline: none;
-            text-decoration: none;
-        }
-        &--itemFullSchedule:hover{
-            background-color: $color-lightest;
-        }
         &--itemInvite{
-            grid-area: 1/7;
+            grid-area: 1/6;
             padding: .5em 1.5em;
             background-color: transparent;
             border-radius: .5em;
@@ -144,8 +130,8 @@
         &--invite{
             height: 1.5em;
         }
-        &--itemCerts{
-            grid-area: 1/8;
+        &--itemGallery{
+            grid-area: 1/7;
             padding: .5em 1.5em;
             background-color: transparent;
             border-radius: .5em;
@@ -155,48 +141,14 @@
             outline: none;
             text-decoration: none;
         }
-        &--itemCerts:hover{
-            background-color: $color-lightest;
-        }
-        &--certification{
-            height: 1.5em;
-        }
-        &--itemMap{
-            grid-area: 1/9;
-            padding: .5em 1.5em;
-            background-color: transparent;
-            border-radius: .5em;
-            border: solid 2px $color-accentOne;
-            margin: .25em .25em;
-            box-shadow:    0 0 12px $color-light;
-            outline: none;
-            text-decoration: none;
-        }
-        &--itemMap:hover{
-            background-color: $color-lightest;
-        }
-        &--map{
-            height: 1.5em;
-        }
-        &--itemNotifications{
-            grid-area: 1/10;
-            padding: .5em 1.5em;
-            background-color: transparent;
-            border-radius: .5em;
-            border: solid 2px $color-accentOne;
-            margin: .25em .25em;
-            box-shadow:    0 0 12px $color-light;
-            outline: none;
-            text-decoration: none;
-        }
-        &--itemNotifications:hover{
+        &--itemGallery:hover{
             background-color: $color-lightest;
         }
         &--images{
             height: 1.5em;
         }
         &--itemLogout{
-            grid-area: 1/11;
+            grid-area: 1/8;
             padding: .5em 1.5em;
             background-color: transparent;
             border-radius: .5em;
