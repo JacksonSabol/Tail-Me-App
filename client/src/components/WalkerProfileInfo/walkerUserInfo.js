@@ -43,6 +43,8 @@ function WalkerUserInfo(props) {
                 <div className="walker-main-content__body--servicesInput">{props.services}</div>
                 {/* <div className="walker-main-content__body--availibilityLabel">Availibility:</div>
             <div className="walker-main-content__body--availibilityInput">{props.availibility}</div> */}
+            <button className="photos__gallery--btn" onClick={props.handleEditUserClick}>Edit My Info</button>
+            <button className="photos__upload--btn"onClick={props.showWidget}>Upload Profile Picture</button>
             </div>
 
             
