@@ -34,7 +34,7 @@ const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
         borderRadius: '100%',
         transform: 'translate(-50%, -50%)'
     }}
-        // onClick={() => imageClick(id)}
+        onClick={() => imageClick(id)}
     >
         <img src={icon}></img>
 
@@ -53,7 +53,7 @@ class TodayWalks extends Component {
         //     lat: 37.7924791,
         //     lng: -122.1818368
         // },
-        zoom: 12,
+        zoom: 14,
         activeImage: "",
         walks: [],
         errorMessage: "",
@@ -262,7 +262,7 @@ class TodayWalks extends Component {
 
                     navigator.geolocation.getCurrentPosition(success, error, options);
 
-                }, 120000);
+                }, 180000);
 
 
                 API.updateCheckInOut("in", walkId, coords.latitude, coords.longitude, dogData)
@@ -690,7 +690,7 @@ class TodayWalks extends Component {
                 </div>
                 {this.state.mapWalkId ? (
                     <div className="TodayWalks__past--map" style={{ display: "flex" }}>
-                        <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '100%' }}>
+                        <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                                 // defaultCenter={this.state.currentLocation}
@@ -738,10 +738,10 @@ class TodayWalks extends Component {
                                     ))}
                             </GoogleMapReact>
                         </div>
-                        {/* <div className="TodayWalks__past--mapimage">
+                        <div className="TodayWalks__past--mapimage">
                             {this.state.activeImage ?
                                 <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div> */}
+                        </div>
                     </div>
 
                 ) : null}
