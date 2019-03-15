@@ -49,7 +49,7 @@ class WalkerProfileInfo extends Component {
         if (editClick) {
 
             return (
-                <div>
+                <div className="main-content">
                     <div className="main-content-userEdition__title">Update My Info</div>
                     <div className="main-content-userEdition">
 
@@ -92,7 +92,7 @@ class WalkerProfileInfo extends Component {
 
             return (
 
-                <div>
+                <div className="main-content">
 
                     <WalkerUserInfo
                         username={this.props.username}
@@ -113,8 +113,12 @@ class WalkerProfileInfo extends Component {
                         availibility={this.props.availibility}
 
                     />
-                    <button className="photos__gallery--btn" onClick={this.handleEditUserClick}>Edit My Info</button>
-                    <button className="photos__upload--btn"onClick={this.showWidget}>Upload Profile Picture</button>
+                    <div className="walker-main-content__editInfo">
+                    <button className="walker-main-content__editInfo--button" onClick={this.handleEditUserClick}>Edit My Info</button>
+                    </div>
+                    <div className="walker-main-content__photoUpload">
+                    <button className="walker-main-content__photoUpload--button"onClick={this.showWidget}>Upload Profile Picture</button>
+                    </div>
                 
                 </div>
             );

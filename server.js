@@ -147,7 +147,7 @@ cron.schedule("* 18 * * *", function () {
 
 
 // Syncing our sequelize models and then starting our Express app
-db.sequelize.sync({ force: false }).then(function () { // Set to false after Auth table is initially made post deployment
+db.sequelize.sync({ force: false}).then(function () { // Set to false after Auth table is initially made post deployment
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
