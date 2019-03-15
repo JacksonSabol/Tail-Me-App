@@ -545,14 +545,14 @@ class TodayWalks extends Component {
         },
         {
             // id: 'notes',
-            Header: 'Notes',
+            Header: '',
             // accessor: data => data.checkInTime,
             // accessor: 'checkInTime',
-            Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button></div>
+            Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Notes</button></div>
         },
         {
             // id: '?????',
-            Header: 'Map the Walk',
+            Header: '',
             // accessor: data => data.checkInTime,
             // accessor: 'checkInTime',
             Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, row.original.id)}>Map</button></div>

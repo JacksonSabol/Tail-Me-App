@@ -43,7 +43,9 @@ class ownerWalks extends Component {
         onClickButton: false,
         walkId: 0,
         images: [],
-        pastWalks: []
+        pastWalks: [],
+        walkPoints: [],
+        showMap: false
 
     }
     // Life-cycle function that executes when the components mount (page loads)
@@ -89,39 +91,61 @@ class ownerWalks extends Component {
             .catch(err => console.log(err));
     };
 
-    handleOnClick = (walkId) => {
-        console.log("walkId", walkId)
-        API.getImagesWalk(walkId)
+    // handleOnClick = (walkId) => {
+    //     console.log("walkId", walkId)
+    //     API.getImagesWalk(walkId)
+    //         .then(res => {
+    //             console.log("back from getpics")
+    //             console.log("getpics: ", res.data)
+    //             // this.setState({
+    //             //   walks: res.data
+    //             // });
+    //             let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null)
+    //             //   console.log("PICS GPS: ", picsWithGpsInfo)
+    //             //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
+    //             //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
+    //             //console.log("data[0]: ", res.data[0].GPSLatitude)
+    //             this.setState({
+    //                 onClickButton: true,
+    //                 walkId: walkId,
+    //                 images: picsWithGpsInfo,
+    //                 // currentLocation: {
+    //                 //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+    //                 //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+    //                 // },
+    //                 currentLocation: {
+    //                     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
+    //                     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+    //                 }
+    //             })
+    //         }).catch(err => {
+    //             console.log(err)
+    //         });
+
+    // };
+    handleOnClickMap = (walkId) => {
+
+        API.getPath(walkId)
             .then(res => {
-                console.log("back from getpics")
-                console.log("getpics: ", res.data)
-                // this.setState({
-                //   walks: res.data
-                // });
-                let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null)
-                //   console.log("PICS GPS: ", picsWithGpsInfo)
-                //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
-                //   console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
-                //console.log("data[0]: ", res.data[0].GPSLatitude)
+
+                console.log("path points:", res.data)
+
                 this.setState({
-                    onClickButton: true,
-                    walkId: walkId,
-                    images: picsWithGpsInfo,
-                    // currentLocation: {
-                    //     lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                    //     lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
-                    // },
+                    // onClickButton: true,
+                    walkPoints: res.data,
+                    showmap: true,
+                    mapWalkId: walkId,
                     currentLocation: {
-                        lat: parseFloat(picsWithGpsInfo[0].image.GPSLatitude),
-                        lng: parseFloat(picsWithGpsInfo[0].image.GPSLongitude)
+                        lat: parseFloat(res.data[0].lat),
+                        lng: parseFloat(res.data[0].lng)
                     }
+
                 })
+
             }).catch(err => {
                 console.log(err)
             });
-
     };
-
     _onChange = ({ center, zoom }) => {
         console.log("Center", this.state.center)
         console.log("zoom", this.state.zoom)
@@ -195,6 +219,20 @@ class ownerWalks extends Component {
             Header: 'Total Time',
             accessor: 'totalTime',
             Cell: props => <span>{props.value}</span>
+        },
+        {
+            // id: 'notes',
+            Header: 'Notes',
+            // // accessor: data => data.checkInTime,
+            // // accessor: 'checkInTime',
+            // Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review Walk Notes</button></div>
+        },
+        {
+            // id: '?????',
+            Header: 'Map the Walk',
+            // accessor: data => data.checkInTime,
+            // accessor: 'checkInTime',
+            Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, row.original.id)}>Map</button></div>
         },
         // {
         //     Header: 'Map the Walk',
@@ -361,7 +399,7 @@ class ownerWalks extends Component {
                             <p className="ownerWalks__alert">No history of previous walks found.</p>
                         )}
                 </div>
-                {/* {this.state.mapWalkId ? (
+                {this.state.mapWalkId ? (
                     <div className="ownerWalks__past--map" style={{ display: "flex" }}>
                         <div className="ownerWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
                             <GoogleMapReact
@@ -389,7 +427,7 @@ class ownerWalks extends Component {
                         </div>
                     </div>
 
-                ) : null} */}
+                ) : null}
             </div>
         );
     }
