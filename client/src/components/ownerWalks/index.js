@@ -22,7 +22,7 @@ const AnyReactComponent = ({ id, icon, imageClick, lat, lng }) => (
         borderRadius: '100%',
         transform: 'translate(-50%, -50%)',
     }}
-        onClick={() => imageClick(id)}
+        // onClick={() => imageClick(id)}
     >
         <img src={icon}></img>
 
@@ -36,7 +36,7 @@ class ownerWalks extends Component {
             lat: 37.7924791,
             lng: -122.1818368
         },
-        zoom: 14,
+        zoom: 12,
         activeImage: "",
         walks: [],
         errorMessage: "",
@@ -401,7 +401,7 @@ class ownerWalks extends Component {
                 </div>
                 {this.state.mapWalkId ? (
                     <div className="ownerWalks__past--map" style={{ display: "flex" }}>
-                        <div className="ownerWalks__past--mapmap" style={{ height: '50vh', width: '50%' }}>
+                        <div className="ownerWalks__past--mapmap" style={{ height: '50vh', width: '100%' }}>
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                                 // defaultCenter={this.state.currentLocation}
@@ -410,15 +410,42 @@ class ownerWalks extends Component {
                                 center={this.state.currentLocation}
                                 onClick={this._onChange}
                             >
-                                {this.state.walkPoints.map(point => (
-                                    <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
-                                        id={point.id}
-                                        icon="../paw-tailme-2020.svg"
-                                        lat={point.lat}
-                                        lng={point.lng}
-                                    // imageClick={this.handleImgClick}
-                                    />
-                                ))}
+                                {this.state.walkPoints
+                                    .filter(point => point.pointType === "in")
+                                    .map(point => (
+                                        <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
+                                            id={point.id}
+                                            icon="../paw-green-2020.svg"
+                                            lat={point.lat}
+                                            lng={point.lng}
+                                        // imageClick={this.handleImgClick}
+                                        />
+
+                                    ))}
+                                {this.state.walkPoints
+                                    .filter(point => point.pointType === "dot")
+                                    .map(point => (
+                                        <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
+                                            id={point.id}
+                                            icon="../paw-tailme-2020.svg"
+                                            lat={point.lat}
+                                            lng={point.lng}
+                                        // imageClick={this.handleImgClick}
+                                        />
+
+                                    ))}
+                                {this.state.walkPoints
+                                    .filter(point => point.pointType === "out")
+                                    .map(point => (
+                                        <AnyReactComponent key={point.id}///all of the props ie walk.img/walk.lat))}
+                                            id={point.id}
+                                            icon="../paw-red-2020.svg"
+                                            lat={point.lat}
+                                            lng={point.lng}
+                                        // imageClick={this.handleImgClick}
+                                        />
+
+                                    ))}
                             </GoogleMapReact>
                         </div>
                         <div className="ownerWalks__past--mapimage">
