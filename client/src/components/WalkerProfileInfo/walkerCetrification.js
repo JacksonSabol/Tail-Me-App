@@ -80,7 +80,7 @@ class WalkerCertification extends Component {
         } else {
             return (
                 <div className="main-content-certify">
-              {/*   <div className="main-content-certify__title">Walker Profile Update</div> */}
+                <div className="main-content-certify__title">Tell us here about your qualifications, services and availibility.</div>
                     <form className="main-content-certify__form" onSubmit={this.handleWalkerCert}>
                     <label className="main-content-certify__form--certificationLabel">Certification:</label>
                     <input className="main-content-certify__form--certificationInput"

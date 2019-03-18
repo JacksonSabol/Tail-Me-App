@@ -9,7 +9,7 @@
         
         &--header{
             grid-area: 1/1/2/16;
-            background-image: radial-gradient( $color-lightest, $color-mid);
+            background-image: radial-gradient( $color-lightest, $color-lighter);
             border: solid .25em $color-accentOne;
             border-radius: 1em;
             // margin:1em 2em 1em 2em;
@@ -22,7 +22,7 @@
             // width: 100%;
             display: flex;
             padding: .4em;
-            background-image: radial-gradient( $color-lightest, $color-mid);
+            background-image: radial-gradient( $color-lightest, $color-lighter);
             border: solid .25em $color-accentOne;
             border-radius: 1em;
             // margin:1em 2em 1em 0em;
@@ -31,7 +31,7 @@
         }
         &--footer{
             grid-area: 3/1/4/16;
-            background-image: radial-gradient( $color-lightest, $color-mid);
+            background-image: radial-gradient( $color-lightest, $color-lighter);
             border: solid .25em $color-accentOne;
             border-radius: 1em;
             // margin:1em 2em 2em 2em;
