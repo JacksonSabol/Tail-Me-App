@@ -53,7 +53,7 @@ class DogOwnerGallery extends Component {
         const userId = this.props.userId;
         API.getImagesOwner(userId)
             .then(res => {
-                console.log(res.data[0])
+                // console.log(res.data[0]);
             
                 if (res.data[0]) {
 
@@ -75,15 +75,15 @@ class DogOwnerGallery extends Component {
                         arrayPhotos.push(imageData)
                     })
 
-                    console.log("arrayPhotos: ", arrayPhotos);
+                    // console.log("arrayPhotos: ", arrayPhotos);
                     let picsWithGpsInfo = arrayPhotos.filter(image => image.lat != null);
-                    console.log("picsWithGpsInfo:", picsWithGpsInfo)
+                    // console.log("picsWithGpsInfo:", picsWithGpsInfo);
 
-                    let middlePoint = picsWithGpsInfo.length / 2;
+                    // Floored value for cases where middle point is not an integer
+                    let middlePoint = Math.floor(picsWithGpsInfo.length / 2);
                     
                     this.setState({
                         gallery: arrayPhotos,
-                        // mapWalkId: walkId,
                         images: picsWithGpsInfo,
                         currentLocation: {
                             lat: parseFloat(picsWithGpsInfo[middlePoint].lat),
@@ -99,9 +99,9 @@ class DogOwnerGallery extends Component {
 
 
     handleImgClick = (id) => {
-        console.log("id: ", id)
+        // console.log("id: ", id)
         let clickWalk = this.state.images.filter(image => image.id === id)
-        console.log(clickWalk)
+        // console.log(clickWalk)
         this.setState({ activeImage: clickWalk[0].src })
     };
 
