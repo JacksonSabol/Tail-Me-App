@@ -13,7 +13,7 @@ module.exports = {
         insurance: req.body.insurance,
         bond: req.body.bond,
         services: req.body.services,
-        status: "available",
+        status: req.body.availibility,
         userId: req.body.userId
       })
       .then(dbmodel => res.status(200).send(dbmodel))
