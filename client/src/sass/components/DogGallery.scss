@@ -1,6 +1,24 @@
-.ownerGalleryTitle{
-    text-align: center;
-    font-family: $font-headingD;
-    font-size: 4em;
-    color: $color-accentOne;
+.ownerGallery {
+    width: 100%;
+    font-size: 2em;
+
+    
+    &__Title{
+        text-align: center;
+        font-family: $font-headingD;
+        font-size: 3em;
+        color: $color-accentOne;
+    }
+    &__gallery {
+        &--button {
+            color: $color-lightest;
+            font-family: $font-sans;
+            background-color: $color-accentOne;
+            border: solid 2px $color-accentWhite;
+            border-radius: .5em;
+            padding: .5em 1em;
+            font-size: 1.5em;
+            margin: 2em;
+        }
+    }
 }

@@ -85,6 +85,40 @@
         font-size: 4em;
         color: $color-accentOne;
     }
+    &__modal {
+        width: 100%;
+        font-size: 3em;
+        &--button {
+            font-family: $font-sans;
+            padding: .5em 1em;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentWhite;
+            background-color: $color-accentOne;
+            border-radius: .5em;
+            border: solid 2px $color-accentWhite;
+            cursor: pointer;
+        }
+        &--button:hover {
+            background-color: transparent;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--textarea {
+            color: $color-darkest;
+            font-family: $font-sans;
+            font-size: 3em;
+            background-color: $color-accentWhite;
+            border: solid 2px $color-accentOne;
+            border-radius: .5em;
+
+        }
+        &--subtitle {
+            font-size: 3em;
+        }
+        
+        
+    }
     &__past{
         grid-area: 1/6/2/16;
         border: solid .25em $color-accentOne;
@@ -154,6 +188,14 @@
 .rt-thead.-header {
     background-color: $color-accentWhite;
     color: $color-accentOne;
+
+}
+.ReactModalPortal {
+    color: $color-darkest;
+    font-family: $font-sans;
+    font-size: 1em;
+    border: 2px solid $color-accentOne;
+    background-image: radial-gradient( $color-lightest, $color-mid);
 
 }
 

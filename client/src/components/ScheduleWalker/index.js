@@ -16,7 +16,7 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        backgroundColor: 'rgb(17,144,202)',
+        // backgroundColor: 'rgb(17,144,202)',
         opacity: '1'
     }
 };
@@ -148,7 +148,7 @@ class ScheduleWalker extends Component {
         return (
 
             <div className="walkerFullscheduleWrap">
-                <div className="walkerFullscheduleWrap__modals" style={{ zIndex: '2' }}>
+                <div className="walkerFullscheduleWrap__Modal" style={{ zIndex: '2' }}>
                     <Modal
                         isOpen={this.state.eventModalOpen}
                         onAfterOpen={this.afterOpenEventModal}
@@ -158,15 +158,15 @@ class ScheduleWalker extends Component {
                         contentLabel="Event Modal"
                         aria-labelledby="event-modal"
                     >
-                        <button className="walkerFullscheduleWrap__eventModal--closeButton" onClick={this.closeEventModal}>X</button>
+                        <button className="walkerFullscheduleWrap__eventModal--Button" onClick={this.closeEventModal}>Close</button>
                         <p className="walkerFullscheduleWrap__eventModal--eventTitle">Walk for {walkTitle}</p>
                         <div className="walkerFullscheduleWrap__eventModal--eventBody">
                             <p className="walkerFullscheduleWrap__eventModal--startTime"> Start Time: {walkStart}</p>
                             <p className="walkerFullscheduleWrap__eventModal--endTime"> End Time: {walkEnd} </p>
                         </div>
                         <div className="walkerFullscheduleWrap__eventModal--footer">
-                            <button onClick={this.closeEventModal}>Close</button>
-                            <button onClick={this.cancelWalk.bind(this, walkId)}>Cancel Walk</button>
+                            {/* <button onClick={this.closeEventModal}>Close</button> */}
+                            <button className="walkerFullscheduleWrap__eventModal--Button" onClick={this.cancelWalk.bind(this, walkId)}>Cancel Walk</button>
                         </div>
                     </Modal>
                     <Modal
@@ -177,7 +177,7 @@ class ScheduleWalker extends Component {
                         contentLabel="Schedule Modal"
                         ariaHideApp={false}
                     >
-                        <button onClick={this.closeModal}>X</button>
+                         <button className="TodayWalks__modal--button" onClick={this.closeModal}>close</button>
                         <WalkerScheduleWalksWalker
                             walkerID={this.state.walkerId}
                             username={this.state.username}
