@@ -86,8 +86,10 @@ class splashWalker extends Component {
                     Maintain a gallery of images. Send them to clients, use them for promotion or just enjoy cute pictures of puppies!
                     </div>
                     {/* </div> */}
-                    
+                    <div className="walkersplash__grid--walkerListText">
+                   Available walkers
                     <WalkerList/>
+                    </div>
                    
                     <div className="walkersplash__footer">
                         <Footer />

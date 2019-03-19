@@ -337,13 +337,18 @@
 
     }
    
+    &--walkerListText{
+        grid-area: 7/2;
+        font-size: 3em;
+        
+    }
+    
     
 }
-       
-  
+         
     &__footer{
         margin-top: 8em;
-        grid-area: 7/2/8/5;
+        grid-area: 8/2/8/5;
         display: flex;
         justify-content: center;
     }

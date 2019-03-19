@@ -496,16 +496,25 @@ module.exports = {
   },
 
   getWalkerList: function (req, res) {
-    console.log("VAA")
+
     db.auth
-    .findAll({
-      attributes: ['username'],
-      include:[{model:db.user,
-        where: {
-          userType: 'walker'
-        }}]
-      
-    })
+      .findAll({
+        attributes: ['username'],
+        include: [{
+          model: db.user,
+          where: {
+            userType: 'walker'
+          },
+          include: [{
+            model: db.walker,
+            where: {
+              available:true
+            }
+          }]
+
+        }]
+
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
