@@ -3821,10 +3821,13 @@ button.css-48ayfv {
   .walkersplash__grid--imagesText {
     grid-area: 6/4;
     font-size: 2em; }
+  .walkersplash__grid--walkerListText {
+    grid-area: 7/2;
+    font-size: 3em; }
 
 .walkersplash__footer {
   margin-top: 8em;
-  grid-area: 7/2/8/5;
+  grid-area: 8/2/8/5;
   display: flex;
   justify-content: center; }
 
