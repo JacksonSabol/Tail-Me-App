@@ -50,3 +50,34 @@ a{
 
 
 }
+.walkerFullscheduleWrap__eventModal{
+    width: 100%;
+    &--Button {
+            font-family: $font-sans;
+            padding: .5em 1em;
+            font-size: 3em;
+            text-align: center;
+            color: $color-accentWhite;
+            background-color: $color-accentOne;
+            border-radius: .5em;
+            border: solid 2px $color-accentWhite;
+            cursor: pointer;
+        }
+        &--closeButton:hover {
+            background-color: transparent;
+            color: $color-accentOne;
+            text-shadow: 2px 2px 8px $color-accentOne;
+        }
+        &--eventTitle {
+            color: $color-accentOne;
+            font-size: 6em;
+            font-family: $font-headingD;
+            text-align: center;
+        }
+        &--eventBody {
+            font-family: $font-sans;
+            font-size: 3em;
+            color: $color-darkest;
+
+        }
+    }

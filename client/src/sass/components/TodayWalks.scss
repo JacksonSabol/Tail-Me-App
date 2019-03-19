@@ -87,10 +87,11 @@
     }
     &__modal {
         width: 100%;
+        font-size: 3em;
         &--button {
             font-family: $font-sans;
             padding: .5em 1em;
-            font-size: 1em;
+            font-size: 3em;
             text-align: center;
             color: $color-accentWhite;
             background-color: $color-accentOne;
@@ -106,13 +107,14 @@
         &--textarea {
             color: $color-darkest;
             font-family: $font-sans;
-            font-size: 1em;
+            font-size: 3em;
             background-color: $color-accentWhite;
             border: solid 2px $color-accentOne;
             border-radius: .5em;
-           
 
-
+        }
+        &--subtitle {
+            font-size: 3em;
         }
         
         
@@ -191,7 +193,7 @@
 .ReactModalPortal {
     color: $color-darkest;
     font-family: $font-sans;
-    font-size: 3em;
+    font-size: 1em;
     border: 2px solid $color-accentOne;
     background-image: radial-gradient( $color-lightest, $color-mid);
 

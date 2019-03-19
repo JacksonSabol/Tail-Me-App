@@ -1,7 +1,7 @@
 .walkerrdtPicker{
-    margin: 10em 10em 20em 10em;
+    margin: 5em 10em 45em 10em;
     display: grid;
-    grid-template-columns:  1fr ;
+    grid-template-columns:  auto ;
     grid-template-rows: (4) 1fr;
     // justify-content: center;
     grid-gap: 1em;
@@ -9,18 +9,21 @@
 
     &__title{
         grid-area: 1/1;
-        text-align: center;
+        justify-self: left;
+        text-align: left;
         font-family: $font-headingD;
         // color: $color-accentOne;
-        color: $color-accentWhite;
-        font-size: 4em;
-        margin:.5em;
+        color: $color-accentOne;
+        font-size: 5em;
+        // margin:.5em;
     }
     &__picker{
-        align-self: center;
-        margin-top: 1em;
         grid-area: 2/1;
-        font-size:2em;
+        font-size: 3em;
+        align-self: center;
+        justify-self: center;
+        text-decoration: none;
+        outline: none;
         
     }
     &__select{
@@ -28,12 +31,14 @@
         margin: 1em 3em;
         font-size: 2em;
         align-self: center;
+        justify-self: center;
     }
     &__button{
-        grid-area: 4/1;
+        grid-area: 1/1;
         align-self: center;
+        justify-self: right;
         font-family: $font-sans;
-        padding: .8em .5em;
+        padding: .5em 1em;
         font-size: 2.5em;
         text-align: center;
         color: $color-accentWhite;
@@ -52,9 +57,11 @@
     }
 }
 .react-datetime-picker__wrapper{
+    width: 100%;
     height: 4em;
     padding: 1em;
-    background-color: $color-light;
+    background-color: $color-lighter;
+    border: solid 2px $color-accentOne;
     border-radius: .5em;
     align-self: center;
     
@@ -65,7 +72,8 @@
     
 }
 button.css-1r4vtzz{
-    background-color: $color-light;
+    align-self: left;
+    background-color: $color-lightest;
     font-family: $font-sans;
     color: $color-darkest;
     font-size: 1.25em;

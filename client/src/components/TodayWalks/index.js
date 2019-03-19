@@ -773,7 +773,7 @@ class TodayWalks extends Component {
 
                         </label>
                         <br></br>
-                        <input className="TodayWalks__modal--input" type="submit" value="" />
+                        <button className="TodayWalks__modal--button" type="submit" value="save">Save </button>
 
                         {/*  conditional render for the send email button */}
 

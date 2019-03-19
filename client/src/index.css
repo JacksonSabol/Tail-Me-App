@@ -492,6 +492,32 @@ a {
 .walkerFullscheduleWrap {
   display: grid; }
 
+.walkerFullscheduleWrap__eventModal {
+  width: 100%; }
+  .walkerFullscheduleWrap__eventModal--Button {
+    font-family: "Thasadith", sans-serif;
+    padding: .5em 1em;
+    font-size: 3em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    cursor: pointer; }
+  .walkerFullscheduleWrap__eventModal--closeButton:hover {
+    background-color: transparent;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .walkerFullscheduleWrap__eventModal--eventTitle {
+    color: #1190cb;
+    font-size: 6em;
+    font-family: "Mouse Memoirs", sans-serif;
+    text-align: center; }
+  .walkerFullscheduleWrap__eventModal--eventBody {
+    font-family: "Thasadith", sans-serif;
+    font-size: 3em;
+    color: #1a1a1a; }
+
 .photos {
   background-color: transparent;
   margin: 2em;
@@ -840,11 +866,12 @@ a {
     font-size: 4em;
     color: #1190cb; }
   .TodayWalks__modal {
-    width: 100%; }
+    width: 100%;
+    font-size: 3em; }
     .TodayWalks__modal--button {
       font-family: "Thasadith", sans-serif;
       padding: .5em 1em;
-      font-size: 1em;
+      font-size: 3em;
       text-align: center;
       color: #e7f6fd;
       background-color: #1190cb;
@@ -858,10 +885,12 @@ a {
     .TodayWalks__modal--textarea {
       color: #1a1a1a;
       font-family: "Thasadith", sans-serif;
-      font-size: 1em;
+      font-size: 3em;
       background-color: #e7f6fd;
       border: solid 2px #1190cb;
       border-radius: .5em; }
+    .TodayWalks__modal--subtitle {
+      font-size: 3em; }
   .TodayWalks__past {
     grid-area: 1/6/2/16;
     border: solid 0.25em #1190cb;
@@ -910,7 +939,7 @@ a {
 .ReactModalPortal {
   color: #1a1a1a;
   font-family: "Thasadith", sans-serif;
-  font-size: 3em;
+  font-size: 1em;
   border: 2px solid #1190cb;
   background-image: radial-gradient(#f7f7f7, #808080); }
 
@@ -1073,15 +1102,6 @@ a {
   color: #1190cb;
   font-weight: bold; }
 
-button.css-1r4vtzz {
-  background-color: #a6a6a6;
-  font-family: "Thasadith", sans-serif;
-  color: #1a1a1a;
-  font-size: 1.25em;
-  padding: .5em 1.5em;
-  border: solid 1px #4d4d4d;
-  border-radius: .25em; }
-
 button.css-48ayfv {
   background-color: #a6a6a6;
   font-family: "Thasadith", sans-serif;
@@ -1091,33 +1111,37 @@ button.css-48ayfv {
   border-radius: .25em; }
 
 .walkerrdtPicker {
-  margin: 10em 10em 20em 10em;
+  margin: 5em 10em 45em 10em;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   grid-template-rows: 4 1fr;
   grid-gap: 1em; }
   .walkerrdtPicker__title {
     grid-area: 1/1;
-    text-align: center;
+    justify-self: left;
+    text-align: left;
     font-family: "Mouse Memoirs", sans-serif;
-    color: #e7f6fd;
-    font-size: 4em;
-    margin: .5em; }
+    color: #1190cb;
+    font-size: 5em; }
   .walkerrdtPicker__picker {
-    align-self: center;
-    margin-top: 1em;
     grid-area: 2/1;
-    font-size: 2em; }
+    font-size: 3em;
+    align-self: center;
+    justify-self: center;
+    text-decoration: none;
+    outline: none; }
   .walkerrdtPicker__select {
     grid-area: 3/1;
     margin: 1em 3em;
     font-size: 2em;
-    align-self: center; }
-  .walkerrdtPicker__button {
-    grid-area: 4/1;
     align-self: center;
+    justify-self: center; }
+  .walkerrdtPicker__button {
+    grid-area: 1/1;
+    align-self: center;
+    justify-self: right;
     font-family: "Thasadith", sans-serif;
-    padding: .8em .5em;
+    padding: .5em 1em;
     font-size: 2.5em;
     text-align: center;
     color: #e7f6fd;
@@ -1132,9 +1156,11 @@ button.css-48ayfv {
     text-shadow: 2px 2px 8px #1190cb; }
 
 .react-datetime-picker__wrapper {
+  width: 100%;
   height: 4em;
   padding: 1em;
-  background-color: #a6a6a6;
+  background-color: #dcdcdc;
+  border: solid 2px #1190cb;
   border-radius: .5em;
   align-self: center; }
 
@@ -1143,7 +1169,8 @@ button.css-48ayfv {
   font-weight: bold; }
 
 button.css-1r4vtzz {
-  background-color: #a6a6a6;
+  align-self: left;
+  background-color: #f7f7f7;
   font-family: "Thasadith", sans-serif;
   color: #1a1a1a;
   font-size: 1.25em;
@@ -1775,6 +1802,7 @@ button.css-48ayfv {
       height: 1.5em; }
 
 .CustomerList {
+  width: 100%;
   color: #1a1a1a;
   font-size: 2em; }
   .CustomerList__table {
