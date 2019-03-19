@@ -1,45 +1,105 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import "../../index.css";
-import WalkerUserInfo from "./walkerUserInfo";
+import WalkerPublicUserInfo from "./walkerPublicProfile";
+import axios from 'axios';
 
+class WalkerPublicProfileInfo extends Component {
+    state = {
 
-class WalkerProfileInfo extends Component {
-   
-    
+        username: '',
+        userEmail: '',
+        firstName: '',
+        lastName: '',
+        profilePhotoURL: '',
+        userType: '',
+        aboutMe: '',
+
+        certification: '',
+        insurance: '',
+        bond: '',
+        services: '',
+        availibility: ''
+
+    };
+    async componentDidMount() {
+        console.log(this.props.match.params.username)
+        await axios
+            .get('/public/findWalker', {
+                params: {
+                    username: this.props.match.params.username
+                }
+            })
+            .then(response => {
+                console.log("res", response.data)
+                this.setState({
+
+                    username: this.props.match.params.username,
+                    firstName: response.data.firstName,
+                    lastName: response.data.lastName,
+                    profilePhotoURL: response.data.profilePhotoURL,
+                    userType: response.data.userType,
+                    aboutMe: response.data.aboutMe,
+                    email: response.data.email,
+                    certification: response.data.certification,
+                    insurance: response.data.insurance,
+                    bond: response.data.bond,
+                    services: response.data.services,
+                    availibility: response.data.availibility,
+
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({
+                    error: true,
+                });
+            });
+
+    }
+
     render() {
-     
 
-            return (
 
-                <div className="main-content">
+        return (
 
-                    <WalkerUserInfo
-                        username={this.props.username}
-                        firstName={this.props.firstName}
-                        lastName={this.props.lastName}
-                        profilePhotoURL={this.props.profilePhotoURL}
-                        userType={this.props.userType}
-                        aboutMe={this.props.aboutMe}
-                        address={this.props.address}
-                        City={this.props.City}
-                        State={this.props.State}
-                        zipCode={this.props.zipCode}
-                        country={this.props.country}
-                        certification={this.props.certification}
-                        insurance={this.props.insurance}
-                        bond={this.props.bond}
-                        services={this.props.services}
-                        availibility={this.props.availibility}
-                        handleEditUserClick={this.handleEditUserClick}
-                        showWidget={this.showWidget}
+                <div className="walkersplash">
+                    <div className="walkersplash__nav">
+
+                        <a className="walkersplash__nav--userregistration" href="/user/Login">
+                            owner log in
+                        </a>
+
+                        <a className="walkersplash__nav--walkerauthentification" href="/walker/signup">
+                            walker sign up
+                    </a>
+                        <a className="walkersplash__nav--walkerregistration" href="/user/LoginWalker">
+                            walker log in
+                    </a>
+                    </div>
+
+                    <WalkerPublicUserInfo
+                        username={this.state.username}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
+                        profilePhotoURL={this.state.profilePhotoURL}
+                        userType={this.state.userType}
+                        aboutMe={this.state.aboutMe}
+                        certification={this.state.certification}
+                        insurance={this.state.insurance}
+                        bond={this.state.bond}
+                        services={this.state.services}
+                        availibility={this.state.availibility}
+                        email={this.state.email}
+
+
                     />
 
                 </div>
-            );
-        
+                );
+            
+        }
     }
-}
-
-
-export default WalkerProfileInfo;
+    
+    
+export default WalkerPublicProfileInfo;

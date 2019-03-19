@@ -19,8 +19,8 @@ class WalkerList extends Component {
                 const dataWalkers = res.data.map(data => {
                     const dataWalkers = {
                         label: `${data.user.firstName} ${data.user.lastName} `,
-                        id:data.id,
-                        url: `/walker/${data.username}`
+                        id:data.user.id,
+                        url: `/publicProfile/${data.username}`
                     }
                     return (dataWalkers)
                 })

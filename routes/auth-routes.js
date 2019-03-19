@@ -24,7 +24,7 @@ module.exports = function (app, passport) {
     // POST route to signup and authorize a new dog Walker using our local strategy 'local-signup'
     app.post('/walker/signup', passport.authenticate('local-signup'), function (req, res) {
         // Upon successful signup and authentication,  create a JWT and send it back with a message
-        console.log(req.user);
+        // console.log(req.user);
         const token = jwt.sign({ id: req.user.id }, process.env.secret);
         res.status(200).send({
             auth: true,
@@ -114,8 +114,8 @@ module.exports = function (app, passport) {
                 include: [db.auth, db.walker]
             }).then(user => {
                 if (user != null) {
-                    console.log('user found in db from /findWalker');
-                    console.log(user.walker.status);
+                    // console.log('user found in db from /findWalker');
+                    // console.log(user.walker.status);
 
                     res.status(200).send({
                         UserID: user.id,
@@ -157,7 +157,7 @@ module.exports = function (app, passport) {
                 include: [db.auth, db.dogOwner]
             }).then(user => {
                 if (user != null) {
-                    console.log('user found in db from /findOwner');
+                    // console.log('user found in db from /findOwner');
                     // console.log(user.dogOwner.dogName);
                     res.status(200).send({
                         UserID: user.id,
@@ -181,6 +181,45 @@ module.exports = function (app, passport) {
             console.log('jwt id and username do not match');
             res.status(403).send('username and jwt token do not match');
         }
+    });
+    // Find public walker information
+    app.get('/public/findWalker', function (req, res) {
+        db.auth.findOne({
+            include: [{
+                model: db.user,
+                include: [{
+                    model: db.walker
+                }]
+            }],
+            where: {
+                username: req.query.username
+            }
+
+        }).then(user => {
+            if (user != null) {
+
+                res.status(200).send({
+                    email: user.email,
+                    firstName: user.user.firstName,
+                    lastName: user.user.lastName,
+                    profilePhotoURL: user.user.profilePhotoURL,
+                    aboutMe: user.user.aboutMe,
+                    City: user.user.City,
+                    State: user.user.State,
+                    zipCode: user.user.zipCode,
+                    country: user.user.country,
+                    certification: user.user.walker.certification,
+                    insurance: user.user.walker.insurance,
+                    bond: user.user.walker.bond,
+                    services: user.user.walker.services,
+                    availibility: user.user.walker.status
+
+                });
+            } else {
+                console.log('no user exists in db with that username');
+                res.status(401).send('no user exists in db with that username');
+            }
+        });
     });
     // Logout handled on front end
 }

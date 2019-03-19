@@ -8,7 +8,6 @@ import walkerDashboard from "./pages/walkerDashboard";
 import WalkerSignupTest from "./pages/WalkerSignupTest";
 import ownerProfile from "./pages/ownerProfile";
 import walkerProfile from "./pages/walkerProfile";
-import splash from "./pages/splash";
 import splashWalker from "./pages/splashWalker";
 import WalkPhotoUpandPost from "./components/WalkPhotoUpandPost/index"
 import WalkImages from "./components/WalkPhotoUpandPost/pics"
@@ -22,19 +21,20 @@ import createWalkerQualifications from "./pages/createWalkerQualifications";
 import createOwnerProfile from "./pages/createOwnerProfile";
 import ProfileTest from "./pages/ProfileTest";
 import ProfileTestWalker from "./pages/ProfileTestWalker";
-import ShowMap from "./components/ShowMap";
-import InviteOwners from "./components/InviteOwners";
-import GetCoordinates from "./components/GetCoordinates";
-import ShowPicsMap from "./components/ShowPicsMap";
+// import ShowMap from "./components/ShowMap";
+// import InviteOwners from "./components/InviteOwners";
+// import GetCoordinates from "./components/GetCoordinates";
+// import ShowPicsMap from "./components/ShowPicsMap";
 import WalkerScheduleWalks from "./components/WalkerScheduleWalks";
 import ReferralSignup from "./pages/ReferralSignup";
 import createReferralProfile from "./pages/createReferralProfile";
 import createReferralDog from "./pages/createReferralDog";
-import WalkPhotoUpload from  "./components/WalkPhotoUpandPost";
-import dogOwnerGallery from "./components/DogGallery";
-import ownerWalks from "./components/ownerWalks";
-import CustomerList from "./components/Customers"
+// import WalkPhotoUpload from  "./components/WalkPhotoUpandPost";
+// import dogOwnerGallery from "./components/DogGallery";
+// import ownerWalks from "./components/ownerWalks";
+// import CustomerList from "./components/Customers"
 import WalkerList from "./components/WalkerProfileInfo/walkerList"
+import WalkerPublicProfile from "./components/WalkerProfileInfo/publicProfile"
 import "./index.css";
 
 function App() {
@@ -64,19 +64,19 @@ function App() {
         <Route exact path="/contactTailMeWalker/" component={contactTailMeWalker} />
         <Route exact path="/userProfile/:username" component={ProfileTest} />
         <Route exact path="/userProfileWalker/:username" component={ProfileTestWalker} />
-        <Route exact path="/walker/showmap" component={ShowMap} />
-        <Route exact path="/walker/inviteowner" component={InviteOwners} />
-        <Route exact path="/walker/getcoordinates" component={GetCoordinates} />
-        <Route exact path="/walker/walks/uploadImages" component={WalkPhotoUpload} />
-        <Route exact path="/dogOwner/gallery" component={dogOwnerGallery} />
-        <Route exact path="/walker/showpicsmap" component={ShowPicsMap} />
-        <Route exact path="/owner/walks" component={ownerWalks} />
+        {/* <Route exact path="/walker/showmap" component={ShowMap} /> */}
+        {/* <Route exact path="/walker/inviteowner" component={InviteOwners} /> */}
+        {/* <Route exact path="/walker/getcoordinates" component={GetCoordinates} /> */}
+        {/* <Route exact path="/walker/walks/uploadImages" component={WalkPhotoUpload} /> */}
+        {/* <Route exact path="/dogOwner/gallery" component={dogOwnerGallery} /> */}
+        {/* <Route exact path="/walker/showpicsmap" component={ShowPicsMap} /> */}
+        {/* <Route exact path="/owner/walks" component={ownerWalks} /> */}
         <Route exact path="/owner/signup/:id/:code" component={ReferralSignup} />
         <Route exact path="/owner/create/:referralID/:username" component={createReferralProfile} />
         <Route exact path="/dog/create/:referredWalkerID/:username" component={createReferralDog} />
-        <Route exact path="/walker/customerList" component={CustomerList} />
         <Route exact path="/walkerList" component={WalkerList} />
-        <Route exact path="/public/:username" component={WalkerList} />
+        <Route exact path="/publicProfile/:username" component={WalkerPublicProfile} />
+        {/* <Route exact path="/walker/customerList" component={CustomerList} /> */}
       </div>
     </Router>
   );

@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import "../index.css";
 import logo from "../images/tailMeLogo.png";
 import Footer from "../components/Footer";
 import Background from "../images/splashImage_01.jpg";
 import Icon from "../images/walkIconLight.png";
-// import certificationIcon from "../images/certificationIcon.png";
 import imagesIcon from"../images/imagesIcon.png";
 import inviteIcon from "../images/inviteIcon.png";
-// import logoutIcon from "../images/logoutIcon.png";
 import mapIcon from "../images/mapIcon.png";
 import profileIcon from "../images/profileIcon.png";
 import scheduleIcon from "../images/scheduleIcon.png";
 import walkIcon from "../images/walkIcon.png";
+import WalkerList from "../components/WalkerProfileInfo/walkerList"
 
 
 class splashWalker extends Component {
@@ -47,15 +45,15 @@ class splashWalker extends Component {
                 </div>
                 <div className="walkersplash__grid">
                     <img className="walkersplash__grid--logo" src={logo} alt="tailME logo" ></img>
-                    <div className="walkersplash__grid--text">TailMe is a service for professional dog walkers. We are dedicated to helping them providing a premium experience to their clients through 
-                         better and easier management of their business. We want to see all  puppies happy and well exercised. Here at TailMe we 
-                         know the challenges of running a small business, that you love, and we strive to facilitate that by keeping those schedules filled and 
-                         your clientele satisfied. To that end we've developed a tool that allows you to intake chosen users, interact with them  more meaningfully, 
+                    <div className="walkersplash__grid--text">TailMe is a service for professional dog walkers. We are dedicated to helping them provide a premium experience to their clients through 
+                         better and easier management of their business. We want to see all puppies happy and well exercised. Here at TailMe, we 
+                         know the challenges of running a small business that you love, and we strive to facilitate that by keeping those schedules filled and 
+                         your clientele satisfied. To that end, we've developed a tool that allows you to intake chosen users, interact with them more meaningfully, 
                          manage accounts with greater effeciency and, if you choose, grow your business.  Join us and together we will help keep more healthy tails wagging!</div>
                     {/* <div className="walkersplash__grid--profile"> */}
                     <img className="walkersplash__grid--profileIcon" src={profileIcon} alt="profile icon"></img>
                     <div className="walkersplash__grid--profileText">
-                    Create and maintain your profile. Theme it to your business. Define your services.  It's up to you!
+                    Create and maintain your profile. Theme it to your business. Define your services. It's up to you!
                     </div>
                     {/* </div> */}
                     {/* <div className="walkersplash__grid--walk"> */}
@@ -88,7 +86,9 @@ class splashWalker extends Component {
                     Maintain a gallery of images. Send them to clients, use them for promotion or just enjoy cute pictures of puppies!
                     </div>
                     {/* </div> */}
-
+                    
+                    <WalkerList/>
+                   
                     <div className="walkersplash__footer">
                         <Footer />
                     </div>
