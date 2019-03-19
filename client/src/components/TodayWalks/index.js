@@ -100,7 +100,7 @@ class TodayWalks extends Component {
         const id = this.props.walkerId;
         API.getWalkerWalks(id)
             .then(res => {
-                console.log("loadWalks response: ", res.data);
+                // console.log("loadWalks response: ", res.data);
                 const dataFormat = res.data.map(data => {
                     const start_time = Moment(data.checkInTime);
                     const end_time = Moment(data.checkOutTime);
@@ -171,9 +171,11 @@ class TodayWalks extends Component {
         API.getPath(walkId)
             .then(res => {
 
-                console.log("path points:", res.data)
-                let middlePoint = res.data.length / 2;
-                console.log("middlePoint ", middlePoint);
+                // console.log("path points:", res.data)
+
+                // Floored value for cases where middle point is not an integer
+                let middlePoint = Math.floor(res.data.length / 2);
+                // console.log("middlePoint ", middlePoint);
                 this.setState({
                     // onClickButton: true,
                     walkPoints: res.data,
@@ -210,7 +212,7 @@ class TodayWalks extends Component {
 
 
     handleCheckIn = (walkId, dogName) => {
-        console.log("checkin")
+        // console.log("checkin")
         // Pass dogName as an object
         const dogData = {
             dogName: dogName
@@ -222,11 +224,11 @@ class TodayWalks extends Component {
             navigator.geolocation.getCurrentPosition(pos => {
                 let coords = pos.coords;
                 let pointType = "in"
-                console.log("coords IN: ", coords);
+                // console.log("coords IN: ", coords);
 
                 API.updatePath(pointType, walkId, coords.latitude, coords.longitude)
                     .then(res => {
-                        console.log("back from update path")
+                        // console.log("back from update path")
                     }).catch(err => {
                         console.log(err)
                     });
@@ -234,7 +236,7 @@ class TodayWalks extends Component {
 
                 // set the timmer record walk geolocation points 
                 this.intervalID = setInterval(() => {
-                    console.log("recpath", walkId)
+                    // console.log("recpath", walkId)
                     let options = {
                         enableHighAccuracy: true,
                         timeout: 5000,
@@ -590,40 +592,40 @@ class TodayWalks extends Component {
                             resizable={true}
                             defaultPageSize={5}
                             minRows={3}
-                            SubComponent={row => {
-                                // SubComponent for accessing original row values
-                                const columns = [
-                                    {
-                                        Header: "Property",
-                                        accessor: "property",
-                                        width: 200,
-                                        Cell: ci => {
-                                            return `${ci.value}:`;
-                                        },
-                                        style: {
-                                            backgroundColor: "#DDD",
-                                            textAlign: "right",
-                                            fontWeight: "bold"
-                                        }
-                                    }
-                                ];
-                                const rowData = Object.keys(row.original).map(key => {
-                                    return {
-                                        property: key,
-                                        value: row.original[key].toString()
-                                    };
-                                });
-                                return (
-                                    <div style={{ padding: "10px", width: "40%" }}>
-                                        <ReactTable
-                                            data={rowData}
-                                            columns={columns}
-                                            pageSize={rowData.length}
-                                            showPagination={false}
-                                        />
-                                    </div>
-                                );
-                            }}
+                            // SubComponent={row => {
+                            //     // SubComponent for accessing original row values
+                            //     const columns = [
+                            //         {
+                            //             Header: "Property",
+                            //             accessor: "property",
+                            //             width: 200,
+                            //             Cell: ci => {
+                            //                 return `${ci.value}:`;
+                            //             },
+                            //             style: {
+                            //                 backgroundColor: "#DDD",
+                            //                 textAlign: "right",
+                            //                 fontWeight: "bold"
+                            //             }
+                            //         }
+                            //     ];
+                            //     const rowData = Object.keys(row.original).map(key => {
+                            //         return {
+                            //             property: key,
+                            //             value: row.original[key].toString()
+                            //         };
+                            //     });
+                            //     return (
+                            //         <div style={{ padding: "10px", width: "40%" }}>
+                            //             <ReactTable
+                            //                 data={rowData}
+                            //                 columns={columns}
+                            //                 pageSize={rowData.length}
+                            //                 showPagination={false}
+                            //             />
+                            //         </div>
+                            //     );
+                            // }}
                         />
                     ) : (
                             <p className="TodayWalks__alert">There are no upcoming walks scheduled.</p>
@@ -652,40 +654,40 @@ class TodayWalks extends Component {
                             resizable={true}
                             defaultPageSize={5}
                             minRows={3}
-                            SubComponent={row => {
-                                // SubComponent for accessing original row values
-                                const columns = [
-                                    {
-                                        Header: "Property",
-                                        accessor: "property",
-                                        width: 200,
-                                        Cell: ci => {
-                                            return `${ci.value}:`;
-                                        },
-                                        style: {
-                                            backgroundColor: "#DDD",
-                                            textAlign: "right",
-                                            fontWeight: "bold"
-                                        }
-                                    }
-                                ];
-                                const rowData = Object.keys(row.original).map(key => {
-                                    return {
-                                        property: key,
-                                        value: row.original[key].toString()
-                                    };
-                                });
-                                return (
-                                    <div style={{ padding: "10px", width: "40%" }}>
-                                        <ReactTable
-                                            data={rowData}
-                                            columns={columns}
-                                            pageSize={rowData.length}
-                                            showPagination={false}
-                                        />
-                                    </div>
-                                );
-                            }}
+                            // SubComponent={row => {
+                            //     // SubComponent for accessing original row values
+                            //     const columns = [
+                            //         {
+                            //             Header: "Property",
+                            //             accessor: "property",
+                            //             width: 200,
+                            //             Cell: ci => {
+                            //                 return `${ci.value}:`;
+                            //             },
+                            //             style: {
+                            //                 backgroundColor: "#DDD",
+                            //                 textAlign: "right",
+                            //                 fontWeight: "bold"
+                            //             }
+                            //         }
+                            //     ];
+                            //     const rowData = Object.keys(row.original).map(key => {
+                            //         return {
+                            //             property: key,
+                            //             value: row.original[key].toString()
+                            //         };
+                            //     });
+                            //     return (
+                            //         <div style={{ padding: "10px", width: "40%" }}>
+                            //             <ReactTable
+                            //                 data={rowData}
+                            //                 columns={columns}
+                            //                 pageSize={rowData.length}
+                            //                 showPagination={false}
+                            //             />
+                            //         </div>
+                            //     );
+                            // }}
                         />
                     ) : (
                             <p className="TodayWalks__alert">No history of previous walks found.</p>

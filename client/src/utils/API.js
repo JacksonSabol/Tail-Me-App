@@ -26,7 +26,7 @@ export default {
 
     //User Profile
     getUserProfile: function (id) {
-        console.log(id)
+        // console.log(id)
         return axios.get(`/api/userProfile/${id}`);
     },
 
