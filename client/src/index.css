@@ -494,7 +494,7 @@ a {
 
 .walkerFullscheduleWrap__eventModal {
   width: 100%; }
-  .walkerFullscheduleWrap__eventModal--Button {
+  .walkerFullscheduleWrap__eventModal--closeButton {
     font-family: "Thasadith", sans-serif;
     padding: .5em 1em;
     font-size: 3em;
@@ -1122,10 +1122,10 @@ button.css-48ayfv {
     text-align: left;
     font-family: "Mouse Memoirs", sans-serif;
     color: #1190cb;
-    font-size: 5em; }
+    font-size: 4em; }
   .walkerrdtPicker__picker {
     grid-area: 2/1;
-    font-size: 3em;
+    font-size: 2.5em;
     align-self: center;
     justify-self: center;
     text-decoration: none;
@@ -1142,7 +1142,7 @@ button.css-48ayfv {
     justify-self: right;
     font-family: "Thasadith", sans-serif;
     padding: .5em 1em;
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
     color: #e7f6fd;
     background-color: #1190cb;
@@ -1150,6 +1150,24 @@ button.css-48ayfv {
     border: solid 2px #e7f6fd;
     cursor: pointer; }
   .walkerrdtPicker__button:hover {
+    background-color: transparent;
+    letter-spacing: 0.1em;
+    color: #1190cb;
+    text-shadow: 2px 2px 8px #1190cb; }
+  .walkerrdtPicker__closeButton {
+    grid-area: 4/1;
+    align-self: center;
+    justify-self: left;
+    font-family: "Thasadith", sans-serif;
+    padding: .5em 1em;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: #1190cb;
+    border-radius: .5em;
+    border: solid 2px #e7f6fd;
+    cursor: pointer; }
+  .walkerrdtPicker__closeButton:hover {
     background-color: transparent;
     letter-spacing: 0.1em;
     color: #1190cb;

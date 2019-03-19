@@ -14,12 +14,12 @@
         font-family: $font-headingD;
         // color: $color-accentOne;
         color: $color-accentOne;
-        font-size: 5em;
+        font-size: 4em;
         // margin:.5em;
     }
     &__picker{
         grid-area: 2/1;
-        font-size: 3em;
+        font-size: 2.5em;
         align-self: center;
         justify-self: center;
         text-decoration: none;
@@ -39,7 +39,7 @@
         justify-self: right;
         font-family: $font-sans;
         padding: .5em 1em;
-        font-size: 2.5em;
+        font-size: 2em;
         text-align: center;
         color: $color-accentWhite;
         background-color: $color-accentOne;
@@ -49,6 +49,28 @@
         
     }
     &__button:hover{
+        background-color: transparent;
+        letter-spacing: 0.1em;
+        color: $color-accentOne;
+        text-shadow: 2px 2px 8px $color-accentOne;
+        
+    }
+    &__closeButton{
+        grid-area: 4/1;
+        align-self: center;
+        justify-self: left;
+        font-family: $font-sans;
+        padding: .5em 1em;
+        font-size: 2em;
+        text-align: center;
+        color: $color-accentWhite;
+        background-color: $color-accentOne;
+        border-radius: .5em;
+        border: solid 2px $color-accentWhite;
+        cursor: pointer;
+        
+    }
+    &__closeButton:hover{
         background-color: transparent;
         letter-spacing: 0.1em;
         color: $color-accentOne;
