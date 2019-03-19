@@ -4,6 +4,7 @@ import axios from "axios";
 import "../index.css";
 import Footer from "../components/Footer";
 import logo from "../images/tailMeLogo.png";
+import homeIcon from "../images/homeIcon.png";
 
 const loading = {
     margin: '1em',
@@ -163,8 +164,12 @@ class createReferralDog extends Component {
                             <p>An error occured while adding entries to the database.</p>
                         </div>
                     )}
-                    <a className="ownerProfile__form--homeButton" href="/">Return to Home</a>
+                    <a className="ownerProfile__form--homeButton" href="/">
+                    <img className="ownerProfile__form--homeIcon" src={homeIcon} alt="home icon" >
+                        </img>Home</a>
+                    <div className="ownerProfile__footer">
                     <Footer />
+                    </div>
                 </div>
             );
         } else {

@@ -1,10 +1,10 @@
 .ownerProfile{
-    background-image: radial-gradient(#4d4d4d, #333333);
+    background-image: radial-gradient($color-dark, $color-moredark);
     // background-color: aqua;
     height: 100%;
     display: grid;
-    grid-template-columns:1fr auto 1fr;
-    grid-template-rows: auto 1fr  auto;
+    grid-template-columns:1fr auto 1fr ;
+    grid-template-rows: auto 1fr  auto auto;
     &__logo{
         grid-area: 1/2/1/4;
         margin: 2em;
@@ -37,7 +37,9 @@
             border-radius: .5em;
             align-self: flex-start;
             background-color: $color-dark;
-            color: $color-light;        
+            color: $color-light; 
+            outline: none;
+            text-decoration: none       
         }
         &--lastNameLabel{
             grid-area: 3/1;
@@ -55,6 +57,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--userTypeLabel{
             grid-area: 5/1;
@@ -72,6 +76,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--textAreaLabel{
             grid-area: 7/1;
@@ -89,6 +95,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--addressLabel{
             grid-area: 9/1;
@@ -106,6 +114,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--cityLabel{
             grid-area: 11/1;
@@ -123,6 +133,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--stateLabel{
             grid-area: 13/1;
@@ -140,6 +152,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--zipcodeLabel{
             grid-area: 15/1;
@@ -157,6 +171,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--countryLabel{
             grid-area: 17/1;
@@ -174,6 +190,8 @@
             align-self: flex-start;
             background-color: $color-dark;
             color: $color-light;
+            outline: none;
+            text-decoration: none
         }
         &--submitButton{
             grid-area: 19/1;
@@ -212,6 +230,16 @@
             letter-spacing: 0.1em;
             text-shadow: 2px 2px 8px $color-accentOne;
         }
+        &--homeIcon {
+            height: 4em;
+        }
     }
-
+    
+    &__footer{
+        grid-area: 4/1/5/4;
+        display:flex;
+        justify-content: center;
+        
+    
+    }
 }

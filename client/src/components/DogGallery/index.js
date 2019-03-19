@@ -126,9 +126,9 @@ class DogOwnerGallery extends Component {
     render() {
 
         return (
-            <div>
-                <p className="ownerGalleryTitle">{this.state.title}</p>
-                <button className="photos__gallery--btn" onClick={this.handleShowClick}>{this.state.buttonText}</button>
+            <div className="ownerGallery">
+                <button className="ownerGallery__gallery--button" onClick={this.handleShowClick}>{this.state.buttonText}</button>
+                <p className="ownerGallery__Title">{this.state.title}</p>
 
                 {!this.state.showMap ? (
                     <Gallery

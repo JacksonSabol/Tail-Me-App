@@ -111,14 +111,14 @@ class WalkerEditUserInfo extends Component {
                             placeholder="Last Name"
                         />
                         <label className="main-content-profile__form--aboutLabel">About Me:</label>
-                        < input /* textarea  */className="main-content-profile_form--aboutInput"
+                        < textarea  className="main-content-profile_form--aboutInput"
                             type="text"
                             name="aboutMe"
                             value={this.state.aboutMe}
                             onChange={this.handleInputChange}
                             placeholder="About Me"
-                            rows="14"
-                            cols="10" 
+                            rows="10"
+                            cols="30" 
                             wrap="soft"
                         />
                         <label className="main-content-profile__form--addressLabel">Address:</label>

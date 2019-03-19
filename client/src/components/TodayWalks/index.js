@@ -749,7 +749,7 @@ class TodayWalks extends Component {
 
                 ) : null}
 
-                <Modal
+                <Modal 
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
@@ -759,26 +759,26 @@ class TodayWalks extends Component {
                 >
 
                     {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
-                    <button onClick={this.closeModal}>X</button>
+                    <button className="TodayWalks__modal--button" onClick={this.closeModal}>close</button>
                     {this.state.noteCheckOutTime === 0 ? (
-                        <p>Walk In-Progress</p>
+                        <p className="TodayWalks__modal--title">Walk In-Progress</p>
                     ) : (
-                            <p>Email Subject: Walk Summary for {this.state.noteDogName} at {this.state.noteCheckOutTime}</p>
+                            <p className="TodayWalks__modal--subtitle">Email Subject: Walk Summary for {this.state.noteDogName} at {this.state.noteCheckOutTime}</p>
                         )
                     }
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            <textarea value={this.state.valueNote} onChange={this.handleChange}
-                                rows="15" cols="50" />
+                    <form className="TodayWalks__modal--form" onSubmit={this.handleSubmit}>
+                        <label className="TodayWalks__modal--label">
+                            <textarea className="TodayWalks__modal--textarea" value={this.state.valueNote} onChange={this.handleChange} 
+                                 rows="15" cols="50" /> 
 
                         </label>
                         <br></br>
-                        <input type="submit" value="Save" />
+                        <input className="TodayWalks__modal--input" type="submit" value="" />
 
                         {/*  conditional render for the send email button */}
 
                         {this.state.enableEmail ? (
-                            <button onClick={this.handleSendEmail.bind(this)}>Send Email</button>
+                            <button className="TodayWalks__modal--button" onClick={this.handleSendEmail.bind(this)}>Send Email</button>
                         ) : null}
                     </form>
 

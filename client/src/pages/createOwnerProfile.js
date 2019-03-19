@@ -234,7 +234,9 @@ class createOwnerProfile extends Component {
                         </div>
                     )}
                     <a className="ownerProfile__form--homeButton" href="/">Return to Home</a>
+                    <div className="ownerProfile__footer">
                     <Footer />
+                    </div>
                 </div>
             );
         } else {
