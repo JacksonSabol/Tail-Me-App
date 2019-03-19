@@ -34,6 +34,7 @@ import WalkPhotoUpload from  "./components/WalkPhotoUpandPost";
 import dogOwnerGallery from "./components/DogGallery";
 import ownerWalks from "./components/ownerWalks";
 import CustomerList from "./components/Customers"
+import WalkerList from "./components/WalkerProfileInfo/walkerList"
 import "./index.css";
 
 function App() {
@@ -74,6 +75,8 @@ function App() {
         <Route exact path="/owner/create/:referralID/:username" component={createReferralProfile} />
         <Route exact path="/dog/create/:referredWalkerID/:username" component={createReferralDog} />
         <Route exact path="/walker/customerList" component={CustomerList} />
+        <Route exact path="/walkerList" component={WalkerList} />
+        <Route exact path="/public/:username" component={WalkerList} />
       </div>
     </Router>
   );

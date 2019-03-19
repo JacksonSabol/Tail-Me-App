@@ -106,5 +106,6 @@ router.route("/getpath/:walkId")
 router.route("/uploadProfilePicture/:userId")
   .put(walkerController.uploadProfilePicture);
 
- 
+ router.route("/getWalkersList")
+ .get(walkerController.getWalkerList)
 module.exports = router;

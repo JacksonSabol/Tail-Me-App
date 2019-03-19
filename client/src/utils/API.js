@@ -156,5 +156,8 @@ export default {
     uploadProfilePicture: function (userId, data) {
         console.log("API-uploadProfilePicture", userId, data)
         return axios.put(`/api/walker/uploadProfilePicture/${userId}`, data) 
+    },
+    getWalkers: function () {
+        return axios.get(`/api/walker/getWalkersList`)
     }
 };
