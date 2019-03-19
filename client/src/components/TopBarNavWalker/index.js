@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../images/tailMeLogo.png";
-import certificationIcon from "../../images/certificationIcon.png";
 import imagesIcon from"../../images/imagesIcon.png";
 import inviteIcon from "../../images/inviteIcon.png";
 import logoutIcon from "../../images/logoutIcon.png";

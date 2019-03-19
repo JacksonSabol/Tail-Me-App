@@ -2,71 +2,64 @@ import React, { Component } from "react";
 import EmailOwner from "./emailOwner"
 import TextOwner from "./textOwner"
 import CustomerList from "../Customers"
-import Tabs from 'react-responsive-tabs';
-import 'react-responsive-tabs/styles.css';
+import "../../index.css";
+
 class InviteOwners extends Component {
     state = {
         walkerName: this.props.walkerName,
         walkerId: this.props.walkerId,
-        inviteEmail: true,
-        inviteText: false
+        currentComponent: "Email"
     };
 
-    // Function to render text invite component
-    renderTextInvite = () => {
-        this.setState({
-            inviteText: true,
-            inviteEmail: false
-        });
+    // Function to handle Tab Navigation
+    handleComponentChange = component => {
+        this.setState({ currentComponent: component });
     };
-    // Function to render email invite component
-    renderEmailInvite = () => {
-        this.setState({
-            inviteText: false,
-            inviteEmail: true,
-            custumerList: false
-        });
-    };
+
+    // Function to render components
+    renderCurrentComponent = () => {
+        switch (this.state.currentComponent) {
+            case "Email": return <EmailOwner
+                walkerId={this.state.walkerId}
+                walkerName={this.state.walkerName}
+            />;
+            case "Text": return <TextOwner
+                walkerId={this.state.walkerId}
+                walkerName={this.state.walkerName}
+            />;
+            case "List": return <CustomerList
+                walkerId={this.state.walkerId}
+            />;
+            default: return <EmailOwner
+                walkerId={this.state.walkerId}
+                walkerName={this.state.walkerName}
+            />;
+        }
+    }
 
     render() {
-
-        const invites = [
-            {
-                name: 'Invite by Text', component: <TextOwner
-                    walkerId={this.state.walkerId}
-                    walkerName={this.state.walkerName}
-                />
-            },
-            {
-                name: 'Invite by Email', component: <EmailOwner
-                    walkerId={this.state.walkerId}
-                    walkerName={this.state.walkerName}
-                />
-            },
-            {
-                name: 'Customer List', component: <CustomerList
-                    walkerId={this.state.walkerId}
-                />
-            }
-
-        ];
-
-        function getTabs() {
-            return invites.map(invite => ({
-
-                tabClassName: 'tab', // Optional
-                panelClassName: 'panel', // Optional
-                title: invite.name,
-                content: invite.component,
-            }));
-        }
-        return(
-            <div className="InviteOwners">
-        <Tabs items={getTabs()} />
-        </div>
-        )
-       
-
+        return (
+            <div className="walkerInvite">
+                <div className="walkerInvite__tabs--email">
+                    <button className="walkerInvite__tabs--itemLink" onClick={() => this.handleComponentChange("Email")}>
+                        Invite by Email
+                    </button>
+                </div>
+                <div className="walkerInvite__tabs--text">
+                    <button className="walkerInvite__tabs--itemLink" onClick={() => this.handleComponentChange("Text")}>
+                        Invite by Text
+                    </button>
+                </div>
+                <div className="walkerInvite__tabs--list">
+                    <button className="walkerInvite__tabs--itemLink" onClick={() => this.handleComponentChange("List")}>
+                        Customer List
+                    </button>
+                </div>
+                <div className="walkerInvite__form">
+                    {this.renderCurrentComponent()}
+                </div>
+            </div>
+        );
     }
 
 };
