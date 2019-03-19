@@ -10,6 +10,7 @@ import mapIcon from "../images/mapIcon.png";
 import profileIcon from "../images/profileIcon.png";
 import scheduleIcon from "../images/scheduleIcon.png";
 import walkIcon from "../images/walkIcon.png";
+import WalkerList from "../components/WalkerProfileInfo/walkerList"
 
 
 class splashWalker extends Component {
@@ -85,7 +86,9 @@ class splashWalker extends Component {
                     Maintain a gallery of images. Send them to clients, use them for promotion or just enjoy cute pictures of puppies!
                     </div>
                     {/* </div> */}
-
+                    
+                    <WalkerList/>
+                   
                     <div className="walkersplash__footer">
                         <Footer />
                     </div>

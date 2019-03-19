@@ -401,9 +401,9 @@ module.exports = {
             walkerId: req.params.id
           }
         }],
-        raw:true
+        raw: true
       })
-      .then(dbModel => 
+      .then(dbModel =>
         res.json(dbModel))
       .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
   },
@@ -435,20 +435,20 @@ module.exports = {
       .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
   },
 
-  deleteUserData: function(req,res) {
+  deleteUserData: function (req, res) {
     //Delete user from auth and on cascade from all tables.
     db.auth
-    .destroy(
-      {
-        where: {
-          id: req.params.userId
+      .destroy(
+        {
+          where: {
+            id: req.params.userId
+          }
         }
-      }
-    ) .then(dbModel => res.json(dbModel))
-    .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
+      ).then(dbModel => res.json(dbModel))
+      .catch(err => { console.log("ERROR2", err); res.status(422).json(err) });
   },
 
-  updatePath: function(req,res) {
+  updatePath: function (req, res) {
     //Updte the walk coords in the path record
     console.log("updatePath: ", req.params)
     let data = {
@@ -465,12 +465,12 @@ module.exports = {
         console.log("Error", err)
         res.status(422).json(err)
       });
-    },
+  },
 
-    getPath: function(req,res) {
-      //get the walk coords in the path record
-      console.log("getpath-parmas:", req.params)
-      db.path
+  getPath: function (req, res) {
+    //get the walk coords in the path record
+    console.log("getpath-parmas:", req.params)
+    db.path
       .findAll({
         where: {
           walkId: req.params.walkId
@@ -478,20 +478,36 @@ module.exports = {
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
-    },
+  },
 
-    uploadProfilePicture: function (req, res) {
-      console.log("uploadProfilePicture", req.body)
-      console.log("uploadProfilePicture", req.params)
-      db.user
-        .update(
-          {profilePhotoURL: req.body.url},
-          {
-            where: {
-              id: req.params.userId
-            }
-          })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
-    },
+  uploadProfilePicture: function (req, res) {
+    console.log("uploadProfilePicture", req.body)
+    console.log("uploadProfilePicture", req.params)
+    db.user
+      .update(
+        { profilePhotoURL: req.body.url },
+        {
+          where: {
+            id: req.params.userId
+          }
+        })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => { console.log("ERROR", err); res.status(422).json(err) });
+  },
+
+  getWalkerList: function (req, res) {
+    console.log("VAA")
+    db.auth
+    .findAll({
+      attributes: ['username'],
+      include:[{model:db.user,
+        where: {
+          userType: 'walker'
+        }}]
+      
+    })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
+
 };

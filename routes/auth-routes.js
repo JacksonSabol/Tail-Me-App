@@ -185,10 +185,16 @@ module.exports = function (app, passport) {
     // Find public walker information
     app.get('/public/findWalker', function (req, res) {
         db.auth.findOne({
+            include: [{
+                model: db.user,
+                include: [{
+                    model: db.walker
+                }]
+            }],
             where: {
-                username: req.params.username
-            },
-            include: [db.user, db.walker]
+                username: req.query.username
+            }
+
         }).then(user => {
             if (user != null) {
 
@@ -202,11 +208,11 @@ module.exports = function (app, passport) {
                     State: user.user.State,
                     zipCode: user.user.zipCode,
                     country: user.user.country,
-                    certification: user.walker.certification,
-                    insurance: user.walker.insurance,
-                    bond: user.walker.bond,
-                    services: user.walker.services,
-                    availibility: user.walker.status
+                    certification: user.user.walker.certification,
+                    insurance: user.user.walker.insurance,
+                    bond: user.user.walker.bond,
+                    services: user.user.walker.services,
+                    availibility: user.user.walker.status
 
                 });
             } else {
