@@ -64,6 +64,7 @@ class WalkerScheduleWalksWalker extends Component {
   render() {
     return (
       <div className="walkerrdtPicker">
+      <button className="walkerrdtPicker__closeButton" onClick={this.props.closeModal}>Close</button>
         <p className="walkerrdtPicker__title">Schedule a Walk</p>
         <div className="walkerrdtPicker__picker">
         <DateTimePicker
