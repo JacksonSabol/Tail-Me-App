@@ -22,7 +22,7 @@ class createWalkerQualifications extends Component {
         insurance: '',
         bond: '',
         services: '',
-        availibility: '',
+        availibility: 'unavailable',
         loggedIn: false,
         certAdded: false,
         isLoading: true,
@@ -178,21 +178,21 @@ class createWalkerQualifications extends Component {
                         />
                         <label className="walkerQualifications__form--userTypeLabel">Are you accepting new clients?</label>
                         <select className="walkerQualifications__form--userTypeSelect"
-                         name="availibility" onChange={this.handleInputChange} value={this.state.availibility}>
+                            name="availibility" onChange={this.handleInputChange} value={this.state.availibility}>
                             <option value="available">Available for Hire</option>
                             <option value="unavailable">Not Available for Hire</option>
                         </select>
                         <button type="submit" className="walkerQualifications__form--submitButton">Add Your Qualifications</button>
-                    {dbError === true && (
-                        <div>
-                            <p className="walkerQualifications__form--alert">An error occured while adding entries to the database.</p>
-                        </div>
-                    )}
+                        {dbError === true && (
+                            <div>
+                                <p className="walkerQualifications__form--alert">An error occured while adding entries to the database.</p>
+                            </div>
+                        )}
                     </form>
                     <a className="walkerQualifications__form--homeButton" href="/">
                         <img className="walkerQualifications__form--homeIcon" src={homeIcon} alt="home icon" >
                         </img> Home</a>
-                        <div className="walkerQualifications__form--footer">
+                    <div className="walkerQualifications__form--footer">
                         <FooterWalker />
                     </div>
                 </div>
