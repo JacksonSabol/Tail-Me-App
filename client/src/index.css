@@ -3546,6 +3546,9 @@ button.css-48ayfv {
     animation-name: movingT;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--headingT {
+        animation-name: none; } }
   .walkersplash__bg--headinga {
     font-family: "Carter One", cursive;
     font-size: 20em;
@@ -3556,6 +3559,9 @@ button.css-48ayfv {
     animation-name: movinga;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--headinga {
+        animation-name: none; } }
   .walkersplash__bg--headingi {
     font-family: "Carter One", cursive;
     font-size: 20em;
@@ -3566,6 +3572,9 @@ button.css-48ayfv {
     animation-name: movingi;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--headingi {
+        animation-name: none; } }
   .walkersplash__bg--headingl {
     font-family: "Carter One", cursive;
     font-size: 20em;
@@ -3576,6 +3585,9 @@ button.css-48ayfv {
     animation-name: movingl;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--headingl {
+        animation-name: none; } }
   .walkersplash__bg--headingm {
     font-family: "Carter One", cursive;
     font-size: 29em;
@@ -3586,6 +3598,9 @@ button.css-48ayfv {
     animation-name: movingm;
     animation-duration: 20s;
     animation-timing-function: ease-out; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--headingm {
+        animation-name: none; } }
   .walkersplash__bg--headinge {
     font-family: "Carter One", cursive;
     font-size: 20em;
@@ -3596,6 +3611,9 @@ button.css-48ayfv {
     animation-name: movinge;
     animation-duration: 20s;
     animation-timing-function: ease-out; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--headinge {
+        animation-name: none; } }
   .walkersplash__bg--image {
     width: 100%;
     position: relative;
@@ -3619,6 +3637,9 @@ button.css-48ayfv {
     animation-name: subheadingFade;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--subheadingA {
+        animation-name: none; } }
   .walkersplash__bg--subheadingB {
     font-size: 3em;
     color: #e7f6fd;
@@ -3629,6 +3650,9 @@ button.css-48ayfv {
     animation-name: subheadingFade;
     animation-duration: 20s;
     animation-timing-function: ease; }
+    @media only screen and (max-width: 56.25em) {
+      .walkersplash__bg--subheadingB {
+        animation-name: none; } }
   .walkersplash__bg--icon {
     height: 60em;
     position: absolute;

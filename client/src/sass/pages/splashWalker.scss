@@ -15,6 +15,9 @@
             animation-name: movingT;
             animation-duration: 20s;
             animation-timing-function: ease;
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
         }
         &--headinga{
             font-family: $font-headingC;
@@ -25,7 +28,10 @@
             transform: translate(-50%, -50%);
             animation-name: movinga;
             animation-duration: 20s;
-            animation-timing-function: ease; 
+            animation-timing-function: ease;
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              } 
         }
         &--headingi{
             font-family: $font-headingC;
@@ -37,6 +43,9 @@
             animation-name: movingi;
             animation-duration: 20s;
             animation-timing-function: ease; 
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
         }
         &--headingl{
             font-family: $font-headingC;
@@ -48,6 +57,9 @@
             animation-name: movingl;
             animation-duration: 20s;
             animation-timing-function: ease; 
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
         }
         &--headingm{
             font-family: $font-headingC;
@@ -59,6 +71,9 @@
             animation-name: movingm;
             animation-duration: 20s;
             animation-timing-function: ease-out; 
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
         }
         &--headinge{
             font-family: $font-headingC;
@@ -70,6 +85,9 @@
             animation-name: movinge;
             animation-duration: 20s;
             animation-timing-function: ease-out; 
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
         }
         &--image{
             width: 100%;
@@ -97,6 +115,9 @@
             animation-name: subheadingFade;
             animation-duration: 20s;
             animation-timing-function: ease;
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
 
         }
         &--subheadingB{
@@ -109,6 +130,9 @@
             animation-name: subheadingFade;
             animation-duration: 20s;
             animation-timing-function: ease;
+            @include responsive(t-port) { // width < 900?
+                animation-name: none; //1rem = 8px 8/16 = 50%
+              }
             
         }
         &--icon{
