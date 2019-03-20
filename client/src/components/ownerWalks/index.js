@@ -43,7 +43,8 @@ class ownerWalks extends Component {
         images: [],
         pastWalks: [],
         walkPoints: [],
-        showMap: false
+        showMap: false,
+        trackingAlert: ""
 
     }
     // Life-cycle function that executes when the components mount (page loads)
@@ -95,20 +96,30 @@ class ownerWalks extends Component {
             .then(res => {
 
                 // console.log("path points:", res.data)
-
-                // Floored value for cases where middle point is not an integer
+                console.log("res.data.length", res.data.length)
+                let walkStatus = false;
+                let lat = 0;
+                let lng = 0;
                 let middlePoint = Math.floor(res.data.length / 2);
-                // console.log("middlePoint ", middlePoint);
+
+                if (res.data.length !== 0){
+                   walkStatus = true;
+
+                   // console.log("middlePoint ", middlePoint);
+                   lat = parseFloat(res.data[middlePoint].lat);
+                   lng = parseFloat(res.data[middlePoint].lng);
+                }
 
                 this.setState({
                     // onClickButton: true,
                     walkPoints: res.data,
-                    showmap: true,
+                    showmap: walkStatus,
                     mapWalkId: walkId,
                     currentLocation: {
-                        lat: parseFloat(res.data[middlePoint].lat),
-                        lng: parseFloat(res.data[middlePoint].lng)
-                    }
+                        lat: lat,
+                        lng: lng
+                    },
+                    trackingAlert: "Tracking info is not available for this walk"
 
                 })
 
@@ -369,7 +380,7 @@ class ownerWalks extends Component {
                             <p className="ownerWalks__alert">No history of previous walks found.</p>
                         )}
                 </div>
-                {this.state.mapWalkId ? (
+                {this.state.showmap ? (
                     <div className="ownerWalks__past--map" style={{ display: "flex" }}>
                         <div className="ownerWalks__past--mapmap" style={{ height: '50vh', width: '100%' }}>
                             <GoogleMapReact
@@ -424,7 +435,7 @@ class ownerWalks extends Component {
                         </div> */}
                     </div>
 
-                ) : null}
+                      ) : <p className="ownerWalks__alert">{this.state.trackingAlert}</p>}
             </div>
         );
     }
