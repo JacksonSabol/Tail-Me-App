@@ -43,10 +43,10 @@ function WalkerUserInfo(props) {
                 {/* <div className="walker-main-content__body--cityLabel">City:</div> */}
                 {/* <div className="walker-main-content__body--cityInput">{props.City}</div> */}
                 {/* <div className="walker-main-content__body--stateLabel">State:</div> */}
-                <div className="walker-main-content__body--locationInput">{props.City}, {props.State}</div>
+                <div className="walker-main-content__body--locationInput">{props.City}, {props.State} - {props.zipCode}</div>
                 {/* <div className="walker-main-content__body--stateInput">{props.State}</div> */}
                 {/* <div className="walker-main-content__body--zipcodeLabel">Zipcode:</div> */}
-                <div className="walker-main-content__body--zipcodeInput">{props.zipCode}</div>
+                {/* <div className="walker-main-content__body--zipcodeInput">{props.zipCode}</div> */}
                 {/* <div className="walker-main-content__body--countryLabel">Country:</div> */}
                 <div className="walker-main-content__body--countryInput">{props.country}</div>
                 <div className="walker-main-content__body--qualificationsLabel">Qualifications:</div>

@@ -77,6 +77,7 @@ class TodayWalks extends Component {
         enableEmail: false,
         intervalID: 0,
         bigscreen: true
+      
     }
     handleChange = this.handleChange.bind(this);
     handleSubmit = this.handleSubmit.bind(this);
@@ -190,18 +191,31 @@ class TodayWalks extends Component {
                 // console.log("path points:", res.data)
 
                 // Floored value for cases where middle point is not an integer
+          
+
+                let walkStatus = false;
+                let lat = 0;
+                let lng = 0;
                 let middlePoint = Math.floor(res.data.length / 2);
-                // console.log("middlePoint ", middlePoint);
+
+                if (res.data.length !== 0){
+                   walkStatus = true;
+
+                   // console.log("middlePoint ", middlePoint);
+                   lat = parseFloat(res.data[middlePoint].lat);
+                   lng = parseFloat(res.data[middlePoint].lng);
+                }
+
                 this.setState({
                     // onClickButton: true,
                     walkPoints: res.data,
-                    showmap: true,
+                    showmap: walkStatus,
                     mapWalkId: walkId,
                     currentLocation: {
-                        lat: parseFloat(res.data[middlePoint].lat),
-                        lng: parseFloat(res.data[middlePoint].lng)
-                    }
-
+                        lat: lat,
+                        lng: lng
+                    },
+                    trackingAlert: "Tracking info is not available for this walk"
                 })
 
             }).catch(err => {
@@ -1009,7 +1023,7 @@ class TodayWalks extends Component {
                                 <p className="TodayWalks__alert">No history of previous walks found.</p>
                             )}
                     </div>
-                    {this.state.mapWalkId ? (
+                    {this.state.showmap ? (
                         <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                             <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '100%' }}>
                                 <GoogleMapReact
@@ -1065,7 +1079,7 @@ class TodayWalks extends Component {
                         </div> */}
                         </div>
 
-                    ) : null}
+) : <p className="TodayWalks__alert">{this.state.trackingAlert}</p>}
 
                     <Modal
                         isOpen={this.state.modalIsOpen}
