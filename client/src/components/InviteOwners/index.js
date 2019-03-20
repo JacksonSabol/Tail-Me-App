@@ -39,23 +39,25 @@ class InviteOwners extends Component {
 
     render() {
         return (
-            <div className="walkerInvite">
-                <div className="walkerInvite__tabs--email">
-                    <button className="walkerInvite__tabs--itemLink" onClick={() => this.handleComponentChange("Email")}>
+            <div className="invitePage">
+            {/* <div className="invitePage__tabs"> */}
+                <div className="invitePage__tabs--email">
+                    <button className="invitePage__tabs--itemLink" onClick={() => this.handleComponentChange("Email")}>
                         Invite by Email
                     </button>
                 </div>
-                <div className="walkerInvite__tabs--text">
-                    <button className="walkerInvite__tabs--itemLink" onClick={() => this.handleComponentChange("Text")}>
+                <div className="invitePage__tabs--text">
+                    <button className="invitePage__tabs--itemLink" onClick={() => this.handleComponentChange("Text")}>
                         Invite by Text
                     </button>
                 </div>
-                <div className="walkerInvite__tabs--list">
-                    <button className="walkerInvite__tabs--itemLink" onClick={() => this.handleComponentChange("List")}>
+                <div className="invitePage__tabs--list">
+                    <button className="invitePage__tabs--itemLink" onClick={() => this.handleComponentChange("List")}>
                         Customer List
                     </button>
                 </div>
-                <div className="walkerInvite__form">
+                {/* </div> */}
+                <div className="invitePage__form">
                     {this.renderCurrentComponent()}
                 </div>
             </div>

@@ -1,9 +1,9 @@
 .walkerInvite{
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    grid-template-rows: 1fr auto auto ;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto ;
     justify-content: center;
-    margin: 2em;
+    // margin: 2em;
 
 
     &__title{
@@ -15,7 +15,7 @@
         
     }
     &__form{
-        grid-area:2/2;
+        grid-area:2/1/3/4;
         display:grid;
         grid-gap:1em;
         grid-template-columns: 1fr 1fr;
@@ -135,34 +135,102 @@
 }
 .InviteOwners {
     width: 100%;
-    margin: 2em;;
+    margin: 2em;
 }
-.RRT__tab.tab {
-    width: 15%;
-    color: $color-darkest;
-    font-size: 2.5em;
-    border-top: 2px solid $color-accentOne;
-    border-right: 2px solid $color-accentOne;
-    border-left: 2px solid $color-accentOne;
-    background-color: $color-mid;
-    border-radius: 1em 1em 0em 0em;
-}
-.RRT__tab.tab.RRT__tab--selected{
+.invitePage {
+    width: 100%;
+    margin: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    &__form {
+        grid-area: 2/1/3/7;
+        border: 2px solid $color-accentOne;
+        border-radius: 0em 1em 1em 1em ;
+        padding: 2em;
+        background-color: $color-lightest;
+    }
+    
+        &__tabs--email{
+        font-size: 3em;
+        color: $color-accentWhite;
+        grid-area: 1/1;
+        text-align: center;
+        padding: .25em;
+        border-top: 2px solid $color-accentOne;
+        border-right: 2px solid $color-accentOne;
+        border-left: 2px solid $color-accentOne;
+        border-radius: 1em 1em 0em 0em;
+        background-color: $color-light;
+        }
+        &__tabs--email:active{
             background-color: $color-lightest;
             color: $color-accentOne;
+
+        }
+        &__tabs--text{
+            font-size: 3em;
+            color: $color-accentWhite;
+            grid-area: 1/2;
+            text-align: center;
+            padding: .25em;
+            border-top: 2px solid $color-accentOne;
+            border-right: 2px solid $color-accentOne;
+            border-left: 2px solid $color-accentOne;
+            border-radius: 1em 1em 0em 0em;
+            background-color: $color-light;
+            }
+            &__tabs--text:active{
+                background-color: $color-lightest;
+                color: $color-accentOne;
+    
+            }
+            &__tabs--list{
+                font-size: 3em;
+                color: $color-accentWhite;
+                grid-area: 1/3;
+                text-align: center;
+                padding: .25em;
+                border-top: 2px solid $color-accentOne;
+                border-right: 2px solid $color-accentOne;
+                border-left: 2px solid $color-accentOne;
+                border-radius: 1em 1em 0em 0em;
+                background-color: $color-light;
+                }
+                &__tabs--list:active{
+                    background-color: $color-lightest;
+                    color: $color-accentOne;
+        
+                }
+    
+
 }
-.RRT__container {
-    padding: 2em;
-    width: 98%;
-    @include responsive(phone) { // width < 600
-        width: 800px; 
-    }
-    // width: 800px;
-    // display: inline;
-}
-.RRT__panel.panel {
-    width: 100%;
-    background-color: $color-lightest;
-    border: 2px solid $color-accentOne;
-    border-radius: 0em 1em 1em 1em;
-}
+// .RRT__tab.tab {
+//     width: 15%;
+//     color: $color-darkest;
+//     font-size: 2.5em;
+//     border-top: 2px solid $color-accentOne;
+//     border-right: 2px solid $color-accentOne;
+//     border-left: 2px solid $color-accentOne;
+//     background-color: $color-mid;
+//     border-radius: 1em 1em 0em 0em;
+// }
+// .RRT__tab.tab.RRT__tab--selected{
+//             background-color: $color-lightest;
+//             color: $color-accentOne;
+// }
+// .RRT__container {
+//     padding: 2em;
+//     width: 98%;
+//     @include responsive(phone) { // width < 600
+//         width: 800px; 
+//     }
+//     // width: 800px;
+//     // display: inline;
+// }
+// .RRT__panel.panel {
+//     width: 100%;
+//     background-color: $color-lightest;
+//     border: 2px solid $color-accentOne;
+//     border-radius: 0em 1em 1em 1em;
+// }
