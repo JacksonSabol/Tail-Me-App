@@ -57,9 +57,6 @@ class DogOwnerGallery extends Component {
             
                 if (res.data[0]) {
 
-                    // let picsWithGpsInfo = res.data.walkImages.filter(image => image.image.GPSLatitude != null);
-                    // console.log("picsWithGpsInfo:", picsWithGpsInfo)
-
                     const users = res.data[0].walkImages
                     const arrayPhotos = []
                     const imagesWalkGallery = users.map(walkImage => {
@@ -88,7 +85,8 @@ class DogOwnerGallery extends Component {
                         currentLocation: {
                             lat: parseFloat(picsWithGpsInfo[middlePoint].lat),
                             lng: parseFloat(picsWithGpsInfo[middlePoint].lng)
-                        }
+                        },
+                        activeImage: picsWithGpsInfo[middlePoint].src
                     })
 
                 }
@@ -111,7 +109,7 @@ class DogOwnerGallery extends Component {
             this.setState({
                 showMap: true,
                 buttonText: "Show Gallery",
-                title: "My Map"
+                title: "Places / Pictures"
             })
         } else {
             this.setState({

@@ -420,7 +420,9 @@ button, input[type="submit"], input[type="reset"] {
     text-align: center;
     font-family: "Mouse Memoirs", sans-serif;
     font-size: 3em;
-    color: #1190cb; }
+    color: #1190cb;
+    margin-top:0em;
+    margin-bottom:0.2em; }
   .ownerGallery__gallery--button {
     color: #f7f7f7;
     font-family: "Thasadith", sans-serif;
@@ -429,7 +431,9 @@ button, input[type="submit"], input[type="reset"] {
     border-radius: .5em;
     padding: .5em 1em;
     font-size: 1.5em;
-    margin: 2em; }
+    margin-top:0.1em;
+    margin-left:0.1em;
+    margin-bottom:0em; }
 
 .fullCalender {
   font-family: "Thasadith", sans-serif;
