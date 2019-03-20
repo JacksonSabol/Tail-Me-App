@@ -359,7 +359,7 @@ button, input[type="submit"], input[type="reset"] {
     height: 1.5em; }
 
 .nav {
-  background-image: linear-gradient(#a6a6a6, #4d4d4d);
+  background-color: #1190cb;
   box-shadow: 0em 0em 0.5em 0.5em #1a1a1a;
   display: grid;
   grid-template-columns: 6 1fr;
@@ -1467,7 +1467,7 @@ button.css-48ayfv {
     border-color: #e7f6fd; }
 
 .walkerContact {
-  background-image: radial-gradient(#f7f7f7, #808080);
+  background-image: radial-gradient(#f7f7f7, #dcdcdc);
   height: 100%;
   display: grid;
   height: 90%;
@@ -2085,6 +2085,98 @@ button.css-48ayfv {
   letter-spacing: 0.1em;
   color: #1190cb;
   text-shadow: 2px 2px 8px #1190cb; }
+
+.walkerpublic__nav {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  height: 10em;
+  background: #1a1a1a;
+  z-index: 2; }
+  .walkerpublic__nav--home {
+    float: left;
+    background-color: #e7f6fd;
+    padding: 1em 2em;
+    margin: 1em 4em;
+    border: 2px solid #e7f6fd;
+    border-radius: 1em;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--homeIcon {
+    height: 4em; }
+  .walkerpublic__nav--contact {
+    float: left;
+    background-color: #e7f6fd;
+    padding: 1em 2em;
+    margin: 1em 4em;
+    border: 2px solid #e7f6fd;
+    border-radius: 1em;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--contactIcon {
+    height: 4em; }
+  .walkerpublic__nav--userregistration {
+    float: right;
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: transparent;
+    padding: .5em 1em;
+    margin: .5em 1em;
+    border-left: 2px solid #e7f6fd;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--userregistration:hover {
+    background-color: transparent;
+    color: #7ECEFF;
+    text-shadow: 2px 2px 8px #e7f6fd;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--walkerauthentification {
+    float: right;
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: transparent;
+    padding: .5em 1em;
+    border-left: solid 2px #e7f6fd;
+    margin: .5em 1em;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--walkerauthentification:hover {
+    background-color: transparent;
+    color: #7ECEFF;
+    text-shadow: 2px 2px 8px #e7f6fd;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--walkerregistration {
+    float: right;
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: transparent;
+    padding: .5em 1em;
+    margin: .5em 1em;
+    outline: none;
+    text-decoration: none; }
+  .walkerpublic__nav--walkerregistration:hover {
+    background-color: transparent;
+    color: #7ECEFF;
+    text-shadow: 2px 2px 8px #e7f6fd;
+    outline: none;
+    text-decoration: none; }
+
+.walkerpublic__public {
+  padding-bottom: 10em;
+  background-image: radial-gradient(#f7f7f7, #dcdcdc);
+  border: solid 0.25em #1190cb; }
+
+.walkerpublic__publicFooter {
+  background-image: radial-gradient(#f7f7f7, #dcdcdc);
+  border: solid 0.25em #1190cb; }
 
 .aboutTailMe {
   background-image: radial-gradient(#4d4d4d, #333333); }
@@ -3728,30 +3820,6 @@ button.css-48ayfv {
   @media only screen and (max-width: 47.5em) {
     .walkersplash__nav {
       height: 4em; } }
-  .walkersplash__nav--home {
-    float: left;
-    font-family: "Thasadith", sans-serif;
-    font-size: 2em;
-    text-align: center;
-    color: #e7f6fd;
-    background-color: transparent;
-    padding: .5em 1em;
-    margin: .5em 1em;
-    border-left: 2px solid #e7f6fd;
-    outline: none;
-    text-decoration: none; }
-  .walkersplash__nav--contact {
-    float: left;
-    font-family: "Thasadith", sans-serif;
-    font-size: 2em;
-    text-align: center;
-    color: #e7f6fd;
-    background-color: transparent;
-    padding: .5em 1em;
-    margin: .5em 1em;
-    border-left: 2px solid #e7f6fd;
-    outline: none;
-    text-decoration: none; }
   .walkersplash__nav--userregistration {
     float: right;
     font-family: "Thasadith", sans-serif;
@@ -3805,15 +3873,6 @@ button.css-48ayfv {
     text-shadow: 2px 2px 8px #e7f6fd;
     outline: none;
     text-decoration: none; }
-
-.walkersplash__public {
-  padding-bottom: 10em;
-  background-image: radial-gradient(#f7f7f7, #dcdcdc);
-  border: solid 0.25em #1190cb; }
-
-.walkersplash__publicFooter {
-  background-image: radial-gradient(#f7f7f7, #dcdcdc);
-  border: solid 0.25em #1190cb; }
 
 .walkersplash__grid {
   color: #f7f7f7;

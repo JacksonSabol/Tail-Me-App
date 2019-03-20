@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import "../index.css";
 // import logo from "../images/tailMeLogo.png";
 import Header from "../components/Header";
-import Contact from "../components/Contact";
+import ContactWalker from "../components/ContactWalker";
 import Footer from "../components/Footer";
 
 
@@ -14,7 +14,7 @@ class contactTailMe extends Component {
             <Header/>
                 <div className="contactTailMe__grid">
                    
-            <Contact/>
+            <ContactWalker/>
                     <div>
             </div>
                 </div>

@@ -46,9 +46,9 @@ function ContactWalker(props) {
                         <label className="walkerContact__textArea--label">
                             Subject
         </label>
-                        <input type="text" placeholder="Write us..."
+                        <textarea type="text" placeholder="Write us..."
                             className="walkerContact__textArea--input">
-                        </input>
+                        </textarea>
                     </div>
                     <Link className="walkerContact__link--button" to="/action_page.php">
                         submit

@@ -16,11 +16,11 @@ function Header(props) {
         <img className="nav__splash--homeIcon" src={homeIcon} alt="home icon" ></img>
         </Link>
       </div>
-      <div className="nav__contact">
+      {/* <div className="nav__contact">
         <Link className="nav__contact--link" to="/contactTailMe">
         <img className="nav__contact--mailIcon" src={mailIcon} alt="mail icon" ></img> 
         </Link>
-      </div>
+      </div> */}
     </nav>
   );
 }

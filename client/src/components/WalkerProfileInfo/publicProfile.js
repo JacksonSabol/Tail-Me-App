@@ -54,29 +54,25 @@ class WalkerPublicProfileInfo extends Component {
 
     render() {
         return (
-            <div className="walkersplash">
-                <div className="walkersplash__nav">
-                    <button className="walkersplash__nav--home"
-                        // onClick={() => props.handlePageChange("Home")}
-                    >
-                        <img className="walkersplash__nav--homeIcon" src={homeIcon} alt="home icon" ></img>
-                    </button>
-                    <button className="walkersplash__nav--contact"
-                        // onClick={() => props.handlePageChange("Home")}
-                    >
-                        <img className="walkersplash__nav--contactIcon" src={contactIcon} alt="contact icon" ></img>
-                    </button>
-                    <a className="walkersplash__nav--userregistration" href="/user/Login">
+            <div className="walkerpublic">
+                <div className="walkerpublic__nav">
+                    <a className="walkerpublic__nav--home" href="/">
+                        <img className="walkerpublic__nav--homeIcon" src={homeIcon} alt="home icon" ></img>
+                    </a>
+                    <a className="walkerpublic__nav--contact" href="/contactTailMe">
+                        <img className="walkerpublic__nav--contactIcon" src={contactIcon} alt="contact icon" ></img>
+                    </a>
+                    <a className="walkerpublic__nav--userregistration" href="/user/Login">
                         owner log in
                         </a>
-                    <a className="walkersplash__nav--walkerauthentification" href="/walker/signup">
+                    <a className="walkerpublic__nav--walkerauthentification" href="/walker/signup">
                         walker sign up
                     </a>
-                    <a className="walkersplash__nav--walkerregistration" href="/user/LoginWalker">
+                    <a className="walkerpublic__nav--walkerregistration" href="/user/LoginWalker">
                         walker log in
                     </a>
                 </div>
-                <div className="walkersplash__public">
+                <div className="walkerpublic__public">
                     <WalkerPublicUserInfo
                         username={this.state.username}
                         firstName={this.state.firstName}
@@ -92,7 +88,7 @@ class WalkerPublicProfileInfo extends Component {
                         email={this.state.email}
                     />
                 </div>
-                <div className="walkersplash__publicFooter">
+                <div className="walkerpublic__publicFooter">
                     <FooterWalker />
                 </div>
             </div>
