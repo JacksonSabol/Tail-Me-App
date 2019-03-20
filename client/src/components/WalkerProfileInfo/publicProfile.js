@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import API from "../../utils/API";
 import "../../index.css";
 import WalkerPublicUserInfo from "./walkerPublicProfile";
 import axios from 'axios';
+import FooterWalker from "../FooterWalker";
+import homeIcon from "../../images/homeIcon.png";
+import contactIcon from "../../images/mailIcon.png";
 
 class WalkerPublicProfileInfo extends Component {
     state = {
-
         username: '',
         userEmail: '',
         firstName: '',
@@ -14,16 +15,13 @@ class WalkerPublicProfileInfo extends Component {
         profilePhotoURL: '',
         userType: '',
         aboutMe: '',
-
         certification: '',
         insurance: '',
         bond: '',
         services: '',
         availibility: ''
-
     };
     async componentDidMount() {
-        console.log(this.props.match.params.username)
         await axios
             .get('/public/findWalker', {
                 params: {
@@ -31,9 +29,7 @@ class WalkerPublicProfileInfo extends Component {
                 }
             })
             .then(response => {
-                console.log("res", response.data)
                 this.setState({
-
                     username: this.props.match.params.username,
                     firstName: response.data.firstName,
                     lastName: response.data.lastName,
@@ -46,7 +42,6 @@ class WalkerPublicProfileInfo extends Component {
                     bond: response.data.bond,
                     services: response.data.services,
                     availibility: response.data.availibility,
-
                 });
             })
             .catch(error => {
@@ -55,29 +50,33 @@ class WalkerPublicProfileInfo extends Component {
                     error: true,
                 });
             });
-
     }
 
     render() {
-
-
         return (
-
-                <div className="walkersplash">
-                    <div className="walkersplash__nav">
-
-                        <a className="walkersplash__nav--userregistration" href="/user/Login">
-                            owner log in
+            <div className="walkersplash">
+                <div className="walkersplash__nav">
+                    <button className="walkersplash__nav--home"
+                        // onClick={() => props.handlePageChange("Home")}
+                    >
+                        <img className="walkersplash__nav--homeIcon" src={homeIcon} alt="home icon" ></img>
+                    </button>
+                    <button className="walkersplash__nav--contact"
+                        // onClick={() => props.handlePageChange("Home")}
+                    >
+                        <img className="walkersplash__nav--contactIcon" src={contactIcon} alt="contact icon" ></img>
+                    </button>
+                    <a className="walkersplash__nav--userregistration" href="/user/Login">
+                        owner log in
                         </a>
-
-                        <a className="walkersplash__nav--walkerauthentification" href="/walker/signup">
-                            walker sign up
+                    <a className="walkersplash__nav--walkerauthentification" href="/walker/signup">
+                        walker sign up
                     </a>
-                        <a className="walkersplash__nav--walkerregistration" href="/user/LoginWalker">
-                            walker log in
+                    <a className="walkersplash__nav--walkerregistration" href="/user/LoginWalker">
+                        walker log in
                     </a>
-                    </div>
-
+                </div>
+                <div className="walkersplash__public">
                     <WalkerPublicUserInfo
                         username={this.state.username}
                         firstName={this.state.firstName}
@@ -91,15 +90,14 @@ class WalkerPublicProfileInfo extends Component {
                         services={this.state.services}
                         availibility={this.state.availibility}
                         email={this.state.email}
-
-
                     />
-
                 </div>
-                );
-            
-        }
+                <div className="walkersplash__publicFooter">
+                    <FooterWalker />
+                </div>
+            </div>
+        );
     }
-    
-    
+}
+
 export default WalkerPublicProfileInfo;

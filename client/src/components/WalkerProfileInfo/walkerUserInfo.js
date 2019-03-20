@@ -9,7 +9,6 @@ import addPhotoIcon from "../../images/addPhotoIcon.png";
 
 
 function WalkerUserInfo(props) {
-    console.log("WalkerUserInfo:", props)
    
     return (
         <div className="walker-main-content">
