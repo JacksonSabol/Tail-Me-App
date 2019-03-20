@@ -508,7 +508,7 @@ module.exports = {
           include: [{
             model: db.walker,
             where: {
-              available:true
+              status: "available"
             }
           }]
 

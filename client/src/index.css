@@ -867,11 +867,11 @@ a {
     color: #1190cb; }
   .TodayWalks__modal {
     width: 100%;
-    font-size: 3em; }
+    font-size: 2.5em; }
     .TodayWalks__modal--button {
       font-family: "Thasadith", sans-serif;
       padding: .5em 1em;
-      font-size: 3em;
+      font-size: 2.5em;
       text-align: center;
       color: #e7f6fd;
       background-color: #1190cb;
@@ -885,12 +885,12 @@ a {
     .TodayWalks__modal--textarea {
       color: #1a1a1a;
       font-family: "Thasadith", sans-serif;
-      font-size: 3em;
+      font-size: 2.5em;
       background-color: #e7f6fd;
       border: solid 2px #1190cb;
       border-radius: .5em; }
     .TodayWalks__modal--subtitle {
-      font-size: 3em; }
+      font-size: 2.5em; }
   .TodayWalks__past {
     grid-area: 1/6/2/16;
     border: solid 0.25em #1190cb;
@@ -3728,6 +3728,30 @@ button.css-48ayfv {
   @media only screen and (max-width: 47.5em) {
     .walkersplash__nav {
       height: 4em; } }
+  .walkersplash__nav--home {
+    float: left;
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: transparent;
+    padding: .5em 1em;
+    margin: .5em 1em;
+    border-left: 2px solid #e7f6fd;
+    outline: none;
+    text-decoration: none; }
+  .walkersplash__nav--contact {
+    float: left;
+    font-family: "Thasadith", sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #e7f6fd;
+    background-color: transparent;
+    padding: .5em 1em;
+    margin: .5em 1em;
+    border-left: 2px solid #e7f6fd;
+    outline: none;
+    text-decoration: none; }
   .walkersplash__nav--userregistration {
     float: right;
     font-family: "Thasadith", sans-serif;
@@ -3781,6 +3805,15 @@ button.css-48ayfv {
     text-shadow: 2px 2px 8px #e7f6fd;
     outline: none;
     text-decoration: none; }
+
+.walkersplash__public {
+  padding-bottom: 10em;
+  background-image: radial-gradient(#f7f7f7, #dcdcdc);
+  border: solid 0.25em #1190cb; }
+
+.walkersplash__publicFooter {
+  background-image: radial-gradient(#f7f7f7, #dcdcdc);
+  border: solid 0.25em #1190cb; }
 
 .walkersplash__grid {
   color: #f7f7f7;
