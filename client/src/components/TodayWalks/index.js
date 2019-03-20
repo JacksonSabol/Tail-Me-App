@@ -416,7 +416,7 @@ class TodayWalks extends Component {
 
     handleOnClickNote = (walkId, dogName, dogOwnerName, dogOwnerEmail, review, checkOutTime) => {
         //For conditional Render. If Review Mode then enable Email Button
-        const enabelEmail = review ? this.setState({ enableEmail: true }) : this.setState({ enableEmail: false })
+        const enabelEmail = checkOutTime ? this.setState({ enableEmail: true }) : this.setState({ enableEmail: false })
 
         //Get Note to send to the Modal
         API.getNote(walkId)
@@ -543,7 +543,7 @@ class TodayWalks extends Component {
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => row.original.checkInTime === null ? (null) : (
-                    <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review</button></div>
+                    <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, 0)}>Review</button></div>
                 )
             },
             // {
@@ -820,7 +820,7 @@ class TodayWalks extends Component {
                         {/* <h2 ref={subtitle => this.subtitle = subtitle}>Test</h2> */}
                         <button className="TodayWalks__modal--button" onClick={this.closeModal}>close</button>
                         {this.state.noteCheckOutTime === 0 ? (
-                            <p className="TodayWalks__modal--title">Walk In-Progress</p>
+                            <p className="TodayWalks__modal--subtitle">Walk In-Progress</p>
                         ) : (
                                 <p className="TodayWalks__modal--subtitle">Email Subject: Walk Summary for {this.state.noteDogName} at {this.state.noteCheckOutTime}</p>
                             )
