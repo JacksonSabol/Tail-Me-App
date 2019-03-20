@@ -66,7 +66,7 @@ class TodayWalks extends Component {
         images: [],
         walkPoints: [],
         pastWalks: [],
-        showMap: false,
+        showmap: false,
         locationckeck: false,
         modalIsOpen: false,
         valueNote: "",
@@ -77,7 +77,7 @@ class TodayWalks extends Component {
         enableEmail: false,
         intervalID: 0,
         bigscreen: true
-      
+
     }
     handleChange = this.handleChange.bind(this);
     handleSubmit = this.handleSubmit.bind(this);
@@ -110,7 +110,7 @@ class TodayWalks extends Component {
             this.setState({ bigscreen: true });
         }
 
-        console.log("cellphone : ", this.state.cellphone);
+        console.log("bigscreen : ", this.state.bigscreen);
     }
     // Function to load all TodayWalks from the database
     loadWalks = () => {
@@ -148,40 +148,6 @@ class TodayWalks extends Component {
             .catch(err => console.log(err));
     };
 
-    // handleOnClick = (walkId) => {
-
-    //     API.getImagesWalk(walkId)
-    //         .then(res => {
-    //             // console.log("back from getpics")
-    //             // console.log("getpics: ", res.data)
-    //             // console.log("getpics dot image: ", res.data[0].image)
-
-    //             // this.setState({
-    //             //   walks: res.data
-    //             // });
-
-    //             let picsWithGpsInfo = res.data.filter(image => image.image.GPSLatitude != null);
-    //             // console.log("PICS GPS: ", picsWithGpsInfo)
-    //             // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLatitude)
-    //             // console.log("PICS GPS loc: ", picsWithGpsInfo[0].image.GPSLongitude)
-    //             // console.log("data[0]: ", res.data[0].GPSLatitude)
-    //             let middlePoint = picsWithGpsInfo.length / 2;
-    //             console.log("middlePoint ", middlePoint);
-    //             this.setState({
-    //                 // onClickButton: true,
-    //                 showmap: true,
-    //                 mapWalkId: walkId,
-    //                 images: picsWithGpsInfo,
-    //                 currentLocation: {
-    //                     lat: parseFloat(picsWithGpsInfo[middlePoint].image.GPSLatitude),
-    //                     lng: parseFloat(picsWithGpsInfo[middlePoint].image.GPSLongitude)
-    //                 }
-
-    //             })
-    //         }).catch(err => {
-    //             console.log(err)
-    //         });
-    // };
 
     handleOnClickMap = (walkId) => {
 
@@ -191,19 +157,19 @@ class TodayWalks extends Component {
                 // console.log("path points:", res.data)
 
                 // Floored value for cases where middle point is not an integer
-          
+
 
                 let walkStatus = false;
                 let lat = 0;
                 let lng = 0;
                 let middlePoint = Math.floor(res.data.length / 2);
+                console.log("res.data.length", res.data.length);
+                if (res.data.length !== 0) {
+                    walkStatus = true;
 
-                if (res.data.length !== 0){
-                   walkStatus = true;
-
-                   // console.log("middlePoint ", middlePoint);
-                   lat = parseFloat(res.data[middlePoint].lat);
-                   lng = parseFloat(res.data[middlePoint].lng);
+                    // console.log("middlePoint ", middlePoint);
+                    lat = parseFloat(res.data[middlePoint].lat);
+                    lng = parseFloat(res.data[middlePoint].lng);
                 }
 
                 this.setState({
@@ -507,7 +473,7 @@ class TodayWalks extends Component {
                 // id: 'date',
                 Header: 'Date',
                 minWidth: 10,
-        
+
                 // accessor: data => data.walkDate,
                 accessor: 'walkDate',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -515,7 +481,7 @@ class TodayWalks extends Component {
                 // id: 'dogName',
                 Header: 'Dog',
                 minWidth: 10,
-      
+
                 // accessor: data => data.dogOwner.dogName,
                 accessor: 'dogName',
                 Cell: props => <span>{props.value}</span>
@@ -525,7 +491,7 @@ class TodayWalks extends Component {
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 minWidth: 10,
-     
+
                 Cell: row => row.original.checkInTime === null ? (
                     <div><button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, row.original.id, row.original.dogName)}>Check-in </button></div>
                 ) : (
@@ -539,29 +505,29 @@ class TodayWalks extends Component {
                 // id: 'notes',
                 Header: 'Notes',
                 minWidth: 10,
-               
+
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => row.original.checkInTime === null ? (null) : (
                     <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD/YYYY - HH:mm"))}>Review</button></div>
                 )
             },
-            // {
-            //     // id: 'checkinTime',
-            //     Header: 'Status',
-            //     minWidth: 15,
-            
-            //     // accessor: data => data.checkInTime,
-            //     accessor: 'status',
-            //     Cell: props => <span>{props.value}</span>
-            // }
-        ];
+                // {
+                //     // id: 'checkinTime',
+                //     Header: 'Status',
+                //     minWidth: 15,
+
+                //     // accessor: data => data.checkInTime,
+                //     accessor: 'status',
+                //     Cell: props => <span>{props.value}</span>
+                // }
+            ];
 
             const columnsPast = [{
                 // id: 'date',
                 Header: 'Date',
                 minWidth: 10,
-         
+
                 // accessor: data => data.walkDate,
                 accessor: 'walkDate',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -569,7 +535,7 @@ class TodayWalks extends Component {
                 // id: 'dogName',
                 Header: 'Dog',
                 minWidth: 10,
-              
+
                 // accessor: data => data.dogOwner.dogName,
                 accessor: 'dogName',
                 Cell: props => <span>{props.value}</span>
@@ -579,7 +545,7 @@ class TodayWalks extends Component {
                 // id: 'checkinTime',
                 Header: 'Check In',
                 minWidth: 10,
-              
+
                 // accessor: data => data.checkInTime,
                 accessor: 'checkInTime',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -587,7 +553,7 @@ class TodayWalks extends Component {
                 // id: 'checkOutTime',
                 Header: 'Check Out',
                 minWidth: 10,
-      
+
                 // accessor: data => data.checkOutTime,
                 accessor: 'checkOutTime',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -595,7 +561,7 @@ class TodayWalks extends Component {
                 // id: 'totalTime',
                 Header: 'Total Time',
                 minWidth: 10,
-        
+
                 // accessor: data => data.totalTime,
                 accessor: 'totalTime',
                 Cell: props => <span>{props.value}</span>
@@ -604,7 +570,7 @@ class TodayWalks extends Component {
                 // id: 'notes',
                 Header: 'Notes',
                 minWidth: 10,
-        
+
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm"))}>Review</button></div>
@@ -613,19 +579,19 @@ class TodayWalks extends Component {
                 // id: '?????',
                 Header: '',
                 minWidth: 10,
-              
+
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, row.original.id)}>Map</button></div>
             },
-            // {
-            //     // id: 'checkinTime',
-            //     Header: 'Status',
-            //     // accessor: data => data.checkInTime,
-            //     accessor: 'status',
-            //     Cell: props => <span>{props.value}</span>
-            // }
-        ];
+                // {
+                //     // id: 'checkinTime',
+                //     Header: 'Status',
+                //     // accessor: data => data.checkInTime,
+                //     accessor: 'status',
+                //     Cell: props => <span>{props.value}</span>
+                // }
+            ];
             return (
                 <div className="TodayWalks">
                     <div className="TodayWalks__reactTableUpcoming">
@@ -750,7 +716,7 @@ class TodayWalks extends Component {
                                 <p className="TodayWalks__alert">No history of previous walks found.</p>
                             )}
                     </div>
-                    {this.state.mapWalkId ? (
+                    {this.state.showmap ? (
                         <div className="TodayWalks__past--map" style={{ display: "flex" }}>
                             <div className="TodayWalks__past--mapmap" style={{ height: '50vh', width: '100%' }}>
                                 <GoogleMapReact
@@ -800,13 +766,9 @@ class TodayWalks extends Component {
                                         ))}
                                 </GoogleMapReact>
                             </div>
-                            {/* <div className="TodayWalks__past--mapimage">
-                            {this.state.activeImage ?
-                                <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div> */}
                         </div>
 
-                    ) : null}
+                    ) : <p className="TodayWalks__alert">{this.state.trackingAlert}</p>}
 
                     <Modal
                         isOpen={this.state.modalIsOpen}
@@ -850,7 +812,7 @@ class TodayWalks extends Component {
                 // id: 'date',
                 Header: 'Date',
                 minWidth: 7,
-        
+
                 // accessor: data => data.walkDate,
                 accessor: 'walkDate',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -858,7 +820,7 @@ class TodayWalks extends Component {
                 // id: 'dogName',
                 Header: 'Dog',
                 minWidth: 7,
-      
+
                 // accessor: data => data.dogOwner.dogName,
                 accessor: 'dogName',
                 Cell: props => <span>{props.value}</span>
@@ -868,7 +830,7 @@ class TodayWalks extends Component {
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 minWidth: 7,
-     
+
                 Cell: row => row.original.checkInTime === null ? (
                     <div><button className="TodayWalks__upcoming--list-publish-button" onClick={this.handleCheckIn.bind(this, row.original.id, row.original.dogName)}>Check-in </button></div>
                 ) : (
@@ -882,29 +844,29 @@ class TodayWalks extends Component {
                 // id: 'notes',
                 Header: 'Notes',
                 minWidth: 7,
-               
+
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => row.original.checkInTime === null ? (null) : (
                     <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm"))}>Review</button></div>
                 )
             },
-            // {
-            //     // id: 'checkinTime',
-            //     Header: 'Status',
-            //     minWidth: 15,
-            
-            //     // accessor: data => data.checkInTime,
-            //     accessor: 'status',
-            //     Cell: props => <span>{props.value}</span>
-            // }
-        ];
+                // {
+                //     // id: 'checkinTime',
+                //     Header: 'Status',
+                //     minWidth: 15,
+
+                //     // accessor: data => data.checkInTime,
+                //     accessor: 'status',
+                //     Cell: props => <span>{props.value}</span>
+                // }
+            ];
 
             const columnsPast = [{
                 // id: 'date',
                 Header: 'Date',
                 minWidth: 7,
-         
+
                 // accessor: data => data.walkDate,
                 accessor: 'walkDate',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -912,7 +874,7 @@ class TodayWalks extends Component {
                 // id: 'dogName',
                 Header: 'Dog',
                 minWidth: 7,
-              
+
                 // accessor: data => data.dogOwner.dogName,
                 accessor: 'dogName',
                 Cell: props => <span>{props.value}</span>
@@ -922,7 +884,7 @@ class TodayWalks extends Component {
                 // id: 'checkinTime',
                 Header: 'Check In',
                 minWidth: 7,
-              
+
                 // accessor: data => data.checkInTime,
                 accessor: 'checkInTime',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
@@ -930,16 +892,16 @@ class TodayWalks extends Component {
                 // id: 'checkOutTime',
                 Header: 'Check Out',
                 minWidth: 7,
-      
+
                 // accessor: data => data.checkOutTime,
                 accessor: 'checkOutTime',
                 Cell: props => <span>{Moment(props.value, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm")}</span>
-            }, 
+            },
             // {
             //     // id: 'totalTime',
             //     Header: 'Total Time',
             //     minWidth: 10,
-        
+
             //     // accessor: data => data.totalTime,
             //     accessor: 'totalTime',
             //     Cell: props => <span>{props.value}</span>
@@ -948,7 +910,7 @@ class TodayWalks extends Component {
                 // id: 'notes',
                 Header: 'Notes',
                 minWidth: 5,
-        
+
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickNote.bind(this, row.original.id, row.original.dogName, row.original.dogOwnerName, row.original.dogOwnerEmail, true, Moment(row.original.checkOutTime, "YYYY-MM-DD  HH:mm:ss").format("MM/DD - HH:mm"))}>Review</button></div>
@@ -957,19 +919,19 @@ class TodayWalks extends Component {
                 // id: '?????',
                 Header: '',
                 minWidth: 5,
-              
+
                 // accessor: data => data.checkInTime,
                 // accessor: 'checkInTime',
                 Cell: row => <div><button className="TodayWalks__past--list-publish-button" onClick={this.handleOnClickMap.bind(this, row.original.id)}>Map</button></div>
             },
-            // {
-            //     // id: 'checkinTime',
-            //     Header: 'Status',
-            //     // accessor: data => data.checkInTime,
-            //     accessor: 'status',
-            //     Cell: props => <span>{props.value}</span>
-            // }
-        ];
+                // {
+                //     // id: 'checkinTime',
+                //     Header: 'Status',
+                //     // accessor: data => data.checkInTime,
+                //     accessor: 'status',
+                //     Cell: props => <span>{props.value}</span>
+                // }
+            ];
             return (
                 <div className="TodayWalks">
                     <div className="TodayWalks__reactTableUpcoming">
@@ -1073,13 +1035,9 @@ class TodayWalks extends Component {
                                         ))}
                                 </GoogleMapReact>
                             </div>
-                            {/* <div className="TodayWalks__past--mapimage">
-                            {this.state.activeImage ?
-                                <img width={'300px'} src={this.state.activeImage}></img> : null}
-                        </div> */}
                         </div>
 
-) : <p className="TodayWalks__alert">{this.state.trackingAlert}</p>}
+                    ) : <p className="TodayWalks__alert">{this.state.trackingAlert}</p>}
 
                     <Modal
                         isOpen={this.state.modalIsOpen}
