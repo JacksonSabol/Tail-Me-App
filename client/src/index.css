@@ -804,7 +804,7 @@ a {
   font-size: 2em;
   color: #1a1a1a;
   background-color: #f7f7f7;
-  border-radius: .25em;
+  border-radius: 0.25em;
   display: grid;
   grid-template-columns: 15 1fr;
   grid-template-rows: auto; }
@@ -852,14 +852,15 @@ a {
       list-style: none;
       color: black;
       font-size: 1em;
-      margin: .25em; }
+      margin: 0.25em; }
     .TodayWalks__upcoming--list-publish-button {
       color: #f7f7f7;
       font-family: "Thasadith", sans-serif;
       background-color: #1190cb;
       border: solid 2px #e7f6fd;
-      border-radius: .5em;
-      font-size: 1em; }
+      border-radius: 0.5em;
+      font-size: 1em;
+      padding: 0.2em; }
   .TodayWalks__alert {
     text-align: center;
     font-family: "Mouse Memoirs", sans-serif;
@@ -870,12 +871,12 @@ a {
     font-size: 2.5em; }
     .TodayWalks__modal--button {
       font-family: "Thasadith", sans-serif;
-      padding: .5em 1em;
+      padding: 0.5em 1em;
       font-size: 2.5em;
       text-align: center;
       color: #e7f6fd;
       background-color: #1190cb;
-      border-radius: .5em;
+      border-radius: 0.5em;
       border: solid 2px #e7f6fd;
       cursor: pointer; }
     .TodayWalks__modal--button:hover {
@@ -888,7 +889,7 @@ a {
       font-size: 2.5em;
       background-color: #e7f6fd;
       border: solid 2px #1190cb;
-      border-radius: .5em; }
+      border-radius: 0.5em; }
     .TodayWalks__modal--subtitle {
       font-size: 2.5em; }
   .TodayWalks__past {
@@ -906,26 +907,27 @@ a {
       list-style: none;
       color: black;
       font-size: 1em;
-      margin: .25em; }
+      margin: 0.25em; }
     .TodayWalks__past--list-publish-button {
       color: #f7f7f7;
       font-family: "Thasadith", sans-serif;
       background-color: #1190cb;
       border: solid 2px #e7f6fd;
-      border-radius: .5em;
-      font-size: 1em; }
+      border-radius: 0.5em;
+      font-size: 1em;
+      padding: 0.2em; }
     .TodayWalks__past--map {
       grid-area: 3/1/4/16;
       margin: 1em;
       padding: 1em;
-      border-radius: .5em;
+      border-radius: 0.5em;
       font-size: 1em; }
     .TodayWalks__past--mapmap {
       font-size: 1em; }
     .TodayWalks__past--mapimage {
       background-color: #1a1a1a;
       padding: 0.2em;
-      border-radius: .5em;
+      border-radius: 0.5em;
       font-size: 1em; }
 
 .pagination-bottom {
