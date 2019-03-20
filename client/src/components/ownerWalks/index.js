@@ -43,7 +43,8 @@ class ownerWalks extends Component {
         images: [],
         pastWalks: [],
         walkPoints: [],
-        showMap: false
+        showMap: false,
+        trackingAlert: ""
 
     }
     // Life-cycle function that executes when the components mount (page loads)
@@ -117,7 +118,8 @@ class ownerWalks extends Component {
                     currentLocation: {
                         lat: lat,
                         lng: lng
-                    }
+                    },
+                    trackingAlert: "Tracking info is not available for this walk"
 
                 })
 
@@ -433,9 +435,7 @@ class ownerWalks extends Component {
                         </div> */}
                     </div>
 
-                ) : null}
-                
-                      {/* ) : <p className="ownerWalks__alert">There is no tracking available for this walk.</p>} */}
+                      ) : <p className="ownerWalks__alert">{this.state.trackingAlert}</p>}
             </div>
         );
     }
