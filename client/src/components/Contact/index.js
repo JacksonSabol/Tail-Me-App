@@ -46,9 +46,9 @@ function Contact(props) {
                 <label className="Contact__textArea--label">
                     Subject
         </label>
-                <input type="text" placeholder="Write us..."
+                <textarea type="text" placeholder="Write us..."
                     className="Contact__textArea--input">
-                </input>
+                </textarea>
             </div>
             <Link className="Contact__link--button" to="/action_page.php">
                 submit

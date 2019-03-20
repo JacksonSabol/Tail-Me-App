@@ -166,32 +166,7 @@
         @include responsive(t-port-phone) { // width < 760
             height: 4em; 
         }
-            &--home{
-                float: left;
-                font-family: $font-sans;
-                font-size: 2em;
-                text-align: center;
-                color: $color-accentWhite;
-                background-color: transparent;
-                padding: .5em 1em;
-                margin: .5em 1em;
-                border-left: 2px solid $color-accentWhite;
-                outline: none;
-                text-decoration: none;
-            }
-            &--contact{
-                float: left;
-                font-family: $font-sans;
-                font-size: 2em;
-                text-align: center;
-                color: $color-accentWhite;
-                background-color: transparent;
-                padding: .5em 1em;
-                margin: .5em 1em;
-                border-left: 2px solid $color-accentWhite;
-                outline: none;
-                text-decoration: none;
-            }
+            
             &--userregistration{
                 float: right;
                 font-family: $font-sans;
@@ -256,20 +231,6 @@
                 text-decoration: none
             }
         }
-    &__public {
-        padding-bottom: 10em;
-        background-image: radial-gradient( $color-lightest, $color-lighter);
-        border: solid .25em $color-accentOne;
-        // border-radius: 1em;
-        // margin:1em 2em 1em 0em;
-        // box-shadow: 0em 0em .5em .5em $color-darkest;
-    }
-    &__publicFooter{
-        background-image: radial-gradient( $color-lightest, $color-lighter);
-        border: solid .25em $color-accentOne;
-        // border-radius: 1em;
-        // margin:1em 2em 2em 2em;
-    }
 
     &__grid{
     color: $color-lightest;

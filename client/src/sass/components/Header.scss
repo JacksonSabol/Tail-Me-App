@@ -1,5 +1,6 @@
 .nav{
-    background-image: linear-gradient($color-light,$color-medium);
+    // background-image: linear-gradient($color-accentOne,$color-accentLight);
+    background-color: $color-accentOne;
     box-shadow: 0em 0em .5em .5em $color-darkest;
     display: grid;
     grid-template-columns:(6) 1fr;
