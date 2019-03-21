@@ -15,6 +15,7 @@
             animation-name: movingT;
             animation-duration: 20s;
             animation-timing-function: ease;
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -29,6 +30,7 @@
             animation-name: movinga;
             animation-duration: 20s;
             animation-timing-function: ease;
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               } 
@@ -43,6 +45,7 @@
             animation-name: movingi;
             animation-duration: 20s;
             animation-timing-function: ease; 
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -56,7 +59,8 @@
             transform: translate(-50%, -50%);
             animation-name: movingl;
             animation-duration: 20s;
-            animation-timing-function: ease; 
+            animation-timing-function: ease;
+            animation-iteration-count: infinite; 
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -71,6 +75,7 @@
             animation-name: movingm;
             animation-duration: 20s;
             animation-timing-function: ease-out; 
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -85,6 +90,7 @@
             animation-name: movinge;
             animation-duration: 20s;
             animation-timing-function: ease-out; 
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -115,6 +121,7 @@
             animation-name: subheadingFade;
             animation-duration: 20s;
             animation-timing-function: ease;
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -130,6 +137,7 @@
             animation-name: subheadingFade;
             animation-duration: 20s;
             animation-timing-function: ease;
+            animation-iteration-count: infinite;           
             @include responsive(t-port) { // width < 900?
                 animation-name: none; //1rem = 8px 8/16 = 50%
               }
@@ -145,6 +153,7 @@
             animation-name: iconFade;
             animation-duration: 20s;
             animation-timing-function: ease;
+            animation-iteration-count: infinite;
             @include responsive(t-port) { // width < 900
                 height: 40em; 
             }

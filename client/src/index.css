@@ -3704,7 +3704,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: movingT;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--headingT {
         animation-name: none; } }
@@ -3717,7 +3718,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: movinga;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--headinga {
         animation-name: none; } }
@@ -3730,7 +3732,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: movingi;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--headingi {
         animation-name: none; } }
@@ -3743,7 +3746,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: movingl;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--headingl {
         animation-name: none; } }
@@ -3756,7 +3760,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: movingm;
     animation-duration: 20s;
-    animation-timing-function: ease-out; }
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--headingm {
         animation-name: none; } }
@@ -3769,7 +3774,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: movinge;
     animation-duration: 20s;
-    animation-timing-function: ease-out; }
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--headinge {
         animation-name: none; } }
@@ -3795,7 +3801,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: subheadingFade;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--subheadingA {
         animation-name: none; } }
@@ -3808,7 +3815,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: subheadingFade;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--subheadingB {
         animation-name: none; } }
@@ -3821,7 +3829,8 @@ button.css-48ayfv {
     transform: translate(-50%, -50%);
     animation-name: iconFade;
     animation-duration: 20s;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+    animation-iteration-count: infinite; }
     @media only screen and (max-width: 56.25em) {
       .walkersplash__bg--icon {
         height: 40em; } }
