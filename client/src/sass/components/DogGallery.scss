@@ -1,24 +1,27 @@
 .ownerGallery {
-    width: 100%;
-    font-size: 2em;
+  width: 100%;
+  font-size: 2em;
 
-    
-    &__Title{
-        text-align: center;
-        font-family: $font-headingD;
-        font-size: 3em;
-        color: $color-accentOne;
+  &__Title {
+    text-align: center;
+    font-family: $font-headingD;
+    font-size: 3em;
+    color: $color-accentOne;
+    margin-top: 0px;
+    margin-bottom: 0.2em;
+  }
+  &__gallery {
+    &--button {
+      color: $color-lightest;
+      font-family: $font-sans;
+      background-color: $color-accentOne;
+      border: solid 2px $color-accentWhite;
+      border-radius: 0.5em;
+      padding: 0.5em 1em;
+      font-size: 1.5em;
+      margin-top: 0.2em;
+      margin-left: 0.2em;
+      margin-bottom: 0em;
     }
-    &__gallery {
-        &--button {
-            color: $color-lightest;
-            font-family: $font-sans;
-            background-color: $color-accentOne;
-            border: solid 2px $color-accentWhite;
-            border-radius: .5em;
-            padding: .5em 1em;
-            font-size: 1.5em;
-            margin: 2em;
-        }
-    }
+  }
 }

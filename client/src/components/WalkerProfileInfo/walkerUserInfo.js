@@ -9,7 +9,7 @@ import addPhotoIcon from "../../images/addPhotoIcon.png";
 
 
 function WalkerUserInfo(props) {
-   
+    const publicURL=`http://localhost:3000/publicProfile/${props.username}`
     return (
         <div className="walker-main-content">
             {/* <div className="walker-main-content__title">{props.userType} Profile</div> */}
@@ -54,8 +54,11 @@ function WalkerUserInfo(props) {
                 <div className="walker-main-content__body--certificationInput">{props.certification}</div>
                 {/* <div className="walker-main-content__body--insuranceLabel">Insurance:</div> */}
                 <div className="walker-main-content__body--insuranceInput">{props.insurance}</div>
-                {/* <div className="walker-main-content__body--bondLabel">Bond:</div> */}
-                <div className="walker-main-content__body--bondInput">{props.bond}</div>
+                {/* <div className="walker-main-content__body--bondLabel">Bond:</div>
+                <div className="walker-main-content__body--bondInput">{props.bond}</div> */}
+                <div className="walker-main-content__body--bondLabel">Public URL:</div>
+                <div className="walker-main-content__body--bondInput">
+                <a href={publicURL}>{publicURL}</a></div>
                 <div className="walker-main-content__body--servicesLabel">Services:</div>
                 <div className="walker-main-content__body--servicesInput">{props.services}</div>
                 {/* <div className="walker-main-content__body--availibilityLabel">Availibility:</div>
