@@ -9,7 +9,7 @@ import addPhotoIcon from "../../images/addPhotoIcon.png";
 
 
 function WalkerUserInfo(props) {
-    const publicURL=`http://localhost:3000/publicProfile/${props.username}`
+    const publicURL=`https://tail-me.herokuapp.com/publicProfile/${props.username}`
     return (
         <div className="walker-main-content">
             {/* <div className="walker-main-content__title">{props.userType} Profile</div> */}
