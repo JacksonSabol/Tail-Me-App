@@ -15,7 +15,6 @@ class WalkerList extends Component {
 
         API.getWalkers()
             .then(res => {
-                console.log("res" ,res.data)
                 const dataWalkers = res.data.map(data => {
                     const dataWalkers = {
                         label: `${data.user.firstName} ${data.user.lastName} `,
@@ -24,7 +23,6 @@ class WalkerList extends Component {
                     }
                     return (dataWalkers)
                 })
-                console.log(dataWalkers)
                 this.setState({ walkerList: dataWalkers })
             })
             .catch(err => console.log(err));
